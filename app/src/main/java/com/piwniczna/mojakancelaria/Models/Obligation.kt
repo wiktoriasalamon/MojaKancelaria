@@ -96,7 +96,6 @@ class Obligation{
         if(this.payed.compareTo(BigDecimal(0))==0) {
             return 0
         }
-
         return -1
     }
 }
