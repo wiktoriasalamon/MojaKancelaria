@@ -1,5 +1,5 @@
 package com.piwniczna.mojakancelaria.Models
 
-enum class Type {
+enum class ObligationType {
     STAMP, COURT, HEARING, CONTRACT
 }
