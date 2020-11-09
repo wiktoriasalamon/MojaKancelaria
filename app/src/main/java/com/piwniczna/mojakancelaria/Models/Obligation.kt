@@ -6,7 +6,7 @@ import java.time.LocalDate
 class Obligation{
 
     private var id: Long
-    private var type: Type
+    private var type: ObligationType
     private var name: String
     private var amount: BigDecimal
     private var payed: BigDecimal
@@ -15,14 +15,14 @@ class Obligation{
     private var paymentDate: LocalDate
 
     constructor(
-        id: Long,
-        type: Type,
-        name: String,
-        amount: BigDecimal,
-        payed: BigDecimal,
-        payments: ArrayList<Payment>,
-        date: LocalDate,
-        paymentDate: LocalDate
+            id: Long,
+            type: ObligationType,
+            name: String,
+            amount: BigDecimal,
+            payed: BigDecimal,
+            payments: ArrayList<Payment>,
+            date: LocalDate,
+            paymentDate: LocalDate
     ) {
         this.id = id
         this.type = type
@@ -38,7 +38,7 @@ class Obligation{
         return this.id
     }
 
-    fun getType(): Type {
+    fun getType(): ObligationType {
         return this.type
     }
 
@@ -80,8 +80,13 @@ class Obligation{
      * 0 if nothing payed
      * 1 if partially payed
      * 2 if already payed
+     * 3 if not payed and overdue
+     * -1 if error
      */
     fun getStatus(): Int {
+        if(this.amount.compareTo(this.payed)==1 && this.paymentDate < LocalDate.now()){
+            return 3
+        }
         if(this.amount.compareTo(this.payed)==0) {
             return 2
         }
@@ -91,6 +96,7 @@ class Obligation{
         if(this.payed.compareTo(BigDecimal(0))==0) {
             return 0
         }
+
         return -1
     }
 }

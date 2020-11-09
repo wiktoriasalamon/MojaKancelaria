@@ -8,17 +8,20 @@ class Payment {
     private var name: String
     private var amount: BigDecimal
     private var date: LocalDate
+    private var obligations: ArrayList<Obligation>
 
     constructor(
         id: Long,
         name: String,
         amount: BigDecimal,
-        date: LocalDate
+        date: LocalDate,
+        obligations: ArrayList<Obligation>
     ) {
         this.id = id
         this.name = name
         this.amount = amount
         this.date = date
+        this.obligations = obligations
     }
 
 
@@ -34,4 +37,7 @@ class Payment {
         return this.date
     }
 
+    fun getObligations(): ArrayList<Obligation> {
+        return this.obligations
+    }
 }
