@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Moja Kancelaria</string>
+    <!-- Login Activity -->
+    <string name="passwordCodeHint">Hasło</string>
+    <string name="loginButton">Zaloguj</string>
+    <string name="title_activity_login">Login Activity</string>
 </resources>
