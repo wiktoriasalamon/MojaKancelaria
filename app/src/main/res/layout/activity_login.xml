@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activities.MainActivity"
+android:orientation="vertical"
+android:gravity="center"
+    >
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="60dp"
+    android:src="@drawable/logo_icon">
+
+</ImageView>
+
+<EditText
+    style="@style/input_style"
+    android:id="@+id/passwordCodeEditText"
+    android:hint="@string/passwordCodeHint"
+    android:textIsSelectable="false"
+    android:inputType="numberPassword"
+    android:layout_marginBottom="40dp" />
+
+<Button
+    android:id="@+id/loginButton"
+    android:text="@string/loginButton"
+    android:onClick="handleLogin"
+    style="@style/button_style">
+</Button>
+
+</LinearLayout>
