@@ -79,11 +79,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation group: 'com.google.guava', name: 'guava', version: '20.0'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
-
-
-
-
 
 
     def room_version = "2.2.5" // check latest version from docs
