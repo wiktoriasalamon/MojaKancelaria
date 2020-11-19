@@ -22,6 +22,7 @@ android:gravity="center"
     android:hint="@string/passwordCodeHint"
     android:textIsSelectable="false"
     android:inputType="numberPassword"
+    android:imeOptions="actionDone"
     android:layout_marginBottom="40dp" />
 
 <Button

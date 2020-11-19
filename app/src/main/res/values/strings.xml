@@ -4,4 +4,6 @@
     <string name="passwordCodeHint">Hasło</string>
     <string name="loginButton">Zaloguj</string>
     <string name="title_activity_login">Login Activity</string>
+    <string name="loginSuccessfulToast">Logowanie...</string>
+    <string name="loginFailedToast">Złe hasło...</string>
 </resources>

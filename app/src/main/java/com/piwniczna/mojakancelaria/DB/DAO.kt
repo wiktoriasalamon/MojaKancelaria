@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.DB
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.piwniczna.mojakancelaria.Models.*
@@ -21,6 +22,11 @@ interface DAO {
 
     @Insert
     fun addHash(password: PasswordEntity)
+
+
+    @Query("DELETE FROM passwords")
+    fun delHash()
+
 
     @Query("SELECT * FROM clients")
     fun getClients(): List<ClientEntity>
