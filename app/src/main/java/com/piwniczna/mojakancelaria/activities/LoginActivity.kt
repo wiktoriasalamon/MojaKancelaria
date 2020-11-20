@@ -39,6 +39,11 @@ class LoginActivity : AppCompatActivity() {
                 .toString()
 
         AsyncTask.execute {
+
+            // TODO: if password doesn't exist in db make toast with warning instead of killing the app xD
+            // java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.piwniczna.mojakancelaria.Models.PasswordEntity.getHash()' on a null object reference
+            // sth like "Please contact with developers to configure your app"
+
             val dbHash = database.dao().getHash()
 
             runOnUiThread {
