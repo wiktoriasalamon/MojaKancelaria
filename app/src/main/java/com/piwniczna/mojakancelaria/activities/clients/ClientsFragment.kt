@@ -16,10 +16,18 @@ class ClientsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_clients, container, false)
         clientsListView = view.findViewById(R.id.clients_list_view) as ListView
-        clientsList = listOf("Jan Kowalski", "Anna Nowak", "Katarzyna Nosowska")
+        clientsList = listOf()
         clientsListAdapter = ClientsListAdapter(this.context!!, clientsList)
         clientsListView.adapter = clientsListAdapter
 
+        getClients()
+        clientsListAdapter.notifyDataSetChanged()
+
         return view
+    }
+
+    fun getClients(): List<String> {
+        // TODO: get clients from db
+        return listOf("Jan Kowalski", "Anna Nowak", "Katarzyna Nosowska")
     }
 }
