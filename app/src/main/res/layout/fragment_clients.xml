@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:elevation="10dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    >
+
+    <EditText
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        style="@style/search_input_style"
+        >
+    </EditText>
+
+    <ListView
+        android:layout_marginTop="20dp"
+        android:id="@+id/clients_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <Button
+        android:layout_gravity="right"
+        style="@style/add_button_style"
+        ></Button>
+
+
+
+</LinearLayout>

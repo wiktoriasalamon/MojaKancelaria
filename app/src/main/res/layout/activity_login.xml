@@ -19,7 +19,7 @@ android:gravity="center"
 <EditText
     style="@style/input_style"
     android:id="@+id/passwordCodeEditText"
-    android:hint="@string/passwordCodeHint"
+    android:hint="@string/password_code_hint"
     android:textIsSelectable="false"
     android:inputType="numberPassword"
     android:imeOptions="actionDone"
@@ -27,7 +27,7 @@ android:gravity="center"
 
 <Button
     android:id="@+id/loginButton"
-    android:text="@string/loginButton"
+    android:text="@string/login_button"
     android:onClick="handleLogin"
     style="@style/button_style">
 </Button>

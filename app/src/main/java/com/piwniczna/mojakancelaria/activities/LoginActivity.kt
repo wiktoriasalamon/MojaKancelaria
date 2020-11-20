@@ -39,12 +39,17 @@ class LoginActivity : AppCompatActivity() {
                 .toString()
 
         AsyncTask.execute {
+
+            // TODO: if password doesn't exist in db make toast with warning instead of killing the app xD
+            // java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.piwniczna.mojakancelaria.Models.PasswordEntity.getHash()' on a null object reference
+            // sth like "Please contact with developers to configure your app"
+
             val dbHash = database.dao().getHash()
 
             runOnUiThread {
 
                 if (!pinHash.equals(dbHash.hash)) {
-                    val text = R.string.loginFailedToast
+                    val text = R.string.login_failed_toast
                     val duration = Toast.LENGTH_SHORT
                     val toast = Toast.makeText(applicationContext, text, duration)
                     toast.show()
@@ -53,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
 
                 }
                 else {
-                    val text = R.string.loginSuccessfulToast
+                    val text = R.string.login_successful_toast
                     val duration = Toast.LENGTH_LONG
                     val toast = Toast.makeText(applicationContext, text, duration)
                     toast.show()
