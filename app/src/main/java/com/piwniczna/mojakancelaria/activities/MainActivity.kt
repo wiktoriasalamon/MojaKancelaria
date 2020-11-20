@@ -3,7 +3,7 @@ package com.piwniczna.mojakancelaria.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ClientsListFragment
+import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                ClientsListFragment()
+                ClientsFragment()
         ).commit()
 
     }
