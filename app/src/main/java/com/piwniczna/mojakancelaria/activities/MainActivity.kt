@@ -1,3 +1,4 @@
+
 package com.piwniczna.mojakancelaria.activities
 
 import androidx.appcompat.app.AppCompatActivity
@@ -26,4 +27,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         finish()
     }
-}
+} 
