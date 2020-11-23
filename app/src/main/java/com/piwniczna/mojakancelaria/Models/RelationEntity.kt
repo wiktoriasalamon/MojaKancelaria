@@ -2,16 +2,22 @@ package com.piwniczna.mojakancelaria.Models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.math.BigDecimal
 
 
-@Entity(tableName = "relations")
+@Entity(tableName = "relations", foreignKeys = [ForeignKey(entity = ClientEntity::class,
+        parentColumns = arrayOf("id"),
+        childColumns = arrayOf("ClientId"),
+        onDelete = ForeignKey.CASCADE)])
 data class RelationEntity(
 
 
     @ColumnInfo(name = "Amount")
     var amount: BigDecimal,
+    @ColumnInfo(name = "ClientID")
+    var clientId: Int,
     @ColumnInfo(name = "ObligationId")
     var obligationId: Int,
     @ColumnInfo(name = "PaymentId")
