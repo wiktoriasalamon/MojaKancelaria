@@ -1,5 +1,6 @@
 package com.piwniczna.mojakancelaria.activities
 
+
 import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
@@ -9,11 +10,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.common.hash.Hashing
+import com.piwniczna.mojakancelaria.DB.DBConnector
+
 import com.piwniczna.mojakancelaria.DB.MyDb
+import com.piwniczna.mojakancelaria.Models.PasswordEntity
 import com.piwniczna.mojakancelaria.R
+import java.lang.Exception
+import java.lang.NullPointerException
 import java.nio.charset.StandardCharsets
 
 
@@ -29,10 +36,12 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordCodeEditText)
         loginButton = findViewById(R.id.loginButton)
 
-        initDb(this)
+        database = DBConnector.getDB(this)
+
     }
 
     fun handleLogin(view: View) {
+
         val pin = passwordEditText.text
         val pinHash = Hashing.sha256()
                 .hashString(pin, StandardCharsets.UTF_8)
@@ -40,33 +49,38 @@ class LoginActivity : AppCompatActivity() {
 
         AsyncTask.execute {
 
-            // TODO: if password doesn't exist in db make toast with warning instead of killing the app xD
-            // java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.piwniczna.mojakancelaria.Models.PasswordEntity.getHash()' on a null object reference
-            // sth like "Please contact with developers to configure your app"
-
-            val dbHash = database.dao().getHash()
-
-            runOnUiThread {
-
-                if (!pinHash.equals(dbHash.hash)) {
-                    val text = R.string.login_failed_toast
-                    val duration = Toast.LENGTH_SHORT
-                    val toast = Toast.makeText(applicationContext, text, duration)
-                    toast.show()
-
-                    passwordEditText.setText("")
-
+            try {
+                val dbHash = database.dao().getHash()
+                if(dbHash.equals(null)){
+                    throw NullPointerException()
                 }
-                else {
-                    val text = R.string.login_successful_toast
-                    val duration = Toast.LENGTH_LONG
-                    val toast = Toast.makeText(applicationContext, text, duration)
-                    toast.show()
+                runOnUiThread {
+                    if (!pinHash.equals(dbHash.hash)) {
+                        val text = R.string.login_failed_toast
+                        val duration = Toast.LENGTH_SHORT
+                        val toast = Toast.makeText(applicationContext, text, duration)
+                        toast.show()
 
-                    openMainActivity()
+                        passwordEditText.setText("")
 
+                    }
+                    else {
+                        val text = R.string.login_successful_toast
+                        val duration = Toast.LENGTH_LONG
+                        val toast = Toast.makeText(applicationContext, text, duration)
+                        toast.show()
+
+                        openMainActivity()
+
+                    }
                 }
             }
+            catch (e: NullPointerException){
+                runOnUiThread {
+                    showPasswordDialog()
+                }
+            }
+
         }
     }
 
@@ -75,17 +89,26 @@ class LoginActivity : AppCompatActivity() {
         startActivityForResult(myIntent, 123)
     }
 
-    fun initDb(context: Context) {
-        AsyncTask.execute {
+    fun showPasswordDialog() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        builder.setTitle("Podaj nowy PIN")
+        val dialogLayout = inflater.inflate(R.layout.password_dialog, null)
+        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Zatwiedź") { _, _ ->  setPin(editText.text.toString())}
+        builder.show()
 
-            try {
-                database = Room.databaseBuilder(
-                        context,
-                        MyDb::class.java,
-                        "kancelaria"
-                ).build()
-            } catch (e: Exception) {
-            }
+    }
+
+    fun setPin(newPin:String) {
+        AsyncTask.execute {
+            val pinHash = Hashing.sha256()
+                    .hashString(newPin, StandardCharsets.UTF_8)
+                    .toString()
+            database.dao().addHash(PasswordEntity(pinHash))
         }
     }
+
+
 }

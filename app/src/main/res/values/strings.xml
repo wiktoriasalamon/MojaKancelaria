@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Moja Kancelaria</string>
     <!-- Login Activity -->
-    <string name="password_code_hint">Hasło</string>
+    <string name="password_code_hint">Pin</string>
     <string name="login_button">Zaloguj</string>
     <string name="title_activity_login">Login Activity</string>
     <string name="login_successful_toast">Logowanie...</string>
-    <string name="login_failed_toast">Złe hasło...</string>
+    <string name="login_failed_toast">Zły pin...</string>
+    <string name="new_password_code_hint">Podaj nowy pin:</string>
 </resources>
