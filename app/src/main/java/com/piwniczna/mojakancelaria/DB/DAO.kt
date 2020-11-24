@@ -89,7 +89,7 @@ interface DAO {
 
 
 
-
+    //todo get not payed obligations
     //todo? redirecting payment?
 
 
