@@ -14,7 +14,7 @@ import com.piwniczna.mojakancelaria.Models.*
         (RelationEntity::class),
         (PasswordEntity::class)
     ],
-    version = 5)
+    version = 3)
 @TypeConverters(Converter::class)
 
 abstract class MyDb : RoomDatabase() {
