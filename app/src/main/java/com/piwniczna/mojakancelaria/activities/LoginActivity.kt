@@ -14,12 +14,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.common.hash.Hashing
-import com.piwniczna.mojakancelaria.DB.DBConnector
+import com.piwniczna.mojakancelaria.DB.DataService
 
-import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.Models.PasswordEntity
 import com.piwniczna.mojakancelaria.R
-import java.lang.Exception
 import java.lang.NullPointerException
 import java.nio.charset.StandardCharsets
 
@@ -27,7 +25,7 @@ import java.nio.charset.StandardCharsets
 class LoginActivity : AppCompatActivity() {
     lateinit var passwordEditText : EditText
     lateinit var loginButton: Button
-    lateinit var database : MyDb
+    lateinit var dbService: DataService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +34,15 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordCodeEditText)
         loginButton = findViewById(R.id.loginButton)
 
-        database = DBConnector.getDB(this)
+        dbService = DataService(this)
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        passwordEditText.setText("")
+    }
+
 
     fun handleLogin(view: View) {
 
@@ -50,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         AsyncTask.execute {
 
             try {
-                val dbHash = database.dao().getHash()
+                val dbHash = dbService.getPasswordHash()
                 if(dbHash.equals(null)){
                     throw NullPointerException()
                 }
@@ -92,11 +96,11 @@ class LoginActivity : AppCompatActivity() {
     fun showPasswordDialog() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        builder.setTitle("Podaj nowy PIN")
+        builder.setTitle(R.string.new_password_code_hint)
         val dialogLayout = inflater.inflate(R.layout.password_dialog, null)
         val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
         builder.setView(dialogLayout)
-        builder.setPositiveButton("Zatwiedź") { _, _ ->  setPin(editText.text.toString())}
+        builder.setPositiveButton(R.string.ok) { _, _ ->  setPin(editText.text.toString())}
         builder.show()
 
     }
@@ -106,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
             val pinHash = Hashing.sha256()
                     .hashString(newPin, StandardCharsets.UTF_8)
                     .toString()
-            database.dao().addHash(PasswordEntity(pinHash))
+            dbService.addNewPassword(PasswordEntity(pinHash))
         }
     }
 
