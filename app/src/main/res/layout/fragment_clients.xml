@@ -7,6 +7,7 @@
     android:elevation="10dp"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
+
     >
 
     <EditText
@@ -28,6 +29,7 @@
     </ListView>
 
     <Button
+        android:id="@+id/addClientButton"
         android:layout_gravity="right"
         style="@style/add_button_style"
         ></Button>

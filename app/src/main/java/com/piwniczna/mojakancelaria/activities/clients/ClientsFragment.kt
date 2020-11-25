@@ -1,19 +1,18 @@
 package com.piwniczna.mojakancelaria.activities.clients
 
 import android.app.AlertDialog
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
-import android.text.Spanned
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
-import java.text.FieldPosition
+import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
+
 
 class ClientsFragment : Fragment() {
     lateinit var clientsListAdapter: ClientsListAdapter
@@ -22,6 +21,10 @@ class ClientsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_clients, container, false)
+
+        val addButton = view.findViewById<Button>(R.id.addClientButton)
+        addButton.setOnClickListener {handleAddClient(it)}
+
         clientsListView = view.findViewById(R.id.clients_list_view) as ListView
         clientsList = arrayListOf()
         clientsListAdapter = ClientsListAdapter(this.context!!, clientsList)
@@ -66,6 +69,15 @@ class ClientsFragment : Fragment() {
         Log.e("Client", "deleteing client ${id} ...")
         // TODO: delete client from database
         getClients()
+    }
+
+
+
+    fun handleAddClient(view: View) {
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                AddClientFragment()
+        )?.commit()
     }
 
 }

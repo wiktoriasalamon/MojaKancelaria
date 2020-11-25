@@ -12,4 +12,8 @@
     <string name="delete">USUŃ</string>
     <string name="cancel">ANULUJ</string>
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
+    <!-- Add Client Fragment -->
+    <string name="save_client_button">Zapisz</string>
+    <string name="new_client_hint">Nazwa nowego klienta</string>
+    <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
 </resources>
