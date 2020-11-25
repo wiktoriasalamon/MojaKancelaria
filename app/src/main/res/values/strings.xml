@@ -7,4 +7,8 @@
     <string name="login_successful_toast">Logowanie...</string>
     <string name="login_failed_toast">Zły pin...</string>
     <string name="new_password_code_hint">Podaj nowy pin:</string>
+    <!-- Add Client Fragment -->
+    <string name="save_client_button">Zapisz</string>
+    <string name="new_client_hint">Nazwa nowego klienta</string>
+    <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
 </resources>
