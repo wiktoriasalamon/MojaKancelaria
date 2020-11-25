@@ -4,11 +4,22 @@
     <string name="password_code_hint">Pin</string>
     <string name="login_button">Zaloguj</string>
     <string name="title_activity_login">Login Activity</string>
-    <string name="login_successful_toast">Logowanie...</string>
-    <string name="login_failed_toast">Zły pin...</string>
+    <string name="login_successful_toast">Logowanie…</string>
+    <string name="login_failed_toast">Zły pin…</string>
     <string name="new_password_code_hint">Podaj nowy pin:</string>
+    <!-- Alert Dialog -->
+    <string name="warning">Uwaga!</string>
+    <string name="delete">USUŃ</string>
+    <string name="cancel">ANULUJ</string>
+    <string name="ok">Zatwierdź</string>
+    <string name="are_you_sure">Na pewno?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
     <!-- Add Client Fragment -->
     <string name="save_client_button">Zapisz</string>
     <string name="new_client_hint">Nazwa nowego klienta</string>
     <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
+    <!-- Client Fragment -->
+    <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
+    <string name="deleting">Usuwanie klienta</string>
 </resources>
