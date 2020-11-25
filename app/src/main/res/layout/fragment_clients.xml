@@ -11,6 +11,7 @@
     >
 
     <EditText
+        android:id="@+id/search_clients_edittext"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         style="@style/search_input_style"
@@ -29,7 +30,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/addClientButton"
+        android:id="@+id/add_client_button"
         android:layout_gravity="right"
         style="@style/add_button_style"
         ></Button>
