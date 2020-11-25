@@ -7,10 +7,21 @@ import androidx.room.PrimaryKey
 import java.math.BigDecimal
 
 
-@Entity(tableName = "relations", foreignKeys = [ForeignKey(entity = ClientEntity::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("ClientId"),
-        onDelete = ForeignKey.CASCADE)])
+@Entity(tableName = "relations", foreignKeys =
+        [
+            ForeignKey(entity = ClientEntity::class,
+                    parentColumns = arrayOf("id"),
+                    childColumns = arrayOf("ClientId"),
+                    onDelete = ForeignKey.CASCADE),
+            ForeignKey(entity = ObligationEntity::class,
+                    parentColumns = arrayOf("id"),
+                    childColumns = arrayOf("ObligationId"),
+                    onDelete = ForeignKey.CASCADE),
+            ForeignKey(entity = PaymentEntity::class,
+                    parentColumns = arrayOf("id"),
+                    childColumns = arrayOf("PaymentId"),
+                    onDelete = ForeignKey.CASCADE)
+        ])
 data class RelationEntity(
 
 
