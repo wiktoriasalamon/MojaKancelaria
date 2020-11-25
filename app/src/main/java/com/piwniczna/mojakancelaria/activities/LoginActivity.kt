@@ -1,15 +1,18 @@
 package com.piwniczna.mojakancelaria.activities
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import com.google.common.hash.Hashing
 import com.piwniczna.mojakancelaria.DB.DataService
 
@@ -33,6 +36,11 @@ class LoginActivity : AppCompatActivity() {
 
         dbService = DataService(this)
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        passwordEditText.setText("")
     }
 
     fun handleLogin(view: View) {
@@ -87,11 +95,11 @@ class LoginActivity : AppCompatActivity() {
     fun showPasswordDialog() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        builder.setTitle("Podaj nowy PIN")
+        builder.setTitle(R.string.new_password_code_hint)
         val dialogLayout = inflater.inflate(R.layout.password_dialog, null)
         val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
         builder.setView(dialogLayout)
-        builder.setPositiveButton("Zatwiedź") { _, _ ->  setPin(editText.text.toString())}
+        builder.setPositiveButton(R.string.ok) { _, _ ->  setPin(editText.text.toString())}
         builder.show()
 
     }
