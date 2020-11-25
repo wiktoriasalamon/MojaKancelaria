@@ -7,7 +7,8 @@ import java.math.BigDecimal
 class DataService(context: Context) {
     var db: DAO = DBConnector.getDB(context).dao()
 
-    fun getPinHash(): PasswordEntity{
+    //password
+    fun getPasswordHash(): PasswordEntity{
         return db.getHash()
     }
 
@@ -15,10 +16,21 @@ class DataService(context: Context) {
         db.addHash(password)
     }
 
+    //clients
     fun addClient(client: ClientEntity){
         db.addClient(client)
     }
 
+    fun deleteClient(client: ClientEntity){
+        db.deleteClient(client)
+    }
+
+    fun getClients(): ArrayList<ClientEntity> {
+        return ArrayList(db.getClients())
+    }
+
+    //??
+/*
     fun addObligation(obligation: ObligationEntity){
         db.addObligation(obligation)
     }
@@ -33,19 +45,16 @@ class DataService(context: Context) {
 
         db.addPayment(payment)
 
-        val paymentId = payment.id
-        val clientId = payment.clientId
-
-
         for(i in obligationIdList.zip(amountsList)){
-            db.addRelation(RelationEntity(i.second,clientId,i.first,paymentId))
+            db.addRelation(RelationEntity(i.second,payment.clientId,i.first,payment.id))
         }
+
 
 
         //todo for relation object update obligation
         return true
     }
-
+*/
 
 
 

@@ -82,6 +82,9 @@ interface DAO {
     @Delete
     fun deleteObligation(obligation: ObligationEntity)
 
+    @Delete
+    fun deleteClient(client: ClientEntity)
+
 
     //updates
     @Update
@@ -90,7 +93,7 @@ interface DAO {
 
 
     //todo get not payed obligations
-    //todo? redirecting payment?
+    //todo? redirecting payment???????
 
 
 

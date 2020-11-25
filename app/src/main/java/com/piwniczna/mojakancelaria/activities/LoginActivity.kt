@@ -1,25 +1,20 @@
 package com.piwniczna.mojakancelaria.activities
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
 import com.google.common.hash.Hashing
-import com.piwniczna.mojakancelaria.DB.DBConnector
+import com.piwniczna.mojakancelaria.DB.DataService
 
-import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.Models.PasswordEntity
 import com.piwniczna.mojakancelaria.R
-import java.lang.Exception
 import java.lang.NullPointerException
 import java.nio.charset.StandardCharsets
 
@@ -27,7 +22,7 @@ import java.nio.charset.StandardCharsets
 class LoginActivity : AppCompatActivity() {
     lateinit var passwordEditText : EditText
     lateinit var loginButton: Button
-    lateinit var database : MyDb
+    lateinit var service : DataService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordCodeEditText)
         loginButton = findViewById(R.id.loginButton)
 
-        database = DBConnector.getDB(this)
+        service = DataService(this)
 
     }
 
@@ -50,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         AsyncTask.execute {
 
             try {
-                val dbHash = database.dao().getHash()
+                val dbHash = service.getPasswordHash()
                 if(dbHash.equals(null)){
                     throw NullPointerException()
                 }
@@ -106,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
             val pinHash = Hashing.sha256()
                     .hashString(newPin, StandardCharsets.UTF_8)
                     .toString()
-            database.dao().addHash(PasswordEntity(pinHash))
+            service.addNewPassword(PasswordEntity(pinHash))
         }
     }
 
