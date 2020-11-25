@@ -57,7 +57,16 @@ class ClientsFragment : Fragment() {
         builder.setMessage(message)
 
         builder.setPositiveButton(R.string.delete) { dialog, which ->
-            deleteClientFromDB(id.toString())
+
+            builder.setTitle(R.string.deleting)
+            builder.setMessage(R.string.are_you_sure)
+
+            builder.setPositiveButton(R.string.yes) { dialog, which -> deleteClientFromDB(id.toString()) }
+
+            builder.setNegativeButton(R.string.no) { dialog, which -> }
+
+            builder.show()
+
         }
 
         builder.setNegativeButton(R.string.cancel) { dialog, which -> }

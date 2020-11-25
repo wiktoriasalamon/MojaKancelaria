@@ -34,10 +34,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         passwordEditText = findViewById(R.id.passwordCodeEditText)
+
         loginButton = findViewById(R.id.loginButton)
 
         database = DBConnector.getDB(this)
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        passwordEditText.setText("")
     }
 
     fun handleLogin(view: View) {
@@ -51,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
             try {
                 val dbHash = database.dao().getHash()
-                if(dbHash.equals(null)){
+                if(dbHash == null){
                     throw NullPointerException()
                 }
                 runOnUiThread {
@@ -92,11 +98,11 @@ class LoginActivity : AppCompatActivity() {
     fun showPasswordDialog() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        builder.setTitle("Podaj nowy PIN")
+        builder.setTitle(R.string.new_password_code_hint)
         val dialogLayout = inflater.inflate(R.layout.password_dialog, null)
         val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
         builder.setView(dialogLayout)
-        builder.setPositiveButton("Zatwiedź") { _, _ ->  setPin(editText.text.toString())}
+        builder.setPositiveButton(R.string.ok) { _, _ ->  setPin(editText.text.toString())}
         builder.show()
 
     }
