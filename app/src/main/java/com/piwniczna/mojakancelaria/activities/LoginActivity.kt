@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets
 class LoginActivity : AppCompatActivity() {
     lateinit var passwordEditText : EditText
     lateinit var loginButton: Button
-    lateinit var service : DataService
+    lateinit var dbService: DataService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordCodeEditText)
         loginButton = findViewById(R.id.loginButton)
 
-        service = DataService(this)
+        dbService = DataService(this)
 
     }
 
@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         AsyncTask.execute {
 
             try {
-                val dbHash = service.getPasswordHash()
+                val dbHash = dbService.getPasswordHash()
                 if(dbHash.equals(null)){
                     throw NullPointerException()
                 }
@@ -101,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
             val pinHash = Hashing.sha256()
                     .hashString(newPin, StandardCharsets.UTF_8)
                     .toString()
-            service.addNewPassword(PasswordEntity(pinHash))
+            dbService.addNewPassword(PasswordEntity(pinHash))
         }
     }
 
