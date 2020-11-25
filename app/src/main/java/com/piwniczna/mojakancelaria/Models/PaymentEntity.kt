@@ -13,7 +13,6 @@ import java.time.LocalDate
         onDelete = ForeignKey.CASCADE)])
 data class PaymentEntity(
 
-
     @ColumnInfo(name = "ClientId")
     var clientId : Int,
     @ColumnInfo(name = "Name")

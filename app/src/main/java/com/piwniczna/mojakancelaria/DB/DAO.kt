@@ -46,7 +46,7 @@ interface DAO {
 
     //clear by id
     @Query("DELETE FROM clients WHERE id = :clientId")
-    fun clearUser(clientId: Int)
+    fun clearClient(clientId: Int)
 
     @Query("DELETE FROM obligations WHERE ClientID = :clientId")
     fun clearObligations(clientId: Int)
