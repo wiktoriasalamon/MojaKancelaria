@@ -65,7 +65,7 @@ class ClientsListAdapter(context: Context, var data: ArrayList<String>) :
                 filterResults.values = if (queryString==null || queryString.isEmpty())
                     data
                 else
-                    clients.filter {
+                    data.filter {
                         it.toLowerCase().contains(queryString)
                     }
                 return filterResults

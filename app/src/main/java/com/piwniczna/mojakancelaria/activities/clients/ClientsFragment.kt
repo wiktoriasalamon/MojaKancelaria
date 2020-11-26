@@ -50,12 +50,7 @@ class ClientsFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                if(s != "") {
-                    Log.e("CLIENTS", s.toString())
-                    clientsListAdapter.filter.filter(s)
-                } else {
-
-                }
+                clientsListAdapter.filter.filter(s)
             }
         })
 
