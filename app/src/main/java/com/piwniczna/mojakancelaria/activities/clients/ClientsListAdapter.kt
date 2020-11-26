@@ -9,11 +9,12 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 
-class ClientsListAdapter(context: Context, var data: ArrayList<String>) :
-        ArrayAdapter<String>(context, R.layout.layout_clients_list_item, data), Filterable {
-    private var clients: ArrayList<String> = data
+class ClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
+        ArrayAdapter<ClientEntity>(context, R.layout.layout_clients_list_item, data), Filterable {
+    private var clients: ArrayList<ClientEntity> = data
 
     internal class ViewHolder {
         var nameTextView: TextView? = null
@@ -33,7 +34,7 @@ class ClientsListAdapter(context: Context, var data: ArrayList<String>) :
 
         val holder = view.tag as ViewHolder
 
-        holder.nameTextView!!.text=clients[position]
+        holder.nameTextView!!.text=clients[position].name
 
         return view
     }
@@ -42,7 +43,7 @@ class ClientsListAdapter(context: Context, var data: ArrayList<String>) :
         return clients.size
     }
 
-    override fun getItem(p0: Int): String? {
+    override fun getItem(p0: Int): ClientEntity {
         return clients[p0]
     }
 
@@ -54,7 +55,7 @@ class ClientsListAdapter(context: Context, var data: ArrayList<String>) :
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
-                clients = filterResults.values as ArrayList<String>
+                clients = filterResults.values as ArrayList<ClientEntity>
                 notifyDataSetChanged()
             }
 
@@ -66,7 +67,7 @@ class ClientsListAdapter(context: Context, var data: ArrayList<String>) :
                     data
                 else
                     data.filter {
-                        it.toLowerCase().contains(queryString)
+                        it.name.toLowerCase().contains(queryString)
                     }
                 return filterResults
             }
