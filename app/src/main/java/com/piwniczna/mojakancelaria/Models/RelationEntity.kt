@@ -27,7 +27,7 @@ data class RelationEntity(
 
     @ColumnInfo(name = "Amount")
     var amount: BigDecimal,
-    @ColumnInfo(name = "ClientID")
+    @ColumnInfo(name = "ClientId")
     var clientId: Int,
     @ColumnInfo(name = "ObligationId")
     var obligationId: Int,
