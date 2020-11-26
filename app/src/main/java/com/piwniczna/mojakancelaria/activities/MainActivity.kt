@@ -4,6 +4,7 @@ package com.piwniczna.mojakancelaria.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -27,4 +28,17 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         finish()
     }
+
+    override fun onBackPressed() {
+        val fragments = supportFragmentManager.fragments
+        for (f in fragments) {
+            if (f == null) { continue }
+            when (f) {
+                is ClientsFragment -> f.onBackPressed()
+                is AddClientFragment -> f.onBackPressed()
+                else -> super.onBackPressed()
+            }
+        }
+    }
+
 }

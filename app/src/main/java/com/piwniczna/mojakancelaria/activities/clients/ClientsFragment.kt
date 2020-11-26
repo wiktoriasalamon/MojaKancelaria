@@ -25,7 +25,6 @@ class ClientsFragment : Fragment() {
     lateinit var clientsListView : ListView
     lateinit var clientsList: ArrayList<ClientEntity>
     lateinit var searchClientsEditText: EditText
-
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -65,6 +64,9 @@ class ClientsFragment : Fragment() {
         return view
     }
 
+    fun onBackPressed() {
+        this.activity?.finish()
+    }
 
     private fun getClientsFromDB() {
         AsyncTask.execute {
@@ -110,7 +112,7 @@ class ClientsFragment : Fragment() {
             getClientsFromDB()
         }
 
-    }
+
 
     fun handleAddClient(view: View) {
         fragmentManager?.beginTransaction()?.replace(

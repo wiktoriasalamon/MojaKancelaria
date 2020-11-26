@@ -32,6 +32,13 @@ class AddClientFragment : Fragment() {
         return view
     }
 
+    fun onBackPressed() {
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.fragment_container,
+            ClientsFragment()
+        )?.commit()
+    }
+
     fun handleSaveClient(view: View) {
         val newClientName = newClientEditText.text.toString()
         if (newClientName == "") {
