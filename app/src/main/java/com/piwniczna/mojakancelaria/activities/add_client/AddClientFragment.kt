@@ -51,7 +51,7 @@ class AddClientFragment : Fragment() {
 
     }
 
-    fun addNewClientToDB(client: ClientEntity){
+    private fun addNewClientToDB(client: ClientEntity){
         AsyncTask.execute { dbService.addClient(client) }
     }
 
