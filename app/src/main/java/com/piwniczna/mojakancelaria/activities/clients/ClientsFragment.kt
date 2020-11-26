@@ -59,6 +59,10 @@ class ClientsFragment : Fragment() {
         return view
     }
 
+    fun onBackPressed() {
+        this.activity?.finish()
+    }
+
     private fun getClients() {
         val clients = arrayListOf("Jan Kowalski", "Anna Nowak", "Katarzyna Nosowska")
         clientsList.clear()

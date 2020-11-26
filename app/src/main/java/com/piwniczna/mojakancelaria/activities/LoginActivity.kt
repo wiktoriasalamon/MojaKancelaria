@@ -18,6 +18,8 @@ import com.piwniczna.mojakancelaria.DB.DataService
 
 import com.piwniczna.mojakancelaria.Models.PasswordEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import java.lang.NullPointerException
 import java.nio.charset.StandardCharsets
 
@@ -42,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
         super.onPause()
         passwordEditText.setText("")
     }
-
 
     fun handleLogin(view: View) {
 
