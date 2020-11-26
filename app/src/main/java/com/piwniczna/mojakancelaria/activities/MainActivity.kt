@@ -32,12 +32,11 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val fragments = supportFragmentManager.fragments
         for (f in fragments) {
-            if (f != null) {
-                when (f) {
-                    is ClientsFragment -> f.onBackPressed()
-                    is AddClientFragment -> f.onBackPressed()
-                    else -> super.onBackPressed()
-                }
+            if (f == null) { continue }
+            when (f) {
+                is ClientsFragment -> f.onBackPressed()
+                is AddClientFragment -> f.onBackPressed()
+                else -> super.onBackPressed()
             }
         }
     }
