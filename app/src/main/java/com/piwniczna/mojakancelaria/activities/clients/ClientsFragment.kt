@@ -112,7 +112,7 @@ class ClientsFragment : Fragment() {
             getClientsFromDB()
         }
 
-
+    }
 
     fun handleAddClient(view: View) {
         fragmentManager?.beginTransaction()?.replace(
