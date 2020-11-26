@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.clients
 
 import android.app.AlertDialog
+import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +13,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.piwniczna.mojakancelaria.DB.DataService
+import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
@@ -20,14 +23,16 @@ import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 class ClientsFragment : Fragment() {
     lateinit var clientsListAdapter: ClientsListAdapter
     lateinit var clientsListView : ListView
-    lateinit var clientsList: ArrayList<String>
+    lateinit var clientsList: ArrayList<ClientEntity>
     lateinit var searchClientsEditText: EditText
+    lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_clients, container, false)
+        dbService = DataService(this.context!!)
 
         val addButton = view.findViewById<Button>(R.id.add_client_button)
-        addButton.setOnClickListener {handleAddClient(it)}
+        addButton.setOnClickListener { handleAddClient(it) }
 
         clientsListView = view.findViewById(R.id.clients_list_view) as ListView
         clientsList = arrayListOf()
@@ -54,7 +59,7 @@ class ClientsFragment : Fragment() {
             }
         })
 
-        getClients()
+        getClientsFromDB()
 
         return view
     }
@@ -63,17 +68,21 @@ class ClientsFragment : Fragment() {
         this.activity?.finish()
     }
 
-    private fun getClients() {
-        val clients = arrayListOf("Jan Kowalski", "Anna Nowak", "Katarzyna Nosowska")
-        clientsList.clear()
-        clientsList.addAll(clients)
-        clientsListAdapter.notifyDataSetChanged()
+    private fun getClientsFromDB() {
+        AsyncTask.execute {
+            val clients = dbService.getClients()
+            clientsList.clear()
+            clientsList.addAll(clients)
+            activity?.runOnUiThread {
+                clientsListAdapter.notifyDataSetChanged()
+            }
+        }
     }
 
     private fun deleteClient(position: Int, id: Long) {
         val builder = AlertDialog.Builder(this.context)
 
-        val clientName = clientsListAdapter.data[position]
+        val clientName = clientsListAdapter.data[position].name
         val message = SpannedText.getSpannedText(getString(R.string.delete_client, clientName))
 
         builder.setTitle(R.string.warning)
@@ -84,7 +93,7 @@ class ClientsFragment : Fragment() {
             builder.setTitle(R.string.deleting)
             builder.setMessage(R.string.are_you_sure)
 
-            builder.setPositiveButton(R.string.yes) { dialog, which -> deleteClientFromDB(id.toString()) }
+            builder.setPositiveButton(R.string.yes) { dialog, which -> deleteClientFromDB(position) }
 
             builder.setNegativeButton(R.string.no) { dialog, which -> }
 
@@ -97,11 +106,11 @@ class ClientsFragment : Fragment() {
         builder.show()
     }
 
-    private fun deleteClientFromDB(id: String) {
-        Log.e("Client", "deleteing client ${id} ...")
-        // TODO: delete client from database
-        getClients()
-    }
+    private fun deleteClientFromDB(position: Int) {
+        AsyncTask.execute {
+            dbService.deleteClient(clientsList[position])
+            getClientsFromDB()
+        }
 
 
 
