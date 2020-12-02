@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             when (f) {
                 is ClientsFragment -> f.onBackPressed()
                 is AddClientFragment -> f.onBackPressed()
+                is ClientDetailsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

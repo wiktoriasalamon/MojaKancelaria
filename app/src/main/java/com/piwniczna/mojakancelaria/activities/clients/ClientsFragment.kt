@@ -5,7 +5,6 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +17,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
 
 
 class ClientsFragment : Fragment() {
@@ -38,6 +38,10 @@ class ClientsFragment : Fragment() {
         clientsList = arrayListOf()
         clientsListAdapter = ClientsListAdapter(this.context!!, clientsList)
         clientsListView.adapter = clientsListAdapter
+
+        clientsListView.setOnItemClickListener { _, _, position, _ ->
+            openClientDetailsFragment(position)
+        }
 
         clientsListView.setOnItemLongClickListener { _, _, position, id ->
             deleteClient(position, id)
@@ -112,14 +116,20 @@ class ClientsFragment : Fragment() {
             getClientsFromDB()
         }
 
+    }
 
-
-    fun handleAddClient(view: View) {
+    private fun handleAddClient(view: View) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
                 AddClientFragment()
         )?.commit()
     }
 
+    private fun openClientDetailsFragment(clientPosition: Int) {
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.fragment_container,
+            ClientDetailsFragment(clientsList[clientPosition])
+        )?.commit()
+    }
 
 }

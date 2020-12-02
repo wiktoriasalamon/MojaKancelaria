@@ -22,4 +22,8 @@
     <!-- Client Fragment -->
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
     <string name="deleting">Usuwanie klienta</string>
+    <!-- Obligations -->
+    <string name="obligations">Zobowiązania</string>
+    <!-- Payments -->
+    <string name="payments">Wpłaty</string>
 </resources>
