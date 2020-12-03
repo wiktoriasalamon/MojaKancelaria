@@ -14,10 +14,15 @@ import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.ObligationEntity
+import com.piwniczna.mojakancelaria.Models.ObligationType
+import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
+import java.math.BigDecimal
+import java.time.LocalDate
 
 
 class ClientsFragment : Fragment() {
@@ -64,6 +69,8 @@ class ClientsFragment : Fragment() {
         })
 
         getClientsFromDB()
+
+        test()
 
         return view
     }
@@ -130,6 +137,29 @@ class ClientsFragment : Fragment() {
             R.id.fragment_container,
             ClientDetailsFragment(clientsList[clientPosition])
         )?.commit()
+    }
+
+    fun test() {
+        AsyncTask.execute {
+/*
+            dbService.addObligation(ObligationEntity(1,ObligationType.STAMP,"Znaczek", BigDecimal(150), BigDecimal(0), LocalDate.now(), LocalDate.now().plusDays(14) ))
+            dbService.addObligation(ObligationEntity(1,ObligationType.CONTRACT,"Umowa", BigDecimal(3500), BigDecimal(0), LocalDate.now(), LocalDate.now().plusDays(14) ))
+            dbService.addObligation(ObligationEntity(1,ObligationType.HEARING,"Przesłuchanie", BigDecimal(500), BigDecimal(0), LocalDate.now(), LocalDate.now().plusDays(14) ))
+
+            var obligation = dbService.getObligation(1)
+            var obligation2 = dbService.getObligation(3)
+
+            var list = arrayListOf<ObligationEntity>()
+            list.add(obligation)
+            list.add(obligation2)
+
+            var list2 = arrayListOf<BigDecimal>()
+            list2.add(BigDecimal(15))
+            list2.add(BigDecimal(15))
+
+            var payment = PaymentEntity(1, "Testowa płatność111111111", BigDecimal(50), LocalDate.now().plusDays(4))
+            dbService.addPayment(payment, list, list2)*/
+        }
     }
 
 }

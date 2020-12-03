@@ -29,14 +29,23 @@ class DataService(context: Context) {
         return ArrayList(db.getClients())
     }
 
-    //??
-/*
+
+    //obligations
     fun addObligation(obligation: ObligationEntity){
         db.addObligation(obligation)
     }
 
-    fun addPayment(payment: PaymentEntity, obligationIdList: List<Int>, amountsList: List<BigDecimal>) : Boolean{
-        if(obligationIdList.size != amountsList.size){
+    fun getObligations(clientId: Int) : ArrayList<ObligationEntity> {
+        return ArrayList(db.getObligations(clientId))
+    }
+
+    fun getObligation(obligationId :Int): ObligationEntity {
+        return db.getObligation(obligationId)
+    }
+
+    //payments
+    fun addPayment(payment: PaymentEntity, obligationList: List<ObligationEntity>, amountsList: List<BigDecimal>) : Boolean{
+        if(obligationList.size != amountsList.size){
             return false
         }
         if(amountsList.contains(BigDecimal(0))){
@@ -44,17 +53,31 @@ class DataService(context: Context) {
         }
 
         db.addPayment(payment)
+        val addedPayment = db.getLastPayment()
 
-        for(i in obligationIdList.zip(amountsList)){
-            db.addRelation(RelationEntity(i.second,payment.clientId,i.first,payment.id))
+        for(i in obligationList.zip(amountsList)){
+            db.addRelation(RelationEntity(
+                    amount = i.second,
+                    clientId = payment.clientId,
+                    obligationId = i.first.id,
+                    paymentId = addedPayment.id
+            ))
+            i.first.payed = i.first.payed.add(i.second)
         }
 
-
-
-        //todo for relation object update obligation
+        db.updateObligations(obligationList)
         return true
     }
-*/
+
+    fun getPayments(clientId: Int) : ArrayList<PaymentEntity> {
+        return ArrayList(db.getPayments(clientId))
+    }
+
+    //relations
+    fun getRelations(clientId: Int) : ArrayList<RelationEntity> {
+        return ArrayList(db.getRelations(clientId))
+    }
+
 
 
 
