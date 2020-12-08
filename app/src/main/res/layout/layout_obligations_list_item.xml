@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/obligationn_item"
+        style="@style/obligations_list_item_style">
+        <TextView
+            android:text="Umowa nr 234"
+            android:id="@+id/obligation_title"
+            android:layout_alignParentStart="true"
+            style="@style/obligation_title_style"/>
+        <TextView
+            android:text="UMOWA"
+            android:id="@+id/obligation_type"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            style="@style/obligation_type_style"/>
+        <TextView
+            android:id="@+id/obligation_amount"
+            android:text="50,00zł"
+            android:layout_alignParentEnd="true"
+            style="@style/obligation_amount_style"/>
+        <TextView
+            android:id="@+id/obligation_date"
+            android:text="24.12.2020"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            style="@style/obligation_date_style"/>
+    </RelativeLayout>
+</LinearLayout>
