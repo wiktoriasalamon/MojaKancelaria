@@ -9,4 +9,9 @@
     <color name="light_grey">#E8E6E6</color>
     <color name="grey">#C4C4C4</color>
     <color name="dark_grey">#4E4E4E</color>
+    
+    <color name="payed">#94C2A0</color>
+    <color name="overdue">#D06666</color>
+    <color name="inprogress">#F4CE6A</color>
+    <color name="topay">#A7CCDE</color>
 </resources>
