@@ -80,7 +80,8 @@ interface DAO {
     @Query("SELECT * FROM obligations WHERE id in (:paymentIds)")
     fun getPaymentObligations(paymentIds: Array<Int>): List<ObligationEntity>
 
-
+    @Query("SELECT * FROM obligations WHERE ClientId = :clientId AND Amount != Payed" )
+    fun getNotPayedObligations(clientId: Int): List<ObligationEntity>
 
 
     //deletes
@@ -99,8 +100,6 @@ interface DAO {
     fun updateObligations(obligations: List<ObligationEntity>)
 
 
-
-    //todo get not payed obligations
     //todo? redirecting payment???????
 
 

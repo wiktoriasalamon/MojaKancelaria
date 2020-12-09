@@ -43,7 +43,16 @@ class DataService(context: Context) {
         return db.getObligation(obligationId)
     }
 
-    //payments
+    fun getNotPayedObligations(clientId: Int) : ArrayList<ObligationEntity> {
+        return ArrayList(db.getNotPayedObligations(clientId))
+    }
+
+    fun deleteObligation(obligation: ObligationEntity) {
+        return db.deleteObligation(obligation)
+    }
+
+
+  //payments
     fun addPayment(payment: PaymentEntity, obligationList: List<ObligationEntity>, amountsList: List<BigDecimal>) : Boolean{
         if(obligationList.size != amountsList.size){
             return false
@@ -72,6 +81,8 @@ class DataService(context: Context) {
     fun getPayments(clientId: Int) : ArrayList<PaymentEntity> {
         return ArrayList(db.getPayments(clientId))
     }
+
+    //todo: delete payment!!!!
 
     //relations
     fun getRelations(clientId: Int) : ArrayList<RelationEntity> {
