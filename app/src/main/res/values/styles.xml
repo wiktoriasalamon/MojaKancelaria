@@ -106,13 +106,25 @@
         <item name="android:layout_marginTop">@dimen/clients_list_item_margin</item>
     </style>
 
+    <!-- OBLIGATIONS TYPE BUTTON -->
+    <style name="obligations_type_button_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:backgroundTint">@color/dark_blue</item>
+        <item name="android:background">@drawable/rounded_obligations_type</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+        <item name="android:checked">true</item>
+    </style>
+
     <!-- OBLIGATIONS LIST ITEM -->
     <style name="obligations_list_item_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:background">@drawable/rounded_obligatios_list_item</item>
         <item name="android:layout_margin">10dp</item>
-        <item name="android:backgroundTint">@color/payed</item>
+        <item name="android:backgroundTint">@color/topay</item>
     </style>
 
     <!-- OBLIGATION TEXTVIEW STYLE -->
