@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:id="@+id/obligationn_item"
+        android:id="@+id/obligation_item"
         style="@style/obligations_list_item_style">
         <TextView
             android:text="Umowa nr 234"

@@ -29,6 +29,7 @@
     <string name="hearing">Rozprawa</string>
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
+    <string name="currency">zł</string>
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
 </resources>

@@ -48,8 +48,7 @@ class ClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
     }
 
     override fun getItemId(p0: Int): Long {
-        return p0.toLong()
-        //return clients.get(p0).id.toLong()
+        return clients[p0].id.toLong()
     }
 
     override fun getFilter(): Filter {
