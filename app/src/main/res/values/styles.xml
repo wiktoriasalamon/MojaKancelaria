@@ -200,4 +200,17 @@
         <item name="android:fontFamily">@font/quicksand_bold</item>
         <item name="android:layout_margin">10dp</item>
     </style>
+
+    <!-- SPINNER -->
+    <style name="spinner_style">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+
+
+1
+
 </resources>
