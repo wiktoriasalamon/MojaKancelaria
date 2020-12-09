@@ -114,5 +114,45 @@
         <item name="android:layout_margin">5dp</item>
         <item name="backgroundTint">@color/grey</item>
         <item name="android:fontFamily">@font/quicksand_semibold</item>
+        
+    <!-- OBLIGATIONS LIST ITEM -->
+    <style name="obligations_list_item_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:background">@drawable/rounded_obligatios_list_item</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:backgroundTint">@color/payed</item>
+    </style>
+
+    <!-- OBLIGATION TEXTVIEW STYLE -->
+    <style name="obligation_textview_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- OBLIGATION TITLE -->
+    <style name="obligation_title_style" parent="obligation_textview_style">
+        <item name="android:textSize">19dp</item>
+        <item name="android:fontFamily">@font/quicksand_bold</item>
+    </style>
+
+    <!-- OBLIGATION TYPE -->
+    <style name="obligation_type_style" parent="obligation_textview_style">
+
+    </style>
+
+    <!-- OBLIGATION AMOUNT -->
+    <style name="obligation_amount_style" parent="obligation_textview_style">
+        <item name="android:textSize">19dp</item>
+        <item name="android:fontFamily">@font/quicksand_bold</item>
+    </style>
+
+    <!-- OBLIGATION DATE -->
+    <style name="obligation_date_style" parent="obligation_textview_style">
+
     </style>
 </resources>
