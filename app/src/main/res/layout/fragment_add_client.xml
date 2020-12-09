@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/saveClientButton"
-        android:text="@string/save_client_button"
+        android:text="@string/save"
         style="@style/button_style">
     </Button>
 

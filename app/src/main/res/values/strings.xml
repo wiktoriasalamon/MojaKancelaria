@@ -9,19 +9,13 @@
     <string name="new_password_code_hint">Podaj nowy pin:</string>
     <!-- Alert Dialog -->
     <string name="warning">Uwaga!</string>
-    <string name="delete">USUŃ</string>
-    <string name="cancel">ANULUJ</string>
-    <string name="ok">Zatwierdź</string>
     <string name="are_you_sure">Na pewno?</string>
-    <string name="yes">Tak</string>
-    <string name="no">Nie</string>
     <!-- Add Client Fragment -->
-    <string name="save_client_button">Zapisz</string>
     <string name="new_client_hint">Nazwa nowego klienta</string>
     <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
     <!-- Client Fragment -->
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
-    <string name="deleting">Usuwanie klienta</string>
+    <string name="deleting_client">Usuwanie klienta</string>
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>
     <string name="contract">Umowa</string>
@@ -29,7 +23,24 @@
     <string name="hearing">Rozprawa</string>
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
-    <string name="currency">zł</string>
+    <string name="amount_with_currency">%1$s zł</string>
+    <!-- Obligation details -->
+    <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>?]]> </string>
+    <string name="deleting_obligation">Usuwanie zobowiązania</string>
+    <string name="name">Nazwa</string>
+    <string name="type">Typ</string>
+    <string name="amount">Kwota do opłacenia</string>
+    <string name="payed_amount">Kwota opłacona</string>
+    <string name="creation_date">Data dodania</string>
+    <string name="payment_date">Termin płatności</string>
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
+    <!-- Buttons -->
+    <string name="delete">Usuń</string>
+    <string name="cancel">Anuluj</string>
+    <string name="ok">Zatwierdź</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="save">Zapisz</string>
+    <string name="edit">Edytuj</string>
 </resources>

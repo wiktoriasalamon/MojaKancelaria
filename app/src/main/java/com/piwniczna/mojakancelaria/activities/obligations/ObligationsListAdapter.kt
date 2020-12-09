@@ -42,7 +42,7 @@ class ObligationsListAdapter(context: Context, var data: ArrayList<ObligationEnt
         val holder = view.tag as ViewHolder
 
         holder.titleTextView!!.text=obligations[position].name
-        holder.amountTextView!!.text= obligations[position].amount.setScale(2).toString() + context.resources.getString(R.string.currency)
+        holder.amountTextView!!.text= context.resources.getString(R.string.amount_with_currency, obligations[position].amount.setScale(2).toString())
         holder.dateTextView!!.text=obligations[position].paymentDate.toString()
         holder.typeTextView!!.text=ObligationHelper.getTypeString(obligations[position].type, context)
         holder.layout!!.backgroundTintList = ObligationHelper.getColor(obligations[position], context)

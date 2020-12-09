@@ -8,6 +8,7 @@ import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.obligation_details.ObligationDetailsFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 is AddClientFragment -> f.onBackPressed()
                 is ClientDetailsFragment -> f.onBackPressed()
                 is ObligationsFragment -> f.onBackPressed()
+                is ObligationDetailsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

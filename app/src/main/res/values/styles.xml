@@ -26,6 +26,20 @@
         <item name="android:fontFamily">@font/quicksand_semibold</item>
     </style>
 
+    <!-- SMALL BUTTON -->
+    <style name="small_button_style">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="backgroundTint">@color/grey</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
     <!-- MENU CARD BUTTON  -->
     <style name="menu_card_button_style">
         <item name="android:layout_width">350dp</item>
@@ -86,7 +100,6 @@
         <item name="android:layout_margin">40dp</item>
         <item name="android:textSize">30dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
-
     </style>
 
 
@@ -104,6 +117,17 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginBottom">@dimen/clients_list_item_margin</item>
         <item name="android:layout_marginTop">@dimen/clients_list_item_margin</item>
+    </style>
+
+    <!-- OBLIGATIONS TITLE -->
+    <style name="obligations_title_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
 
     <!-- OBLIGATIONS TYPE BUTTON -->
@@ -145,7 +169,6 @@
 
     <!-- OBLIGATION TYPE -->
     <style name="obligation_type_style" parent="obligation_textview_style">
-
     </style>
 
     <!-- OBLIGATION AMOUNT -->
@@ -156,6 +179,25 @@
 
     <!-- OBLIGATION DATE -->
     <style name="obligation_date_style" parent="obligation_textview_style">
+    </style>
 
+    <!-- DETAILS LABEL -->
+    <style name="details_label_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <!-- DETAILS VALUE -->
+    <style name="details_value_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/quicksand_bold</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 </resources>

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
@@ -18,6 +19,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
+import kotlinx.android.synthetic.main.fragment_obligations.view.*
 
 
 class ClientsFragment : Fragment() {
@@ -94,7 +96,7 @@ class ClientsFragment : Fragment() {
 
         builder.setPositiveButton(R.string.delete) { dialog, which ->
 
-            builder.setTitle(R.string.deleting)
+            builder.setTitle(R.string.deleting_client)
             builder.setMessage(R.string.are_you_sure)
 
             builder.setPositiveButton(R.string.yes) { dialog, which -> deleteClientFromDB(position) }
