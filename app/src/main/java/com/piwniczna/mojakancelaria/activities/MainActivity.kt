@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_container,
                 ClientsFragment()
         ).commit()
-
     }
 
     override fun onStop() {
