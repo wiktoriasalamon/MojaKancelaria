@@ -18,7 +18,6 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
-import java.time.LocalDate
 
 
 class ClientsFragment : Fragment() {
