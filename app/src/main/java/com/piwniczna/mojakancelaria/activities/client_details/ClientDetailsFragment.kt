@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 
 class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     lateinit var titleTextView: TextView
@@ -40,8 +41,10 @@ class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     }
 
     private fun openObligationsFragment(view: View) {
-        //TODO open obligations fragment with client as a parameter
-        Log.e("DETAILS", "obligations")
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                ObligationsFragment(client)
+        )?.commit()
     }
 
     private fun openPaymentsFragment(view: View) {

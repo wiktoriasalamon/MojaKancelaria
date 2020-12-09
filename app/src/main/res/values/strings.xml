@@ -24,6 +24,11 @@
     <string name="deleting">Usuwanie klienta</string>
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>
+    <string name="contract">Umowa</string>
+    <string name="stamps">Znaczki</string>
+    <string name="hearing">Rozprawa</string>
+    <string name="court_short">Op. sąd.</string>
+    <string name="court">Opłaty sądowe</string>
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
 </resources>

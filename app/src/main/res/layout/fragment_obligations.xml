@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:elevation="10dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ToggleButton
+            android:id="@+id/contract_type_button"
+            android:textOn="@string/contract"
+            android:textOff="@string/contract"
+            style="@style/obligations_type_button_style">
+
+        </ToggleButton>
+        <ToggleButton
+            android:id="@+id/hearing_type_button"
+            android:textOn="@string/hearing"
+            android:textOff="@string/hearing"
+            style="@style/obligations_type_button_style">
+        </ToggleButton>
+        <ToggleButton
+            android:id="@+id/stamp_type_button"
+            android:textOn="@string/stamps"
+            android:textOff="@string/stamps"
+            style="@style/obligations_type_button_style">
+        </ToggleButton>
+        <ToggleButton
+            android:id="@+id/court_type_button"
+            android:textOn="@string/court_short"
+            android:textOff="@string/court_short"
+            style="@style/obligations_type_button_style">
+        </ToggleButton>
+    </LinearLayout>
+
+    <ListView
+        android:layout_marginTop="20dp"
+        android:id="@+id/obligations_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/add_obligation_button"
+        android:layout_gravity="right"
+        style="@style/add_button_style"
+        ></Button>
+
+
+
+</LinearLayout>

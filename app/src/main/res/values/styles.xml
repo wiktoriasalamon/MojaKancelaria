@@ -105,4 +105,14 @@
         <item name="android:layout_marginBottom">@dimen/clients_list_item_margin</item>
         <item name="android:layout_marginTop">@dimen/clients_list_item_margin</item>
     </style>
+
+    <!-- OBLIGATIONS TYPE BUTTON -->
+    <style name="obligations_type_button_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="backgroundTint">@color/grey</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+    </style>
 </resources>
