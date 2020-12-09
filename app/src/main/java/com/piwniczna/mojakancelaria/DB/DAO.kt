@@ -99,6 +99,9 @@ interface DAO {
     @Update
     fun updateObligations(obligations: List<ObligationEntity>)
 
+    @Update
+    fun updateObligation(obligation: ObligationEntity)
+
 
     //todo? redirecting payment???????
 

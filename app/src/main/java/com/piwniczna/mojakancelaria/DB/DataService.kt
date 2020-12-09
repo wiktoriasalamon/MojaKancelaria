@@ -51,6 +51,10 @@ class DataService(context: Context) {
         return db.deleteObligation(obligation)
     }
 
+    fun updateObligation(obligation: ObligationEntity) {
+        return db.updateObligation(obligation)
+    }
+
 
   //payments
     fun addPayment(payment: PaymentEntity, obligationList: List<ObligationEntity>, amountsList: List<BigDecimal>) : Boolean{
