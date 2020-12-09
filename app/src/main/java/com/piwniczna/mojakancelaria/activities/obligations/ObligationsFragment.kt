@@ -1,5 +1,6 @@
 package com.piwniczna.mojakancelaria.activities.clients
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -74,20 +75,14 @@ class ObligationsFragment(var client: ClientEntity)  : Fragment() {
     }
 
     private fun getObligationsFromDB() {
-        val ob1 = ObligationEntity(1, ObligationType.STAMP, "list nr 2", BigDecimal(10), BigDecimal(0), LocalDate.now(), LocalDate.of(2021,2,23))
-        val ob2 = ObligationEntity(1, ObligationType.HEARING, "Rozprawa 12.12.20", BigDecimal(1000), BigDecimal(50), LocalDate.now(), LocalDate.of(2021,2,23))
-        val ob3 = ObligationEntity(1, ObligationType.COURT, "Rozprawa", BigDecimal(1000), BigDecimal(1000), LocalDate.now(), LocalDate.of(2021,2,23))
-        val ob4 = ObligationEntity(1, ObligationType.CONTRACT, "Umowa 1", BigDecimal(1000), BigDecimal(50), LocalDate.now(), LocalDate.of(2020,2,23))
-        obligationsList.addAll(arrayListOf(ob1, ob2, ob3, ob4))
-        obligationsListAdapter.notifyDataSetChanged()
-        /*AsyncTask.execute {
-            val obligations = dbService.getObligations()
+        AsyncTask.execute {
+            val obligations = dbService.getObligations(client.id)
             obligationsList.clear()
             obligationsList.addAll(obligations)
             activity?.runOnUiThread {
                 obligationsListAdapter.notifyDataSetChanged()
             }
-        }*/
+        }
     }
 
 
