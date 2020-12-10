@@ -39,7 +39,7 @@ class AddClientFragment : Fragment() {
     }
 
     fun handleSaveClient(view: View) {
-        val newClientName = new_client_edit_text.text.toString()
+        val newClientName = clientEditText.text.toString()
         if (newClientName == "") {
             val text = R.string.empty_client_warning
             val duration = Toast.LENGTH_LONG
