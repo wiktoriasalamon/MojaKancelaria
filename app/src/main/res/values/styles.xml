@@ -89,6 +89,7 @@
         <item name="android:textSize">20dp</item>
         <item name="android:drawableStart">@drawable/search_icon</item>
         <item name="android:drawablePadding">10dp</item>
+        <item name="android:hint">@string/search</item>
     </style>
 
     <!-- TITLE -->
@@ -199,5 +200,15 @@
         <item name="android:textSize">18dp</item>
         <item name="android:fontFamily">@font/quicksand_bold</item>
         <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <!-- PAYED OBLIGATIONS LIST ITEM -->
+    <style name="payed_obligations_list_item_style">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/rounded_obligatios_list_item</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:backgroundTint">@color/topay</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 </resources>

@@ -16,6 +16,7 @@
     <!-- Client Fragment -->
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
     <string name="deleting_client">Usuwanie klienta</string>
+    <string name="search">Szukaj</string>
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>
     <string name="contract">Umowa</string>
@@ -35,6 +36,10 @@
     <string name="payment_date">Termin płatności</string>
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
+    <string name="payment_amount">Kwota</string>
+    <string name="new_payment">Nowa wpłata</string>
+    <string name="payed_obligations">Opłacone zobowiązania</string>
+    <string name="add">Dodaj</string>
     <!-- Buttons -->
     <string name="delete">Usuń</string>
     <string name="cancel">Anuluj</string>

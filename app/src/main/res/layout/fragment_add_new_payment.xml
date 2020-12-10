@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+    <TextView
+        style="@style/obligations_title_style"
+        android:layout_margin="20dp"
+        android:text="@string/new_payment">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <EditText
+                style="@style/input_style"
+                android:id="@+id/new_payment_name_edittext"
+                android:hint="@string/name"
+                android:textIsSelectable="false"
+                android:inputType="text"
+                android:imeOptions="actionDone" />
+
+            <EditText
+                style="@style/input_style"
+                android:id="@+id/new_payment_amount_edittext"
+                android:hint="@string/payment_amount"
+                android:textIsSelectable="false"
+                android:inputType="text"
+                android:imeOptions="actionDone"/>
+
+        </LinearLayout>
+
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                style="@style/obligations_title_style"
+                android:text="@string/payed_obligations"
+                android:textSize="18dp">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <EditText
+                    android:id="@+id/search_clients_edittext"
+                    style="@style/search_input_style"
+                    android:layout_weight="2"
+                    android:layout_margin="10dp">
+                </EditText>
+                <Button
+                    style="@style/small_button_style"
+                    android:text="@string/add"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/dark_blue">
+                </Button>
+
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                >
+
+            </ListView>
+        </LinearLayout>
+      
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/saveClientButton"
+        android:text="@string/save"
+        style="@style/button_style"
+        android:layout_weight="0"
+        android:layout_margin="20dp">
+    </Button>
+
+</LinearLayout>
