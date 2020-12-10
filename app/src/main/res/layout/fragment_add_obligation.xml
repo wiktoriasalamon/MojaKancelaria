@@ -30,10 +30,7 @@
         />
 
     <Button
-        style="@style/small_button_style"
-        android:layout_width="250dp"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
+        style="@style/calendar_button_style"
         android:id="@+id/date_button"
         android:text="@string/payment_date" />
 
