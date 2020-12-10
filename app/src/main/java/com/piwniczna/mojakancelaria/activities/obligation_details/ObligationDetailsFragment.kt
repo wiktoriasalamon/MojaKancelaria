@@ -14,8 +14,10 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.ObligationHelper
+import com.piwniczna.mojakancelaria.activities.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
 class ObligationDetailsFragment(var client: ClientEntity, var obligation: ObligationEntity) : Fragment() {
@@ -50,8 +52,10 @@ class ObligationDetailsFragment(var client: ClientEntity, var obligation: Obliga
     }
 
     private fun openEditObligationsFragment() {
-        //TODO
-        Log.e("Obligation details", "edit obligation")
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                UpdateObligationFragment(client,obligation)
+        )?.commit()
     }
 
     private fun deleteObligation() {

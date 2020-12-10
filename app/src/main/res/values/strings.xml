@@ -26,7 +26,8 @@
     <string name="amount_with_currency">%1$s zł</string>
     <string name="wrong_data">Błędne dane...</string>
     <string name="wrong_amount">Błędna kwota...</string>
-    <string name="spinner_prompt">Rodzaj zobowiązania:</string>
+    <string name="over_payed">Kwota nie może być mniejsza niż kwota opłacona...</string>
+    <string name="spinner_prompt">Typ zobowiązania:</string>
     <string name="spinner_error">Wybierz rodzaj zobowiązania...</string>
     <string name="not_provided_data">Podaj dane...</string>
     <string name="date_not_provided">Podaj datę płatności...</string>
