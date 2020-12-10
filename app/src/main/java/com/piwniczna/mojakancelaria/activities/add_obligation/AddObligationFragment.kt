@@ -51,7 +51,6 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
         amountEditText = view.findViewById(R.id.amount_edit_text)
         dateButton = view.findViewById(R.id.date_button)
 
-        dateButton.inputType = InputType.TYPE_NULL
         dateButton.setOnClickListener {handleOpenCalendar(it)}
 
 
