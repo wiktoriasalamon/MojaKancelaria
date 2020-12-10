@@ -41,7 +41,7 @@
     <string name="amount">Kwota do opłacenia</string>
     <string name="payed_amount">Kwota opłacona</string>
     <string name="creation_date">Data dodania</string>
-    <string name="payment_date">Termin płatności</string>
+    <string name="payment_deadline">Termin płatności</string>
 
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
@@ -49,6 +49,8 @@
     <string name="new_payment">Nowa wpłata</string>
     <string name="payed_obligations">Opłacone zobowiązania</string>
     <string name="add">Dodaj</string>
+    <string name="payment_date">Data wpłaty</string>
+
     <!-- Buttons -->
     <string name="delete">Usuń</string>
     <string name="cancel">Anuluj</string>

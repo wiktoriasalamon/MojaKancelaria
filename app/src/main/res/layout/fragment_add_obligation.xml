@@ -32,7 +32,7 @@
     <Button
         style="@style/calendar_button_style"
         android:id="@+id/date_button"
-        android:text="@string/payment_date" />
+        android:text="@string/payment_deadline" />
 
 
 

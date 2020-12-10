@@ -40,13 +40,19 @@
                 android:inputType="text"
                 android:imeOptions="actionDone"/>
 
+            <Button
+                style="@style/calendar_button_style"
+                android:text="@string/payment_date">
+
+            </Button>
+
         </LinearLayout>
 
         
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center"
             android:orientation="vertical">
             <TextView
@@ -55,26 +61,13 @@
                 android:textSize="18dp">
             </TextView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <EditText
-                    android:id="@+id/search_clients_edittext"
-                    style="@style/search_input_style"
-                    android:layout_weight="2"
-                    android:layout_margin="10dp">
-                </EditText>
-                <Button
-                    style="@style/small_button_style"
-                    android:text="@string/add"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/dark_blue">
-                </Button>
-
-            </LinearLayout>
+            <Button
+                style="@style/small_button_style"
+                android:text="@string/add">
+            </Button>
 
             <ListView
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 >
