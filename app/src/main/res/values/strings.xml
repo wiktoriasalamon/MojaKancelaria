@@ -25,6 +25,14 @@
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
     <string name="amount_with_currency">%1$s zł</string>
+    <string name="wrong_data">Błędne dane...</string>
+    <string name="wrong_amount">Błędna kwota...</string>
+    <string name="over_payed">Kwota nie może być mniejsza niż kwota opłacona...</string>
+    <string name="spinner_prompt">Typ zobowiązania:</string>
+    <string name="spinner_error">Wybierz rodzaj zobowiązania...</string>
+    <string name="not_provided_data">Podaj dane...</string>
+    <string name="date_not_provided">Podaj datę płatności...</string>
+
     <!-- Obligation details -->
     <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>?]]> </string>
     <string name="deleting_obligation">Usuwanie zobowiązania</string>
@@ -34,6 +42,7 @@
     <string name="payed_amount">Kwota opłacona</string>
     <string name="creation_date">Data dodania</string>
     <string name="payment_date">Termin płatności</string>
+
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
     <string name="payment_amount">Kwota</string>

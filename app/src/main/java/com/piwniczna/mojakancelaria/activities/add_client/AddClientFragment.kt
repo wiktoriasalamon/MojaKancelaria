@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -24,10 +23,10 @@ class AddClientFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_client, container, false)
 
         dbService = DataService(this.context!!)
-        val addButton = view.findViewById<Button>(R.id.saveClientButton)
+        val addButton = view.findViewById<Button>(R.id.save_client_button)
         addButton.setOnClickListener {handleSaveClient(it)}
 
-        clientEditText = view.findViewById(R.id.newClientEditText)
+        clientEditText = view.findViewById(R.id.new_client_edit_text)
 
         return view
     }
@@ -40,7 +39,7 @@ class AddClientFragment : Fragment() {
     }
 
     fun handleSaveClient(view: View) {
-        val newClientName = newClientEditText.text.toString()
+        val newClientName = clientEditText.text.toString()
         if (newClientName == "") {
             val text = R.string.empty_client_warning
             val duration = Toast.LENGTH_LONG

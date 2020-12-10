@@ -22,5 +22,4 @@ class DBConnector {
             return database
         }
     }
-
 }

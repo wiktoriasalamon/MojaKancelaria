@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <EditText
+        style="@style/input_style"
+        android:id="@+id/name_edit_text"
+        android:hint="@string/name"
+        android:textIsSelectable="false"
+        android:inputType="text"
+        android:imeOptions="actionDone" />
+
+
+    <EditText
+        style="@style/input_style"
+        android:id="@+id/amount_edit_text"
+        android:hint="@string/amount"
+        android:textIsSelectable="false"
+        android:inputType="numberDecimal"
+        android:imeOptions="actionDone" />
+
+    <Spinner
+        style="@style/spinner_style"
+        android:id="@+id/type_spinner"
+        />
+
+    <Button
+        style="@style/calendar_button_style"
+        android:id="@+id/date_button"
+        android:text="@string/payment_date" />
+
+
+
+    <Button
+        android:id="@+id/save_obligation_button"
+        android:text="@string/save"
+        style="@style/button_style"
+        android:layout_marginTop="40dp">
+    </Button>
+
+</LinearLayout>
