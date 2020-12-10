@@ -96,7 +96,7 @@ class ObligationsFragment(var client: ClientEntity)  : Fragment() {
     private fun handleAddObligation(view: View) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            AddObligationFragment()
+            AddObligationFragment(client)
         )?.commit()
     }
 

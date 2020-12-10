@@ -15,20 +15,25 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.ObligationHelper
 import kotlinx.android.synthetic.main.fragment_add_client.*
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class AddObligationFragment : Fragment() {
+class AddObligationFragment(var client: ClientEntity) : Fragment() {
     lateinit var nameEditText : EditText
     lateinit var typeSpinner: Spinner
     lateinit var amountEditText: EditText
-    lateinit var dateEditText: EditText
+    lateinit var dateButton: Button
     lateinit var addButton: Button
 
     lateinit var dbService: DataService
@@ -44,10 +49,11 @@ class AddObligationFragment : Fragment() {
         nameEditText = view.findViewById(R.id.name_edit_text)
         typeSpinner = view.findViewById(R.id.type_spinner)
         amountEditText = view.findViewById(R.id.amount_edit_text)
-        dateEditText = view.findViewById(R.id.date_edit_text)
+        dateButton = view.findViewById(R.id.date_button)
 
-        dateEditText.inputType = InputType.TYPE_NULL
-        dateEditText.setOnClickListener {handleOpenCalendar(it)}
+        dateButton.inputType = InputType.TYPE_NULL
+        dateButton.setOnClickListener {handleOpenCalendar(it)}
+
 
         setSpinner()
 
@@ -92,7 +98,7 @@ class AddObligationFragment : Fragment() {
             this.context!!,
             OnDateSetListener {
                     view, year, monthOfYear, dayOfMonth ->
-                dateEditText.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
+                dateButton.text = dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
             },
             year,
             month-1,
@@ -102,27 +108,48 @@ class AddObligationFragment : Fragment() {
     }
 
     fun handleSaveObligation(view: View) {
-        //todo dododododo
-        val newClientName = new_client_edit_text.text.toString()
-        if (newClientName == "") {
-            val text = R.string.empty_client_warning
-            val duration = Toast.LENGTH_LONG
-            val toast = Toast.makeText(activity?.applicationContext, text, duration)
-            toast.show()
+        if(!validateData()){
             return
         }
 
-        addNewClientToDB(ClientEntity(newClientName))
+        val type = ObligationType.values()[typeSpinner.selectedItemPosition]
+        val date = dateButton.text.toString()
+        addNewObligationToDB(ObligationEntity(
+                client.id,
+                type,
+                nameEditText.text.toString(),
+                BigDecimal(amountEditText.text.toString()).setScale(2, RoundingMode.HALF_UP),
+                BigDecimal(0),
+                LocalDate.now(),
+                LocalDate.of(date.split('/')[2].toInt(),date.split('/')[1].toInt(),date.split('/')[0].toInt()))
+        )
 
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ClientsFragment()
+            ObligationsFragment(client)
         )?.commit()
 
     }
 
-    private fun addNewClientToDB(client: ClientEntity){
-        AsyncTask.execute { dbService.addClient(client) }
+    private fun validateData() : Boolean{
+        if (
+                nameEditText.text.toString() == "" ||
+                amountEditText.text.toString() == "" ||
+                BigDecimal(amountEditText.text.toString()).compareTo(BigDecimal(0))!=1 ||
+                dateButton.text.toString() == ""
+        ) {
+            val text = "Błędne dane..."
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(activity?.applicationContext, text, duration)
+            toast.show()
+            return false
+        }
+
+        return true
+    }
+
+    private fun addNewObligationToDB(obligation: ObligationEntity){
+        AsyncTask.execute { dbService.addObligation(obligation) }
     }
 
 }

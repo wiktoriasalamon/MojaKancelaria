@@ -28,13 +28,12 @@
         android:inputType="numberDecimal"
         android:imeOptions="actionDone" />
 
-    <EditText
-        style="@style/input_style"
-        android:id="@+id/date_edit_text"
-        android:hint="@string/payment_date"
-        android:textIsSelectable="false"
-        android:inputType="date"
-        android:imeOptions="actionDone" />
+    <Button
+        style="@style/small_button_style"
+        android:layout_width="250dp"
+        android:textColor="@color/black"
+        android:id="@+id/date_button"
+        android:text="@string/payment_date" />
 
 
 
