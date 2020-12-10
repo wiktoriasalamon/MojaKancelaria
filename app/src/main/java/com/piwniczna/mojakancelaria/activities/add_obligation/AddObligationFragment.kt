@@ -63,6 +63,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
 
     private fun setSpinner() {
         val types = arrayListOf<String>()
+        types.add(this.context!!.resources.getString(R.string.spinner_prompt))
         for(i in ObligationType.values()){
             types.add(ObligationHelper.getTypeString(i,this.context!!))
         }
@@ -76,6 +77,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
             setSelection(0, false)
             gravity = Gravity.CENTER
         }
+
     }
 
     fun onBackPressed() {
@@ -111,7 +113,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
             return
         }
 
-        val type = ObligationType.values()[typeSpinner.selectedItemPosition]
+        val type = ObligationType.values()[typeSpinner.selectedItemPosition-1]
         val date = dateButton.text.toString()
         addNewObligationToDB(ObligationEntity(
                 client.id,
@@ -131,20 +133,27 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
     }
 
     private fun validateData() : Boolean{
-        if (
-                nameEditText.text.toString() == "" ||
-                amountEditText.text.toString() == "" ||
-                BigDecimal(amountEditText.text.toString()).compareTo(BigDecimal(0))!=1 ||
-                dateButton.text.toString() == ""
-        ) {
-            val text = "Błędne dane..."
-            val duration = Toast.LENGTH_LONG
-            val toast = Toast.makeText(activity?.applicationContext, text, duration)
-            toast.show()
-            return false
+        var text = ""
+        if (nameEditText.text.toString() == "" || amountEditText.text.toString() == ""){
+            text = this.context!!.resources.getString(R.string.not_provided_data)
+        }
+        else if (BigDecimal(amountEditText.text.toString()).compareTo(BigDecimal(0))!=1 ){
+            text = this.context!!.resources.getString(R.string.wrong_amount)
+        }
+        else if (typeSpinner.selectedItem.toString() == this.context!!.resources.getString(R.string.spinner_prompt)) {
+            text = this.context!!.resources.getString(R.string.spinner_error)
+        }
+        else if (dateButton.text.toString() == this.context!!.resources.getString(R.string.payment_date)){
+            text = this.context!!.resources.getString(R.string.date_not_provided)
+        }
+        else{
+            return true
         }
 
-        return true
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(activity?.applicationContext, text, duration)
+        toast.show()
+        return false
     }
 
     private fun addNewObligationToDB(obligation: ObligationEntity){
