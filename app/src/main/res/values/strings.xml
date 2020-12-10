@@ -24,6 +24,7 @@
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
     <string name="amount_with_currency">%1$s zł</string>
+
     <!-- Obligation details -->
     <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>?]]> </string>
     <string name="deleting_obligation">Usuwanie zobowiązania</string>
@@ -33,6 +34,7 @@
     <string name="payed_amount">Kwota opłacona</string>
     <string name="creation_date">Data dodania</string>
     <string name="payment_date">Termin płatności</string>
+
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
     <!-- Buttons -->
