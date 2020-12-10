@@ -82,7 +82,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ClientsFragment()
+            ObligationsFragment(client)
         )?.commit()
     }
 
