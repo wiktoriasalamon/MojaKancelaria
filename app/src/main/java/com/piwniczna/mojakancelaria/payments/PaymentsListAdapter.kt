@@ -32,7 +32,6 @@ class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) 
             viewHolder.titleTextView = view!!.findViewById(R.id.payment_title)
             viewHolder.amountTextView = view!!.findViewById(R.id.payment_amount)
             viewHolder.dateTextView = view!!.findViewById(R.id.payment_date)
-            viewHolder.layout = view!!.findViewById(R.id.obligation_item)
 
             view.tag = viewHolder
         }
