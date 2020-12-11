@@ -39,7 +39,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         dbService = DataService(this.context!!)
 
-        dbService = DataService(this.context!!)
 
         nameEditText = view.findViewById(R.id.new_payment_name_edittext)
         amountEditText = view.findViewById(R.id.new_payment_amount_edittext)
