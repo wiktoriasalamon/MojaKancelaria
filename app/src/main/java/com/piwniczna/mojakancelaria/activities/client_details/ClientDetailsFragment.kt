@@ -12,6 +12,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.payments.PaymentsFragment
 
 class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     lateinit var titleTextView: TextView
@@ -48,7 +49,9 @@ class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     }
 
     private fun openPaymentsFragment(view: View) {
-        //TODO open payments fragment with client as a parameter
-        Log.e("DETAILS", "payments")
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                PaymentsFragment(client)
+        )?.commit()
     }
 }
