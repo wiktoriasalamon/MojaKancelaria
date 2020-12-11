@@ -40,7 +40,7 @@ class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) 
 
         val holder = view.tag as ViewHolder
 
-        holder.titleTextView!!.text = payments[position].name
+        holder.titleTextView!!.text = data[position].name
         holder.amountTextView!!.text = context.resources.getString(R.string.amount_with_currency, payments[position].amount.setScale(2).toString())
         holder.dateTextView!!.text = payments[position].date.toString()
 
@@ -50,4 +50,3 @@ class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) 
 
 
 }
-
