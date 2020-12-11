@@ -14,7 +14,6 @@ import com.piwniczna.mojakancelaria.R
 
 class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) :
         ArrayAdapter<PaymentEntity>(context, R.layout.layout_obligations_list_item, data), Filterable {
-    private var payments: ArrayList<PaymentEntity> = data
 
     internal class ViewHolder {
         var titleTextView: TextView? = null
