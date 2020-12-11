@@ -4,8 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label=""
+        android:icon="@drawable/icon"
+        android:label="Moja Kancelaria"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MojaKancelaria">
@@ -18,8 +18,8 @@
         </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize" >
-        android:label="@string/app_name"></activity>
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:label="@string/app_name"></activity>
 
     </application>
 

@@ -12,6 +12,7 @@ import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.update_obligation.UpdateObligationFragment
+import com.piwniczna.mojakancelaria.payments.PaymentsFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 is AddObligationFragment -> f.onBackPressed()
                 is UpdateObligationFragment -> f.onBackPressed()
                 is AddPaymentFragment -> f.onBackPressed()
+                is PaymentsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

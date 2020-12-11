@@ -10,9 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.payments.PaymentsFragment
 
 class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     lateinit var titleTextView: TextView
@@ -49,10 +49,9 @@ class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     }
 
     private fun openPaymentsFragment(view: View) {
-        //TODO open payments fragment with client as a parameter
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                AddPaymentFragment(client)
+                PaymentsFragment(client)
         )?.commit()
     }
 }
