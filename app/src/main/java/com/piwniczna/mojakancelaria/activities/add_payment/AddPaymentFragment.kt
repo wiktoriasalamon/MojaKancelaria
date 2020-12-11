@@ -72,7 +72,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         // TODO: change it to PaymentsFragment
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientDetailsFragment(client)
+                PaymentsFragment(client)
         )?.commit()
     }
 
