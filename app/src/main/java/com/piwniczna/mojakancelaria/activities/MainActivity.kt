@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.add_obligation.AddObligationFragment
+import com.piwniczna.mojakancelaria.activities.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                 is ObligationDetailsFragment -> f.onBackPressed()
                 is AddObligationFragment -> f.onBackPressed()
                 is UpdateObligationFragment -> f.onBackPressed()
+                is AddPaymentFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

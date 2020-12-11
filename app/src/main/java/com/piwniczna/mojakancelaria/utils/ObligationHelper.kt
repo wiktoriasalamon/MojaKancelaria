@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.obligations
+package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
 import android.content.res.ColorStateList

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_gravity="center"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    android:id="@+id/adding_obligation_to_payment_dialog"
+    >
+
+    <TextView
+        style="@style/adding_obligation_to_payment_label_style"
+        android:text="@string/left_to_be_spend"
+
+        android:layout_margin="5dp"
+        android:id="@+id/left_to_be_spend_text_view" />
+
+    <TextView
+        style="@style/adding_obligation_to_payment_label_style"
+        android:text="@string/amount_to_pay_label"
+        android:layout_margin="5dp"
+        android:id="@+id/amount_to_pay_label_text_view" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <EditText
+            style="@style/input_style"
+            android:layout_gravity="center"
+            android:id="@+id/pay_obligation_amount_edittext"
+            android:textAlignment="center"
+            android:inputType="numberDecimal"
+            android:hint="@string/amount">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        >
+        <Button
+            android:text="@string/cancel"
+            style="@style/dialog_button_style"
+            android:layout_margin="10dp"
+            android:id="@+id/pay_obligation_cancel_button"
+            >
+        </Button>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+        <Button
+            android:text="@string/save"
+            style="@style/dialog_button_style"
+            android:textSize="13dp"
+            android:id="@+id/pay_obligation_save_button"
+            >
+        </Button>
+    </LinearLayout>
+
+
+</LinearLayout>

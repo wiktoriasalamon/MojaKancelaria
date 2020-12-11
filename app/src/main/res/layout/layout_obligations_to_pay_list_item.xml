@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        style="@style/payed_obligations_list_item_style"
+        >
+        <TextView
+            android:text="Umowa nr 234"
+            android:id="@+id/obligation_to_pay_title"
+            android:layout_gravity="center"
+            style="@style/obligation_title_style"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="3000.00/5000.00zł"
+            android:id="@+id/obligation_to_pay_amount"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:fontFamily="@font/quicksand_regular"
+            style="@style/obligation_title_style"/>
+    </LinearLayout>
+</LinearLayout>

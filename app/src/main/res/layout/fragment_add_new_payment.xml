@@ -13,7 +13,7 @@
     </TextView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
@@ -37,11 +37,12 @@
                 android:id="@+id/new_payment_amount_edittext"
                 android:hint="@string/payment_amount"
                 android:textIsSelectable="false"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:imeOptions="actionDone"/>
 
             <Button
                 style="@style/calendar_button_style"
+                android:id="@+id/payment_date_button"
                 android:text="@string/payment_date">
 
             </Button>
@@ -50,7 +51,7 @@
 
         
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center"
@@ -63,13 +64,17 @@
 
             <Button
                 style="@style/small_button_style"
+                android:id="@+id/add_obligation_to_payment_button"
                 android:text="@string/add">
             </Button>
 
             <ListView
                 android:layout_weight="1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:id="@+id/obligations_of_payment_list_view"
                 >
 
             </ListView>
@@ -78,7 +83,7 @@
     </LinearLayout>
     
     <Button
-        android:id="@+id/saveClientButton"
+        android:id="@+id/save_payment_button"
         android:text="@string/save"
         style="@style/button_style"
         android:layout_weight="0"

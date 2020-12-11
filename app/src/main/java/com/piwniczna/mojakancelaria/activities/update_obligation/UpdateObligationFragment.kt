@@ -16,7 +16,7 @@ import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.obligation_details.ObligationDetailsFragment
-import com.piwniczna.mojakancelaria.activities.obligations.ObligationHelper
+import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.LocalDate
