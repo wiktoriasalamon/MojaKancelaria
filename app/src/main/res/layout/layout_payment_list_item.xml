@@ -12,7 +12,7 @@
             style="@style/obligation_title_style"/>
 
         <TextView
-            android:id="@+id/obligation_amount"
+            android:id="@+id/payment_amount"
             android:text="69,00zł"
             android:layout_alignParentEnd="true"
             style="@style/obligation_amount_style"/>
