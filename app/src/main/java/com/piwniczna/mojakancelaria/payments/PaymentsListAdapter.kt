@@ -19,7 +19,6 @@ class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) 
         var titleTextView: TextView? = null
         var amountTextView: TextView? = null
         var dateTextView: TextView? = null
-        var layout: RelativeLayout? = null
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
