@@ -47,17 +47,7 @@ class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) 
         return view
     }
 
-    override fun getCount(): Int {
-        return payments.size
-    }
 
-    override fun getItem(p0: Int): PaymentEntity {
-        return payments[p0]
-    }
-
-    override fun getItemId(p0: Int): Long {
-        return payments[p0].id.toLong()
-    }
 
 }
 
