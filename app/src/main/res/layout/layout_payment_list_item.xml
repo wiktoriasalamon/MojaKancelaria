@@ -17,7 +17,7 @@
             android:layout_alignParentEnd="true"
             style="@style/obligation_amount_style"/>
         <TextView
-            android:id="@+id/obligation_date"
+            android:id="@+id/payment_date"
             android:text="31.02.2020"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
