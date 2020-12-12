@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients.clients_list
+package com.piwniczna.mojakancelaria.activities.clients
 
 import android.app.AlertDialog
 import android.os.AsyncTask
