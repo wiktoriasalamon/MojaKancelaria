@@ -1,25 +1,21 @@
-package com.piwniczna.mojakancelaria.payments
+package com.piwniczna.mojakancelaria.activities.payments.payments_list
 
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.add_payment.AddPaymentFragment
-import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 
-import java.math.BigDecimal
-import java.time.LocalDate
 import kotlin.collections.ArrayList
 
 
@@ -76,7 +72,7 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
     private fun handleAddPayment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            AddPaymentFragment()
+            AddPaymentFragment(client)
         )?.commit()
     }
 

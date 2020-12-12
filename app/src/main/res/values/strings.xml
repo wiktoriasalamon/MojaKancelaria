@@ -16,6 +16,7 @@
     <!-- Client Fragment -->
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
     <string name="deleting_client">Usuwanie klienta</string>
+    <string name="search">Szukaj</string>
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>
     <string name="contract">Umowa</string>
@@ -24,13 +25,15 @@
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
     <string name="amount_with_currency">%1$s zł</string>
-    <string name="wrong_data">Błędne dane...</string>
-    <string name="wrong_amount">Błędna kwota...</string>
-    <string name="over_payed">Kwota nie może być mniejsza niż kwota opłacona...</string>
+    <string name="plus_amount_with_currency">+%1$s zł</string>
+    <string name="wrong_data">Błędne dane!</string>
+    <string name="wrong_amount">Błędna kwota!</string>
+    <string name="over_payed">Kwota nie może być mniejsza niż kwota opłacona!</string>
     <string name="spinner_prompt">Typ zobowiązania:</string>
-    <string name="spinner_error">Wybierz rodzaj zobowiązania...</string>
-    <string name="not_provided_data">Podaj dane...</string>
-    <string name="date_not_provided">Podaj datę płatności...</string>
+    <string name="spinner_error">Wybierz rodzaj zobowiązania!</string>
+    <string name="not_provided_data">Podaj dane!</string>
+    <string name="date_not_provided">Podaj datę płatności!</string>
+    <string name="cannot_add_obligation_when_nothing_to_spend">Zobowiązania pokrywają całą wpłate!</string>
 
     <!-- Obligation details -->
     <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>?]]> </string>
@@ -40,10 +43,28 @@
     <string name="amount">Kwota do opłacenia</string>
     <string name="payed_amount">Kwota opłacona</string>
     <string name="creation_date">Data dodania</string>
-    <string name="payment_date">Termin płatności</string>
+    <string name="payment_deadline">Termin płatności</string>
 
     <!-- Payments -->
     <string name="payments">Wpłaty</string>
+    <string name="payment_amount">Kwota</string>
+    <string name="new_payment">Nowa wpłata</string>
+    <string name="payed_obligations">Opłacone zobowiązania:</string>
+    <string name="add">Dodaj</string>
+    <string name="payment_date">Data wpłaty</string>
+    <string name="name_not_provided">Podaj nazwę!</string>
+    <string name="adding_obligation_to_payment_label">Wybierz zobowiązanie do opłacenia</string>
+    <string name="payed_amount_with_currency">%1$s/%2$s zł</string>
+    <string name="left_to_be_spend">Pozostało do wydania %1$s zł</string>
+    <string name="amount_to_pay_label"><![CDATA[Podaj kwotę do opłacenia zobowiązania <b>%1$s<</b> (%2$s/%3$s zł):]]> </string>
+    <string name="cannot_add_obligation_without_amount">Nie można dodać zobowiązania, jeśli kwota wpłaty jest pusta!</string>
+    <string name="cannot_edit_amount">Aby zmienić kwotę wpłaty, usuń wszystkie opłacone zobowiązania.</string>
+    <string name="are_you_sure_delete_payed_obligation">Czy na pewno chcesz usunać wpłatę %1$s na zobowiązanie %2$s?</string>
+    <string name="payed">Opłacono:</string>
+    <string name="too_large_amount">Za duża kwota!</string>
+    <string name="amount_bigger_than_left">Nie można przeznaczyć kwoty większej niż pozostała!</string>
+    <string name="money_left">Nie pokryto całej kwoty wpłaty!</string>
+
     <!-- Buttons -->
     <string name="delete">Usuń</string>
     <string name="cancel">Anuluj</string>
@@ -52,4 +73,5 @@
     <string name="no">Nie</string>
     <string name="save">Zapisz</string>
     <string name="edit">Edytuj</string>
+    <string name="empty_amount_payed">0/0 zł</string>
 </resources>

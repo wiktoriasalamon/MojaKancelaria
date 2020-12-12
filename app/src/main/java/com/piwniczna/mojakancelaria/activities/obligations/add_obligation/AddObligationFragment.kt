@@ -1,12 +1,9 @@
-package com.piwniczna.mojakancelaria.activities.add_obligation
+package com.piwniczna.mojakancelaria.activities.obligations.add_obligation
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
-import android.icu.util.Calendar
 import android.os.AsyncTask
 import android.os.Bundle
-import android.text.InputType
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -18,15 +15,11 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
-import com.piwniczna.mojakancelaria.activities.obligations.ObligationHelper
-import kotlinx.android.synthetic.main.fragment_add_client.*
+import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class AddObligationFragment(var client: ClientEntity) : Fragment() {
@@ -143,7 +136,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
         else if (typeSpinner.selectedItem.toString() == this.context!!.resources.getString(R.string.spinner_prompt)) {
             text = this.context!!.resources.getString(R.string.spinner_error)
         }
-        else if (dateButton.text.toString() == this.context!!.resources.getString(R.string.payment_date)){
+        else if (dateButton.text.toString() == this.context!!.resources.getString(R.string.payment_deadline)){
             text = this.context!!.resources.getString(R.string.date_not_provided)
         }
         else{

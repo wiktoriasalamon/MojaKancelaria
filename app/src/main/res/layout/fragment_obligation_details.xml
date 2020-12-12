@@ -45,7 +45,7 @@
         <TextView
             android:id="@+id/oligation_payment_date_label"
             style="@style/details_label_style"
-            android:text="@string/payment_date"
+            android:text="@string/payment_deadline"
             android:layout_below="@+id/obligation_creation_date_label">
         </TextView>
 
@@ -86,7 +86,7 @@
         <TextView
             android:id="@+id/oligation_payment_date_value"
             style="@style/details_value_style"
-            android:text="@string/payment_date"
+            android:text="@string/payment_deadline"
             android:layout_below="@+id/obligation_creation_date_value"
             android:layout_alignParentEnd="true">
         </TextView>

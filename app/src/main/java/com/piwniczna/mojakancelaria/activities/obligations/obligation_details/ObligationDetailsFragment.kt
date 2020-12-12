@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.obligation_details
+package com.piwniczna.mojakancelaria.activities.obligations.obligation_details
 
 import android.app.AlertDialog
 import android.os.AsyncTask
@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
@@ -14,10 +13,9 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
-import com.piwniczna.mojakancelaria.activities.obligations.ObligationHelper
-import com.piwniczna.mojakancelaria.activities.update_obligation.UpdateObligationFragment
+import com.piwniczna.mojakancelaria.utils.ObligationHelper
+import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
 class ObligationDetailsFragment(var client: ClientEntity, var obligation: ObligationEntity) : Fragment() {

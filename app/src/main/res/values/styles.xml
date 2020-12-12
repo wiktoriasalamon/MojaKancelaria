@@ -40,6 +40,21 @@
         <item name="android:layout_margin">20dp</item>
     </style>
 
+    <!-- DIALOG BUTTON  -->
+    <style name="dialog_button_style">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="backgroundTint">@color/dark_blue</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+    </style>
+
     <!-- CALENDAR BUTTON -->
     <style name="calendar_button_style">
         <item name="android:layout_width">250dp</item>
@@ -104,6 +119,7 @@
         <item name="android:textSize">20dp</item>
         <item name="android:drawableStart">@drawable/search_icon</item>
         <item name="android:drawablePadding">10dp</item>
+        <item name="android:hint">@string/search</item>
     </style>
 
     <!-- TITLE -->
@@ -216,6 +232,16 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
+    <!-- PAYED OBLIGATIONS LIST ITEM -->
+    <style name="payed_obligations_list_item_style">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/rounded_obligatios_list_item</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:backgroundTint">@color/topay</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <!-- SPINNER -->
     <style name="spinner_style">
         <item name="android:layout_width">250dp</item>
@@ -224,8 +250,17 @@
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
+    <!-- DIALOG LABEL -->
+    <style name="adding_obligation_to_payment_label_style">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">17dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_margin">25dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
 
-
-1
+    </style>
 
 </resources>

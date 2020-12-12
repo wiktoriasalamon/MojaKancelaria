@@ -1,14 +1,10 @@
-package com.piwniczna.mojakancelaria.payments
+package com.piwniczna.mojakancelaria.activities.payments.payments_list
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
-import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 
