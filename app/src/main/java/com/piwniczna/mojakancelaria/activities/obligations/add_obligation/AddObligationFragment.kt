@@ -92,7 +92,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
             this.context!!,
             OnDateSetListener {
                     view, year, monthOfYear, dayOfMonth ->
-                dateButton.text = dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
+                dateButton.text = dayOfMonth.toString() + "." + (monthOfYear + 1) + "." + year
             },
             year,
             month-1,
@@ -115,7 +115,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
                 BigDecimal(amountEditText.text.toString()).setScale(2, RoundingMode.HALF_UP),
                 BigDecimal(0),
                 LocalDate.now(),
-                LocalDate.of(date.split('/')[2].toInt(),date.split('/')[1].toInt(),date.split('/')[0].toInt()))
+                LocalDate.of(date.split('.')[2].toInt(),date.split('.')[1].toInt(),date.split('.')[0].toInt()))
         )
 
         fragmentManager?.beginTransaction()?.replace(

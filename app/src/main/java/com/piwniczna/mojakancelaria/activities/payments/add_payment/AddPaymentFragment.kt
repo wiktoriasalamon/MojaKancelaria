@@ -269,7 +269,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
                 client.id,
                 nameEditText.text.toString(),
                 BigDecimal(amountEditText.text.toString()),
-                LocalDate.of(date.split('/')[2].toInt(),date.split('/')[1].toInt(),date.split('/')[0].toInt()))
+                LocalDate.of(date.split('.')[2].toInt(),date.split('.')[1].toInt(),date.split('.')[0].toInt()))
         val amountList = arrayListOf<BigDecimal>()
         for (rel in relationsList) {
             amountList.add(rel.amount)
@@ -299,7 +299,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         val picker = DatePickerDialog(
                 this.context!!,
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    dateButton.text = dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
+                    dateButton.text = dayOfMonth.toString() + "." + (monthOfYear + 1) + "." + year
                 },
                 year,
                 month-1,

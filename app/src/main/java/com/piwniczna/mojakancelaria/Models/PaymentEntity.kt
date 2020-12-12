@@ -22,14 +22,9 @@ data class PaymentEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 ) {
-    @Ignore
-    fun PaymentEntity(){}
-
     fun convertDate(): String{
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
         return formatter.format(date)
     }
-
-
 }
 
