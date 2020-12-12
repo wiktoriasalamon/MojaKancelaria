@@ -15,8 +15,10 @@ import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
+import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.utils.Validator
@@ -229,18 +231,12 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     
     private fun countAmountToSpend(): BigDecimal {
         var amount = BigDecimal(amountEditText.text.toString())
-        Log.e("Start",amount.toString())
         for( o in relationsList){
-            //todo: !!!!!!!!!!!
-            Log.e("loop", o.amount.toString())
             amount = amount.minus(o.amount)
         }
-        Log.e("Am",amount.toString())
         if (amount.compareTo(BigDecimal(0)) == -1) {
-            Log.e("ret","-1")
             return BigDecimal(-1)
         }
-        Log.e("ret",amount.toString())
         return amount
     }
 
@@ -263,8 +259,29 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         if (!validateData()) {
             return
         }
-        // TODO
-        Log.e("ADD PAYMENT", "save payment")
+        val date = dateButton.text.toString()
+        val payment = PaymentEntity(
+                client.id,
+                nameEditText.text.toString(),
+                BigDecimal(amountEditText.text.toString()),
+                LocalDate.of(date.split('/')[2].toInt(),date.split('/')[1].toInt(),date.split('/')[0].toInt()))
+        val amountList = arrayListOf<BigDecimal>()
+        for (rel in relationsList) {
+            amountList.add(rel.amount)
+        }
+
+        savePaymentToDB(payment, amountList)
+
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                PaymentsFragment(client)
+        )?.commit()
+    }
+
+    private fun savePaymentToDB(payment: PaymentEntity, amountList: ArrayList<BigDecimal>) {
+        AsyncTask.execute {
+            dbService.addPayment(payment,obligationsList, amountList)
+        }
     }
 
     private fun handleOpenCalendar(view: View) {
