@@ -15,6 +15,7 @@ import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 
 import kotlin.collections.ArrayList
 
@@ -77,7 +78,10 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
     }
 
     private fun openPaymentDetailsFragment(paymentPosition: Int) {
-        //todo dodo do
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                PaymentDetailsFragment(client, paymentsList[paymentPosition])
+        )?.commit()
     }
 
 
