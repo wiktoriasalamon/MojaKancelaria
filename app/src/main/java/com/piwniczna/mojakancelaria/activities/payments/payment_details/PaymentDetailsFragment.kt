@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.DB.DataService
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
@@ -20,7 +21,7 @@ import com.piwniczna.mojakancelaria.activities.payments.add_payment.ObligationsO
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
-class PaymentDetailsFragment(var client: ClientEntity, var payment: PaymentEntity) : Fragment() {
+class PaymentDetailsFragment(var client: ClientEntity, val case: CaseEntity, var payment: PaymentEntity) : Fragment() {
     lateinit var dbService: DataService
     lateinit var relationsList: ArrayList<RelationEntity>
     lateinit var obligationsAdapter: ObligationsOfPaymentListAdapter
@@ -83,7 +84,7 @@ class PaymentDetailsFragment(var client: ClientEntity, var payment: PaymentEntit
             dbService.deletePayment(payment)
             fragmentManager?.beginTransaction()?.replace(
                     R.id.fragment_container,
-                    PaymentsFragment(client)
+                    PaymentsFragment(client, case)
             )?.commit()
         }
     }
@@ -91,7 +92,7 @@ class PaymentDetailsFragment(var client: ClientEntity, var payment: PaymentEntit
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client)
+                PaymentsFragment(client, case)
         )?.commit()
     }
 }

@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.cases.add_client.AddCaseFragment
@@ -22,7 +24,7 @@ import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragm
 class CasesFragment(val client: ClientEntity) : Fragment() {
     lateinit var casesListAdapter: CasesListAdapter
     lateinit var casesListView : ListView
-    lateinit var casesList: ArrayList<ClientEntity>
+    lateinit var casesList: ArrayList<CaseEntity>
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,6 +33,9 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
 
         val addButton = view.findViewById<Button>(R.id.add_case_button)
         addButton.setOnClickListener { handleAddCase(it) }
+
+        val clientTextView = view.findViewById<TextView>(R.id.client_cases_title)
+        clientTextView.text = client.name
 
         casesListView = view.findViewById(R.id.clients_cases_list_view) as ListView
         casesList = arrayListOf()
@@ -59,24 +64,20 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
     }
 
     private fun getCasesFromDB() {
-        //TODO
-        /*AsyncTask.execute {
-            val clients = dbService.getClients()
+        AsyncTask.execute {
+            val cases = dbService.getCases(client)
             casesList.clear()
-            casesList.addAll(clients)
+            casesList.addAll(cases)
             activity?.runOnUiThread {
                 casesListAdapter.notifyDataSetChanged()
             }
-        }*/
-        Log.e("CASES", "getting cases")
-
+        }
     }
 
     private fun deleteCase(position: Int, id: Long) {
         val builder = AlertDialog.Builder(this.context)
 
-        //TODO
-        val caseName = "rozwód"//casesListAdapter.data[position].name
+        val caseName = casesListAdapter.data[position].name
         val message = SpannedText.getSpannedText(getString(R.string.delete_client_case, caseName, client.name))
 
         builder.setTitle(R.string.warning)
@@ -101,12 +102,10 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
     }
 
     private fun deleteCaseFromDB(position: Int) {
-        //TODO
-        /*AsyncTask.execute {
-            dbService.deleteClient(casesList[position])
-            getClientsFromDB()
-        }*/
-        Log.e("CASES", "deleting case")
+        AsyncTask.execute {
+            dbService.deleteCase(casesList[position])
+            getCasesFromDB()
+        }
     }
 
     private fun handleAddCase(view: View) {
@@ -116,11 +115,10 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
         )?.commit()
     }
 
-    //TODO: change position to caseList[position]
     private fun openCaseDetailsFragment(position: Int) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            CaseDetailsFragment(client, position)
+            CaseDetailsFragment(client, casesList[position])
         )?.commit()
     }
 

@@ -71,8 +71,8 @@ interface DAO {
     @Query("SELECT * FROM clients")
     fun getClients(): List<ClientEntity>
 
-    @Query("SELECT * FROM cases")
-    fun getCases(): List<CaseEntity>
+    @Query("SELECT * FROM cases WHERE ClientId = :clientId")
+    fun getCases(clientId: Int): List<CaseEntity>
 
     @Query("SELECT * FROM obligations WHERE CaseId = :caseId")
     fun getObligations(caseId: Int): List<ObligationEntity>
@@ -98,8 +98,8 @@ interface DAO {
     @Query("SELECT * FROM obligations WHERE id in (:paymentIds)")
     fun getPaymentObligations(paymentIds: Array<Int>): List<ObligationEntity>
 
-    @Query("SELECT * FROM obligations WHERE CaseId = :caseId AND Amount != Payed" )
-    fun getNotPayedObligations(caseId: Int): List<ObligationEntity>
+    @Query("SELECT * FROM obligations WHERE ClientId = :clientId AND Amount != Payed" )
+    fun getNotPayedObligations(clientId: Int): List<ObligationEntity>
 
 
     //deletes

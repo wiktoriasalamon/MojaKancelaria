@@ -25,9 +25,8 @@ class DataService(context: Context) {
         db.deleteCase(case)
     }
 
-    fun getCases(): ArrayList<CaseEntity> {
-        val toReturn = ArrayList(db.getCases())
-        return toReturn
+    fun getCases(client: ClientEntity): ArrayList<CaseEntity> {
+        return ArrayList(db.getCases(client.id))
     }
 
     //clients
@@ -59,8 +58,8 @@ class DataService(context: Context) {
         return db.getObligation(obligationId)
     }
 
-    fun getNotPayedObligations(caseId: Int) : ArrayList<ObligationEntity> {
-        return ArrayList(db.getNotPayedObligations(caseId))
+    fun getNotPayedObligations(clientId: Int) : ArrayList<ObligationEntity> {
+        return ArrayList(db.getNotPayedObligations(clientId))
     }
 
     fun updateObligation(obligation: ObligationEntity) {

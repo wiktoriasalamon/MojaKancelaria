@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 
-//TODO: change case type
-class CaseDetailsFragment(var client: ClientEntity, var case: Int) : Fragment() {
+class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
     lateinit var clientTextView: TextView
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
@@ -27,8 +27,7 @@ class CaseDetailsFragment(var client: ClientEntity, var case: Int) : Fragment() 
         clientTextView.text = client.name
 
         caseTextView = view.findViewById(R.id.case_details_name)
-        //TODO get case name
-        caseTextView.text = "Rozwód dupadupa"
+        caseTextView.text = case.name
 
         obligationsButton = view.findViewById(R.id.obligations_button)
         obligationsButton.setOnClickListener { openObligationsFragment(it) }
@@ -56,7 +55,7 @@ class CaseDetailsFragment(var client: ClientEntity, var case: Int) : Fragment() 
     private fun openPaymentsFragment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client)
+                PaymentsFragment(client, case)
         )?.commit()
     }
 }

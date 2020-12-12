@@ -12,10 +12,7 @@ import android.view.Window
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
-import com.piwniczna.mojakancelaria.Models.PaymentEntity
-import com.piwniczna.mojakancelaria.Models.RelationEntity
+import com.piwniczna.mojakancelaria.Models.*
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
@@ -23,7 +20,7 @@ import com.piwniczna.mojakancelaria.utils.Validator
 import java.math.BigDecimal
 import java.time.LocalDate
 
-class AddPaymentFragment(var client: ClientEntity): Fragment() {
+class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragment() {
     lateinit var nameEditText : EditText
     lateinit var amountEditText: EditText
     lateinit var dateButton: Button
@@ -77,7 +74,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client)
+                PaymentsFragment(client, case)
         )?.commit()
     }
 
@@ -277,7 +274,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client)
+                PaymentsFragment(client, case)
         )?.commit()
     }
 
@@ -323,8 +320,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         else{
             return true
         }
-
-        // TODO: check obligations list
 
         toastMessage(text)
         return false
