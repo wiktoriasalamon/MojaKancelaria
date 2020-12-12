@@ -6,15 +6,15 @@ import androidx.room.TypeConverters
 import com.piwniczna.mojakancelaria.Models.*
 
 @Database (
-    entities =
-    [
-        (ClientEntity::class),
-        (ObligationEntity::class),
-        (PaymentEntity::class),
-        (RelationEntity::class),
-        (PasswordEntity::class)
-    ],
-    version = 6)
+        entities =
+        [
+            (CaseEntity::class),
+            (ObligationEntity::class),
+            (PaymentEntity::class),
+            (RelationEntity::class),
+            (PasswordEntity::class)
+        ],
+        version = 7)
 @TypeConverters(Converter::class)
 
 abstract class MyDb : RoomDatabase() {
