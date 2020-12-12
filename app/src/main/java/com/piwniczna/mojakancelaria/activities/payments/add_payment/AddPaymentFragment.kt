@@ -84,7 +84,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
 
     private fun handleAddObligation(view: View) {
-
         if(!Validator.validateAmount(amountEditText.text.toString(), this.context!!, activity?.applicationContext, false)) {
             val text = getText(R.string.cannot_add_obligation_without_amount)
             val duration = Toast.LENGTH_LONG
@@ -133,7 +132,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.layout_dialog_pay_obligation)
 
-        //TODO: set text as leftToBeSpend or leftToFillObligation po prostu żeby była domyślna kwota wpisana
         val obligationAmountEditText = dialog.findViewById<EditText>(R.id.pay_obligation_amount_edittext)
         var amountPrompt = ""
         if (amountToSpend.compareTo(obligation.amount.minus(obligation.payed))==-1){
@@ -147,6 +145,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         val leftToBeSpendTextView = dialog.findViewById<TextView>(R.id.left_to_be_spend_text_view)
         leftToBeSpendTextView.text = getString(R.string.left_to_be_spend, amountToSpend.setScale(2).toString())
+
 
         val amountToPayLabelTextView = dialog.findViewById<TextView>(R.id.amount_to_pay_label_text_view)
         amountToPayLabelTextView.setText( SpannedText.getSpannedText(
@@ -218,11 +217,11 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
     }
 
-    private fun enableEditText(editText: EditText){
+    private fun enableEditText(editText: EditText) {
         editText.isFocusable = true
         editText.isFocusableInTouchMode = true
     }
-
+    
     private fun countAmountToSpend(): BigDecimal {
         var amount = BigDecimal(amountEditText.text.toString())
         for( o in obligationsList){
