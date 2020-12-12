@@ -1,12 +1,10 @@
 package com.piwniczna.mojakancelaria.activities.payments.add_payment
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.AsyncTask
 import android.os.Bundle
-import android.renderscript.ScriptGroup
-import android.text.InputType
-import android.text.method.KeyListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +29,8 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     lateinit var dateButton: Button
     lateinit var addObligationButton: Button
     lateinit var obligationsListView: ListView
-    lateinit var obligationsList: ArrayList<RelationEntity>
+    lateinit var relationsList: ArrayList<RelationEntity>
+    lateinit var obligationsList: ArrayList<ObligationEntity>
     lateinit var obligationsListAdapter: ObligationsOfPaymentListAdapter
     lateinit var addButton: Button
     lateinit var dbService: DataService
@@ -50,7 +49,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         amountEditText = view.findViewById(R.id.new_payment_amount_edittext)
         amountEditText.setOnClickListener {
-            if (obligationsList.size > 0) {
+            if (relationsList.size > 0) {
                 val text = getText(R.string.cannot_edit_amount)
                 val duration = Toast.LENGTH_LONG
                 val toast = Toast.makeText(activity?.applicationContext, text, duration)
@@ -62,8 +61,9 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         addButton.setOnClickListener {handleSavePayment(it)}
         dateButton.setOnClickListener {handleOpenCalendar(it)}
 
+        relationsList = arrayListOf()
         obligationsList = arrayListOf()
-        obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, obligationsList, dbService, activity!!)
+        obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!)
         obligationsListView.adapter = obligationsListAdapter
 
         obligationsListView.setOnItemLongClickListener { _, _, position, _ ->
@@ -154,19 +154,37 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
 
     private fun addPayedObligation(obligation: ObligationEntity, amount: BigDecimal) {
-        obligationsList.add(RelationEntity(amount, client.id, obligation.id, 0))
-        if (obligationsList.size > 0) {
+        relationsList.add(RelationEntity(amount, client.id, obligation.id, 0))
+        obligationsList.add(obligation)
+        if (relationsList.size > 0) {
             disableEditText(amountEditText)
         }
         obligationsListAdapter.notifyDataSetChanged()
     }
 
     private fun deletePayedObligation(position: Int) {
-        obligationsList.removeAt(position)
-        if (obligationsList.size == 0) {
-            enableEditText(amountEditText)
+        val builder = AlertDialog.Builder(this.context)
+        val message = getString(
+                R.string.are_you_sure_delete_payed_obligation,
+                getString(R.string.amount_with_currency,relationsList[position].amount.setScale(2).toString()),
+                obligationsList[position].name
+                )
+
+        builder.setTitle(R.string.warning)
+        builder.setMessage(message)
+
+        builder.setPositiveButton(R.string.delete) { _, _ ->
+            relationsList.removeAt(position)
+            obligationsList.removeAt(position)
+            if (relationsList.size == 0) {
+                enableEditText(amountEditText)
+            }
+            obligationsListAdapter.notifyDataSetChanged()
         }
-        obligationsListAdapter.notifyDataSetChanged()
+
+        builder.setNegativeButton(R.string.cancel) { _, _ -> }
+
+        builder.show()
     }
 
     private fun disableEditText(editText: EditText){
