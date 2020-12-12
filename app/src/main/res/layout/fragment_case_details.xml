@@ -4,14 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="20dp"
     android:gravity="center"
     >
     <TextView
-    android:id="@+id/client_details_title"
-    style="@style/title_style"
-    android:text="Jan Kowalski">
+        android:id="@+id/case_details_client"
+        style="@style/title_style"
+        android:layout_margin="0dp"
+        android:text="Jan Kowalski"/>
 
-    </TextView>
+    <TextView
+        android:id="@+id/case_details_name"
+        style="@style/title_style"
+        android:layout_margin="0dp"
+        android:text="Rozwód"/>
 
     <LinearLayout
         android:orientation="vertical"

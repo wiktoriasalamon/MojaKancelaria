@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients.clients_list
+package com.piwniczna.mojakancelaria.activities.cases.cases_list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,12 +8,13 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 
-class ClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
-        ArrayAdapter<ClientEntity>(context, R.layout.layout_clients_list_item, data), Filterable {
-    private var clients: ArrayList<ClientEntity> = data
+class CasesListAdapter(context: Context, var data: ArrayList<CaseEntity>) :
+        ArrayAdapter<CaseEntity>(context, R.layout.layout_clients_list_item, data), Filterable {
+    private var cases: ArrayList<CaseEntity> = data
 
     internal class ViewHolder {
         var nameTextView: TextView? = null
@@ -33,27 +34,27 @@ class ClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
 
         val holder = view.tag as ViewHolder
 
-        holder.nameTextView!!.text=clients[position].name
+        holder.nameTextView!!.text=cases[position].name
 
         return view
     }
 
     override fun getCount(): Int {
-        return clients.size
+        return cases.size
     }
 
-    override fun getItem(p0: Int): ClientEntity {
-        return clients[p0]
+    override fun getItem(p0: Int): CaseEntity {
+        return cases[p0]
     }
 
     override fun getItemId(p0: Int): Long {
-        return clients[p0].id.toLong()
+        return cases[p0].id.toLong()
     }
 
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
-                clients = filterResults.values as ArrayList<ClientEntity>
+                cases = filterResults.values as ArrayList<CaseEntity>
                 notifyDataSetChanged()
             }
 

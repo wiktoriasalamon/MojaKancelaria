@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients
+package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.app.AlertDialog
 import android.os.AsyncTask
@@ -15,13 +15,11 @@ import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.utils.SpannedText
+import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
-import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsListAdapter
+import com.piwniczna.mojakancelaria.utils.SpannedText
 
-
-class ClientsFragment : Fragment() {
+class ClientsFragment: Fragment() {
     lateinit var clientsListAdapter: ClientsListAdapter
     lateinit var clientsListView : ListView
     lateinit var clientsList: ArrayList<ClientEntity>
@@ -41,7 +39,7 @@ class ClientsFragment : Fragment() {
         clientsListView.adapter = clientsListAdapter
 
         clientsListView.setOnItemClickListener { _, _, position, _ ->
-            openClientDetailsFragment(position)
+            openClientCasesFragment(position)
         }
 
         clientsListView.setOnItemLongClickListener { _, _, position, id ->
@@ -126,11 +124,10 @@ class ClientsFragment : Fragment() {
         )?.commit()
     }
 
-    private fun openClientDetailsFragment(clientPosition: Int) {
+    private fun openClientCasesFragment(clientPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
-            R.id.fragment_container,
-            ClientDetailsFragment(clientsList[clientPosition])
+                R.id.fragment_container,
+                CasesFragment(clientsList[clientPosition])
         )?.commit()
     }
-
 }

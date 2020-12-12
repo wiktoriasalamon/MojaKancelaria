@@ -16,6 +16,19 @@ class DataService(context: Context) {
         db.addHash(password)
     }
 
+    //cases
+    fun addCase(case: CaseEntity){
+        db.addCase(case)
+    }
+
+    fun deleteCase(case: CaseEntity){
+        db.deleteCase(case)
+    }
+
+    fun getCases(client: ClientEntity): ArrayList<CaseEntity> {
+        return ArrayList(db.getCases(client.id))
+    }
+
     //clients
     fun addClient(client: ClientEntity){
         db.addClient(client)
@@ -37,8 +50,8 @@ class DataService(context: Context) {
         db.addObligation(obligation)
     }
 
-    fun getObligations(clientId: Int) : ArrayList<ObligationEntity> {
-        return ArrayList(db.getObligations(clientId))
+    fun getObligations(caseId: Int) : ArrayList<ObligationEntity> {
+        return ArrayList(db.getObligations(caseId))
     }
 
     fun getObligation(obligationId :Int): ObligationEntity {
@@ -64,7 +77,7 @@ class DataService(context: Context) {
     }
 
 
-  //payments
+    //payments
     fun addPayment(payment: PaymentEntity, obligationList: List<ObligationEntity>, amountsList: List<BigDecimal>) : Boolean{
         if(obligationList.size != amountsList.size){
             return false
@@ -100,26 +113,17 @@ class DataService(context: Context) {
         db.deletePayment(payment)
     }
 
-    fun getPayments(clientId: Int) : ArrayList<PaymentEntity> {
-        return ArrayList(db.getPayments(clientId))
+    fun getPayments(caseId: Int) : ArrayList<PaymentEntity> {
+        return ArrayList(db.getPayments(caseId))
     }
 
-    //todo: delete payment!!!!
 
     //relations
-    fun getRelations(clientId: Int) : ArrayList<RelationEntity> {
-        return ArrayList(db.getRelations(clientId))
+    fun getRelations(caseId: Int) : ArrayList<RelationEntity> {
+        return ArrayList(db.getRelations(caseId))
     }
 
     fun getRelations(payment: PaymentEntity) : ArrayList<RelationEntity> {
         return ArrayList(db.getRelationsForPayment(payment.id))
     }
-
-
-
-
-
-
-
-
 }

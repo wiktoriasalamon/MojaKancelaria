@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients
+package com.piwniczna.mojakancelaria.activities.cases
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -11,18 +11,18 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
-import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligations_list.ObligationsListAdapter
 import kotlin.collections.ArrayList
 
-
-class ObligationsFragment(var client: ClientEntity)  : Fragment() {
+class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fragment() {
     lateinit var obligationsListView: ListView
     lateinit var obligationsList: ArrayList<ObligationEntity>
     lateinit var obligationsListAdapter: ObligationsListAdapter
@@ -73,13 +73,13 @@ class ObligationsFragment(var client: ClientEntity)  : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientDetailsFragment(client)
+                CaseDetailsFragment(client, case)
         )?.commit()
     }
 
     private fun getObligationsFromDB() {
         AsyncTask.execute {
-            val obligations = dbService.getObligations(client.id)
+            val obligations = dbService.getObligations(case.id)
             obligationsList.clear()
             obligationsList.addAll(obligations)
             activity?.runOnUiThread {
@@ -92,14 +92,14 @@ class ObligationsFragment(var client: ClientEntity)  : Fragment() {
     private fun handleAddObligation(view: View) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            AddObligationFragment(client)
+            AddObligationFragment(client, case)
         )?.commit()
     }
 
     private fun openObligationDetailsFragment(obligationPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ObligationDetailsFragment(client, obligationsList[obligationPosition])
+                ObligationDetailsFragment(client, case, obligationsList[obligationPosition])
         )?.commit()
     }
 
