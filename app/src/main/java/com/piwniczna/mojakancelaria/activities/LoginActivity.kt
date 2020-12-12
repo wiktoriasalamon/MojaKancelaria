@@ -11,10 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.common.hash.Hashing
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
-import com.piwniczna.mojakancelaria.Models.ObligationType
-import com.piwniczna.mojakancelaria.Models.PasswordEntity
+import com.piwniczna.mojakancelaria.Models.*
 import com.piwniczna.mojakancelaria.R
 import java.lang.NullPointerException
 import java.math.BigDecimal
@@ -105,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
                     .hashString(newPin, StandardCharsets.UTF_8)
                     .toString()
             dbService.addNewPassword(PasswordEntity(pinHash))
-            dbService.addCase(CaseEntity("root",999999))
+            dbService.addClient(ClientEntity("root",999999))
             dbService.addObligation(ObligationEntity(999999,ObligationType.CONTRACT,"Usunięte zobowiązanie", BigDecimal.ZERO,BigDecimal.ZERO, LocalDate.now(),LocalDate.now(),999999))
         }
     }
