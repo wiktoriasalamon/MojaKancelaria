@@ -1,5 +1,6 @@
 package com.piwniczna.mojakancelaria.activities.payments.payments_list
 
+import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.utils.SpannedText
 
 import kotlin.collections.ArrayList
 
@@ -36,6 +38,11 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
 
         paymentsListView.setOnItemClickListener { _, _, position, _ ->
             openPaymentDetailsFragment(position)
+        }
+
+        paymentsListView.setOnItemLongClickListener { _, _, position, _ ->
+            deletePayment(position)
+            true
         }
 
 
@@ -78,6 +85,39 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
 
     private fun openPaymentDetailsFragment(paymentPosition: Int) {
         //todo dodo do
+    }
+
+    private fun deletePayment(position: Int) {
+        val builder = AlertDialog.Builder(this.context)
+
+        val payment = paymentsListAdapter.data[position]
+        val message = SpannedText.getSpannedText(getString(R.string.delete_payment, payment.name))
+
+        builder.setTitle(R.string.warning)
+        builder.setMessage(message)
+
+        builder.setPositiveButton(R.string.delete) { dialog, which ->
+
+            builder.setTitle(R.string.deleting_payment)
+            builder.setMessage(R.string.are_you_sure)
+
+            builder.setPositiveButton(R.string.yes) { dialog, which -> deletePaymentFromDB(payment) }
+
+            builder.setNegativeButton(R.string.no) { dialog, which -> }
+
+            builder.show()
+
+        }
+
+        builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+        builder.show()
+    }
+
+    private fun deletePaymentFromDB(payment: PaymentEntity){
+        AsyncTask.execute {
+            dbService.deletePayment(payment)
+        }
     }
 
 
