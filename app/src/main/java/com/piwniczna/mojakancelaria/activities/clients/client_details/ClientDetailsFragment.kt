@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 

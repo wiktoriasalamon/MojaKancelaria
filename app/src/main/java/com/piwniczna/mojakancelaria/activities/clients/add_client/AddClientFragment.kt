@@ -12,7 +12,7 @@ import android.widget.Toast
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 
 class AddClientFragment : Fragment() {
     lateinit var clientEditText : EditText
