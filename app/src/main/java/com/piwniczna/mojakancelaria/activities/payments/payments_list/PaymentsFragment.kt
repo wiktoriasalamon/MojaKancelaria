@@ -117,6 +117,9 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
     private fun deletePaymentFromDB(payment: PaymentEntity){
         AsyncTask.execute {
             dbService.deletePayment(payment)
+            this.activity!!.runOnUiThread{
+                paymentsListAdapter.notifyDataSetChanged()
+            }
         }
     }
 

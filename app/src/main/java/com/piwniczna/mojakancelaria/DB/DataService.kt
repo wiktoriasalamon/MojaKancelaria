@@ -26,7 +26,9 @@ class DataService(context: Context) {
     }
 
     fun getClients(): ArrayList<ClientEntity> {
-        return ArrayList(db.getClients())
+        val toReturn = ArrayList(db.getClients())
+        toReturn.remove(ClientEntity("root",999999))
+        return toReturn
     }
 
 
@@ -47,12 +49,18 @@ class DataService(context: Context) {
         return ArrayList(db.getNotPayedObligations(clientId))
     }
 
-    fun deleteObligation(obligation: ObligationEntity) {
-        return db.deleteObligation(obligation)
-    }
-
     fun updateObligation(obligation: ObligationEntity) {
         return db.updateObligation(obligation)
+    }
+
+    fun deleteObligation(obligation: ObligationEntity) {
+        var relations = db.getRelationsForObligation(obligation.id)
+        for(r in relations){
+            r.obligationId = 999999
+        }
+        db.updateRelations(relations)
+
+        return db.deleteObligation(obligation)
     }
 
 

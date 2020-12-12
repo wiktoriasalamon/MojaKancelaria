@@ -36,7 +36,7 @@
     <string name="cannot_add_obligation_when_nothing_to_spend">Zobowiązania pokrywają całą wpłate!</string>
 
     <!-- Obligation details -->
-    <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>?]]> </string>
+    <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>? Informacje o wpłatach na te zobowiązanie zostaną utracone!]]> </string>
     <string name="deleting_obligation">Usuwanie zobowiązania</string>
     <string name="name">Nazwa</string>
     <string name="type">Typ</string>
