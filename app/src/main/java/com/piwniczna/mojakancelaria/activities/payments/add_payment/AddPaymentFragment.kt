@@ -122,7 +122,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         dialog.setContentView(R.layout.layout_dialog_pay_obligation)
 
         val obligationAmountEditText = dialog.findViewById<EditText>(R.id.pay_obligation_amount_edittext)
-        //TODO: set text as leftToBeSpend or leftToFillObligation po prostu żeby była domyślna kwota wpisana
 
         val leftToBeSpendTextView = dialog.findViewById<TextView>(R.id.left_to_be_spend_text_view)
         leftToBeSpendTextView.text = getString(R.string.left_to_be_spend, amountToSpend.setScale(2).toString())
@@ -199,11 +198,14 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
 
     private fun getObligationsToPay(obligations: ArrayList<ObligationEntity>, listAdapter: ObligationsToChooseListAdapter) {
-        //TODO: pomiń te które już mamy na liście obligationsList
         AsyncTask.execute{
             val ob = dbService.getNotPayedObligations(client.id)
             obligations.clear()
-            obligations.addAll(ob)
+            for (obligation in ob) {
+                if(!obligationsList.contains(obligation)) {
+                    obligations.add(obligation)
+                }
+            }
             activity?.runOnUiThread {
                 listAdapter.notifyDataSetChanged()
             }
