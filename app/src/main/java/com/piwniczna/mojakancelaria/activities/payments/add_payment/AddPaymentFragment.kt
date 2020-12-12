@@ -311,13 +311,16 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     private fun validateData() : Boolean{
         var text = ""
         if (nameEditText.text.toString() == ""){
-            text = this.context!!.resources.getString(R.string.name_not_provided)
+            text = getString(R.string.name_not_provided)
         }
         else if (amountEditText.text.toString() == "" || BigDecimal(amountEditText.text.toString()).compareTo(BigDecimal(0))!=1 ){
-            text = this.context!!.resources.getString(R.string.wrong_amount)
+            text = getString(R.string.wrong_amount)
         }
-        else if (dateButton.text.toString() == this.context!!.resources.getString(R.string.payment_date)){
-            text = this.context!!.resources.getString(R.string.date_not_provided)
+        else if (dateButton.text.toString() == getString(R.string.payment_date)){
+            text = getString(R.string.date_not_provided)
+        }
+        else if (countAmountToSpend().compareTo(BigDecimal.ZERO)!=0){
+            text = getString(R.string.money_left)
         }
         else{
             return true
