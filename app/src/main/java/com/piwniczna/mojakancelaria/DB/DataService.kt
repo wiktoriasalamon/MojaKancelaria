@@ -27,7 +27,21 @@ class DataService(context: Context) {
 
     fun getCases(): ArrayList<CaseEntity> {
         val toReturn = ArrayList(db.getCases())
-        toReturn.remove(CaseEntity("root",999999))
+        return toReturn
+    }
+
+    //clients
+    fun addClient(client: ClientEntity){
+        db.addClient(client)
+    }
+
+    fun deleteClient(client: ClientEntity){
+        db.deleteClient(client)
+    }
+
+    fun getClients(): ArrayList<ClientEntity> {
+        val toReturn = ArrayList(db.getClients())
+        toReturn.remove(ClientEntity("root",999999))
         return toReturn
     }
 
@@ -79,7 +93,7 @@ class DataService(context: Context) {
         for(i in obligationList.zip(amountsList)){
             db.addRelation(RelationEntity(
                     amount = i.second,
-                    caseId = payment.caseId,
+                    clientId = payment.clientId,
                     obligationId = i.first.id,
                     paymentId = addedPayment.id
             ))
@@ -104,7 +118,6 @@ class DataService(context: Context) {
         return ArrayList(db.getPayments(caseId))
     }
 
-    //todo: delete payment!!!!
 
     //relations
     fun getRelations(caseId: Int) : ArrayList<RelationEntity> {

@@ -9,9 +9,9 @@ import java.math.BigDecimal
 
 @Entity(tableName = "relations", foreignKeys =
         [
-            ForeignKey(entity = CaseEntity::class,
+            ForeignKey(entity = ClientEntity::class,
                     parentColumns = arrayOf("id"),
-                    childColumns = arrayOf("CaseId"),
+                    childColumns = arrayOf("ClientId"),
                     onDelete = ForeignKey.CASCADE),
             ForeignKey(entity = ObligationEntity::class,
                     parentColumns = arrayOf("id"),
@@ -27,8 +27,8 @@ data class RelationEntity(
 
     @ColumnInfo(name = "Amount")
     var amount: BigDecimal,
-    @ColumnInfo(name = "CaseId")
-    var caseId: Int,
+    @ColumnInfo(name = "ClientId")
+    var clientId: Int,
     @ColumnInfo(name = "ObligationId")
     var obligationId: Int,
     @ColumnInfo(name = "PaymentId")
