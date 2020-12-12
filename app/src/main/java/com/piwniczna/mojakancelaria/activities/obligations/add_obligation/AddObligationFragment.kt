@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.add_obligation
+package com.piwniczna.mojakancelaria.activities.obligations.add_obligation
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener

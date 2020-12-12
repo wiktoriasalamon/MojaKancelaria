@@ -4,15 +4,15 @@ package com.piwniczna.mojakancelaria.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
-import com.piwniczna.mojakancelaria.activities.add_obligation.AddObligationFragment
-import com.piwniczna.mojakancelaria.activities.add_payment.AddPaymentFragment
-import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
-import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
+import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
-import com.piwniczna.mojakancelaria.activities.obligation_details.ObligationDetailsFragment
-import com.piwniczna.mojakancelaria.activities.update_obligation.UpdateObligationFragment
-import com.piwniczna.mojakancelaria.activities.payments.PaymentsFragment
+import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
+import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
+import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

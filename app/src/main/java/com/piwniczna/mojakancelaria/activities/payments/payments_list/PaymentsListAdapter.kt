@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.payments
+package com.piwniczna.mojakancelaria.activities.payments.payments_list
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.add_payment
+package com.piwniczna.mojakancelaria.activities.payments.add_payment
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -16,7 +16,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.payments.PaymentsFragment
+import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.utils.Validator
 import java.math.BigDecimal

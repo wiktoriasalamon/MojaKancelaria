@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.update_obligation
+package com.piwniczna.mojakancelaria.activities.obligations.update_obligation
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
@@ -15,7 +15,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.obligation_details.ObligationDetailsFragment
+import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import java.math.BigDecimal
 import java.math.RoundingMode

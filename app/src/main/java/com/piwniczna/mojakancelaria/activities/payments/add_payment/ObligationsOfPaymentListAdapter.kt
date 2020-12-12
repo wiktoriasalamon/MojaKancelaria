@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.add_payment
+package com.piwniczna.mojakancelaria.activities.payments.add_payment
 
 import android.content.Context
 import android.os.AsyncTask

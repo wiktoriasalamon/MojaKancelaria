@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients
+package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.app.AlertDialog
 import android.os.AsyncTask
@@ -16,8 +16,8 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.SpannedText
-import com.piwniczna.mojakancelaria.activities.add_client.AddClientFragment
-import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 
 
 class ClientsFragment : Fragment() {
