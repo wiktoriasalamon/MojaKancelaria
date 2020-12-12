@@ -25,7 +25,7 @@
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
     <string name="amount_with_currency">%1$s zł</string>
-    <string name="plus_amount_with_currency">+%1$s zł</string>
+    <string name="plus_amount_with_currency">+ %1$s zł</string>
     <string name="wrong_data">Błędne dane!</string>
     <string name="wrong_amount">Błędna kwota!</string>
     <string name="over_payed">Kwota nie może być mniejsza niż kwota opłacona!</string>
@@ -64,6 +64,8 @@
     <string name="too_large_amount">Za duża kwota!</string>
     <string name="amount_bigger_than_left">Nie można przeznaczyć kwoty większej niż pozostała!</string>
     <string name="money_left">Nie pokryto całej kwoty wpłaty!</string>
+    <string name="deleting_payment">Usuwanie płatności</string>
+    <string name="delete_payment"><![CDATA[Czy na pewno chcesz usunąć płatność <b>%1$s<</b>? Cofnie to wpłacone kwoty na poczet wszystkich zobowiązań!]]> </string>
 
     <!-- Buttons -->
     <string name="delete">Usuń</string>

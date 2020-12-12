@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 @Entity(tableName = "obligations", foreignKeys = [ForeignKey(entity = ClientEntity::class,
@@ -31,5 +32,13 @@ data class ObligationEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 ) {
+    fun convertDate(): String{
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        return formatter.format(date)
+    }
 
+    fun convertPaymentDate(): String{
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        return formatter.format(paymentDate)
+    }
 }

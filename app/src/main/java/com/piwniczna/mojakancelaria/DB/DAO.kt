@@ -77,6 +77,9 @@ interface DAO {
     @Query("SELECT * FROM relations WHERE ClientId = :clientId")
     fun getRelations(clientId: Int): List<RelationEntity>
 
+    @Query("SELECT * FROM relations WHERE PaymentId = :paymentId")
+    fun getRelationsForPayment(paymentId: Int): List<RelationEntity>
+
     @Query("SELECT * FROM obligations WHERE id in (:paymentIds)")
     fun getPaymentObligations(paymentIds: Array<Int>): List<ObligationEntity>
 

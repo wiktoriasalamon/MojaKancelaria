@@ -35,7 +35,7 @@ class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) 
 
         holder.titleTextView!!.text = data[position].name
         holder.amountTextView!!.text = context.resources.getString(R.string.amount_with_currency, data[position].amount.setScale(2).toString())
-        holder.dateTextView!!.text = data[position].date.toString()
+        holder.dateTextView!!.text = data[position].convertDate()
 
         return view
     }
