@@ -37,8 +37,8 @@ class ObligationDetailsFragment(var client: ClientEntity, var obligation: Obliga
         typeTextView.text = ObligationHelper.getTypeString(obligation.type, this.context!!)
         amountTextView.text = this.context!!.resources.getString(R.string.amount_with_currency, obligation.amount.setScale(2).toString())
         payedAmountTextView.text =  this.context!!.resources.getString(R.string.amount_with_currency, obligation.payed.setScale(2).toString())
-        creationDateTextView.text = obligation.date.toString()
-        paymentDateTextView.text = obligation.paymentDate.toString()
+        creationDateTextView.text = obligation.convertDate()
+        paymentDateTextView.text = obligation.convertPaymentDate()
 
         val editButton = view.findViewById(R.id.obligation_edit_button) as Button
         editButton.setOnClickListener { openEditObligationsFragment() }

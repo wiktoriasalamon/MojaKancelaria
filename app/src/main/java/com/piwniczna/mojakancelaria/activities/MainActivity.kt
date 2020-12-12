@@ -12,6 +12,7 @@ import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDeta
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
+import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 is UpdateObligationFragment -> f.onBackPressed()
                 is AddPaymentFragment -> f.onBackPressed()
                 is PaymentsFragment -> f.onBackPressed()
+                is PaymentDetailsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

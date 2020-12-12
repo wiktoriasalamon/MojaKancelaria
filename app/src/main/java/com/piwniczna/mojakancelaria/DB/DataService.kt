@@ -111,6 +111,10 @@ class DataService(context: Context) {
         return ArrayList(db.getRelations(clientId))
     }
 
+    fun getRelations(payment: PaymentEntity) : ArrayList<RelationEntity> {
+        return ArrayList(db.getRelationsForPayment(payment.id))
+    }
+
 
 
 
