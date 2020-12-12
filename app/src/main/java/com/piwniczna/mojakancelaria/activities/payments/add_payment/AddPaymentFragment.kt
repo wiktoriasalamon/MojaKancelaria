@@ -163,9 +163,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
                 addPayedObligation(obligation, BigDecimal(obligationAmountEditText.text.toString()))
                 dialog.dismiss()
 
-                val toSpend = countAmountToSpend()
-                val wholeAmount = BigDecimal(amountEditText.text.toString())
-                summaryTextView.setText(getString(R.string.payed_amount_with_currency,wholeAmount.minus(toSpend).setScale(2).toString(),wholeAmount.setScale(2).toString()))
+                setSummaryText()
             }
         }
 
@@ -175,6 +173,12 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         }
 
         dialog.show()
+    }
+
+    private fun setSummaryText() {
+        val toSpend = countAmountToSpend()
+        val wholeAmount = BigDecimal(amountEditText.text.toString())
+        summaryTextView.setText(getString(R.string.payed_amount_with_currency,wholeAmount.minus(toSpend).setScale(2).toString(),wholeAmount.setScale(2).toString()))
     }
 
     private fun addPayedObligation(obligation: ObligationEntity, amount: BigDecimal) {
@@ -203,6 +207,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
             if (relationsList.size == 0) {
                 enableEditText(amountEditText)
             }
+            setSummaryText()
             obligationsListAdapter.notifyDataSetChanged()
         }
 

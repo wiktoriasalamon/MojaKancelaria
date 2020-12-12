@@ -60,6 +60,7 @@
     <string name="cannot_add_obligation_without_amount">Nie można dodać zobowiązania, jeśli kwota wpłaty jest pusta!</string>
     <string name="cannot_edit_amount">Aby zmienić kwotę wpłaty, usuń wszystkie opłacone zobowiązania.</string>
     <string name="are_you_sure_delete_payed_obligation">Czy na pewno chcesz usunać wpłatę %1$s na zobowiązanie %2$s?</string>
+    <string name="payed">Opłacono:</string>
 
     <!-- Buttons -->
     <string name="delete">Usuń</string>
