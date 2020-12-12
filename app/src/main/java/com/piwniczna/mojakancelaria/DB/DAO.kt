@@ -80,6 +80,9 @@ interface DAO {
     @Query("SELECT * FROM relations WHERE PaymentId = :paymentId")
     fun getRelationsForPayment(paymentId: Int): List<RelationEntity>
 
+    @Query("SELECT * FROM relations WHERE ObligationId = :obligationId")
+    fun getRelationsForObligation(obligationId: Int): List<RelationEntity>
+
     @Query("SELECT * FROM obligations WHERE id in (:paymentIds)")
     fun getPaymentObligations(paymentIds: Array<Int>): List<ObligationEntity>
 
@@ -105,9 +108,8 @@ interface DAO {
     @Update
     fun updateObligation(obligation: ObligationEntity)
 
-
-    //todo? redirecting payment???????
-
+    @Update
+    fun updateRelations(relations: List<RelationEntity>)
 
 
 
