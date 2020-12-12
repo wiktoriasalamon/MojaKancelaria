@@ -7,7 +7,7 @@ import com.piwniczna.mojakancelaria.Models.*
 interface DAO {
     //inserts
     @Insert
-    fun addClient(client: ClientEntity)
+    fun addCase(case: CaseEntity)
 
     @Insert
     fun addObligation(obligation: ObligationEntity)
@@ -31,8 +31,8 @@ interface DAO {
 
 
     //clear all
-    @Query("DELETE FROM clients")
-    fun clearClients()
+    @Query("DELETE FROM cases")
+    fun clearCases()
 
     @Query("DELETE FROM obligations")
     fun clearObligations()
@@ -45,37 +45,37 @@ interface DAO {
 
 
     //clear by id
-    @Query("DELETE FROM clients WHERE id = :clientId")
-    fun clearClient(clientId: Int)
+    @Query("DELETE FROM cases WHERE id = :caseId")
+    fun clearCase(caseId: Int)
 
-    @Query("DELETE FROM obligations WHERE ClientID = :clientId")
-    fun clearObligations(clientId: Int)
+    @Query("DELETE FROM obligations WHERE CaseID = :caseId")
+    fun clearObligations(caseId: Int)
 
-    @Query("DELETE FROM payments WHERE ClientID = :clientId")
-    fun clearPayments(clientId: Int)
+    @Query("DELETE FROM payments WHERE CaseID = :caseId")
+    fun clearPayments(caseId: Int)
 
-    @Query("DELETE FROM relations WHERE ClientID = :clientId")
-    fun clearRelations(clientId: Int)
+    @Query("DELETE FROM relations WHERE CaseID = :caseId")
+    fun clearRelations(caseId: Int)
 
 
     //get
-    @Query("SELECT * FROM clients")
-    fun getClients(): List<ClientEntity>
+    @Query("SELECT * FROM cases")
+    fun getCases(): List<CaseEntity>
 
-    @Query("SELECT * FROM obligations WHERE ClientId = :clientId")
-    fun getObligations(clientId: Int): List<ObligationEntity>
+    @Query("SELECT * FROM obligations WHERE CaseId = :caseId")
+    fun getObligations(caseId: Int): List<ObligationEntity>
 
     @Query("SELECT * FROM obligations WHERE id = :obligationId")
     fun getObligation(obligationId: Int): ObligationEntity
 
-    @Query("SELECT * FROM payments WHERE ClientId = :clientId")
-    fun getPayments(clientId: Int): List<PaymentEntity>
+    @Query("SELECT * FROM payments WHERE CaseId = :caseId")
+    fun getPayments(caseId: Int): List<PaymentEntity>
 
     @Query("SELECT * FROM payments ORDER BY id DESC LIMIT 1")
     fun getLastPayment(): PaymentEntity
 
-    @Query("SELECT * FROM relations WHERE ClientId = :clientId")
-    fun getRelations(clientId: Int): List<RelationEntity>
+    @Query("SELECT * FROM relations WHERE CaseId = :caseId")
+    fun getRelations(caseId: Int): List<RelationEntity>
 
     @Query("SELECT * FROM relations WHERE PaymentId = :paymentId")
     fun getRelationsForPayment(paymentId: Int): List<RelationEntity>
@@ -86,8 +86,8 @@ interface DAO {
     @Query("SELECT * FROM obligations WHERE id in (:paymentIds)")
     fun getPaymentObligations(paymentIds: Array<Int>): List<ObligationEntity>
 
-    @Query("SELECT * FROM obligations WHERE ClientId = :clientId AND Amount != Payed" )
-    fun getNotPayedObligations(clientId: Int): List<ObligationEntity>
+    @Query("SELECT * FROM obligations WHERE CaseId = :caseId AND Amount != Payed" )
+    fun getNotPayedObligations(caseId: Int): List<ObligationEntity>
 
 
     //deletes
@@ -98,7 +98,7 @@ interface DAO {
     fun deleteObligation(obligation: ObligationEntity)
 
     @Delete
-    fun deleteClient(client: ClientEntity)
+    fun deleteCase(case: CaseEntity)
 
 
     //updates

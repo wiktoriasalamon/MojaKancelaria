@@ -9,14 +9,14 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
-@Entity(tableName = "obligations", foreignKeys = [ForeignKey(entity = ClientEntity::class,
+@Entity(tableName = "obligations", foreignKeys = [ForeignKey(entity = CaseEntity::class,
         parentColumns = arrayOf("id"),
-        childColumns = arrayOf("ClientId"),
+        childColumns = arrayOf("CaseId"),
         onDelete = ForeignKey.CASCADE)])
 data class ObligationEntity(
 
-    @ColumnInfo(name = "ClientId")
-    var clientId : Int,
+    @ColumnInfo(name = "CaseId")
+    var caseId : Int,
     @ColumnInfo(name = "Type")
     var type: ObligationType,
     @ColumnInfo(name = "Name")

@@ -16,18 +16,18 @@ class DataService(context: Context) {
         db.addHash(password)
     }
 
-    //clients
-    fun addClient(client: ClientEntity){
-        db.addClient(client)
+    //cases
+    fun addCase(case: CaseEntity){
+        db.addCase(case)
     }
 
-    fun deleteClient(client: ClientEntity){
-        db.deleteClient(client)
+    fun deleteCase(case: CaseEntity){
+        db.deleteCase(case)
     }
 
-    fun getClients(): ArrayList<ClientEntity> {
-        val toReturn = ArrayList(db.getClients())
-        toReturn.remove(ClientEntity("root",999999))
+    fun getCases(): ArrayList<CaseEntity> {
+        val toReturn = ArrayList(db.getCases())
+        toReturn.remove(CaseEntity("root",999999))
         return toReturn
     }
 
@@ -37,16 +37,16 @@ class DataService(context: Context) {
         db.addObligation(obligation)
     }
 
-    fun getObligations(clientId: Int) : ArrayList<ObligationEntity> {
-        return ArrayList(db.getObligations(clientId))
+    fun getObligations(caseId: Int) : ArrayList<ObligationEntity> {
+        return ArrayList(db.getObligations(caseId))
     }
 
     fun getObligation(obligationId :Int): ObligationEntity {
         return db.getObligation(obligationId)
     }
 
-    fun getNotPayedObligations(clientId: Int) : ArrayList<ObligationEntity> {
-        return ArrayList(db.getNotPayedObligations(clientId))
+    fun getNotPayedObligations(caseId: Int) : ArrayList<ObligationEntity> {
+        return ArrayList(db.getNotPayedObligations(caseId))
     }
 
     fun updateObligation(obligation: ObligationEntity) {
@@ -79,7 +79,7 @@ class DataService(context: Context) {
         for(i in obligationList.zip(amountsList)){
             db.addRelation(RelationEntity(
                     amount = i.second,
-                    clientId = payment.clientId,
+                    caseId = payment.caseId,
                     obligationId = i.first.id,
                     paymentId = addedPayment.id
             ))
@@ -100,15 +100,15 @@ class DataService(context: Context) {
         db.deletePayment(payment)
     }
 
-    fun getPayments(clientId: Int) : ArrayList<PaymentEntity> {
-        return ArrayList(db.getPayments(clientId))
+    fun getPayments(caseId: Int) : ArrayList<PaymentEntity> {
+        return ArrayList(db.getPayments(caseId))
     }
 
     //todo: delete payment!!!!
 
     //relations
-    fun getRelations(clientId: Int) : ArrayList<RelationEntity> {
-        return ArrayList(db.getRelations(clientId))
+    fun getRelations(caseId: Int) : ArrayList<RelationEntity> {
+        return ArrayList(db.getRelations(caseId))
     }
 
     fun getRelations(payment: PaymentEntity) : ArrayList<RelationEntity> {

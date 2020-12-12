@@ -10,15 +10,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
-class ObligationDetailsFragment(var client: ClientEntity, var obligation: ObligationEntity) : Fragment() {
+class ObligationDetailsFragment(var case: CaseEntity, var obligation: ObligationEntity) : Fragment() {
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,7 +52,7 @@ class ObligationDetailsFragment(var client: ClientEntity, var obligation: Obliga
     private fun openEditObligationsFragment() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                UpdateObligationFragment(client,obligation)
+                UpdateObligationFragment(case,obligation)
         )?.commit()
     }
 
@@ -87,7 +87,7 @@ class ObligationDetailsFragment(var client: ClientEntity, var obligation: Obliga
             dbService.deleteObligation(obligation)
             fragmentManager?.beginTransaction()?.replace(
                     R.id.fragment_container,
-                    ObligationsFragment(client)
+                    ObligationsFragment(case)
             )?.commit()
         }
     }
@@ -95,7 +95,7 @@ class ObligationDetailsFragment(var client: ClientEntity, var obligation: Obliga
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ObligationsFragment(client)
+                ObligationsFragment(case)
         )?.commit()
     }
 }

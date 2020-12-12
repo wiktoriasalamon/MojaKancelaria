@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,19 +12,18 @@ import android.view.Window
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.utils.Validator
 import java.math.BigDecimal
 import java.time.LocalDate
 
-class AddPaymentFragment(var client: ClientEntity): Fragment() {
+class AddPaymentFragment(var case: CaseEntity): Fragment() {
     lateinit var nameEditText : EditText
     lateinit var amountEditText: EditText
     lateinit var dateButton: Button
@@ -79,7 +77,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client)
+                PaymentsFragment(case)
         )?.commit()
     }
 
@@ -189,7 +187,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
 
     private fun addPayedObligation(obligation: ObligationEntity, amount: BigDecimal) {
-        relationsList.add(RelationEntity(amount, client.id, obligation.id, 0))
+        relationsList.add(RelationEntity(amount, case.id, obligation.id, 0))
         obligationsList.add(obligation)
         if (relationsList.size > 0) {
             disableEditText(amountEditText)
@@ -247,7 +245,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
     private fun getObligationsToPay(obligations: ArrayList<ObligationEntity>, listAdapter: ObligationsToChooseListAdapter) {
         AsyncTask.execute{
-            val ob = dbService.getNotPayedObligations(client.id)
+            val ob = dbService.getNotPayedObligations(case.id)
             obligations.clear()
             for (obligation in ob) {
                 if(!obligationsList.contains(obligation)) {
@@ -266,7 +264,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         }
         val date = dateButton.text.toString()
         val payment = PaymentEntity(
-                client.id,
+                case.id,
                 nameEditText.text.toString(),
                 BigDecimal(amountEditText.text.toString()),
                 LocalDate.of(date.split('.')[2].toInt(),date.split('.')[1].toInt(),date.split('.')[0].toInt()))
@@ -279,7 +277,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client)
+                PaymentsFragment(case)
         )?.commit()
     }
 

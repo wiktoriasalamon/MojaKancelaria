@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients.add_client
+package com.piwniczna.mojakancelaria.activities.cases.add_case
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -10,22 +10,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.cases.CaseFragment
 
-class AddClientFragment : Fragment() {
-    lateinit var clientEditText : EditText
+class AddCaseFragment : Fragment() {
+    lateinit var caseEditText : EditText
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_add_client, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_case, container, false)
 
         dbService = DataService(this.context!!)
-        val addButton = view.findViewById<Button>(R.id.save_client_button)
-        addButton.setOnClickListener {handleSaveClient(it)}
+        val addButton = view.findViewById<Button>(R.id.save_case_button)
+        addButton.setOnClickListener {handleSaveCase(it)}
 
-        clientEditText = view.findViewById(R.id.new_client_edit_text)
+        caseEditText = view.findViewById(R.id.new_case_edit_text)
 
         return view
     }
@@ -33,31 +33,31 @@ class AddClientFragment : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                ClientsFragment()
+                CaseFragment()
         )?.commit()
     }
 
-    fun handleSaveClient(view: View) {
-        val newClientName = clientEditText.text.toString()
-        if (newClientName == "") {
-            val text = R.string.empty_client_warning
+    fun handleSaveCase(view: View) {
+        val newCaseName = caseEditText.text.toString()
+        if (newCaseName == "") {
+            val text = R.string.empty_case_warning
             val duration = Toast.LENGTH_LONG
             val toast = Toast.makeText(activity?.applicationContext, text, duration)
             toast.show()
             return
         }
 
-        addNewClientToDB(ClientEntity(newClientName))
+        addNewCaseToDB(CaseEntity(newCaseName))
 
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                ClientsFragment()
+                CaseFragment()
         )?.commit()
 
     }
 
-    private fun addNewClientToDB(client: ClientEntity){
-        AsyncTask.execute { dbService.addClient(client) }
+    private fun addNewCaseToDB(case: CaseEntity){
+        AsyncTask.execute { dbService.addCase(case) }
     }
 
 }

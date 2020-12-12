@@ -7,7 +7,7 @@
     android:gravity="center"
     >
     <TextView
-    android:id="@+id/client_details_title"
+    android:id="@+id/case_details_title"
     style="@style/title_style"
     android:text="Jan Kowalski">
 
@@ -16,7 +16,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
@@ -30,7 +30,19 @@
             android:text="@string/payments"
             style="@style/menu_card_button_style">
         </Button>
+
+        <Button
+            android:id="@+id/report_button"
+            android:text="Raport"
+            style="@style/menu_card_button_style"
+            android:layout_height="40dp"
+            android:textSize="25sp"
+
+            >
+        </Button>
+
     </LinearLayout>
+
 
 
 </LinearLayout>

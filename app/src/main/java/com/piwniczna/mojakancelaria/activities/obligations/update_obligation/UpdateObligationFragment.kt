@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
@@ -23,7 +23,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
-class UpdateObligationFragment(var client: ClientEntity, var obligation: ObligationEntity) : Fragment() {
+class UpdateObligationFragment(var case: CaseEntity, var obligation: ObligationEntity) : Fragment() {
     lateinit var nameEditText : EditText
     lateinit var typeSpinner: Spinner
     lateinit var amountEditText: EditText
@@ -76,7 +76,7 @@ class UpdateObligationFragment(var client: ClientEntity, var obligation: Obligat
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                ObligationDetailsFragment(client, obligation)
+                ObligationDetailsFragment(case, obligation)
         )?.commit()
     }
 
@@ -129,7 +129,7 @@ class UpdateObligationFragment(var client: ClientEntity, var obligation: Obligat
 
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                ObligationDetailsFragment(client,obligation)
+                ObligationDetailsFragment(case,obligation)
         )?.commit()
 
     }

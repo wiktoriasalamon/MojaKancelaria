@@ -5,14 +5,14 @@ import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-@Entity(tableName = "payments", foreignKeys = [ForeignKey(entity = ClientEntity::class,
+@Entity(tableName = "payments", foreignKeys = [ForeignKey(entity = CaseEntity::class,
         parentColumns = arrayOf("id"),
-        childColumns = arrayOf("ClientId"),
+        childColumns = arrayOf("CaseId"),
         onDelete = ForeignKey.CASCADE)])
 data class PaymentEntity(
 
-    @ColumnInfo(name = "ClientId")
-    var clientId : Int,
+    @ColumnInfo(name = "CaseId")
+    var caseId : Int,
     @ColumnInfo(name = "Name")
     var name: String,
     @ColumnInfo(name = "Amount")

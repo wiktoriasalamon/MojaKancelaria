@@ -7,8 +7,8 @@
     >
 
     <TextView
-        style="@style/clients_list_item_style"
-        android:id="@+id/clientName"
+        style="@style/cases_list_item_style"
+        android:id="@+id/caseName"
         android:text="Jan Kowalski"
         >
     </TextView>

@@ -11,18 +11,18 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.LocalDate
 
 
-class AddObligationFragment(var client: ClientEntity) : Fragment() {
+class AddObligationFragment(var case: CaseEntity) : Fragment() {
     lateinit var nameEditText : EditText
     lateinit var typeSpinner: Spinner
     lateinit var amountEditText: EditText
@@ -76,7 +76,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ObligationsFragment(client)
+            ObligationsFragment(case)
         )?.commit()
     }
 
@@ -109,7 +109,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
         val type = ObligationType.values()[typeSpinner.selectedItemPosition-1]
         val date = dateButton.text.toString()
         addNewObligationToDB(ObligationEntity(
-                client.id,
+                case.id,
                 type,
                 nameEditText.text.toString(),
                 BigDecimal(amountEditText.text.toString()).setScale(2, RoundingMode.HALF_UP),
@@ -120,7 +120,7 @@ class AddObligationFragment(var client: ClientEntity) : Fragment() {
 
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ObligationsFragment(client)
+            ObligationsFragment(case)
         )?.commit()
 
     }

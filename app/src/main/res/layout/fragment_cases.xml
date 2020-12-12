@@ -11,7 +11,7 @@
     >
 
     <EditText
-        android:id="@+id/search_clients_edittext"
+        android:id="@+id/search_cases_edittext"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         style="@style/search_input_style"
@@ -20,7 +20,7 @@
 
     <ListView
         android:layout_marginTop="20dp"
-        android:id="@+id/clients_list_view"
+        android:id="@+id/cases_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
@@ -30,7 +30,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/add_client_button"
+        android:id="@+id/add_case_button"
         android:layout_gravity="right"
         style="@style/add_button_style"
         ></Button>
