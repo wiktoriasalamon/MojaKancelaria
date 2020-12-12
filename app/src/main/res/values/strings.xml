@@ -17,6 +17,12 @@
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
     <string name="deleting_client">Usuwanie klienta</string>
     <string name="search">Szukaj</string>
+
+    <!-- CASES -->
+    <string name="delete_client_case"><![CDATA[Czy na pewno chcesz usunąć sprawę <b>%1$s<</b> klienta <b>%2$s<</b> oraz wszystkie dane sprawy?]]> </string>
+    <string name="deleting_case">Usuwanie sprawy</string>
+
+
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>
     <string name="contract">Umowa</string>

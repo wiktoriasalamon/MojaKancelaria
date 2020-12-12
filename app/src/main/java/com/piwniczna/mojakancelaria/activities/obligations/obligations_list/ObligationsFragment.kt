@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients
+package com.piwniczna.mojakancelaria.activities.cases
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -16,13 +16,13 @@ import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
-import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligations_list.ObligationsListAdapter
 import kotlin.collections.ArrayList
 
-
-class ObligationsFragment(var client: ClientEntity)  : Fragment() {
+//TODO change case type
+class ObligationsFragment(var client: ClientEntity, var case: Int)  : Fragment() {
     lateinit var obligationsListView: ListView
     lateinit var obligationsList: ArrayList<ObligationEntity>
     lateinit var obligationsListAdapter: ObligationsListAdapter
@@ -73,7 +73,7 @@ class ObligationsFragment(var client: ClientEntity)  : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientDetailsFragment(client)
+                CaseDetailsFragment(client, case)
         )?.commit()
     }
 

@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients.client_details
+package com.piwniczna.mojakancelaria.activities.cases.case_details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,20 +9,26 @@ import android.widget.Button
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
+import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 
-class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
-    lateinit var titleTextView: TextView
+//TODO: change case type
+class CaseDetailsFragment(var client: ClientEntity, var case: Int) : Fragment() {
+    lateinit var clientTextView: TextView
+    lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
     lateinit var paymentsButton: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_client_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_case_details, container, false)
 
-        titleTextView = view.findViewById(R.id.client_details_title)
-        titleTextView.text = client.name
+        clientTextView = view.findViewById(R.id.case_details_client)
+        clientTextView.text = client.name
+
+        caseTextView = view.findViewById(R.id.case_details_name)
+        //TODO get case name
+        caseTextView.text = "Rozwód dupadupa"
 
         obligationsButton = view.findViewById(R.id.obligations_button)
         obligationsButton.setOnClickListener { openObligationsFragment(it) }
@@ -36,14 +42,14 @@ class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                ClientsFragment()
+                CasesFragment(client)
         )?.commit()
     }
 
     private fun openObligationsFragment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ObligationsFragment(client)
+                ObligationsFragment(client, case)
         )?.commit()
     }
 

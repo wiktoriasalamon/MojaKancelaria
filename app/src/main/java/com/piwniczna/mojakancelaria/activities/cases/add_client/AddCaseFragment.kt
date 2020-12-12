@@ -1,20 +1,20 @@
-package com.piwniczna.mojakancelaria.activities.clients.add_client
+package com.piwniczna.mojakancelaria.activities.cases.add_client
 
 import android.os.AsyncTask
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 
-class AddClientFragment: Fragment() {
+class AddCaseFragment(val client: ClientEntity) : Fragment() {
     lateinit var clientEditText : EditText
     lateinit var dbService: DataService
 
@@ -32,8 +32,8 @@ class AddClientFragment: Fragment() {
 
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
-                R.id.fragment_container,
-                ClientsFragment()
+            R.id.fragment_container,
+                CasesFragment(client)
         )?.commit()
     }
 
@@ -50,8 +50,8 @@ class AddClientFragment: Fragment() {
         addNewClientToDB(ClientEntity(newClientName))
 
         fragmentManager?.beginTransaction()?.replace(
-                R.id.fragment_container,
-                ClientsFragment()
+            R.id.fragment_container,
+                CasesFragment(client)
         )?.commit()
 
     }
@@ -59,4 +59,5 @@ class AddClientFragment: Fragment() {
     private fun addNewClientToDB(client: ClientEntity){
         AsyncTask.execute { dbService.addClient(client) }
     }
+
 }

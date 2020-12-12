@@ -13,7 +13,7 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText

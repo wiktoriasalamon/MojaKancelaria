@@ -15,7 +15,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.utils.ObligationHelper
 import java.math.BigDecimal
 import java.math.RoundingMode

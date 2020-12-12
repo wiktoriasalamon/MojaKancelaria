@@ -13,13 +13,9 @@ import android.widget.ListView
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
-import com.piwniczna.mojakancelaria.utils.ObligationHelper
-import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.ObligationsOfPaymentListAdapter
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText

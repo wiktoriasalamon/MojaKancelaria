@@ -1,6 +1,5 @@
 package com.piwniczna.mojakancelaria.activities.payments.payments_list
 
-import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +14,8 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
-import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
-import com.piwniczna.mojakancelaria.utils.SpannedText
 
 import kotlin.collections.ArrayList
 
@@ -56,7 +54,7 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientDetailsFragment(client)
+                CaseDetailsFragment(client)
         )?.commit()
     }
 

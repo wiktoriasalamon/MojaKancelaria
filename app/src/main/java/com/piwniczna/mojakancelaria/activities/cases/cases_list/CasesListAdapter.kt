@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients.clients_list
+package com.piwniczna.mojakancelaria.activities.cases.cases_list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 
-class ClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
+class CasesListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
         ArrayAdapter<ClientEntity>(context, R.layout.layout_clients_list_item, data), Filterable {
     private var clients: ArrayList<ClientEntity> = data
 

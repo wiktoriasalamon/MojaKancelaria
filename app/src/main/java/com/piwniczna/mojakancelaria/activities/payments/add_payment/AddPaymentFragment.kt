@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,6 @@ import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.utils.Validator
