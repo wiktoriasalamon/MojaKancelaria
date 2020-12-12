@@ -41,11 +41,6 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
             openPaymentDetailsFragment(position)
         }
 
-        paymentsListView.setOnItemLongClickListener { _, _, position, _ ->
-            deletePayment(position)
-            true
-        }
-
 
         val addButton = view.findViewById<Button>(R.id.add_payment_button)
         addButton.setOnClickListener { handleAddPayment(it) }
@@ -91,32 +86,6 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
         )?.commit()
     }
 
-    private fun deletePayment(position: Int) {
-        val builder = AlertDialog.Builder(this.context)
-
-        val payment = paymentsListAdapter.data[position]
-        val message = SpannedText.getSpannedText(getString(R.string.delete_payment, payment.name))
-
-        builder.setTitle(R.string.warning)
-        builder.setMessage(message)
-
-        builder.setPositiveButton(R.string.delete) { dialog, which ->
-
-            builder.setTitle(R.string.deleting_payment)
-            builder.setMessage(R.string.are_you_sure)
-
-            builder.setPositiveButton(R.string.yes) { dialog, which -> deletePaymentFromDB(payment) }
-
-            builder.setNegativeButton(R.string.no) { dialog, which -> }
-
-            builder.show()
-
-        }
-
-        builder.setNegativeButton(R.string.cancel) { dialog, which -> }
-
-        builder.show()
-    }
 
     private fun deletePaymentFromDB(payment: PaymentEntity){
         AsyncTask.execute {
