@@ -33,6 +33,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     lateinit var obligationsList: ArrayList<ObligationEntity>
     lateinit var obligationsListAdapter: ObligationsOfPaymentListAdapter
     lateinit var addButton: Button
+    lateinit var summaryTextView: TextView
     lateinit var dbService: DataService
     var amountToSpend = BigDecimal(0)
 
@@ -46,6 +47,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         addObligationButton = view.findViewById(R.id.add_obligation_to_payment_button)
         obligationsListView = view.findViewById(R.id.obligations_of_payment_list_view)
         addButton = view.findViewById(R.id.save_payment_button)
+        summaryTextView = view.findViewById(R.id.summary_payed)
 
         amountEditText = view.findViewById(R.id.new_payment_amount_edittext)
         amountEditText.setOnClickListener {
@@ -90,6 +92,15 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
             return
         }
 
+        amountToSpend = countAmountToSpend()
+
+        if (amountToSpend.compareTo(BigDecimal(0))==0){
+            val text = getText(R.string.cannot_add_obligation_when_nothing_to_spend)
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(activity?.applicationContext, text, duration)
+            toast.show()
+            return
+        }
         var dialog = Dialog(this.context!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
@@ -122,9 +133,19 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         dialog.setContentView(R.layout.layout_dialog_pay_obligation)
 
         val obligationAmountEditText = dialog.findViewById<EditText>(R.id.pay_obligation_amount_edittext)
+        var amountPrompt = ""
+        if (amountToSpend.compareTo(obligation.amount.minus(obligation.payed))==-1){
+            amountPrompt = amountToSpend.toString()
+        }
+        else{
+            amountPrompt = obligation.amount.minus(obligation.payed).toString()
+        }
+
+        obligationAmountEditText.setText(amountPrompt)
 
         val leftToBeSpendTextView = dialog.findViewById<TextView>(R.id.left_to_be_spend_text_view)
         leftToBeSpendTextView.text = getString(R.string.left_to_be_spend, amountToSpend.setScale(2).toString())
+
 
         val amountToPayLabelTextView = dialog.findViewById<TextView>(R.id.amount_to_pay_label_text_view)
         amountToPayLabelTextView.setText( SpannedText.getSpannedText(
@@ -141,6 +162,10 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
                 Log.e("ADD PAYMENT", obligationAmountEditText.text.toString())
                 addPayedObligation(obligation, BigDecimal(obligationAmountEditText.text.toString()))
                 dialog.dismiss()
+
+                val toSpend = countAmountToSpend()
+                val wholeAmount = BigDecimal(amountEditText.text.toString())
+                summaryTextView.setText(getString(R.string.payed_amount_with_currency,wholeAmount.minus(toSpend).setScale(2).toString(),wholeAmount.setScale(2).toString()))
             }
         }
 
@@ -192,9 +217,19 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
     }
 
-    private fun enableEditText(editText: EditText){
+    private fun enableEditText(editText: EditText) {
         editText.isFocusable = true
         editText.isFocusableInTouchMode = true
+
+    }
+    private fun countAmountToSpend(): BigDecimal {
+        var amount = BigDecimal(amountEditText.text.toString())
+        for( o in obligationsList){
+            amount = amount.minus(o.amount)
+        }
+        if (amount.compareTo(BigDecimal(0)) == -1)
+            return BigDecimal(-1)
+        return amount
     }
 
     private fun getObligationsToPay(obligations: ArrayList<ObligationEntity>, listAdapter: ObligationsToChooseListAdapter) {
