@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients
+package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.content.Context
 import android.view.LayoutInflater

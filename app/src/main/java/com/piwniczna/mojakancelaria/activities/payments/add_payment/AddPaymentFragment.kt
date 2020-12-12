@@ -1,9 +1,12 @@
-package com.piwniczna.mojakancelaria.activities.add_payment
+package com.piwniczna.mojakancelaria.activities.payments.add_payment
 
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.AsyncTask
 import android.os.Bundle
+import android.renderscript.ScriptGroup
+import android.text.InputType
+import android.text.method.KeyListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +19,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.client_details.ClientDetailsFragment
+import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.utils.Validator
 import java.math.BigDecimal
@@ -39,13 +42,21 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         dbService = DataService(this.context!!)
 
-
         nameEditText = view.findViewById(R.id.new_payment_name_edittext)
-        amountEditText = view.findViewById(R.id.new_payment_amount_edittext)
         dateButton = view.findViewById(R.id.payment_date_button)
         addObligationButton = view.findViewById(R.id.add_obligation_to_payment_button)
         obligationsListView = view.findViewById(R.id.obligations_of_payment_list_view)
         addButton = view.findViewById(R.id.save_payment_button)
+
+        amountEditText = view.findViewById(R.id.new_payment_amount_edittext)
+        amountEditText.setOnClickListener {
+            if (obligationsList.size > 0) {
+                val text = getText(R.string.cannot_edit_amount)
+                val duration = Toast.LENGTH_LONG
+                val toast = Toast.makeText(activity?.applicationContext, text, duration)
+                toast.show()
+            }
+        }
 
         addObligationButton.setOnClickListener { handleAddObligation(it) }
         addButton.setOnClickListener {handleSavePayment(it)}
@@ -55,21 +66,15 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, obligationsList, dbService, activity!!)
         obligationsListView.adapter = obligationsListAdapter
 
-        obligationsListView.setOnItemClickListener { parent, view, position, id ->
-            //TODO: edit amount (show dialog)
-        }
-
-        obligationsListView.setOnItemLongClickListener { parent, view, position, id ->
-            deletePayedObligation()
+        obligationsListView.setOnItemLongClickListener { _, _, position, _ ->
+            deletePayedObligation(position)
             true
         }
-
 
         return view
     }
 
     fun onBackPressed() {
-        // TODO: change it to PaymentsFragment
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
                 PaymentsFragment(client)
@@ -84,7 +89,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
             toast.show()
             return
         }
-        amountToSpend = countAmountToSpend()
 
         var dialog = Dialog(this.context!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -123,7 +127,6 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         val leftToBeSpendTextView = dialog.findViewById<TextView>(R.id.left_to_be_spend_text_view)
         leftToBeSpendTextView.text = getString(R.string.left_to_be_spend, amountToSpend.setScale(2).toString())
 
-
         val amountToPayLabelTextView = dialog.findViewById<TextView>(R.id.amount_to_pay_label_text_view)
         amountToPayLabelTextView.setText( SpannedText.getSpannedText(
                 getString(
@@ -151,23 +154,34 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
 
     private fun addPayedObligation(obligation: ObligationEntity, amount: BigDecimal) {
-        if (obligationsList.size == 0) {
-            amountEditText.isEnabled = false //TODO: set it to true, when length is again = 0 AND show info about this AND do onlick edittext
-        }
         obligationsList.add(RelationEntity(amount, client.id, obligation.id, 0))
+        if (obligationsList.size > 0) {
+            disableEditText(amountEditText)
+        }
         obligationsListAdapter.notifyDataSetChanged()
     }
 
-    private fun deletePayedObligation() {
-        //TODO: delete item and if length of list is ZERO set edittext.isEnable = true
+    private fun deletePayedObligation(position: Int) {
+        obligationsList.removeAt(position)
+        if (obligationsList.size == 0) {
+            enableEditText(amountEditText)
+        }
+        obligationsListAdapter.notifyDataSetChanged()
     }
 
-    private fun countAmountToSpend(): BigDecimal {
-        //TODO check obligationslist
-        return BigDecimal(69)
+    private fun disableEditText(editText: EditText){
+        editText.isFocusable = false
+        editText.isClickable = true
+
+    }
+
+    private fun enableEditText(editText: EditText){
+        editText.isFocusable = true
+        editText.isFocusableInTouchMode = true
     }
 
     private fun getObligationsToPay(obligations: ArrayList<ObligationEntity>, listAdapter: ObligationsToChooseListAdapter) {
+        //TODO: pomiń te które już mamy na liście obligationsList
         AsyncTask.execute{
             val ob = dbService.getNotPayedObligations(client.id)
             obligations.clear()
@@ -178,7 +192,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         }
     }
 
-    fun handleSavePayment(view: View) {
+    private fun handleSavePayment(view: View) {
         if (!validateData()) {
             return
         }
@@ -186,7 +200,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         Log.e("ADD PAYMENT", "save payment")
     }
 
-    fun handleOpenCalendar(view: View) {
+    private fun handleOpenCalendar(view: View) {
         val date = LocalDate.now()
         val day = date.dayOfMonth
         val month = date.monthValue

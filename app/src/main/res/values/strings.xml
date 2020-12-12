@@ -57,6 +57,7 @@
     <string name="left_to_be_spend">Pozostało do wydania %1$s zł</string>
     <string name="amount_to_pay_label"><![CDATA[Podaj kwotę do opłacenia zobowiązania <b>%1$s<</b> (%2$s/%3$s zł):]]> </string>
     <string name="cannot_add_obligation_without_amount">Nie można dodać zobowiązania, jeśli kwota wpłaty jest pusta!</string>
+    <string name="cannot_edit_amount">Aby zmienić kwotę wpłaty, usuń wszystkie opłacone zobowiązania.</string>
 
     <!-- Buttons -->
     <string name="delete">Usuń</string>

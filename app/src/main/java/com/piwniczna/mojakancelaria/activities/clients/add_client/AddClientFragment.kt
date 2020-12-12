@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.add_client
+package com.piwniczna.mojakancelaria.activities.clients.add_client
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -12,8 +12,7 @@ import android.widget.Toast
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
-import kotlinx.android.synthetic.main.fragment_add_client.*
+import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 
 class AddClientFragment : Fragment() {
     lateinit var clientEditText : EditText
@@ -34,7 +33,7 @@ class AddClientFragment : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ClientsFragment()
+                ClientsFragment()
         )?.commit()
     }
 
@@ -52,7 +51,7 @@ class AddClientFragment : Fragment() {
 
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ClientsFragment()
+                ClientsFragment()
         )?.commit()
 
     }

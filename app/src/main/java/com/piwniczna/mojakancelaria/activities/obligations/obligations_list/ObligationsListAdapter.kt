@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.obligations
+package com.piwniczna.mojakancelaria.activities.obligations.obligations_list
 
 import android.content.Context
 import android.view.LayoutInflater
