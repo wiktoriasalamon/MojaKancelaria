@@ -82,6 +82,16 @@ class DataService(context: Context) {
         return true
     }
 
+    fun deletePayment(payment: PaymentEntity){
+        val relationsList = db.getRelationsForPayment(payment.id)
+        for(r in relationsList){
+            var obligation = db.getObligation(r.obligationId)
+            obligation.payed = obligation.amount.minus(r.amount)
+            db.updateObligation(obligation)
+        }
+        db.deletePayment(payment)
+    }
+
     fun getPayments(clientId: Int) : ArrayList<PaymentEntity> {
         return ArrayList(db.getPayments(clientId))
     }

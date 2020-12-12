@@ -134,7 +134,7 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
             amountPrompt = amountToSpend.toString()
         }
         else{
-            amountPrompt = obligation.amount.minus(obligation.payed).toString()
+            amountPrompt = obligation.amount.minus(obligation.payed).setScale(2).toString()
         }
 
         obligationAmountEditText.setText(amountPrompt)
