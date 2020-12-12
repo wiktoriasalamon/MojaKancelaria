@@ -112,9 +112,5 @@ interface DAO {
     fun updateRelations(relations: List<RelationEntity>)
 
 
-    //todo? redirecting payment???????
-
-
-
 
 }
