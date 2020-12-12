@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.payments
+package com.piwniczna.mojakancelaria.activities.payments
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -76,7 +76,7 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
     private fun handleAddPayment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            AddPaymentFragment()
+            AddPaymentFragment(client)
         )?.commit()
     }
 

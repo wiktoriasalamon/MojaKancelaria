@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
@@ -12,7 +11,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
-import com.piwniczna.mojakancelaria.payments.PaymentsFragment
+import com.piwniczna.mojakancelaria.activities.payments.PaymentsFragment
 
 class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     lateinit var titleTextView: TextView

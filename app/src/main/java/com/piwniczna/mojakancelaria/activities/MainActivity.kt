@@ -12,7 +12,7 @@ import com.piwniczna.mojakancelaria.activities.clients.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.update_obligation.UpdateObligationFragment
-import com.piwniczna.mojakancelaria.payments.PaymentsFragment
+import com.piwniczna.mojakancelaria.activities.payments.PaymentsFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

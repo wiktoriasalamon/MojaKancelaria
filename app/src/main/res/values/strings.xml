@@ -33,6 +33,7 @@
     <string name="spinner_error">Wybierz rodzaj zobowiązania!</string>
     <string name="not_provided_data">Podaj dane!</string>
     <string name="date_not_provided">Podaj datę płatności!</string>
+    <string name="cannot_add_obligation_when_nothing_to_spend">Zobowiązania pokrywają całą wpłate!</string>
 
     <!-- Obligation details -->
     <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>?]]> </string>
@@ -48,7 +49,7 @@
     <string name="payments">Wpłaty</string>
     <string name="payment_amount">Kwota</string>
     <string name="new_payment">Nowa wpłata</string>
-    <string name="payed_obligations">Opłacone zobowiązania</string>
+    <string name="payed_obligations">Opłacone zobowiązania:</string>
     <string name="add">Dodaj</string>
     <string name="payment_date">Data wpłaty</string>
     <string name="name_not_provided">Podaj nazwę!</string>
@@ -66,4 +67,5 @@
     <string name="no">Nie</string>
     <string name="save">Zapisz</string>
     <string name="edit">Edytuj</string>
+    <string name="empty_amount_payed">0/0 zł</string>
 </resources>
