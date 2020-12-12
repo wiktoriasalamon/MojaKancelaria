@@ -224,11 +224,18 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
     private fun countAmountToSpend(): BigDecimal {
         var amount = BigDecimal(amountEditText.text.toString())
-        for( o in obligationsList){
+        Log.e("Start",amount.toString())
+        for( o in relationsList){
+            //todo: !!!!!!!!!!!
+            Log.e("loop", o.amount.toString())
             amount = amount.minus(o.amount)
         }
-        if (amount.compareTo(BigDecimal(0)) == -1)
+        Log.e("Am",amount.toString())
+        if (amount.compareTo(BigDecimal(0)) == -1) {
+            Log.e("ret","-1")
             return BigDecimal(-1)
+        }
+        Log.e("ret",amount.toString())
         return amount
     }
 
