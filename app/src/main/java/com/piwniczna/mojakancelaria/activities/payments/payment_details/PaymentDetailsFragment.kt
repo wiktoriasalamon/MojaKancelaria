@@ -36,19 +36,19 @@ class PaymentDetailsFragment(var client: ClientEntity, var payment: PaymentEntit
         val nameTextView = view.findViewById(R.id.payment_name_value) as TextView
         val amountTextView = view.findViewById(R.id.payment_amount_value) as TextView
         val paymentDateTextView = view.findViewById(R.id.payment_date_value) as TextView
-        val obligationsListView = view.findViewById<ListView>(R.id.obligations_of_payment_list_view)
+        val obligationsListView = view.findViewById<ListView>(R.id.obligations_of_payment_list_view_in_payment_details)
 
         relationsList = arrayListOf()
 
         obligationsAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!)
         obligationsListView.adapter = obligationsAdapter
 
-        getRealtionsFromDB()
+        getRelationsFromDB()
 
 
         nameTextView.text = payment.name
         amountTextView.text = getString(R.string.amount_with_currency, payment.amount.setScale(2).toString())
-        paymentDateTextView.text = payment.getDate()
+        paymentDateTextView.text = payment.convertDate()
 
         val deleteButton = view.findViewById(R.id.payment_delete_button) as Button
         deleteButton.setOnClickListener { deletePayment() }
@@ -56,9 +56,9 @@ class PaymentDetailsFragment(var client: ClientEntity, var payment: PaymentEntit
         return view
     }
 
-    private fun getRealtionsFromDB() {
+    private fun getRelationsFromDB() {
         AsyncTask.execute {
-            val relations = dbService.getRelations(client.id)
+            val relations = dbService.getRelations(payment)
             relationsList.clear()
             relationsList.addAll(relations)
             activity?.runOnUiThread {
@@ -70,37 +70,26 @@ class PaymentDetailsFragment(var client: ClientEntity, var payment: PaymentEntit
     private fun deletePayment() {
         val builder = AlertDialog.Builder(this.context)
 
-        val message = SpannedText.getSpannedText(getString(R.string.delete_obligation, payment.name))
+        val message = SpannedText.getSpannedText(getString(R.string.delete_payment, payment.name))
 
         builder.setTitle(R.string.warning)
         builder.setMessage(message)
 
-        builder.setPositiveButton(R.string.delete) { dialog, which ->
-
-            builder.setTitle(R.string.deleting_obligation)
-            builder.setMessage(R.string.are_you_sure)
-
-            builder.setPositiveButton(R.string.yes) { dialog, which -> deleteObligationFromDB() }
-
-            builder.setNegativeButton(R.string.no) { dialog, which -> }
-
-            builder.show()
-
-        }
+        builder.setPositiveButton(R.string.delete) { dialog, which -> deletePaymentFromDB() }
 
         builder.setNegativeButton(R.string.cancel) { dialog, which -> }
 
         builder.show()
     }
 
-    private fun deleteObligationFromDB() {
-        /*AsyncTask.execute {
-            dbService.deleteObligation(obligation)
+    private fun deletePaymentFromDB() {
+        AsyncTask.execute {
+            dbService.deletePayment(payment)
             fragmentManager?.beginTransaction()?.replace(
                     R.id.fragment_container,
-                    ObligationsFragment(client)
+                    PaymentsFragment(client)
             )?.commit()
-        }*/
+        }
     }
 
     fun onBackPressed() {
