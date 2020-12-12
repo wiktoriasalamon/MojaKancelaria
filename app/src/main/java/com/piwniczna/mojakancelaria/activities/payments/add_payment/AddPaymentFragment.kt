@@ -54,10 +54,8 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         amountEditText = view.findViewById(R.id.new_payment_amount_edittext)
         amountEditText.setOnClickListener {
             if (relationsList.size > 0) {
-                val text = getText(R.string.cannot_edit_amount)
-                val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(activity?.applicationContext, text, duration)
-                toast.show()
+                val text = getString(R.string.cannot_edit_amount)
+                toastMessage(text)
             }
         }
 
@@ -86,21 +84,17 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
     }
 
     private fun handleAddObligation(view: View) {
-        if(!Validator.validateAmount(amountEditText.text.toString(), this.context!!, activity?.applicationContext, false)) {
-            val text = getText(R.string.cannot_add_obligation_without_amount)
-            val duration = Toast.LENGTH_LONG
-            val toast = Toast.makeText(activity?.applicationContext, text, duration)
-            toast.show()
+        if(!Validator.validateAmount(amountEditText.text.toString(), this.context!!, activity?.applicationContext)) {
+            val text = getString(R.string.cannot_add_obligation_without_amount)
+            toastMessage(text)
             return
         }
 
         amountToSpend = countAmountToSpend()
 
         if (amountToSpend.compareTo(BigDecimal(0))==0){
-            val text = getText(R.string.cannot_add_obligation_when_nothing_to_spend)
-            val duration = Toast.LENGTH_LONG
-            val toast = Toast.makeText(activity?.applicationContext, text, duration)
-            toast.show()
+            val text = getString(R.string.cannot_add_obligation_when_nothing_to_spend)
+            toastMessage(text)
             return
         }
         var dialog = Dialog(this.context!!)
@@ -160,8 +154,19 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         val saveButton = dialog.findViewById<Button>(R.id.pay_obligation_save_button)
         saveButton.setOnClickListener {
-            if(Validator.validateAmount(obligationAmountEditText.text.toString(), this.context!!, activity?.applicationContext, true)) {
-                Log.e("ADD PAYMENT", obligationAmountEditText.text.toString())
+            if(!Validator.validateAmount(obligationAmountEditText.text.toString(), this.context!!, activity?.applicationContext)) {
+                val text = getString(R.string.wrong_amount)
+                toastMessage(text)
+            }
+            else if(BigDecimal(obligationAmountEditText.text.toString()).compareTo(obligation.amount.minus(obligation.payed))==1){
+                val text = getString(R.string.too_large_amount)
+                toastMessage(text)
+            }
+            else if(BigDecimal(obligationAmountEditText.text.toString()).compareTo(countAmountToSpend())==1){
+                val text = getString(R.string.amount_bigger_than_left)
+                toastMessage(text)
+            }
+            else{
                 addPayedObligation(obligation, BigDecimal(obligationAmountEditText.text.toString()))
                 dialog.dismiss()
 
@@ -320,9 +325,13 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
 
         // TODO: check obligations list
 
-        val duration = Toast.LENGTH_LONG
-        val toast = Toast.makeText(activity?.applicationContext, text, duration)
-        toast.show()
+        toastMessage(text)
         return false
+    }
+
+    private fun toastMessage(message: String) {
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(activity?.applicationContext, message, duration)
+        toast.show()
     }
 }
