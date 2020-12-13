@@ -60,7 +60,7 @@ class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragme
 
         relationsList = arrayListOf()
         obligationsList = arrayListOf()
-        obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!, case)
+        obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!)
         obligationsListView.adapter = obligationsListAdapter
 
         obligationsListView.setOnItemLongClickListener { _, _, position, _ ->

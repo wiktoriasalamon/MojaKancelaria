@@ -18,8 +18,7 @@ class ObligationsOfPaymentListAdapter(
         context: Context,
         var data: ArrayList<RelationEntity>,
         var dbService: DataService,
-        val activity: FragmentActivity,
-        val case: CaseEntity) :
+        val activity: FragmentActivity) :
         ArrayAdapter<RelationEntity>(context, R.layout.layout_obligations_list_item, data) {
 
     internal class ViewHolder {
@@ -46,6 +45,7 @@ class ObligationsOfPaymentListAdapter(
 
         AsyncTask.execute {
             val ob = dbService.getObligation(data[position].obligationId)
+            val case = dbService.getCase(ob.caseId)
             activity.runOnUiThread {
                 holder.titleTextView!!.text=ob.name
                 holder.amountTextView!!.text= context.resources.getString(R.string.plus_amount_with_currency, data[position].amount.setScale(2).toString())

@@ -71,8 +71,14 @@ interface DAO {
     @Query("SELECT * FROM clients WHERE id = :id LIMIT 1")
     fun getClient(id: Int): ClientEntity
 
-    @Query("SELECT * FROM clients")
+    @Query("SELECT * FROM clients WHERE (id % 2) = 0")
     fun getClients(): List<ClientEntity>
+
+    @Query("SELECT * FROM clients WHERE (id % 2) = 1")
+    fun getArchivalClients(): List<ClientEntity>
+
+    @Query("SELECT * FROM cases WHERE id = :id LIMIT 1")
+    fun getCase(id: Int): CaseEntity
 
     @Query("SELECT * FROM cases WHERE ClientId = :clientId")
     fun getCases(clientId: Int): List<CaseEntity>
@@ -134,5 +140,8 @@ interface DAO {
 
     @Update
     fun updateClient(client: ClientEntity)
+
+    @Update
+    fun updateCase(case: CaseEntity)
 
 }

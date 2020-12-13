@@ -25,22 +25,56 @@ class DataService(context: Context) {
         db.deleteCase(case)
     }
 
+    fun getCase(caseId: Int): CaseEntity {
+        return db.getCase(caseId)
+    }
+
     fun getCases(client: ClientEntity): ArrayList<CaseEntity> {
         return ArrayList(db.getCases(client.id))
+    }
+
+    fun setCaseArchival(case: CaseEntity) {
+        case.clientId = case.clientId + 1 //change client to archival version of client
+        db.updateCase(case)
     }
 
     //clients
     fun addClient(client: ClientEntity){
         db.addClient(client)
+        db.addClient(client) //to make archival version of client
     }
 
-    fun deleteClient(client: ClientEntity){
+    fun deleteClient(client: ClientEntity): Boolean{
+        if(client.id % 2 == 1) {
+            return false //activeClient has even id
+        }
+        val cases = getCases(client)
+        for (c in cases) {
+            setCaseArchival(c)
+        }
         db.deleteClient(client)
+        return true
+    }
+
+    fun deleteArchivalClient(client: ClientEntity): Boolean {
+        if(client.id % 2 == 0) {
+            return false //archivalClient has odd id
+        }
+        val activeClient = getClient(client.id - 1)
+        if (activeClient != null) {
+            return false //cannot delete archivalClient if activeClient exists
+        }
+        db.deleteClient(client)
+        return true
     }
 
     fun getClients(): ArrayList<ClientEntity> {
-        val toReturn = ArrayList(db.getClients())
-        toReturn.remove(ClientEntity("root",999999))
+        return ArrayList(db.getClients())
+    }
+
+    fun getArchivalClients(): ArrayList<ClientEntity> {
+        val toReturn = ArrayList(db.getArchivalClients())
+        toReturn.remove(ClientEntity("root",1)) //root client has also odd id
         return toReturn
     }
 
@@ -73,7 +107,7 @@ class DataService(context: Context) {
     fun deleteObligation(obligation: ObligationEntity) {
         var relations = db.getRelationsForObligation(obligation.id)
         for(r in relations){
-            r.obligationId = 999999
+            r.obligationId = 1
         }
         db.updateRelations(relations)
 
