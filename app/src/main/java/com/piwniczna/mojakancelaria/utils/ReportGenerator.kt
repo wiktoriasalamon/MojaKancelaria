@@ -43,7 +43,6 @@ class ReportGenerator {
             }
 
             var toReturn =""
-
             toReturn += "<html>\n" +
                     "    <head>\n" +
                     "    <style>\n" +
@@ -72,24 +71,30 @@ class ReportGenerator {
                     "    </head>\n" +
                     "    <body>"
 
-            toReturn += "<h1>Podsumowanie na dzien ${DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now())}</h1>" +
+            toReturn +=
+                    "<h1>Podsumowanie na dzien ${DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now())}</h1>" +
                     "<h3>Klient: ${client.name}</br>Sprawa: ${case.name}</h3>" +
                     "<hr><hr>"
 
-            toReturn += "<h3>Koszt calkowity: ${summary.setScale(2)} zl</br>" +
+            toReturn +=
+                    "<h3>Koszt calkowity: ${summary.setScale(2)} zl</br>" +
                     "Oplacono: ${payed.setScale(2)} zl</br>" +
                     "Pozostalo do oplacenia: ${summary.minus(payed).setScale(2)} zl</h3>" +
                     "<hr><hr>"
 
             for(o in obligationsList){
-                toReturn += "<h4>Zobowiazanie: ${o.name} (${ObligationHelper.getTypeString(o.type, context)})</h4>" +
+                toReturn +=
+                        "<h4>Zobowiazanie: ${o.name} (${ObligationHelper.getTypeString(o.type, context)})</h4>" +
                         "<p>Termin platnosci: ${o.convertPaymentDate()}</br>" +
                         "Kwota: ${o.amount.setScale(2)} zl</br>" +
-                        "Oplacono: ${o.payed.setScale(2)} zl<p></br>"
+                        "Oplacono: ${o.payed.setScale(2)} zl"
 
                 if(o.amount.minus(o.payed).setScale(2).compareTo(BigDecimal.ZERO)!=0) {
-                    toReturn += "<p>Pozostalo: ${o.amount.minus(o.payed).setScale(2)}</p>"
+                    toReturn += "</br>Pozostalo do oplacenia: ${o.amount.minus(o.payed).setScale(2)}"
                 }
+                toReturn += "</p>"
+
+
                 val relationsList = dbService.getRelations(o)
                 val paymentsList = dbService.getPayments(relationsList)
                 if(relationsList.size==0){
@@ -97,7 +102,8 @@ class ReportGenerator {
                     continue
                 }
                 var table = "<table>"
-                table += "<tr>" +
+                table +=
+                        "<tr>" +
                         "    <th>Nazwa wplaty</th>" +
                         "    <th>Kwota</th>" +
                         "    <th>Data platnosci</th>" +
@@ -111,8 +117,6 @@ class ReportGenerator {
                 table += "</table><hr>"
                 toReturn += table
             }
-
-
 
             return toReturn + "</body></html>"
         }

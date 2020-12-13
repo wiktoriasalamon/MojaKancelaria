@@ -4,36 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="20dp"
     android:gravity="center"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
-    <TextView
-        android:id="@+id/case_details_client"
-        style="@style/title_style"
-        android:layout_margin="0dp"
-        android:drawableLeft="@drawable/user"
-        android:drawablePadding="10dp"
-        android:textAlignment="textStart"
-        android:textSize="20dp"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:text="Jan Kowalski"/>
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
 
         <TextView
-            style="@style/title_style"
-            android:layout_margin="0dp"
-
-            android:layout_width="wrap_content"
+            android:id="@+id/client_name_title"
+            style="@style/double_title_style"
+            android:drawableLeft="@drawable/user"
+            android:text="Jan Kowalski"/>
+`
+        <TextView
+            android:id="@+id/case_name_title"
+            style="@style/double_title_style"
             android:drawableLeft="@drawable/file"
-            android:textSize="20dp"
-            android:drawablePadding="10dp"
-            android:id="@+id/case_details_name"
             android:text="Case Name"/>
 
     </LinearLayout>
@@ -41,7 +31,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

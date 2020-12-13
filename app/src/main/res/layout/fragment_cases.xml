@@ -16,7 +16,8 @@
         android:drawableLeft="@drawable/user"
         android:drawablePadding="10dp"
         android:textAlignment="textStart"
-        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_gravity="left"
         android:layout_width="wrap_content"
         android:text="Client Name">
 
@@ -27,7 +28,7 @@
         android:layout_height="30dp"
         android:text = "Sprawy:"
         android:textSize="20sp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         android:fontFamily="@font/quicksand_semibold"
         />

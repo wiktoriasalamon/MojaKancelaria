@@ -8,11 +8,11 @@
         style="@style/input_style"
 
         android:id="@+id/editText"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:textIsSelectable="false"
         android:inputType="numberPassword"
         android:padding="20dp"
-        android:hint="@string/new_password_code_hint"/>
+        android:hint="@string/security_question_hint"/>
 
 </LinearLayout>

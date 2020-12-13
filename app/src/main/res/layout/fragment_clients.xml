@@ -23,7 +23,7 @@
         android:layout_height="30dp"
         android:text = "Klienci:"
         android:textSize="20sp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         android:fontFamily="@font/quicksand_semibold"
         />
