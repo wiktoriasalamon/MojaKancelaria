@@ -37,7 +37,7 @@ class PaymentDetailsFragment(var client: ClientEntity, val case: CaseEntity, var
 
         relationsList = arrayListOf()
 
-        obligationsAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!)
+        obligationsAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!, case)
         obligationsListView.adapter = obligationsAdapter
 
         getRelationsFromDB()
