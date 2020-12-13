@@ -1,18 +1,27 @@
 package com.piwniczna.mojakancelaria.activities.cases.case_details
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
+import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
+import com.piwniczna.mojakancelaria.utils.EmailSender
+import com.piwniczna.mojakancelaria.utils.ReportGenerator
 
 class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
     lateinit var clientTextView: TextView
@@ -48,6 +57,10 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
 
     private fun sendReport(view: View) {
         //todo
+        AsyncTask.execute {
+            var reports = ReportGenerator.generateReport(case, this.context!!)
+            EmailSender.sendEmail(this.context!!, reports[0], reports[1], "test@test.com")
+        }
     }
 
     private fun archiveCase(view: View) {
@@ -74,4 +87,5 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
                 PaymentsFragment(client, case)
         )?.commit()
     }
+
 }
