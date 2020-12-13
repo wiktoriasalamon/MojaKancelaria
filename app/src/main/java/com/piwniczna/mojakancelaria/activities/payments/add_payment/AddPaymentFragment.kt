@@ -104,7 +104,7 @@ class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragme
 
         var obligationsToChoose = arrayListOf<ObligationEntity>()
         val obligationsToChooseListView = dialog.findViewById(R.id.obligations_to_choose_list_view) as ListView
-        val obligationsToChooseListAdapter = ObligationsToChooseListAdapter(this.context!!, obligationsToChoose)
+        val obligationsToChooseListAdapter = ObligationsToChooseListAdapter(this.context!!, obligationsToChoose, case)
         obligationsToChooseListView.adapter = obligationsToChooseListAdapter
 
         getObligationsToPay(obligationsToChoose, obligationsToChooseListAdapter)

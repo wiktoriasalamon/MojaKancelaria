@@ -72,6 +72,7 @@
     <string name="money_left">Nie pokryto całej kwoty wpłaty!</string>
     <string name="deleting_payment">Usuwanie płatności</string>
     <string name="delete_payment"><![CDATA[Czy na pewno chcesz usunąć płatność <b>%1$s<</b>? Cofnie to wpłacone kwoty na poczet wszystkich zobowiązań!]]> </string>
+    <string name="case_and_type">%1$s (%2$s)</string>
 
     <!-- Buttons -->
     <string name="delete">Usuń</string>

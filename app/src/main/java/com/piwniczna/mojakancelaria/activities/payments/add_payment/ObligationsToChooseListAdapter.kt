@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.utils.ObligationHelper
 
-class ObligationsToChooseListAdapter(context: Context, var data: ArrayList<ObligationEntity>) :
+class ObligationsToChooseListAdapter(context: Context, var data: ArrayList<ObligationEntity>, val case: CaseEntity) :
         ArrayAdapter<ObligationEntity>(context, R.layout.layout_obligations_to_pay_list_item, data) {
 
     internal class ViewHolder {
         var titleTextView: TextView? = null
         var amountTextView: TextView? = null
+        var caseAndTypeTextView: TextView? = null
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -26,13 +29,22 @@ class ObligationsToChooseListAdapter(context: Context, var data: ArrayList<Oblig
             val viewHolder = ViewHolder()
             viewHolder.titleTextView = view!!.findViewById(R.id.obligation_to_pay_title)
             viewHolder.amountTextView = view!!.findViewById(R.id.obligation_to_pay_amount)
+            viewHolder.caseAndTypeTextView = view!!.findViewById(R.id.obligation_to_pay_case_and_type)
             view.tag=viewHolder
         }
 
         val holder = view.tag as ViewHolder
 
         holder.titleTextView!!.text = data[position].name
-        holder.amountTextView!!.text = context.resources.getString(R.string.payed_amount_with_currency, data[position].payed.setScale(2).toString(), data[position].amount.setScale(2).toString())
+        holder.amountTextView!!.text = context.resources.getString(
+                R.string.payed_amount_with_currency,
+                data[position].payed.setScale(2).toString(),
+                data[position].amount.setScale(2).toString())
+        holder.caseAndTypeTextView!!.text = context.resources.getString(
+                R.string.case_and_type,
+                case.name,
+                ObligationHelper.getTypeString(data[position].type, context)
+        )
 
         return view
     }
