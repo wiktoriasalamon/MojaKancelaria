@@ -43,15 +43,6 @@
         android:fontFamily="@font/quicksand_semibold"
         />
 
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:text = "Filtry:"
-        android:textSize="19sp"
-        android:layout_marginLeft="15dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/quicksand_semibold"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
