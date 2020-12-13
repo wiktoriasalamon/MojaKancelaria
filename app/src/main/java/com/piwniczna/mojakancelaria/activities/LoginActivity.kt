@@ -3,6 +3,7 @@ package com.piwniczna.mojakancelaria.activities
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -98,13 +99,23 @@ class LoginActivity : AppCompatActivity() {
 
     fun setPin(newPin:String) {
         AsyncTask.execute {
-            val pinHash = Hashing.sha256()
-                    .hashString(newPin, StandardCharsets.UTF_8)
-                    .toString()
-            dbService.addNewPassword(PasswordEntity(pinHash))
-            dbService.addClient(ClientEntity("root",999999))
-            dbService.addCase(CaseEntity(999999,"root_case",999999))
-            dbService.addObligation(ObligationEntity(999999,999999, ObligationType.CONTRACT,"Usunięte zobowiązanie", BigDecimal.ZERO,BigDecimal.ZERO, LocalDate.now(),LocalDate.now(),999999))
+            if (newPin.length < 5) {
+                runOnUiThread {
+                    val text = R.string.weak_pin_toast
+                    val duration = Toast.LENGTH_LONG
+                    val toast = Toast.makeText(applicationContext, text, duration)
+                    toast.show()
+                }
+            }
+            else {
+                val pinHash = Hashing.sha256()
+                        .hashString(newPin, StandardCharsets.UTF_8)
+                        .toString()
+                dbService.addNewPassword(PasswordEntity(pinHash))
+                dbService.addClient(ClientEntity("root", 999999))
+                dbService.addCase(CaseEntity(999999, "root_case", 999999))
+                dbService.addObligation(ObligationEntity(999999, 999999, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 999999))
+            }
         }
     }
 }
