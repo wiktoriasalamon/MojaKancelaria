@@ -60,13 +60,16 @@
             <Button
                 android:id="@+id/archive_button"
                 android:text="Archiwizuj"
-                style="@style/small_menu_card_button_style">
+                style="@style/small_menu_card_button_style"
+                android:drawableLeft="@drawable/archive"
+                android:layout_weight="1">
             </Button>
             <Button
                 android:id="@+id/report_button"
                 android:text="Raport"
                 style="@style/small_menu_card_button_style"
-               >
+                android:drawableLeft="@drawable/report"
+                android:layout_weight="4">
             </Button>
 
         </LinearLayout>

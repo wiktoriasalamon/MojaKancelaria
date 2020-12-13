@@ -38,7 +38,7 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
         paymentsButton.setOnClickListener { openPaymentsFragment(it) }
 
         archiveButton = view.findViewById(R.id.archive_button)
-        archiveButton.setOnClickListener { archivizeCase(it) }
+        archiveButton.setOnClickListener { archiveCase(it) }
 
         reportButton = view.findViewById(R.id.report_button)
         reportButton.setOnClickListener { sendReport(it) }
@@ -50,7 +50,7 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
         //todo
     }
 
-    private fun archivizeCase(view: View) {
+    private fun archiveCase(view: View) {
         //todo
     }
 
