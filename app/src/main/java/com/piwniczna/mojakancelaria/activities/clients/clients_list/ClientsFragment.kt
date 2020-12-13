@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
@@ -32,6 +34,9 @@ class ClientsFragment: Fragment() {
 
         val addButton = view.findViewById<Button>(R.id.add_client_button)
         addButton.setOnClickListener { handleAddClient(it) }
+
+        val archivesButton = view.findViewById<ImageButton>(R.id.archives_button)
+        archivesButton.setOnClickListener { handleOpenArchives(it) }
 
         clientsListView = view.findViewById(R.id.clients_list_view) as ListView
         clientsList = arrayListOf()
@@ -121,6 +126,13 @@ class ClientsFragment: Fragment() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
                 AddClientFragment()
+        )?.commit()
+    }
+
+    private fun handleOpenArchives(view: View) {
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.fragment_container,
+            ArchivalClientsFragment()
         )?.commit()
     }
 

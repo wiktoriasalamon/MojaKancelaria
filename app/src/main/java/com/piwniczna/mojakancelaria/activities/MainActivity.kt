@@ -6,6 +6,7 @@ import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import androidx.appcompat.app.AppCompatActivity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 is AddPaymentFragment -> f.onBackPressed()
                 is PaymentsFragment -> f.onBackPressed()
                 is PaymentDetailsFragment -> f.onBackPressed()
+                is ArchivalClientsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }
