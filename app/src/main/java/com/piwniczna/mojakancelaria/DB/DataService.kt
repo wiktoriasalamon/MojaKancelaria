@@ -44,6 +44,10 @@ class DataService(context: Context) {
         return toReturn
     }
 
+    fun getClient(clientId: Int): ClientEntity {
+        return db.getClient(clientId)
+    }
+
 
     //obligations
     fun addObligation(obligation: ObligationEntity){
@@ -117,6 +121,14 @@ class DataService(context: Context) {
         return ArrayList(db.getPayments(caseId))
     }
 
+    fun getPayments(relations: ArrayList<RelationEntity>) : ArrayList<PaymentEntity> {
+        var listToRet = arrayListOf<PaymentEntity>()
+        for(r in relations){
+            listToRet.add(db.getPayment(r.paymentId))
+        }
+        return listToRet
+    }
+
 
     //relations
     fun getRelations(caseId: Int) : ArrayList<RelationEntity> {
@@ -125,5 +137,9 @@ class DataService(context: Context) {
 
     fun getRelations(payment: PaymentEntity) : ArrayList<RelationEntity> {
         return ArrayList(db.getRelationsForPayment(payment.id))
+    }
+
+    fun getRelations(obligation: ObligationEntity) : ArrayList<RelationEntity> {
+        return ArrayList(db.getRelationsForObligation(obligation.id))
     }
 }
