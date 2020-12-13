@@ -12,6 +12,7 @@ import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObl
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
@@ -48,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         for (f in fragments) {
             if (f == null) { continue }
             when (f) {
+                is ClientsFragment -> f.onBackPressed()
+                is AddClientFragment -> f.onBackPressed()
                 is CasesFragment -> f.onBackPressed()
                 is AddCaseFragment -> f.onBackPressed()
                 is CaseDetailsFragment -> f.onBackPressed()
@@ -58,7 +61,6 @@ class MainActivity : AppCompatActivity() {
                 is AddPaymentFragment -> f.onBackPressed()
                 is PaymentsFragment -> f.onBackPressed()
                 is PaymentDetailsFragment -> f.onBackPressed()
-                is CasesFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }
