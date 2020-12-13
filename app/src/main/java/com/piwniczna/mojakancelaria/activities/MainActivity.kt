@@ -9,6 +9,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
 import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
+import com.piwniczna.mojakancelaria.activities.archives.obligations.ArchivalObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                 is ArchivalClientsFragment -> f.onBackPressed()
                 is ArchivalCasesFragment -> f.onBackPressed()
                 is ArchivalCaseDetailsFragment -> f.onBackPressed()
+                is ArchivalObligationsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

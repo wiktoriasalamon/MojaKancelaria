@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.archives.obligations.ArchivalObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
@@ -67,7 +68,7 @@ class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity
     private fun openObligationsFragment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ObligationsFragment(client, case)
+                ArchivalObligationsFragment(client, case)
         )?.commit()
     }
 
