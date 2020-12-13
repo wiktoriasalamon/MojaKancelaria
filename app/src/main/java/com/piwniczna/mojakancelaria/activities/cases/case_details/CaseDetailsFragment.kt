@@ -19,6 +19,8 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
     lateinit var paymentsButton: Button
+    lateinit var archiveButton: Button
+    lateinit var reportButton: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_case_details, container, false)
@@ -35,7 +37,21 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
         paymentsButton = view.findViewById(R.id.payments_button)
         paymentsButton.setOnClickListener { openPaymentsFragment(it) }
 
+        archiveButton = view.findViewById(R.id.archive_button)
+        archiveButton.setOnClickListener { archivizeCase(it) }
+
+        reportButton = view.findViewById(R.id.report_button)
+        reportButton.setOnClickListener { sendReport(it) }
+
         return view
+    }
+
+    private fun sendReport(view: View) {
+        //todo
+    }
+
+    private fun archivizeCase(view: View) {
+        //todo
     }
 
     fun onBackPressed() {
