@@ -10,18 +10,23 @@
 
     >
 
-    <EditText
-        android:id="@+id/search_clients_edittext"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        style="@style/search_input_style"
-        >
-    </EditText>
+    <TextView
+        android:id="@+id/client_cases_title"
+        style="@style/title_style"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="10dp"
+        android:textAlignment="textStart"
+        android:layout_margin="20dp"
+        android:layout_gravity="left"
+        android:layout_width="wrap_content"
+        android:text="Client Name">
+
+    </TextView>
 
     <TextView
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:text = "Klienci:"
+        android:text = "Sprawy:"
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
         android:textColor="@color/black"
@@ -30,7 +35,7 @@
 
     <ListView
         android:layout_marginTop="10dp"
-        android:id="@+id/clients_list_view"
+        android:id="@+id/clients_cases_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
@@ -38,27 +43,6 @@
         android:layout_weight="1">
 
     </ListView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:id="@+id/archives_button"
-            style="@style/archives_button_style" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/add_client_button"
-            style="@style/add_button_style" />
-    </LinearLayout>
-
-
-
 
 
 </LinearLayout>

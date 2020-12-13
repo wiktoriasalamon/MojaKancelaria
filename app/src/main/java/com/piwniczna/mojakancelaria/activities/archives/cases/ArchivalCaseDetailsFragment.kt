@@ -1,16 +1,13 @@
-package com.piwniczna.mojakancelaria.activities.cases.case_details
+package com.piwniczna.mojakancelaria.activities.archives.cases
 
-import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
-import android.text.Spanned
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
@@ -20,10 +17,8 @@ import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFr
 import com.piwniczna.mojakancelaria.utils.EmailSender
 import com.piwniczna.mojakancelaria.utils.PdfGenerator
 import com.piwniczna.mojakancelaria.utils.ReportGenerator
-import com.piwniczna.mojakancelaria.utils.SpannedText
-import java.math.BigDecimal
 
-class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
+class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
     lateinit var clientTextView: TextView
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
@@ -31,11 +26,8 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
     lateinit var archiveButton: Button
     lateinit var reportButton: Button
 
-    lateinit var dbService: DataService
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_case_details, container, false)
-        dbService = DataService(this.context!!)
+        val view = inflater.inflate(R.layout.fragment_archival_case_details, container, false)
 
         clientTextView = view.findViewById(R.id.client_name_title)
         clientTextView.text = client.name
@@ -49,13 +41,8 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
         paymentsButton = view.findViewById(R.id.payments_button)
         paymentsButton.setOnClickListener { openPaymentsFragment(it) }
 
-        archiveButton = view.findViewById(R.id.archive_button)
-        archiveButton.setOnClickListener { archiveCase(it) }
-
         reportButton = view.findViewById(R.id.report_button)
         reportButton.setOnClickListener { sendReport(it) }
-
-
 
         return view
     }
@@ -70,66 +57,10 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
         }
     }
 
-    private fun archiveCase(view: View) {
-        var toPay = BigDecimal.ZERO
-        AsyncTask.execute {
-            val obligations = dbService.getObligations(case.id)
-            for (o in obligations) {
-                toPay = toPay.add(o.amount.minus(o.payed))
-            }
-            activity?.runOnUiThread{
-
-                val builder = AlertDialog.Builder(this.context)
-
-                val caseName = case.name
-                var message: Spanned?
-
-                if (toPay.compareTo(BigDecimal.ZERO)!=0){
-                    message = SpannedText.getSpannedText(getString(R.string.archive_not_payed,caseName,toPay.setScale(2).toString()))
-                }
-                else{
-                    message = SpannedText.getSpannedText(getString(R.string.archive_payed,caseName))
-                }
-
-
-                builder.setTitle(R.string.warning)
-                builder.setMessage(message)
-
-                builder.setPositiveButton(R.string.move) { dialog, which ->
-
-                    builder.setTitle("Przenoszenie do archiwum")
-                    builder.setMessage(R.string.are_you_sure)
-
-                    builder.setPositiveButton(R.string.yes) { dialog, which -> moveCaseToArchives(case) }
-
-                    builder.setNegativeButton(R.string.no) { dialog, which -> }
-
-                    builder.show()
-
-                }
-
-                builder.setNegativeButton(R.string.cancel) { dialog, which -> }
-
-                builder.show()
-
-
-            }
-        }
-
-    }
-
-    fun moveCaseToArchives(case: CaseEntity){
-        AsyncTask.execute {
-            dbService.setCaseArchival(case)
-            onBackPressed()
-        }
-
-    }
-
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                CasesFragment(client)
+                ArchivalCasesFragment(client)
         )?.commit()
     }
 

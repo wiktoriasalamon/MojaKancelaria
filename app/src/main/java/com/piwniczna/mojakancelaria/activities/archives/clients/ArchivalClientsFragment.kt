@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.clients.clients_list
+package com.piwniczna.mojakancelaria.activities.archives.clients
 
 import android.app.AlertDialog
 import android.os.AsyncTask
@@ -8,47 +8,40 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
+import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
-import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsListAdapter
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
-class ClientsFragment: Fragment() {
-    lateinit var clientsListAdapter: ClientsListAdapter
+class ArchivalClientsFragment(): Fragment() {
+    lateinit var clientsListAdapter: ArchivalClientsListAdapter
     lateinit var clientsListView : ListView
     lateinit var clientsList: ArrayList<ClientEntity>
     lateinit var searchClientsEditText: EditText
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_clients, container, false)
+        val view = inflater.inflate(R.layout.fragment_archival_clients, container, false)
         dbService = DataService(this.context!!)
-
-        val addButton = view.findViewById<Button>(R.id.add_client_button)
-        addButton.setOnClickListener { handleAddClient(it) }
-
-        val archivesButton = view.findViewById<ImageButton>(R.id.archives_button)
-        archivesButton.setOnClickListener { handleOpenArchives(it) }
 
         clientsListView = view.findViewById(R.id.clients_list_view) as ListView
         clientsList = arrayListOf()
-        clientsListAdapter = ClientsListAdapter(this.context!!, clientsList)
+        clientsListAdapter = ArchivalClientsListAdapter(this.context!!, clientsList, activity!!)
         clientsListView.adapter = clientsListAdapter
 
         clientsListView.setOnItemClickListener { _, _, position, _ ->
-            openClientCasesFragment(position)
+            openArchivalClientCasesFragment(position)
         }
 
         clientsListView.setOnItemLongClickListener { _, _, position, id ->
-            deleteClient(position, id)
+            deleteArchivalClient(position, id)
             true
         }
 
@@ -73,12 +66,15 @@ class ClientsFragment: Fragment() {
     }
 
     fun onBackPressed() {
-        this.activity?.finish()
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.fragment_container,
+            ClientsFragment()
+        )?.commit()
     }
 
     private fun getClientsFromDB() {
         AsyncTask.execute {
-            val clients = dbService.getClients()
+            val clients = dbService.getArchivalClients()
             clientsList.clear()
             clientsList.addAll(clients)
             activity?.runOnUiThread {
@@ -87,7 +83,7 @@ class ClientsFragment: Fragment() {
         }
     }
 
-    private fun deleteClient(position: Int, id: Long) {
+    private fun deleteArchivalClient(position: Int, id: Long) {
         val builder = AlertDialog.Builder(this.context)
 
         val clientName = clientsListAdapter.data[position].name
@@ -116,30 +112,18 @@ class ClientsFragment: Fragment() {
 
     private fun deleteClientFromDB(position: Int) {
         AsyncTask.execute {
-            dbService.deleteClient(clientsList[position])
+            /* TODO check what this function return
+               check if deleting is posible */
+            dbService.deleteArchivalClient(clientsList[position])
             getClientsFromDB()
         }
 
     }
 
-    private fun handleAddClient(view: View) {
-        fragmentManager?.beginTransaction()?.replace(
-                R.id.fragment_container,
-                AddClientFragment()
-        )?.commit()
-    }
-
-    private fun handleOpenArchives(view: View) {
+    private fun openArchivalClientCasesFragment(clientPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ArchivalClientsFragment()
-        )?.commit()
-    }
-
-    private fun openClientCasesFragment(clientPosition: Int) {
-        fragmentManager?.beginTransaction()?.replace(
-                R.id.fragment_container,
-                CasesFragment(clientsList[clientPosition])
+            ArchivalCasesFragment(clientsList[clientPosition])
         )?.commit()
     }
 }

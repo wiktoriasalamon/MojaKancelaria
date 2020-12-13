@@ -8,6 +8,7 @@
 
     <TextView
         style="@style/clients_list_item_style"
+        android:layout_height="70dp"
         android:id="@+id/case_name"
         android:text="Sprawa"
         android:drawableLeft="@drawable/file"
