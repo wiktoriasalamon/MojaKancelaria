@@ -3,7 +3,6 @@ package com.piwniczna.mojakancelaria.activities.cases.cases_list
 import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.cases.add_client.AddCaseFragment
+import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment

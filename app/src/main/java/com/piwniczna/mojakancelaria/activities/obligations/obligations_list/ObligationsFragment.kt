@@ -65,6 +65,9 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
         val clientNameTextView = view.findViewById<TextView>(R.id.obligations_client_name)
         clientNameTextView.text = client.name
 
+        val caseNameTextView = view.findViewById<TextView>(R.id.obligations_case_name)
+        caseNameTextView.text = case.name
+
         getObligationsFromDB()
 
         return view

@@ -50,6 +50,9 @@ class PaymentDetailsFragment(var client: ClientEntity, val case: CaseEntity, var
         val deleteButton = view.findViewById(R.id.payment_delete_button) as Button
         deleteButton.setOnClickListener { deletePayment() }
 
+        val clientNameTextView = view.findViewById<TextView>(R.id.payment_client_name)
+        clientNameTextView.text = client.name
+
         return view
     }
 

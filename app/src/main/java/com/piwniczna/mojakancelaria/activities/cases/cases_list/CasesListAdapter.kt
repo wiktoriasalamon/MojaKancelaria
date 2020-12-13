@@ -24,10 +24,10 @@ class CasesListAdapter(context: Context, var data: ArrayList<CaseEntity>) :
         var view = convertView
         if (view == null) {
             val inflater = LayoutInflater.from(context)
-            view = inflater.inflate(R.layout.layout_clients_list_item, parent, false)
+            view = inflater.inflate(R.layout.layout_cases_list_item, parent, false)
 
             val viewHolder = ViewHolder()
-            viewHolder.nameTextView=view!!.findViewById(R.id.clientName)
+            viewHolder.nameTextView=view!!.findViewById(R.id.case_name)
 
             view.tag=viewHolder
         }

@@ -7,6 +7,7 @@
     <string name="login_successful_toast">Logowanie…</string>
     <string name="login_failed_toast">Zły pin…</string>
     <string name="new_password_code_hint">Podaj nowy pin:</string>
+    <string name="weak_pin_toast">Za prosty PIN!\npodaj minimum 5 znaków!</string>
     <!-- Alert Dialog -->
     <string name="warning">Uwaga!</string>
     <string name="are_you_sure">Na pewno?</string>
@@ -22,6 +23,7 @@
     <string name="delete_client_case"><![CDATA[Czy na pewno chcesz usunąć sprawę <b>%1$s<</b> klienta <b>%2$s<</b> oraz wszystkie dane sprawy?]]> </string>
     <string name="deleting_case">Usuwanie sprawy</string>
     <string name="empty_case_warning">Nazwa sprawy nie może być pusta!</string>
+    <string name="new_case_hint">Nazwa nowej sprawy</string>
 
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>

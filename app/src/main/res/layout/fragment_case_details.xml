@@ -7,6 +7,11 @@
     android:paddingTop="20dp"
     android:gravity="center"
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
     <TextView
         android:id="@+id/case_details_client"
         style="@style/title_style"
@@ -14,15 +19,24 @@
         android:drawableLeft="@drawable/user"
         android:drawablePadding="10dp"
         android:textAlignment="textStart"
+        android:textSize="20dp"
+        android:layout_weight="1"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:text="Jan Kowalski"/>
 
-    <TextView
-        android:id="@+id/case_details_name"
-        style="@style/title_style"
-        android:layout_margin="0dp"
-        android:text="Rozwód"/>
+        <TextView
+            style="@style/title_style"
+            android:layout_margin="0dp"
+
+            android:layout_width="wrap_content"
+            android:drawableLeft="@drawable/file"
+            android:textSize="20dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/case_details_name"
+            android:text="Case Name"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"

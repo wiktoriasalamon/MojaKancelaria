@@ -1,11 +1,13 @@
 
 package com.piwniczna.mojakancelaria.activities
 
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
-import com.piwniczna.mojakancelaria.activities.cases.add_client.AddCaseFragment
+import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
@@ -15,16 +17,20 @@ import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.Ob
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
+import com.piwniczna.mojakancelaria.utils.ReportGenerator
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
                 ClientsFragment()
         ).commit()
+
+
     }
 
     override fun onStop() {
@@ -57,5 +63,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 }
