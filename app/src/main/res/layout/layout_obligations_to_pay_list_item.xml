@@ -3,21 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <LinearLayout
-        style="@style/payed_obligations_list_item_style"
-        >
+    <RelativeLayout
+        android:id="@+id/obligation_item"
+        style="@style/payed_obligations_list_item_style">
         <TextView
             android:text="Umowa nr 234"
             android:id="@+id/obligation_to_pay_title"
-            android:layout_gravity="center"
-            style="@style/obligation_title_style"
-            android:layout_weight="1"/>
+            android:layout_alignParentStart="true"
+            style="@style/obligation_title_style"/>
         <TextView
-            android:text="3000.00/5000.00zł"
             android:id="@+id/obligation_to_pay_amount"
-            android:layout_gravity="center"
+            android:text="3000.00/5000.00zł"
+            android:layout_alignParentEnd="true"
             android:textSize="15dp"
             android:fontFamily="@font/quicksand_regular"
             style="@style/obligation_title_style"/>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/obligation_to_pay_case_and_type"
+            android:text="Rozwód (umowa)"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            style="@style/obligation_date_style"/>
+    </RelativeLayout>
 </LinearLayout>

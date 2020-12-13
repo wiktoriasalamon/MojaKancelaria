@@ -235,7 +235,7 @@
     <!-- PAYED OBLIGATIONS LIST ITEM -->
     <style name="payed_obligations_list_item_style">
         <item name="android:layout_width">350dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">69dp</item>
         <item name="android:background">@drawable/rounded_obligatios_list_item</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:backgroundTint">@color/topay</item>
