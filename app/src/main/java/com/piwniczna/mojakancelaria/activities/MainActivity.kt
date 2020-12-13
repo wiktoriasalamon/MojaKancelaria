@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.e("test: ","xD")
-        testRaport()
 
         supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
@@ -66,13 +64,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun testRaport(){
-        Log.e("test2: ","xD222")
 
-        AsyncTask.execute{
-            var raport = ReportGenerator.testRaport(this)
-            Log.e("Report: ",raport)
-        }
-    }
 
 }
