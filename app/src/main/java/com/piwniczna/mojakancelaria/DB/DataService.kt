@@ -80,6 +80,16 @@ class DataService(context: Context) {
         return db.deleteObligation(obligation)
     }
 
+    fun getSumOfObligationsAmountsToPay(case: CaseEntity): BigDecimal {
+        val obligations = ArrayList(db.getObligations(case.id))
+        var sum = BigDecimal.ZERO
+        var leftToPay : BigDecimal
+        for (o in obligations) {
+            leftToPay = o.amount - o.payed
+            sum += leftToPay
+        }
+        return sum
+    }
 
     //payments
     fun addPayment(payment: PaymentEntity, obligationList: List<ObligationEntity>, amountsList: List<BigDecimal>) : Boolean{

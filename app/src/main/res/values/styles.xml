@@ -161,6 +161,17 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
 
+    <!-- OBLIGATIONS SUM -->
+    <style name="sum_of_amounts_to_pay_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textSize">17dp</item>
+    </style>
+
     <!-- OBLIGATIONS TYPE BUTTON -->
     <style name="obligations_type_button_style">
         <item name="android:layout_width">wrap_content</item>

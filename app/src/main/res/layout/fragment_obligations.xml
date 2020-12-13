@@ -42,17 +42,6 @@
         android:textColor="@color/black"
         android:fontFamily="@font/quicksand_semibold"
         />
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:text = "Filtry:"
-        android:textSize="19sp"
-        android:layout_marginLeft="15dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/quicksand_semibold"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,12 +95,23 @@
         android:layout_weight="1">
 
     </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/sum_of_amounts_to_pay"
+            style="@style/sum_of_amounts_to_pay_style"
+            android:layout_weight="1"
+            android:text="@string/sum_of_amounts_to_pay_label">
+        </TextView>
 
-    <Button
-        android:id="@+id/add_obligation_button"
-        android:layout_gravity="right"
-        style="@style/add_button_style"
-        ></Button>
+        <Button
+            android:id="@+id/add_obligation_button"
+            android:layout_gravity="right"
+            style="@style/add_button_style"
+            ></Button>
+    </LinearLayout>
+
 
 
 
