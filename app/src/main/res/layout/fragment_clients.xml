@@ -29,7 +29,7 @@
         />
 
     <ListView
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/clients_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
