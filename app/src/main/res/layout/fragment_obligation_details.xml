@@ -4,30 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="30dp">
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <TextView
-            style="@style/obligations_title_style"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/user"
-            android:drawablePadding="10dp"
-            android:textAlignment="textStart"
-            android:textSize="20dp"
-            android:id="@+id/obligations_client_name"
-            android:text="Client Name"/>
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
 
         <TextView
-            style="@style/obligations_title_style"
-            android:layout_width="wrap_content"
+            android:id="@+id/client_name_title"
+            style="@style/double_title_style"
+            android:drawableLeft="@drawable/user"
+            android:text="Jan Kowalski"/>
+        `
+        <TextView
+            android:id="@+id/case_name_title"
+            style="@style/double_title_style"
             android:drawableLeft="@drawable/file"
-            android:textSize="20dp"
-            android:drawablePadding="10dp"
-            android:id="@+id/obligations_case_name"
             android:text="Case Name"/>
 
     </LinearLayout>

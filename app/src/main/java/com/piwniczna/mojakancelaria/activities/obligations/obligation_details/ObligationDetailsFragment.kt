@@ -47,10 +47,10 @@ class ObligationDetailsFragment(var client: ClientEntity, val case: CaseEntity, 
         val deleteButton = view.findViewById(R.id.obligation_delete_button) as Button
         deleteButton.setOnClickListener { deleteObligation() }
 
-        val clientNameTextView = view.findViewById<TextView>(R.id.obligations_client_name)
+        val clientNameTextView = view.findViewById<TextView>(R.id.client_name_title)
         clientNameTextView.text = client.name
 
-        val caseNameTextView = view.findViewById<TextView>(R.id.obligations_case_name)
+        val caseNameTextView = view.findViewById<TextView>(R.id.case_name_title)
         caseNameTextView.text = case.name
 
         return view

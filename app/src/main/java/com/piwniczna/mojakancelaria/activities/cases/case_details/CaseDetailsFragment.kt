@@ -2,7 +2,6 @@ package com.piwniczna.mojakancelaria.activities.cases.case_details
 
 import android.os.AsyncTask
 import android.os.Bundle
-import android.os.Environment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,10 +29,10 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_case_details, container, false)
 
-        clientTextView = view.findViewById(R.id.case_details_client)
+        clientTextView = view.findViewById(R.id.client_name_title)
         clientTextView.text = client.name
 
-        caseTextView = view.findViewById(R.id.case_details_name)
+        caseTextView = view.findViewById(R.id.case_name_title)
         caseTextView.text = case.name
 
         obligationsButton = view.findViewById(R.id.obligations_button)

@@ -1,18 +1,12 @@
 package com.piwniczna.mojakancelaria.utils
 
-import android.app.Activity
 import android.content.Context
-import android.content.res.ColorStateList
-import android.util.Log
-import android.widget.Toast
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
-import com.piwniczna.mojakancelaria.Models.ObligationType
-import com.piwniczna.mojakancelaria.R
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ReportGenerator {
 
@@ -30,24 +24,32 @@ class ReportGenerator {
             this.context = context
             this.client = dbService.getClient(Companion.case.clientId)
 
-            var html = this.getTableObligations()
+            var html = this.getHtmlObligations()
             var text = this.getObligations()
 
             return arrayListOf(html,text)
         }
 
-        private fun getTableObligations(): String {
+        private fun getHtmlObligations(): String {
 
             val obligationsList = dbService.getObligations(case.id)
-            var toReturn =""
+            var summary = BigDecimal.ZERO
+            var payed = BigDecimal.ZERO
 
+
+            for(o in obligationsList){
+                summary = summary.add(o.amount)
+                payed = payed.add(o.payed)
+            }
+
+            var toReturn =""
             toReturn += "<html>\n" +
                     "    <head>\n" +
                     "    <style>\n" +
                     "    table {\n" +
                     "      font-family: arial, sans-serif;\n" +
                     "      border-collapse: collapse;\n" +
-                    "      width: 80%;\n" +
+                    "      width: 100%;\n" +
                     "    }\n" +
                     "    \n" +
                     "    td, th {\n" +
@@ -69,21 +71,53 @@ class ReportGenerator {
                     "    </head>\n" +
                     "    <body>"
 
-            toReturn += "<h1>Raport</h1><h2>${client.name}: ${case.name}</h2>"
+            toReturn +=
+                    "<h1>Podsumowanie na dzien ${DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now())}</h1>" +
+                    "<h3>Klient: ${client.name}</br>Sprawa: ${case.name}</h3>" +
+                    "<hr><hr>"
+
+            toReturn +=
+                    "<h3>Koszt calkowity: ${summary.setScale(2)} zl</br>" +
+                    "Oplacono: ${payed.setScale(2)} zl</br>" +
+                    "Pozostalo do oplacenia: ${summary.minus(payed).setScale(2)} zl</h3>" +
+                    "<hr><hr>"
+
             for(o in obligationsList){
-                toReturn += "<br/><h3>${o.name} (${ObligationHelper.getTypeString(o.type, context)}) - ${o.amount.setScale(2)} zł - ${o.convertDate()}</h3>"
+                toReturn +=
+                        "<h4>Zobowiazanie: ${o.name} (${ObligationHelper.getTypeString(o.type, context)})</h4>" +
+                        "<p>Termin platnosci: ${o.convertPaymentDate()}</br>" +
+                        "Kwota: ${o.amount.setScale(2)} zl</br>" +
+                        "Oplacono: ${o.payed.setScale(2)} zl"
+
+                if(o.amount.minus(o.payed).setScale(2).compareTo(BigDecimal.ZERO)!=0) {
+                    toReturn += "</br>Pozostalo do oplacenia: ${o.amount.minus(o.payed).setScale(2)}"
+                }
+                toReturn += "</p>"
+
+
                 val relationsList = dbService.getRelations(o)
                 val paymentsList = dbService.getPayments(relationsList)
+                if(relationsList.size==0){
+                    toReturn += "<hr>"
+                    continue
+                }
                 var table = "<table>"
+                table +=
+                        "<tr>" +
+                        "    <th>Nazwa wplaty</th>" +
+                        "    <th>Kwota</th>" +
+                        "    <th>Data platnosci</th>" +
+                        "  </tr>"
                 for(i in relationsList.zip(paymentsList)){
                     val name = i.second.name
-                    val amount = i.first.amount.setScale(2).toString() + " zł"
+                    val amount = i.first.amount.setScale(2).toString() + " zl"
                     val date = i.second.convertDate()
                     table += "<tr><td>${name}</td><td>${amount}</td><td>${date}</td></tr>"
                 }
-                table += "</table>"
+                table += "</table><hr>"
                 toReturn += table
             }
+
             return toReturn + "</body></html>"
         }
 
