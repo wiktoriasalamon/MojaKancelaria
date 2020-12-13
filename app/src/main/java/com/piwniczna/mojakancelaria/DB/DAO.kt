@@ -139,9 +139,15 @@ interface DAO {
     fun updateRelations(relations: List<RelationEntity>)
 
     @Update
+    fun updateRelation(relation: RelationEntity)
+
+    @Update
     fun updateClient(client: ClientEntity)
 
     @Update
     fun updateCase(case: CaseEntity)
+
+    @Update
+    fun updatePayment(payment: PaymentEntity)
 
 }

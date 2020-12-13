@@ -34,8 +34,13 @@ class DataService(context: Context) {
     }
 
     fun setCaseArchival(case: CaseEntity) {
-        case.clientId = case.clientId + 1 //change client to archival version of client
+        val obligations = db.getObligations(case.id)
+        case.clientId += 1 //change client to archival version of client
         db.updateCase(case)
+        for (o in obligations) {
+            o.clientId += 1
+            updateObligation(o)
+        }
     }
 
     //clients
@@ -48,10 +53,24 @@ class DataService(context: Context) {
         if(client.id % 2 == 1) {
             return false //activeClient has even id
         }
-        val cases = getCases(client)
+        val payments = db.getPayments(client.id)
+        val cases = db.getCases(client.id)
+        val relations = db.getRelations(client.id)
+
         for (c in cases) {
             setCaseArchival(c)
         }
+
+        for (p in payments) {
+            p.clientId += 1
+            db.updatePayment(p)
+        }
+
+        for (r in relations) {
+            r.clientId += 1
+            db.updateRelation(r)
+        }
+
         db.deleteClient(client)
         return true
     }
