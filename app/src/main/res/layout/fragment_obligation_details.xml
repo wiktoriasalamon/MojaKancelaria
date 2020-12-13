@@ -6,6 +6,30 @@
     android:orientation="vertical"
     android:paddingTop="30dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            style="@style/obligations_title_style"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textStart"
+            android:textSize="20dp"
+            android:id="@+id/obligations_client_name"
+            android:text="Client Name"/>
+
+        <TextView
+            style="@style/obligations_title_style"
+            android:layout_width="wrap_content"
+            android:drawableLeft="@drawable/file"
+            android:textSize="20dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/obligations_case_name"
+            android:text="Case Name"/>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,17 +7,29 @@
     android:paddingTop="20dp"
     android:gravity="center"
     >
-    <TextView
-        android:id="@+id/case_details_client"
-        style="@style/title_style"
-        android:layout_margin="0dp"
-        android:text="Jan Kowalski"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+        <TextView
+            style="@style/obligations_title_style"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textStart"
+            android:textSize="20dp"
+            android:id="@+id/case_details_client"
+            android:text="Client Name"/>
 
-    <TextView
-        android:id="@+id/case_details_name"
-        style="@style/title_style"
-        android:layout_margin="0dp"
-        android:text="Rozwód"/>
+        <TextView
+            style="@style/obligations_title_style"
+            android:layout_width="wrap_content"
+            android:drawableLeft="@drawable/file"
+            android:textSize="20dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/case_details_name"
+            android:text="Case Name"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
