@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.cases.add_client
+package com.piwniczna.mojakancelaria.activities.cases.add_case
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -20,13 +20,13 @@ class AddCaseFragment(val client: ClientEntity) : Fragment() {
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_add_client, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_case, container, false)
 
         dbService = DataService(this.context!!)
-        val addButton = view.findViewById<Button>(R.id.save_client_button)
+        val addButton = view.findViewById<Button>(R.id.save_case_button)
         addButton.setOnClickListener {handleSaveCase(it)}
 
-        caseEditText = view.findViewById(R.id.new_client_edit_text)
+        caseEditText = view.findViewById(R.id.new_case_edit_text)
 
         return view
     }

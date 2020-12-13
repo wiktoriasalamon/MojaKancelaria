@@ -12,7 +12,7 @@
         android:id="@+id/name_edit_text"
         android:hint="@string/name"
         android:textIsSelectable="false"
-        android:inputType="text"
+        android:inputType="textCapSentences"
         android:imeOptions="actionDone" />
 
 
