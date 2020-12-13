@@ -89,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
     fun showPasswordDialog() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        builder.setTitle(R.string.new_password_code_hint)
+        builder.setTitle(" ")
         val dialogLayout = inflater.inflate(R.layout.password_dialog, null)
         val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
         builder.setView(dialogLayout)

@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
 
@@ -58,7 +59,6 @@
                 android:id="@+id/archive_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-
                 android:text="Archiwizuj"></Button>
 
             <Button
