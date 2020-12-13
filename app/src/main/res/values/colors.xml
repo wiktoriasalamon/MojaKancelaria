@@ -10,8 +10,8 @@
     <color name="grey">#C4C4C4</color>
     <color name="dark_grey">#4E4E4E</color>
 
-    <color name="archive_light">#F7BE8D</color>
-    <color name="archive_intence">#F4A460</color>
+    <color name="archive_light">#FFEB99</color>
+    <color name="archive_intence">#FFDA47</color>
     
     <color name="payed">#94C2A0</color>
     <color name="overdue">#D06666</color>
