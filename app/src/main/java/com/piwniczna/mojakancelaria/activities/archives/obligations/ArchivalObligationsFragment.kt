@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.ToggleButton
@@ -17,10 +16,6 @@ import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
-import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
-import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
-import com.piwniczna.mojakancelaria.activities.obligations.obligations_list.ObligationsListAdapter
 
 class ArchivalObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fragment() {
     lateinit var obligationsListView: ListView
@@ -102,17 +97,10 @@ class ArchivalObligationsFragment(var client: ClientEntity, var case: CaseEntity
     }
 
 
-    private fun handleAddObligation(view: View) {
-        fragmentManager?.beginTransaction()?.replace(
-            R.id.fragment_container,
-            AddObligationFragment(client, case)
-        )?.commit()
-    }
-
     private fun openObligationDetailsFragment(obligationPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            ObligationDetailsFragment(client, case, obligationsList[obligationPosition])
+            ArchivalObligationsDetailsFragment(client, case, obligationsList[obligationPosition])
         )?.commit()
     }
 
@@ -120,7 +108,7 @@ class ArchivalObligationsFragment(var client: ClientEntity, var case: CaseEntity
         button.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 typeFilters.add(type)
-                button.backgroundTintList = this.context!!.resources.getColorStateList(R.color.dark_blue)
+                button.backgroundTintList = this.context!!.resources.getColorStateList(R.color.archive_intence)
             } else {
                 typeFilters.remove(type)
                 button.backgroundTintList = this.context!!.resources.getColorStateList(R.color.grey)

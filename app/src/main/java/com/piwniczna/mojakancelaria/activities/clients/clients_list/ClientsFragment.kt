@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.app.AlertDialog
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +13,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
@@ -69,7 +72,16 @@ class ClientsFragment: Fragment() {
 
         getClientsFromDB()
 
+        val bar = getActionbar()
+        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.dark_blue)))
+        bar!!.setTitle("Moja Kancelaria")
+
         return view
+    }
+
+    fun getActionbar() : ActionBar?
+    {
+        return (activity as AppCompatActivity).supportActionBar
     }
 
     fun onBackPressed() {

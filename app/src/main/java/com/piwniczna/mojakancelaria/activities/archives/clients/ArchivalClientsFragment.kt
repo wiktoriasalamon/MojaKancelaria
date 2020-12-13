@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.archives.clients
 
 import android.app.AlertDialog
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
@@ -62,7 +66,16 @@ class ArchivalClientsFragment(): Fragment() {
 
         getClientsFromDB()
 
+        val bar = getActionbar()
+        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.archive_intence)))
+        bar!!.setTitle("Moja Kancelaria - archiwum")
+
         return view
+    }
+
+    fun getActionbar() : ActionBar?
+    {
+        return (activity as AppCompatActivity).supportActionBar
     }
 
     fun onBackPressed() {
