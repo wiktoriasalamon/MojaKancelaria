@@ -7,6 +7,7 @@
     <string name="login_successful_toast">Logowanie…</string>
     <string name="login_failed_toast">Zły pin…</string>
     <string name="new_password_code_hint">Podaj nowy pin:</string>
+    <string name="security_question_hint">Podaj swój ulubiony kraj:</string>
     <string name="weak_pin_toast">Za prosty PIN!\npodaj minimum 5 znaków!</string>
     <!-- Alert Dialog -->
     <string name="warning">Uwaga!</string>

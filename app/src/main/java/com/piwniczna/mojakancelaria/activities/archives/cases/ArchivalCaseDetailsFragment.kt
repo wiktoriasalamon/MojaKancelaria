@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.cases.case_details
+package com.piwniczna.mojakancelaria.activities.archives.cases
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -18,7 +18,7 @@ import com.piwniczna.mojakancelaria.utils.EmailSender
 import com.piwniczna.mojakancelaria.utils.PdfGenerator
 import com.piwniczna.mojakancelaria.utils.ReportGenerator
 
-class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
+class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
     lateinit var clientTextView: TextView
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
@@ -27,7 +27,7 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
     lateinit var reportButton: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_case_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_archival_case_details, container, false)
 
         clientTextView = view.findViewById(R.id.client_name_title)
         clientTextView.text = client.name
@@ -40,9 +40,6 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
 
         paymentsButton = view.findViewById(R.id.payments_button)
         paymentsButton.setOnClickListener { openPaymentsFragment(it) }
-
-        archiveButton = view.findViewById(R.id.archive_button)
-        archiveButton.setOnClickListener { archiveCase(it) }
 
         reportButton = view.findViewById(R.id.report_button)
         reportButton.setOnClickListener { sendReport(it) }
@@ -58,10 +55,6 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
             EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")
 
         }
-    }
-
-    private fun archiveCase(view: View) {
-        //todo
     }
 
     fun onBackPressed() {

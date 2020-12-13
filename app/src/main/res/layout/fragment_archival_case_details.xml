@@ -54,12 +54,10 @@
             android:layout_marginHorizontal="25dp"
             >
 
-            <Button
-                android:id="@+id/archive_button"
+            <TextView
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-
-                android:text="Archiwizuj"></Button>
+                ></TextView>
 
             <Button
                 android:id="@+id/report_button"
