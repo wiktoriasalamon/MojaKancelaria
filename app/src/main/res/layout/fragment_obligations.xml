@@ -11,15 +11,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            style="@style/obligations_title_style"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="textStart"
-            android:textSize="20dp"
-            android:id="@+id/obligations_client_name"
-            android:text="Client Name"/>
-
+    <TextView
+        style="@style/obligations_title_style"
+        android:id="@+id/obligations_client_name"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="10dp"
+        android:textSize="20dp"
+        android:textAlignment="textStart"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:text="Client Name">
+    </TextView>
         <TextView
             style="@style/obligations_title_style"
             android:layout_width="wrap_content"
