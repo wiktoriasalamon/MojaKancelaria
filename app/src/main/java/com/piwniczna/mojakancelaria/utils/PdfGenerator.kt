@@ -15,10 +15,8 @@ class PdfGenerator {
         fun generatePdfFromHTML(context: Context, html: String) : Uri {
             val fname = "report.pdf"
 
-            val fOut: FileOutputStream = FileOutputStream(File(context.getExternalFilesDir(null),fname)  )
+            val fOut = FileOutputStream(File(context.getExternalFilesDir(null),fname)  )
             HtmlConverter.convertToPdf(html, fOut)
-            val a = context.fileList()
-
 
             val uri = Uri.fromFile(File(context.getExternalFilesDir(null), fname))
 
