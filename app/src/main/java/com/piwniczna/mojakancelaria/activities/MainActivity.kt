@@ -1,30 +1,32 @@
 
 package com.piwniczna.mojakancelaria.activities
 
-import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.os.StrictMode
+import android.os.StrictMode.VmPolicy
+import androidx.appcompat.app.AppCompatActivity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
-import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
-import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
-import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
+import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
+import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
+import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
+import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
-import com.piwniczna.mojakancelaria.utils.ReportGenerator
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val builder = VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
 
         supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
