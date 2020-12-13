@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -112,9 +113,14 @@ class LoginActivity : AppCompatActivity() {
                         .hashString(newPin, StandardCharsets.UTF_8)
                         .toString()
                 dbService.addNewPassword(PasswordEntity(pinHash))
-                dbService.addClient(ClientEntity("root", 999999))
-                dbService.addCase(CaseEntity(999999, "root_case", 999999))
-                dbService.addObligation(ObligationEntity(999999, 999999, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 999999))
+                try {
+                    dbService.addClient(ClientEntity("root", 999999))
+                    dbService.addCase(CaseEntity(999999, "root_case", 999999))
+                    dbService.addObligation(ObligationEntity(999999, 999999, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 999999))
+
+                }catch (e: Exception){
+                    Log.e("Login","Root user, case and obligation already in DB")
+                }
             }
         }
     }
