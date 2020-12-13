@@ -20,6 +20,7 @@ import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObl
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligations_list.ObligationsListAdapter
+import java.math.BigDecimal
 import kotlin.collections.ArrayList
 
 class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fragment() {
@@ -28,6 +29,7 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
     lateinit var obligationsListAdapter: ObligationsListAdapter
     lateinit var dbService: DataService
     lateinit var typeFilters: ArrayList<ObligationType>
+    lateinit var sumOfAmountsToPayTextView: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_obligations, container, false)
@@ -68,6 +70,9 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
         val caseNameTextView = view.findViewById<TextView>(R.id.obligations_case_name)
         caseNameTextView.text = case.name
 
+        sumOfAmountsToPayTextView = view.findViewById(R.id.sum_of_amounts_to_pay)
+        setSumOfAmounts()
+
         getObligationsFromDB()
 
         return view
@@ -87,6 +92,15 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
             obligationsList.addAll(obligations)
             activity?.runOnUiThread {
                 obligationsListAdapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun setSumOfAmounts() {
+        AsyncTask.execute {
+            val sum = dbService.getSumOfObligationsAmountsToPay(case)
+            activity?.runOnUiThread {
+                sumOfAmountsToPayTextView.text = getString(R.string.sum_of_amounts_to_pay_label, sum.toString())
             }
         }
     }
