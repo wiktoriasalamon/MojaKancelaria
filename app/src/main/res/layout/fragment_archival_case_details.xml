@@ -38,12 +38,14 @@
         <Button
             android:id="@+id/obligations_button"
             android:text="@string/obligations"
+            android:backgroundTint="@color/archive_intence"
             style="@style/menu_card_button_style">
         </Button>
 
         <Button
             android:id="@+id/payments_button"
             android:text="@string/payments"
+            android:backgroundTint="@color/archive_intence"
             style="@style/menu_card_button_style">
         </Button>
 
@@ -63,6 +65,7 @@
                 android:id="@+id/report_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
+                android:backgroundTint="@color/archive_intence"
                 android:drawableRight="@drawable/report"
                 android:text="Raport"></Button>
 

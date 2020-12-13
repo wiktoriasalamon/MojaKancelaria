@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 
-class CasesListAdapter(context: Context, var data: ArrayList<CaseEntity>) :
+class ArchivalCasesListAdapter(context: Context, var data: ArrayList<CaseEntity>, val activity: FragmentActivity) :
         ArrayAdapter<CaseEntity>(context, R.layout.layout_clients_list_item, data), Filterable {
     private var cases: ArrayList<CaseEntity> = data
 
@@ -35,6 +36,8 @@ class CasesListAdapter(context: Context, var data: ArrayList<CaseEntity>) :
         val holder = view.tag as ViewHolder
 
         holder.nameTextView!!.text=cases[position].name
+        holder.nameTextView!!.backgroundTintList = activity.resources.getColorStateList(R.color.archive_light)
+
 
         return view
     }

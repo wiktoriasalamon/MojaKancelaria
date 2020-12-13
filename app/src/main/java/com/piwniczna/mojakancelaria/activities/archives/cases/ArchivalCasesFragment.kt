@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -14,14 +13,12 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
+import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 
 
 class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
-    lateinit var casesListAdapter: CasesListAdapter
+    lateinit var archivalCasesListAdapter: ArchivalCasesListAdapter
     lateinit var casesListView : ListView
     lateinit var casesList: ArrayList<CaseEntity>
     lateinit var dbService: DataService
@@ -37,8 +34,8 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
 
         casesListView = view.findViewById(R.id.clients_cases_list_view) as ListView
         casesList = arrayListOf()
-        casesListAdapter = CasesListAdapter(this.context!!, casesList)
-        casesListView.adapter = casesListAdapter
+        archivalCasesListAdapter = ArchivalCasesListAdapter(this.context!!, casesList, activity!!)
+        casesListView.adapter = archivalCasesListAdapter
 
         casesListView.setOnItemClickListener { _, _, position, _ ->
             openCaseDetailsFragment(position)
@@ -57,7 +54,7 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientsFragment()
+                ArchivalClientsFragment()
         )?.commit()
     }
 
@@ -67,7 +64,7 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
             casesList.clear()
             casesList.addAll(cases)
             activity?.runOnUiThread {
-                casesListAdapter.notifyDataSetChanged()
+                archivalCasesListAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -75,7 +72,7 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
     private fun deleteCase(position: Int, id: Long) {
         val builder = AlertDialog.Builder(this.context)
 
-        val caseName = casesListAdapter.data[position].name
+        val caseName = archivalCasesListAdapter.data[position].name
         val message = SpannedText.getSpannedText(getString(R.string.delete_client_case, caseName, client.name))
 
         builder.setTitle(R.string.warning)
@@ -109,7 +106,7 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
     private fun openCaseDetailsFragment(position: Int) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            CaseDetailsFragment(client, casesList[position])
+            ArchivalCaseDetailsFragment(client, casesList[position])
         )?.commit()
     }
 

@@ -60,7 +60,7 @@ class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-                CasesFragment(client)
+                ArchivalCasesFragment(client)
         )?.commit()
     }
 

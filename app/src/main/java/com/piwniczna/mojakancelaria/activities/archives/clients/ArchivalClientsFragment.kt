@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsListAdapter
@@ -122,7 +123,7 @@ class ArchivalClientsFragment(): Fragment() {
     private fun openArchivalClientCasesFragment(clientPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            CasesFragment(clientsList[clientPosition])
+            ArchivalCasesFragment(clientsList[clientPosition])
         )?.commit()
     }
 }
