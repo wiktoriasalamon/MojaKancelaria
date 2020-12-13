@@ -82,6 +82,16 @@ dependencies {
     implementation group: 'com.google.guava', name: 'guava', version: '20.0'
 
 
+
+
+    implementation "com.itextpdf:itextpdf:5.5.10"
+    implementation "com.itextpdf.tool:xmlworker:5.5.10"
+    implementation "com.itextpdf:html2pdf:2.1.6"
+
+
+
+
+
     def room_version = "2.2.5" // check latest version from docs
 
     //noinspection GradleDependency
