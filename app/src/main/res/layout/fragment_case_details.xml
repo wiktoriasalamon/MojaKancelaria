@@ -11,6 +11,11 @@
         android:id="@+id/case_details_client"
         style="@style/title_style"
         android:layout_margin="0dp"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="10dp"
+        android:textAlignment="textStart"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
         android:text="Jan Kowalski"/>
 
     <TextView
