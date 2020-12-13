@@ -29,7 +29,7 @@
                 android:id="@+id/new_payment_name_edittext"
                 android:hint="@string/name"
                 android:textIsSelectable="false"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:imeOptions="actionDone" />
 
             <EditText
