@@ -42,6 +42,7 @@
     <string name="not_provided_data">Podaj dane!</string>
     <string name="date_not_provided">Podaj datę płatności!</string>
     <string name="cannot_add_obligation_when_nothing_to_spend">Zobowiązania pokrywają całą wpłate!</string>
+    <string name="sum_of_amounts_to_pay_label">Pozostało do zapłaty: %1$s zł</string>
 
     <!-- Obligation details -->
     <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>? Informacje o wpłatach na te zobowiązanie zostaną utracone!]]> </string>

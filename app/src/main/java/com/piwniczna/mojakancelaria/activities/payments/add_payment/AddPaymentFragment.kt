@@ -60,7 +60,7 @@ class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragme
 
         relationsList = arrayListOf()
         obligationsList = arrayListOf()
-        obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!, case)
+        obligationsListAdapter = ObligationsOfPaymentListAdapter(this.context!!, relationsList, dbService, activity!!)
         obligationsListView.adapter = obligationsListAdapter
 
         obligationsListView.setOnItemLongClickListener { _, _, position, _ ->
@@ -104,11 +104,11 @@ class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragme
 
         var obligationsToChoose = arrayListOf<ObligationEntity>()
         val obligationsToChooseListView = dialog.findViewById(R.id.obligations_to_choose_list_view) as ListView
-        val obligationsToChooseListAdapter = ObligationsToChooseListAdapter(this.context!!, obligationsToChoose, case)
+        val obligationsToChooseListAdapter = ObligationsToChooseListAdapter(context!!, obligationsToChoose, dbService, activity!!)
         obligationsToChooseListView.adapter = obligationsToChooseListAdapter
 
         getObligationsToPay(obligationsToChoose, obligationsToChooseListAdapter)
-        
+
         obligationsToChooseListView.setOnItemClickListener { _, _, position, _ ->
             dialog.dismiss()
             handleChooseObligation(obligationsToChoose[position])

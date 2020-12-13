@@ -3,18 +3,14 @@ package com.piwniczna.mojakancelaria.utils
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
-import android.text.Html
 import android.util.Log
-import android.widget.Toast
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat.startActivity
 
 class EmailSender {
 
     companion object {
-        fun sendEmail(context: Context, html: String, message: String, email: String) {
+        fun sendEmail(context: Context, uri: Uri, message: String, email: String) {
 
 
             Log.i("Send email", "")
@@ -27,6 +23,7 @@ class EmailSender {
             emailIntent.putExtra(Intent.EXTRA_CC, CC)
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test mail")
             emailIntent.putExtra(Intent.EXTRA_TEXT, message)
+            emailIntent.putExtra(Intent.EXTRA_STREAM, uri)
             try {
                 startActivity(context, Intent.createChooser(emailIntent, "Wysyłam maila..."),null)
                 Log.i("Wysyłanie...", "")

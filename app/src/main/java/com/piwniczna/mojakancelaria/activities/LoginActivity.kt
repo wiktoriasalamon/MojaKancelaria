@@ -114,9 +114,9 @@ class LoginActivity : AppCompatActivity() {
                         .toString()
                 dbService.addNewPassword(PasswordEntity(pinHash))
                 try {
-                    dbService.addClient(ClientEntity("root", 999999))
-                    dbService.addCase(CaseEntity(999999, "root_case", 999999))
-                    dbService.addObligation(ObligationEntity(999999, 999999, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 999999))
+                    dbService.addClient(ClientEntity("root", 1))
+                    dbService.addCase(CaseEntity(1, "root_case", 1))
+                    dbService.addObligation(ObligationEntity(1, 1, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
 
                 }catch (e: Exception){
                     Log.e("Login","Root user, case and obligation already in DB")
