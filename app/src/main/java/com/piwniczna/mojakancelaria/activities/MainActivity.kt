@@ -11,6 +11,8 @@ import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragm
 import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
 import com.piwniczna.mojakancelaria.activities.archives.obligations.ArchivalObligationsDetailsFragment
 import com.piwniczna.mojakancelaria.activities.archives.obligations.ArchivalObligationsFragment
+import com.piwniczna.mojakancelaria.activities.archives.payments.ArchivalPaymentDetailsFragment
+import com.piwniczna.mojakancelaria.activities.archives.payments.ArchivalPaymentsFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
@@ -73,6 +75,8 @@ class MainActivity : AppCompatActivity() {
                 is ArchivalCaseDetailsFragment -> f.onBackPressed()
                 is ArchivalObligationsFragment -> f.onBackPressed()
                 is ArchivalObligationsDetailsFragment -> f.onBackPressed()
+                is ArchivalPaymentsFragment -> f.onBackPressed()
+                is ArchivalPaymentDetailsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }

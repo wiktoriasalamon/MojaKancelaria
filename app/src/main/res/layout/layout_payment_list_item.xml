@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:id="@+id/obligation_item"
+        android:id="@+id/payment_item"
         style="@style/list_item_style">
         <TextView
             android:text="Wpłata nr 234"
