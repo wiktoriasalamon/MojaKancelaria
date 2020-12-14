@@ -20,8 +20,14 @@
     <string name="deleting_client">Usuwanie klienta</string>
     <string name="search">Szukaj</string>
 
+    <!-- Archiving case -->
+    <string name="archive_not_payed"><![CDATA[Sprawa <b>%1$s<</b> ma nieopłacone należności na łączną kwotę <b>%2$s<</b>. Czy chcesz przenieść tę sprawę do archiwum? \nNie da się cofnąć tej operacji!]]></string>
+    <string name="archive_payed"><![CDATA[Czy chcesz przenieść sprawę <b>%1$s</b> do archiwum? Nie da się cofnąć tej operacji!]]></string>
+
+
+
     <!-- CASES -->
-    <string name="delete_client_case"><![CDATA[Czy na pewno chcesz usunąć sprawę <b>%1$s<</b> klienta <b>%2$s<</b> oraz wszystkie dane sprawy?]]> </string>
+    <string name="delete_client_case"><![CDATA[Czy na pewno chcesz usunąć sprawę <b>%1$s<</b> klienta <b>%2$s<</b> oraz wszystkie dane sprawy?]]></string>
     <string name="deleting_case">Usuwanie sprawy</string>
     <string name="empty_case_warning">Nazwa sprawy nie może być pusta!</string>
     <string name="new_case_hint">Nazwa nowej sprawy</string>
@@ -46,7 +52,7 @@
     <string name="sum_of_amounts_to_pay_label">Pozostało do zapłaty: %1$s zł</string>
 
     <!-- Obligation details -->
-    <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>? Informacje o wpłatach na te zobowiązanie zostaną utracone!]]> </string>
+    <string name="delete_obligation"><![CDATA[Czy na pewno chcesz usunąć zobowiązanie <b>%1$s<</b>? Informacje o wpłatach na te zobowiązanie zostaną utracone!]]></string>
     <string name="deleting_obligation">Usuwanie zobowiązania</string>
     <string name="name">Nazwa</string>
     <string name="type">Typ</string>
@@ -75,11 +81,13 @@
     <string name="amount_bigger_than_left">Nie można przeznaczyć kwoty większej niż pozostała!</string>
     <string name="money_left">Nie pokryto całej kwoty wpłaty!</string>
     <string name="deleting_payment">Usuwanie płatności</string>
-    <string name="delete_payment"><![CDATA[Czy na pewno chcesz usunąć płatność <b>%1$s<</b>? Cofnie to wpłacone kwoty na poczet wszystkich zobowiązań!]]> </string>
+    <string name="delete_payment"><![CDATA[Czy na pewno chcesz usunąć płatność <b>%1$s<</b>? Cofnie to wpłacone kwoty na poczet wszystkich zobowiązań!]]></string>
     <string name="case_and_type">%1$s (%2$s)</string>
 
     <!-- Buttons -->
     <string name="delete">Usuń</string>
+    <string name="move">Przenieś</string>
+
     <string name="cancel">Anuluj</string>
     <string name="ok">Zatwierdź</string>
     <string name="yes">Tak</string>
