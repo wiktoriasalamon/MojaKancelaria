@@ -24,8 +24,8 @@ class ReportGenerator {
             this.context = context
             this.client = dbService.getClient(Companion.case.clientId)
 
-            var html = this.getHtmlObligations()
-            var text = this.getObligations()
+            val html = replacePolishSymbols(getHtmlObligations())
+            val text = getObligations()
 
             return arrayListOf(html,text)
         }
@@ -45,6 +45,7 @@ class ReportGenerator {
             var toReturn =""
             toReturn += "<html>\n" +
                     "    <head>\n" +
+                    "    <meta charset=\"UTF-8\">"
                     "    <style>\n" +
                     "    table {\n" +
                     "      font-family: arial, sans-serif;\n" +
@@ -136,6 +137,19 @@ class ReportGenerator {
                 }
             }
             return toReturn
+        }
+
+        private fun replacePolishSymbols(text: String) : String {
+            var text = text
+            text = text.replace("ą","a")
+            text = text.replace("ę","e")
+            text = text.replace("ó","o")
+            text = text.replace("ł","l")
+            text = text.replace("ż","z")
+            text = text.replace("ź","z")
+            text = text.replace("ć","c")
+
+            return text
         }
 
 

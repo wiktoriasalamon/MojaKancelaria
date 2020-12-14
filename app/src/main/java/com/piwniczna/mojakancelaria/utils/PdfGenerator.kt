@@ -3,6 +3,7 @@ package com.piwniczna.mojakancelaria.utils
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import com.itextpdf.html2pdf.ConverterProperties
 import com.itextpdf.html2pdf.HtmlConverter
 import java.io.File
 import java.io.FileOutputStream
@@ -17,7 +18,10 @@ class PdfGenerator {
 
 
             val fOut = FileOutputStream(File(context.getExternalFilesDir(null),fname)  )
-            HtmlConverter.convertToPdf(html, fOut)
+
+            var properties = ConverterProperties()
+            properties.charset = "utf-8"
+            HtmlConverter.convertToPdf(html, fOut, properties )
 
 
             val uri = Uri.fromFile(File(context.getExternalFilesDir(null), fname))

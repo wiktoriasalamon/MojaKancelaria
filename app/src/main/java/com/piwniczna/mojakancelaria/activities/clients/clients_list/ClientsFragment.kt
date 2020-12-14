@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.app.AlertDialog
+import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
@@ -84,10 +85,6 @@ class ClientsFragment: Fragment() {
         return (activity as AppCompatActivity).supportActionBar
     }
 
-    fun onBackPressed() {
-        this.activity?.finish()
-    }
-
     private fun getClientsFromDB() {
         AsyncTask.execute {
             val clients = dbService.getClients()
@@ -152,5 +149,18 @@ class ClientsFragment: Fragment() {
                 R.id.fragment_container,
                 CasesFragment(clientsList[clientPosition])
         )?.commit()
+    }
+
+    fun onBackPressed() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(R.string.warning)
+        builder.setMessage("Czy chcesz wrócić do ekranu logowania?")
+
+        builder.setPositiveButton("Tak") { dialog, which -> this.activity?.finish() }
+
+        builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+        builder.show()
+
     }
 }
