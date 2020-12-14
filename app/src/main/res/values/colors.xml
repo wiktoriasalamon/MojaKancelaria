@@ -3,15 +3,17 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#000000</color>
     <color name="shadow">#40000000</color>
-    <color name="dark_blue">#2798CD</color>
-    <color name="grey_blue">#A7CCDE</color>
-    <color name="blue">#7DCCFF</color>
+
     <color name="light_grey">#E8E6E6</color>
     <color name="grey">#C4C4C4</color>
     <color name="dark_grey">#4E4E4E</color>
 
-    <color name="archive_light">#FFEB99</color>
-    <color name="archive_intence">#FFDA47</color>
+    <color name="dark_blue">#2798CD</color>
+    <color name="blue">#7DCCFF</color>
+    <color name="grey_blue">#A7CCDE</color>
+
+    <color name="archive_light">#C7C3BD</color>
+    <color name="archive_intence">#8E877B</color>
 
     <color name="payed">#94C2A0</color>
     <color name="overdue">#D06666</color>
