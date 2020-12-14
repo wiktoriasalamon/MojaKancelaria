@@ -103,17 +103,17 @@ class ClientsFragment: Fragment() {
         val builder = AlertDialog.Builder(this.context)
 
         val clientName = clientsListAdapter.data[position].name
-        val message = SpannedText.getSpannedText(getString(R.string.delete_client, clientName))
+        val message = SpannedText.getSpannedText(getString(R.string.archive_client, clientName))
 
         builder.setTitle(R.string.warning)
         builder.setMessage(message)
 
-        builder.setPositiveButton(R.string.delete) { dialog, which ->
+        builder.setPositiveButton("Przenieś") { dialog, which ->
 
-            builder.setTitle(R.string.deleting_client)
+            builder.setTitle("Przenoszenie klienta do archiwum")
             builder.setMessage(R.string.are_you_sure)
 
-            builder.setPositiveButton(R.string.yes) { dialog, which -> deleteClientFromDB(position) }
+            builder.setPositiveButton(R.string.yes) { dialog, which -> moveClientToArchive(position) }
 
             builder.setNegativeButton(R.string.no) { dialog, which -> }
 
@@ -126,12 +126,11 @@ class ClientsFragment: Fragment() {
         builder.show()
     }
 
-    private fun deleteClientFromDB(position: Int) {
+    private fun moveClientToArchive(position: Int) {
         AsyncTask.execute {
             dbService.deleteClient(clientsList[position])
             getClientsFromDB()
         }
-
     }
 
     private fun handleAddClient(view: View) {
