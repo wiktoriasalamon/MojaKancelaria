@@ -141,6 +141,13 @@ class ReportGenerator {
 
         private fun replacePolishSymbols(text: String) : String {
             var text = text
+            val l1 = arrayListOf("ą","ę","ó","ł","ż","ź","ć")
+            val l2 = arrayListOf("a","e","o","l","z","z","c")
+
+            for (e in l1.zip(l2)){
+                text = text.replace(e.first,e.second)
+            }
+
             text = text.replace("ą","a")
             text = text.replace("ę","e")
             text = text.replace("ó","o")
