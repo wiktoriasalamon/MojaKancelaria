@@ -16,12 +16,13 @@ import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 
 import kotlin.collections.ArrayList
 
 
-class PaymentsFragment(var client: ClientEntity, val case: CaseEntity)  : Fragment() {
+class PaymentsFragment(var client: ClientEntity)  : Fragment() {
     lateinit var paymentsListView: ListView
     lateinit var paymentsList: ArrayList<PaymentEntity>
     lateinit var paymentsListAdapter: PaymentsListAdapter
@@ -52,7 +53,7 @@ class PaymentsFragment(var client: ClientEntity, val case: CaseEntity)  : Fragme
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                CaseDetailsFragment(client, case)
+                ClientDetailsFragment(client)
         )?.commit()
     }
 
@@ -71,14 +72,14 @@ class PaymentsFragment(var client: ClientEntity, val case: CaseEntity)  : Fragme
     private fun handleAddPayment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            AddPaymentFragment(client, case)
+            AddPaymentFragment(client)
         )?.commit()
     }
 
     private fun openPaymentDetailsFragment(paymentPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentDetailsFragment(client, case, paymentsList[paymentPosition])
+                PaymentDetailsFragment(client, paymentsList[paymentPosition])
         )?.commit()
     }
 

@@ -26,13 +26,12 @@
     <string name="archive_not_payed"><![CDATA[Sprawa <b>%1$s<</b> ma nieopłacone należności na łączną kwotę <b>%2$s<</b>. Czy chcesz przenieść tę sprawę do archiwum? \nNie da się cofnąć tej operacji!]]></string>
     <string name="archive_payed"><![CDATA[Czy chcesz przenieść sprawę <b>%1$s</b> do archiwum? Nie da się cofnąć tej operacji!]]></string>
 
-
-
     <!-- CASES -->
     <string name="delete_client_case"><![CDATA[Czy na pewno chcesz usunąć sprawę <b>%1$s<</b> klienta <b>%2$s<</b> oraz wszystkie dane sprawy?]]></string>
     <string name="deleting_case">Usuwanie sprawy</string>
     <string name="empty_case_warning">Nazwa sprawy nie może być pusta!</string>
     <string name="new_case_hint">Nazwa nowej sprawy</string>
+    <string name="cases">Sprawy</string>
 
     <!-- Obligations -->
     <string name="obligations">Zobowiązania</string>

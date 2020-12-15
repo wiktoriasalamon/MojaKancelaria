@@ -8,6 +8,7 @@
     android:layout_gravity="center_vertical"
 
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,12 +98,32 @@
 
         <Button
             android:id="@+id/add_obligation_button"
-            android:layout_gravity="right"
+            android:layout_gravity="end|center"
             style="@style/add_button_style"
-            ></Button>
+            />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
 
+        <Button
+            android:id="@+id/archive_button"
+            style="@style/small_menu_card_button_style"
+            android:layout_weight="1"
+            android:text="Archiwizuj"/>
+
+        <Button
+            android:id="@+id/report_button"
+            style="@style/small_menu_card_button_style"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/report"
+            android:text="Raport"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

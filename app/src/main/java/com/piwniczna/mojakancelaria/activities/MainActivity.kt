@@ -18,6 +18,7 @@ import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
@@ -77,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                 is ArchivalObligationsDetailsFragment -> f.onBackPressed()
                 is ArchivalPaymentsFragment -> f.onBackPressed()
                 is ArchivalPaymentDetailsFragment -> f.onBackPressed()
+                is ClientDetailsFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }
