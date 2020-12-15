@@ -55,7 +55,7 @@ class DataService(context: Context) {
             }
             db.updatePayment(payment)
             db.updatePayment(archivalPayment)
-            if(payment.amount.equals(BigDecimal.ZERO)){
+            if(payment.amount.compareTo(BigDecimal.ZERO)==0){
                 db.deletePayment(payment)
             }
         }
