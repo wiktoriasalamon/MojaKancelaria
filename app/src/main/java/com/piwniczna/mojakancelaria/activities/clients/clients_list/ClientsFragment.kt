@@ -1,12 +1,12 @@
 package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.app.AlertDialog
-import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +52,7 @@ class ClientsFragment: Fragment() {
         }
 
         clientsListView.setOnItemLongClickListener { _, _, position, id ->
-            deleteClient(position, id)
+            archiveClient(position, id)
             true
         }
 
@@ -96,36 +96,79 @@ class ClientsFragment: Fragment() {
         }
     }
 
-    private fun deleteClient(position: Int, id: Long) {
-        val builder = AlertDialog.Builder(this.context)
+    private fun archiveClient(position: Int, id: Long) {
+        AsyncTask.execute {
+            val casesList = dbService.getCases(clientsListAdapter.data[position])
 
-        val clientName = clientsListAdapter.data[position].name
-        val message = SpannedText.getSpannedText(getString(R.string.archive_client, clientName))
+            if (casesList.size == 0){
+                activity?.runOnUiThread {
+                    val builder = AlertDialog.Builder(this.context)
+                    val clientName = clientsListAdapter.data[position].name
+                    val message =
+                        SpannedText.getSpannedText(getString(R.string.delete_client, clientName))
 
-        builder.setTitle(R.string.warning)
-        builder.setMessage(message)
+                    builder.setTitle(R.string.warning)
+                    builder.setMessage(message)
 
-        builder.setPositiveButton("Przenieś") { dialog, which ->
+                    builder.setPositiveButton("Usuń") { dialog, which ->
+                        deleteClient(clientsListAdapter.data[position])
 
-            builder.setTitle("Przenoszenie klienta do archiwum")
-            builder.setMessage(R.string.are_you_sure)
+                    }
 
-            builder.setPositiveButton(R.string.yes) { dialog, which -> moveClientToArchive(position) }
+                    builder.setNegativeButton(R.string.cancel) { dialog, which -> }
 
-            builder.setNegativeButton(R.string.no) { dialog, which -> }
+                    builder.show()
+                }
 
-            builder.show()
+            }
+            else {
+                activity?.runOnUiThread {
+                    val builder = AlertDialog.Builder(this.context)
+                    val clientName = clientsListAdapter.data[position].name
+                    val message =
+                        SpannedText.getSpannedText(getString(R.string.archive_client, clientName))
 
+                    builder.setTitle(R.string.warning)
+                    builder.setMessage(message)
+
+                    builder.setPositiveButton("Przenieś") { dialog, which ->
+
+                        builder.setTitle("Przenoszenie klienta do archiwum")
+                        builder.setMessage(R.string.are_you_sure)
+
+                        builder.setPositiveButton(R.string.yes) { dialog, which ->
+                            moveClientToArchive(
+                                position
+                            )
+                        }
+
+                        builder.setNegativeButton(R.string.no) { dialog, which -> }
+
+                        builder.show()
+
+                    }
+
+                    builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+                    builder.show()
+                }
+            }
         }
 
-        builder.setNegativeButton(R.string.cancel) { dialog, which -> }
-
-        builder.show()
     }
 
     private fun moveClientToArchive(position: Int) {
         AsyncTask.execute {
             dbService.deleteClient(clientsList[position])
+            getClientsFromDB()
+        }
+    }
+
+    private fun deleteClient(client: ClientEntity){
+        AsyncTask.execute {
+            dbService.deleteClient(client)
+            client.id += 1
+            dbService.deleteArchivalClient(client)
             getClientsFromDB()
         }
     }
