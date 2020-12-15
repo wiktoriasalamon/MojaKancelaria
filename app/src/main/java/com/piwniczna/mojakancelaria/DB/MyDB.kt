@@ -12,10 +12,9 @@ import com.piwniczna.mojakancelaria.Models.*
             (CaseEntity::class),
             (ObligationEntity::class),
             (PaymentEntity::class),
-            (RelationEntity::class),
-            (PasswordEntity::class)
+            (RelationEntity::class)
         ],
-        version = 9)
+        version = 11)
 @TypeConverters(Converter::class)
 
 abstract class MyDb : RoomDatabase() {

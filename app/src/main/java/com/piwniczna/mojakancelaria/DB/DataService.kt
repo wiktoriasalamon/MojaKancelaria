@@ -3,18 +3,12 @@ package com.piwniczna.mojakancelaria.DB
 import android.content.Context
 import com.piwniczna.mojakancelaria.Models.*
 import java.math.BigDecimal
+import java.time.LocalDate
 
 class DataService(context: Context) {
     var db: DAO = DBConnector.getDB(context).dao()
 
-    //password
-    fun getPasswordHash(): PasswordEntity{
-        return db.getHash()
-    }
 
-    fun addNewPassword(password: PasswordEntity){
-        db.addHash(password)
-    }
 
     //cases
     fun addCase(case: CaseEntity){
@@ -47,6 +41,13 @@ class DataService(context: Context) {
     fun addClient(client: ClientEntity){
         db.addClient(client)
         db.addClient(client) //to make archival version of client
+    }
+
+    fun initDB(){
+        db.addClient(ClientEntity("root", 1))
+        db.addCase(CaseEntity(1, "root_case", 1))
+        db.addObligation(ObligationEntity(1, 1, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
+
     }
 
     fun deleteClient(client: ClientEntity): Boolean{
