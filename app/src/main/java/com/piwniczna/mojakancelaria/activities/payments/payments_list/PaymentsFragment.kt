@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 
@@ -59,7 +56,7 @@ class PaymentsFragment(var client: ClientEntity)  : Fragment() {
 
     private fun getPaymentsFromDB() {
         AsyncTask.execute {
-            val payments = dbService.getPayments(client.id)
+            val payments = dbService.getPayments(client)
             paymentsList.clear()
             paymentsList.addAll(payments)
             activity?.runOnUiThread {

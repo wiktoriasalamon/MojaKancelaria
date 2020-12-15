@@ -15,7 +15,6 @@ import com.piwniczna.mojakancelaria.activities.archives.payments.ArchivalPayment
 import com.piwniczna.mojakancelaria.activities.archives.payments.ArchivalPaymentsFragment
 import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
@@ -63,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 is AddClientFragment -> f.onBackPressed()
                 is CasesFragment -> f.onBackPressed()
                 is AddCaseFragment -> f.onBackPressed()
-                is CaseDetailsFragment -> f.onBackPressed()
                 is ObligationsFragment -> f.onBackPressed()
                 is ObligationDetailsFragment -> f.onBackPressed()
                 is AddObligationFragment -> f.onBackPressed()

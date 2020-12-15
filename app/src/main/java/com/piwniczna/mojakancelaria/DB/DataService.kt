@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.DB
 
 import android.content.Context
+import android.util.Log
 import com.piwniczna.mojakancelaria.Models.*
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -28,13 +29,71 @@ class DataService(context: Context) {
     }
 
     fun setCaseArchival(case: CaseEntity) {
-        val obligations = db.getObligations(case.id)
-        case.clientId += 1 //change client to archival version of client
-        db.updateCase(case)
-        for (o in obligations) {
-            o.clientId += 1
-            updateObligation(o)
+        Log.e("tet","Start!")
+
+        val casePayments = ArrayList(db.getCasePayments(case.id))
+        val archivalClient =  db.getClient(case.clientId +1)
+
+        Log.e("tet","${casePayments.size}")
+        for (payment in casePayments) {
+            val paymentsRelationsList = ArrayList(db.getRelationsForPayment(payment.id))
+            //todo: !!!!!!!!!!!!!!!!!!!!!!11
+            val caseRelationsList = ArrayList(db.getCaseRelations(case.id))
+
+            var archivalPayment = PaymentEntity(archivalClient.id, payment.name, BigDecimal.ZERO, payment.date)
+            db.addPayment(archivalPayment)
+            Log.e("test","new Payment: ${archivalPayment.id}")
+
+            archivalPayment = db.getLastPayment()
+            Log.e("test","new Payment: ${archivalPayment.id}")
+
+            for(relation in paymentsRelationsList){
+                if(!caseRelationsList.contains(relation)){
+                    continue
+                }
+                relation.paymentId = archivalPayment.id
+                relation.clientId = archivalClient.id
+                archivalPayment.amount = archivalPayment.amount.add(relation.amount)
+                payment.amount = payment.amount.minus(relation.amount)
+                db.updateRelation(relation)
+
+            }
+            db.updatePayment(payment)
+            db.updatePayment(archivalPayment)
         }
+
+        var obligationsList = db.getObligations(case.id)
+        for (obligation in obligationsList) {
+            obligation.clientId += 1
+            db.updateObligation(obligation)
+        }
+
+        case.clientId += 1
+        db.updateCase(case)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     //clients
@@ -43,33 +102,14 @@ class DataService(context: Context) {
         db.addClient(client) //to make archival version of client
     }
 
-    fun initDB(){
-        db.addClient(ClientEntity("root", 1))
-        db.addCase(CaseEntity(1, "root_case", 1))
-        db.addObligation(ObligationEntity(1, 1, ObligationType.CONTRACT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
-
-    }
-
     fun deleteClient(client: ClientEntity): Boolean{
         if(client.id % 2 == 1) {
             return false //activeClient has even id
         }
-        val payments = db.getPayments(client.id)
         val cases = db.getCases(client.id)
-        val relations = db.getRelations(client.id)
 
         for (c in cases) {
             setCaseArchival(c)
-        }
-
-        for (p in payments) {
-            p.clientId += 1
-            db.updatePayment(p)
-        }
-
-        for (r in relations) {
-            r.clientId += 1
-            db.updateRelation(r)
         }
 
         db.deleteClient(client)
@@ -94,7 +134,7 @@ class DataService(context: Context) {
 
     fun getArchivalClients(): ArrayList<ClientEntity> {
         val toReturn = ArrayList(db.getArchivalClients())
-        toReturn.remove(ClientEntity("root",1)) //root client has also odd id
+        toReturn.remove(ClientEntity("-",1)) //root client has also odd id
         return toReturn
     }
 
@@ -182,8 +222,14 @@ class DataService(context: Context) {
     }
 
     fun getPayments(caseId: Int) : ArrayList<PaymentEntity> {
-        return ArrayList(db.getPayments(caseId))
+        return ArrayList(db.getCasePayments(caseId))
     }
+
+    fun getPayments(client: ClientEntity): ArrayList<PaymentEntity> {
+        return ArrayList(db.getPayments(client.id))
+    }
+
+
 
     fun getPayments(relations: ArrayList<RelationEntity>) : ArrayList<PaymentEntity> {
         var listToRet = arrayListOf<PaymentEntity>()
@@ -205,5 +251,14 @@ class DataService(context: Context) {
 
     fun getRelations(obligation: ObligationEntity) : ArrayList<RelationEntity> {
         return ArrayList(db.getRelationsForObligation(obligation.id))
+    }
+
+
+    //init
+    fun initDB(){
+        db.addClient(ClientEntity("-", 1))
+        db.addCase(CaseEntity(1, "-", 1))
+        db.addObligation(ObligationEntity(1, 1, ObligationType.ROOT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
+
     }
 }
