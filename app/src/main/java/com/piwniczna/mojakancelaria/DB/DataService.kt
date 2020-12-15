@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.DB
 
 import android.content.Context
+import android.util.Log
 import com.piwniczna.mojakancelaria.Models.*
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -100,6 +101,13 @@ class DataService(context: Context) {
 
     fun getClient(clientId: Int): ClientEntity {
         return db.getClient(clientId)
+    }
+
+    fun ifClientExists(clientName: String): Boolean {
+        if(db.getClient(clientName) != null) {
+            return true
+        }
+        return false
     }
 
 

@@ -15,6 +15,8 @@
     <!-- Add Client Fragment -->
     <string name="new_client_hint">Nazwa nowego klienta</string>
     <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
+    <string name="add_multiplicated_client"><![CDATA[Klient <b>%1$s<</b> już istnieje w aplikacji. Czy na pewno chcesz utworzyć nowego klienta o tej samej nazwie?]]> </string>
+
     <!-- Client Fragment -->
     <string name="delete_client"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>
     <string name="archive_client"><![CDATA[Czy na pewno chcesz przenieść klienta <b>%1$s<</b> oraz wszystkie jego dane do archiwum? Nie da się cofnąć tej operacji!]]> </string>
