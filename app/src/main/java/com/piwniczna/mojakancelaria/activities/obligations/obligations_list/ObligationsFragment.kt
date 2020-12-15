@@ -1,7 +1,9 @@
 package com.piwniczna.mojakancelaria.activities.cases
 
+import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,10 @@ import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFra
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligations_list.ObligationsListAdapter
+import com.piwniczna.mojakancelaria.utils.EmailSender
+import com.piwniczna.mojakancelaria.utils.PdfGenerator
+import com.piwniczna.mojakancelaria.utils.ReportGenerator
+import com.piwniczna.mojakancelaria.utils.SpannedText
 import java.math.BigDecimal
 import kotlin.collections.ArrayList
 
@@ -31,6 +37,9 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
     lateinit var dbService: DataService
     lateinit var typeFilters: ArrayList<ObligationType>
     lateinit var sumOfAmountsToPayTextView: TextView
+    lateinit var archiveButton: Button
+    lateinit var reportButton: Button
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_obligations, container, false)
@@ -49,6 +58,12 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
         for (i in ObligationType.values()) {
             typeFilters.add(i)
         }
+
+        archiveButton = view.findViewById(R.id.archive_button)
+        archiveButton.setOnClickListener { archiveCase(it) }
+
+        reportButton = view.findViewById(R.id.report_button)
+        reportButton.setOnClickListener { sendReport(it) }
 
         val addButton = view.findViewById<Button>(R.id.add_obligation_button)
         addButton.setOnClickListener { handleAddObligation(it) }
@@ -130,5 +145,69 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
             obligationsListAdapter.filter(typeFilters)
         }
     }
+    private fun sendReport(view: View) {
+        AsyncTask.execute {
+            var reports = ReportGenerator.generateReport(case, this.context!!)
+            var uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
 
+            EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")
+
+        }
+    }
+
+    private fun archiveCase(view: View) {
+        var toPay = BigDecimal.ZERO
+        AsyncTask.execute {
+            val obligations = dbService.getObligations(case.id)
+            for (o in obligations) {
+                toPay = toPay.add(o.amount.minus(o.payed))
+            }
+            activity?.runOnUiThread{
+
+                val builder = AlertDialog.Builder(this.context)
+
+                val caseName = case.name
+                var message: Spanned?
+
+                if (toPay.compareTo(BigDecimal.ZERO)!=0){
+                    message = SpannedText.getSpannedText(getString(R.string.archive_not_payed,caseName,toPay.setScale(2).toString()))
+                }
+                else{
+                    message = SpannedText.getSpannedText(getString(R.string.archive_payed,caseName))
+                }
+
+
+                builder.setTitle(R.string.warning)
+                builder.setMessage(message)
+
+                builder.setPositiveButton(R.string.move) { dialog, which ->
+
+                    builder.setTitle("Przenoszenie do archiwum")
+                    builder.setMessage(R.string.are_you_sure)
+
+                    builder.setPositiveButton(R.string.yes) { dialog, which -> moveCaseToArchives(case) }
+
+                    builder.setNegativeButton(R.string.no) { dialog, which -> }
+
+                    builder.show()
+
+                }
+
+                builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+                builder.show()
+
+
+            }
+        }
+
+    }
+
+    fun moveCaseToArchives(case: CaseEntity){
+        AsyncTask.execute {
+            dbService.setCaseArchival(case)
+            onBackPressed()
+        }
+
+    }
 }
