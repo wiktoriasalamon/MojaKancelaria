@@ -29,23 +29,18 @@ class DataService(context: Context) {
     }
 
     fun setCaseArchival(case: CaseEntity) {
-        Log.e("tet","Start!")
 
         val casePayments = ArrayList(db.getCasePayments(case.id))
         val archivalClient =  db.getClient(case.clientId +1)
 
-        Log.e("tet","${casePayments.size}")
         for (payment in casePayments) {
             val paymentsRelationsList = ArrayList(db.getRelationsForPayment(payment.id))
-            //todo: !!!!!!!!!!!!!!!!!!!!!!11
             val caseRelationsList = ArrayList(db.getCaseRelations(case.id))
 
             var archivalPayment = PaymentEntity(archivalClient.id, payment.name, BigDecimal.ZERO, payment.date)
             db.addPayment(archivalPayment)
-            Log.e("test","new Payment: ${archivalPayment.id}")
 
             archivalPayment = db.getLastPayment()
-            Log.e("test","new Payment: ${archivalPayment.id}")
 
             for(relation in paymentsRelationsList){
                 if(!caseRelationsList.contains(relation)){
@@ -62,7 +57,7 @@ class DataService(context: Context) {
             db.updatePayment(archivalPayment)
         }
 
-        var obligationsList = db.getObligations(case.id)
+        val obligationsList = db.getObligations(case.id)
         for (obligation in obligationsList) {
             obligation.clientId += 1
             db.updateObligation(obligation)
@@ -143,7 +138,7 @@ class DataService(context: Context) {
     }
 
     fun deleteObligation(obligation: ObligationEntity) {
-        var relations = db.getRelationsForObligation(obligation.id)
+        val relations = db.getRelationsForObligation(obligation.id)
         for(r in relations){
             r.obligationId = 1
         }
@@ -192,7 +187,7 @@ class DataService(context: Context) {
     fun deletePayment(payment: PaymentEntity){
         val relationsList = db.getRelationsForPayment(payment.id)
         for(r in relationsList){
-            var obligation = db.getObligation(r.obligationId)
+            val obligation = db.getObligation(r.obligationId)
             obligation.payed = obligation.amount.minus(r.amount)
             db.updateObligation(obligation)
         }
@@ -210,7 +205,7 @@ class DataService(context: Context) {
 
 
     fun getPayments(relations: ArrayList<RelationEntity>) : ArrayList<PaymentEntity> {
-        var listToRet = arrayListOf<PaymentEntity>()
+        val listToRet = arrayListOf<PaymentEntity>()
         for(r in relations){
             listToRet.add(db.getPayment(r.paymentId))
         }
