@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.cases.cases_list
 
 import android.app.AlertDialog
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
@@ -33,9 +35,6 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
         val addButton = view.findViewById<Button>(R.id.add_case_button)
         addButton.setOnClickListener { handleAddCase(it) }
 
-        val clientTextView = view.findViewById<TextView>(R.id.client_cases_title)
-        clientTextView.text = client.name
-
         casesListView = view.findViewById(R.id.clients_cases_list_view) as ListView
         casesList = arrayListOf()
         casesListAdapter = CasesListAdapter(this.context!!, casesList)
@@ -51,8 +50,14 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
         }
 
         getCasesFromDB()
+        setActionbar()
 
         return view
+    }
+
+    private fun setActionbar() {
+        val bar = (activity as AppCompatActivity).supportActionBar
+        bar!!.title = client.name
     }
 
     fun onBackPressed() {

@@ -38,9 +38,6 @@ class ArchivalObligationsDetailsFragment(var client: ClientEntity, val case: Cas
         creationDateTextView.text = obligation.convertDate()
         paymentDateTextView.text = obligation.convertPaymentDate()
 
-        val clientNameTextView = view.findViewById<TextView>(R.id.client_name_title)
-        clientNameTextView.text = client.name
-
         val caseNameTextView = view.findViewById<TextView>(R.id.case_name_title)
         caseNameTextView.text = case.name
 

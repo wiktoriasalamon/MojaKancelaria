@@ -64,9 +64,6 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
         val hearingTypeButton = view.findViewById(R.id.hearing_type_button) as ToggleButton
         configureToggleButton(hearingTypeButton, ObligationType.HEARING)
 
-        val clientNameTextView = view.findViewById<TextView>(R.id.client_name_title)
-        clientNameTextView.text = client.name
-
         val caseNameTextView = view.findViewById<TextView>(R.id.case_name_title)
         caseNameTextView.text = case.name
 

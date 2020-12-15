@@ -97,4 +97,8 @@
     <string name="save">Zapisz</string>
     <string name="edit">Edytuj</string>
     <string name="empty_amount_payed">0/0 zł</string>
+
+    <!-- Archives -->
+    <string name="archives">Archiwum</string>
+    <string name="client_archives">Archwiwum - %1$s</string>
 </resources>

@@ -64,16 +64,15 @@ class ArchivalClientsFragment(): Fragment() {
 
         getClientsFromDB()
 
-        val bar = getActionbar()
-        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.archive_intence)))
-        bar!!.setTitle("Moja Kancelaria - archiwum")
+       setActionbar()
 
         return view
     }
 
-    fun getActionbar() : ActionBar?
-    {
-        return (activity as AppCompatActivity).supportActionBar
+    private fun setActionbar() {
+        val bar = (activity as AppCompatActivity).supportActionBar
+        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.archive_intence)))
+        bar.title = getString(R.string.archives)
     }
 
     fun onBackPressed() {

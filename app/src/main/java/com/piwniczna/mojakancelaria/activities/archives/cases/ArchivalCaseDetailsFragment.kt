@@ -21,7 +21,6 @@ import com.piwniczna.mojakancelaria.utils.PdfGenerator
 import com.piwniczna.mojakancelaria.utils.ReportGenerator
 
 class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
-    lateinit var clientTextView: TextView
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
     lateinit var paymentsButton: Button
@@ -29,9 +28,6 @@ class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_archival_case_details, container, false)
-
-        clientTextView = view.findViewById(R.id.client_name_title)
-        clientTextView.text = client.name
 
         caseTextView = view.findViewById(R.id.case_name_title)
         caseTextView.text = case.name
