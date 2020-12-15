@@ -1,0 +1,65 @@
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <string name=\"app_name\">Moja Kancelaria</string>\n    <!-- Login Activity -->\n    <string name=\"password_code_hint\">Pin</string>\n    <string name=\"login_button\">Zaloguj</string>\n    <string name=\"title_activity_login\">Login Activity</string>\n    <string name=\"login_successful_toast\">Logowanie…</string>\n    <string name=\"login_failed_toast\">Zły pin…</string>\n    <string name=\"new_password_code_hint\">Podaj nowy pin:</string>\n    <!-- Alert Dialog -->\n    <string name=\"warning\">Uwaga!</string>\n    <string name=\"delete\">USUŃ</string>\n    <string name=\"cancel\">ANULUJ</string>\n    <string name=\"ok\">Zatwierdź</string>\n    <string name=\"are_you_sure\">Na pewno?</string>\n    <string name=\"yes\">Tak</string>\n    <string name=\"no\">Nie</string>\n    <!-- Add Client Fragment -->\n    <string name=\"save_client_button\">Zapisz</string>\n    <string name=\"new_client_hint\">Nazwa nowego klienta</string>\n    <string name=\"empty_client_warning\">Nazwa klienta nie może być pusta!</string>\n    <!-- Client Fragment -->\n    <string name=\"delete_client\"><![CDATA[Czy na pewno chcesz usunąć klienta <b>%1$s<</b> oraz wszystkie jego dane?]]> </string>\n    <string name=\"deleting\">Usuwanie klienta</string>\n    <!-- Obligations -->\n    <string name=\"obligations\">Zobowiązania</string>\n    <string name=\"contract\">Umowa</string>\n    <string name=\"stamps\">Znaczki</string>\n    <string name=\"hearing\">Rozprawa</string>\n    <string name=\"court_short\">Op. sąd.</string>\n    <string name=\"court\">Opłaty sądowe</string>\n    <string name=\"currency\">zł</string>\n    <!-- Payments -->\n    <string name=\"payments\">Wpłaty</string>\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision a14c9d55e2e2784b18580b363c21f8b7c6a4d448)
++++ app/src/main/res/values/strings.xml	(date 1607547556000)
+@@ -30,6 +30,15 @@
+     <string name="court_short">Op. sąd.</string>
+     <string name="court">Opłaty sądowe</string>
+     <string name="currency">zł</string>
++
++    <string-array name="obligation_type">
++        <item>Znaczki</item>
++        <item>Opłaty sądowe</item>
++        <item>Umowa</item>
++        <item>Rozprawa</item>
++    </string-array>
++
+     <!-- Payments -->
+     <string name="payments">Wpłaty</string>
++
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_add_obligation.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_add_obligation.xml	(date 1607547663000)
++++ app/src/main/res/layout/fragment_add_obligation.xml	(date 1607547663000)
+@@ -0,0 +1,30 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical"
++    android:gravity="center"
++    >
++
++    <EditText
++        style="@style/input_style"
++        android:id="@+id/newClientEditText"
++        android:hint="@string/new_client_hint"
++        android:textIsSelectable="false"
++        android:inputType="text"
++        android:imeOptions="actionDone"
++        android:layout_marginBottom="40dp" />
++
++    <Spinner
++        android:id="@+id/spinner"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content" />
++
++    <Button
++        android:id="@+id/saveClientButton"
++        android:text="@string/save_client_button"
++        style="@style/button_style">
++    </Button>
++
++</LinearLayout>
+\ No newline at end of file

@@ -14,15 +14,10 @@ class PdfGenerator {
     companion object {
 
         fun generatePdfFromHTML(context: Context, html: String) : Uri {
-            val fname = "report.pdf"
-
+            val fname = "Raport.pdf"
 
             val fOut = FileOutputStream(File(context.getExternalFilesDir(null),fname)  )
-
-            var properties = ConverterProperties()
-            properties.charset = "utf-8"
-            HtmlConverter.convertToPdf(html, fOut, properties )
-
+            HtmlConverter.convertToPdf(html, fOut )
 
             val uri = Uri.fromFile(File(context.getExternalFilesDir(null), fname))
 

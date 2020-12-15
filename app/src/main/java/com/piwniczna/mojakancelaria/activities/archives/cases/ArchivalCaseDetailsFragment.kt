@@ -49,7 +49,7 @@ class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity
             var reports = ReportGenerator.generateReport(case, this.context!!)
             var uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
 
-            EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")
+            EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com", "${client.name} - ${case.name}")
 
         }
     }

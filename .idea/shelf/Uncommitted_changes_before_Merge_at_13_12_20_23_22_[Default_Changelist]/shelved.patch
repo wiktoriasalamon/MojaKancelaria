@@ -1,0 +1,38 @@
+Index: app/src/main/res/layout/fragment_case_details.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:orientation=\"vertical\"\n    android:gravity=\"center\"\n    >\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"30dp\"\n        android:orientation=\"vertical\">\n\n\n        <TextView\n            android:id=\"@+id/client_name_title\"\n            style=\"@style/double_title_style\"\n            android:drawableLeft=\"@drawable/user\"\n            android:text=\"Jan Kowalski\"/>\n`\n        <TextView\n            android:id=\"@+id/case_name_title\"\n            style=\"@style/double_title_style\"\n            android:drawableLeft=\"@drawable/file\"\n            android:text=\"Case Name\"/>\n\n    </LinearLayout>\n\n    <LinearLayout\n        android:orientation=\"vertical\"\n        android:gravity=\"center\"\n        android:layout_marginTop=\"0dp\"\n        android:layout_marginBottom=\"40dp\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n        <Button\n            android:id=\"@+id/obligations_button\"\n            android:text=\"@string/obligations\"\n            style=\"@style/menu_card_button_style\">\n        </Button>\n\n        <Button\n            android:id=\"@+id/payments_button\"\n            android:text=\"@string/payments\"\n            style=\"@style/menu_card_button_style\">\n        </Button>\n\n        <LinearLayout\n            android:orientation=\"horizontal\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"50dp\"\n            android:layout_marginHorizontal=\"25dp\"\n            >\n\n            <Button\n                android:id=\"@+id/archive_button\"\n                style=\"@style/small_menu_card_button_style\"\n                android:layout_weight=\"1\"\n\n                android:text=\"Archiwizuj\"></Button>\n\n            <Button\n                android:id=\"@+id/report_button\"\n                style=\"@style/small_menu_card_button_style\"\n                android:layout_weight=\"1\"\n                android:drawableRight=\"@drawable/report\"\n                android:text=\"Raport\"></Button>\n\n        </LinearLayout>\n\n\n    </LinearLayout>\n\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_case_details.xml	(revision e2fd3c5a7e7e2a534cd4db905a57699bc3f3ec36)
++++ app/src/main/res/layout/fragment_case_details.xml	(date 1607898135000)
+@@ -10,7 +10,8 @@
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:layout_margin="30dp"
++        android:layout_marginHorizontal="30dp"
++        android:layout_marginTop="30dp"
+         android:orientation="vertical">
+ 
+ 
+Index: app/src/main/res/layout/fragment_archival_case_details.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:orientation=\"vertical\"\n    android:gravity=\"center\"\n    >\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"30dp\"\n        android:orientation=\"vertical\">\n\n\n        <TextView\n            android:id=\"@+id/client_name_title\"\n            style=\"@style/double_title_style\"\n            android:drawableLeft=\"@drawable/user\"\n            android:text=\"Jan Kowalski\"/>\n`\n        <TextView\n            android:id=\"@+id/case_name_title\"\n            style=\"@style/double_title_style\"\n            android:drawableLeft=\"@drawable/file\"\n            android:text=\"Case Name\"/>\n\n    </LinearLayout>\n\n    <LinearLayout\n        android:orientation=\"vertical\"\n        android:gravity=\"center\"\n        android:layout_marginTop=\"0dp\"\n        android:layout_marginBottom=\"40dp\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n        <Button\n            android:id=\"@+id/obligations_button\"\n            android:text=\"@string/obligations\"\n            style=\"@style/menu_card_button_style\">\n        </Button>\n\n        <Button\n            android:id=\"@+id/payments_button\"\n            android:text=\"@string/payments\"\n            style=\"@style/menu_card_button_style\">\n        </Button>\n\n        <LinearLayout\n            android:orientation=\"horizontal\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"50dp\"\n            android:layout_marginHorizontal=\"25dp\"\n            >\n\n            <TextView\n                style=\"@style/small_menu_card_button_style\"\n                android:layout_weight=\"1\"\n                ></TextView>\n\n            <Button\n                android:id=\"@+id/report_button\"\n                style=\"@style/small_menu_card_button_style\"\n                android:layout_weight=\"1\"\n                android:drawableRight=\"@drawable/report\"\n                android:text=\"Raport\"></Button>\n\n        </LinearLayout>\n\n\n    </LinearLayout>\n\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_archival_case_details.xml	(revision e2fd3c5a7e7e2a534cd4db905a57699bc3f3ec36)
++++ app/src/main/res/layout/fragment_archival_case_details.xml	(date 1607898135000)
+@@ -10,7 +10,8 @@
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:layout_margin="30dp"
++        android:layout_marginHorizontal="30dp"
++        android:layout_marginTop="30dp"
+         android:orientation="vertical">
+ 
+ 

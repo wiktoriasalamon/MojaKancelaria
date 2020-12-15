@@ -1,0 +1,49 @@
+Index: app/src/main/java/com/piwniczna/mojakancelaria/activities/LoginActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.piwniczna.mojakancelaria.activities\n\nimport android.content.Intent\nimport android.os.AsyncTask\nimport android.os.Bundle\nimport android.view.View\nimport android.widget.Button\nimport android.widget.EditText\nimport android.widget.Toast\nimport androidx.appcompat.app.AlertDialog\nimport androidx.appcompat.app.AppCompatActivity\nimport com.google.common.hash.Hashing\nimport com.piwniczna.mojakancelaria.DB.DataService\nimport com.piwniczna.mojakancelaria.Models.*\nimport com.piwniczna.mojakancelaria.R\nimport java.lang.NullPointerException\nimport java.math.BigDecimal\nimport java.nio.charset.StandardCharsets\nimport java.time.LocalDate\n\nclass LoginActivity : AppCompatActivity() {\n    lateinit var passwordEditText : EditText\n    lateinit var loginButton: Button\n    lateinit var dbService: DataService\n\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_login)\n\n        passwordEditText = findViewById(R.id.passwordCodeEditText)\n        loginButton = findViewById(R.id.loginButton)\n        dbService = DataService(this)\n    }\n\n    override fun onPause() {\n        super.onPause()\n        passwordEditText.setText(\"\")\n    }\n\n    fun handleLogin(view: View) {\n        val pin = passwordEditText.text\n        val pinHash = Hashing.sha256()\n                .hashString(pin, StandardCharsets.UTF_8)\n                .toString()\n\n        AsyncTask.execute {\n            try {\n                val dbHash = dbService.getPasswordHash()\n                if(dbHash.equals(null)){\n                    throw NullPointerException()\n                }\n                runOnUiThread {\n                    if (!pinHash.equals(dbHash.hash)) {\n                        val text = R.string.login_failed_toast\n                        val duration = Toast.LENGTH_SHORT\n                        val toast = Toast.makeText(applicationContext, text, duration)\n                        toast.show()\n\n                        passwordEditText.setText(\"\")\n\n                    }\n                    else {\n                        val text = R.string.login_successful_toast\n                        val duration = Toast.LENGTH_SHORT\n                        val toast = Toast.makeText(applicationContext, text, duration)\n                        toast.show()\n\n                        openMainActivity()\n\n                    }\n                }\n            }\n            catch (e: NullPointerException){\n                runOnUiThread {\n                    showPasswordDialog()\n                }\n            }\n\n        }\n    }\n\n    fun openMainActivity() {\n        val myIntent = Intent(this, MainActivity::class.java)\n        startActivityForResult(myIntent, 123)\n    }\n\n    fun showPasswordDialog() {\n        val builder = AlertDialog.Builder(this)\n        val inflater = layoutInflater\n        builder.setTitle(R.string.new_password_code_hint)\n        val dialogLayout = inflater.inflate(R.layout.password_dialog, null)\n        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)\n        builder.setView(dialogLayout)\n        builder.setPositiveButton(R.string.ok) { _, _ ->  setPin(editText.text.toString())}\n        builder.show()\n\n    }\n\n    fun setPin(newPin:String) {\n        AsyncTask.execute {\n            val pinHash = Hashing.sha256()\n                    .hashString(newPin, StandardCharsets.UTF_8)\n                    .toString()\n            dbService.addNewPassword(PasswordEntity(pinHash))\n            dbService.addClient(ClientEntity(\"root\",999999))\n            dbService.addObligation(ObligationEntity(999999,ObligationType.CONTRACT,\"Usunięte zobowiązanie\", BigDecimal.ZERO,BigDecimal.ZERO, LocalDate.now(),LocalDate.now(),999999))\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/piwniczna/mojakancelaria/activities/LoginActivity.kt	(revision c2cf9ef50e5f5e2f30ed5a281a492ece1c5b1951)
++++ app/src/main/java/com/piwniczna/mojakancelaria/activities/LoginActivity.kt	(date 1607816311000)
+@@ -103,6 +103,7 @@
+                     .toString()
+             dbService.addNewPassword(PasswordEntity(pinHash))
+             dbService.addClient(ClientEntity("root",999999))
++            dbService.addCase(CaseEntity(999999,"root case",999999))
+             dbService.addObligation(ObligationEntity(999999,ObligationType.CONTRACT,"Usunięte zobowiązanie", BigDecimal.ZERO,BigDecimal.ZERO, LocalDate.now(),LocalDate.now(),999999))
+         }
+     }
+Index: app/src/main/java/com/piwniczna/mojakancelaria/activities/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\npackage com.piwniczna.mojakancelaria.activities\n\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport com.piwniczna.mojakancelaria.R\nimport com.piwniczna.mojakancelaria.activities.cases.CaseFragment\nimport com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment\nimport com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment\nimport com.piwniczna.mojakancelaria.activities.cases.add_client.AddCaseFragment\nimport com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment\nimport com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment\nimport com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment\nimport com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment\nimport com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment\nimport com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment\nimport com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment\nimport com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment\nimport com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment\nimport com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment\nimport com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment\n\nclass MainActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n\n        supportFragmentManager.beginTransaction().replace(\n                R.id.fragment_container,\n                ClientsFragment()\n        ).commit()\n    }\n\n    override fun onStop() {\n        super.onStop()\n        finish()\n    }\n\n    override fun onDestroy() {\n        super.onDestroy()\n        finish()\n    }\n\n    override fun onBackPressed() {\n        val fragments = supportFragmentManager.fragments\n        for (f in fragments) {\n            if (f == null) { continue }\n            when (f) {\n                is CasesFragment -> f.onBackPressed()\n                is AddCaseFragment -> f.onBackPressed()\n                is CaseDetailsFragment -> f.onBackPressed()\n                is ObligationsFragment -> f.onBackPressed()\n                is ObligationDetailsFragment -> f.onBackPressed()\n                is AddObligationFragment -> f.onBackPressed()\n                is UpdateObligationFragment -> f.onBackPressed()\n                is AddPaymentFragment -> f.onBackPressed()\n                is PaymentsFragment -> f.onBackPressed()\n                is PaymentDetailsFragment -> f.onBackPressed()\n                //todo!\n                else -> super.onBackPressed()\n            }\n        }\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/piwniczna/mojakancelaria/activities/MainActivity.kt	(revision c2cf9ef50e5f5e2f30ed5a281a492ece1c5b1951)
++++ app/src/main/java/com/piwniczna/mojakancelaria/activities/MainActivity.kt	(date 1607816311000)
+@@ -5,13 +5,10 @@
+ import android.os.Bundle
+ import com.piwniczna.mojakancelaria.R
+ import com.piwniczna.mojakancelaria.activities.cases.CaseFragment
+-import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
+ import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
+ import com.piwniczna.mojakancelaria.activities.cases.add_client.AddCaseFragment
+ import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
+ import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
+-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
+-import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
+ import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
+ import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
+ import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+@@ -46,6 +43,8 @@
+         for (f in fragments) {
+             if (f == null) { continue }
+             when (f) {
++                is ClientsFragment -> f.onBackPressed()
++                is AddClientFragment -> f.onBackPressed()
+                 is CasesFragment -> f.onBackPressed()
+                 is AddCaseFragment -> f.onBackPressed()
+                 is CaseDetailsFragment -> f.onBackPressed()
