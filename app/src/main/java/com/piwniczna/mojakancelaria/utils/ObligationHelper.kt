@@ -17,6 +17,7 @@ class ObligationHelper {
                 ObligationType.STAMP -> return context.resources.getString(R.string.stamps)
                 ObligationType.CONTRACT -> return context.resources.getString(R.string.contract)
                 ObligationType.COURT -> return context.resources.getString(R.string.court)
+                ObligationType.ROOT -> return "-"
                 else -> return ""
             }
         }

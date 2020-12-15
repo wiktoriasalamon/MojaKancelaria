@@ -15,9 +15,7 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
-import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
-import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
-import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
+
 
 import kotlin.collections.ArrayList
 
@@ -58,7 +56,7 @@ class ArchivalPaymentsFragment(var client: ClientEntity, val case: CaseEntity)  
 
     private fun getPaymentsFromDB() {
         AsyncTask.execute {
-            val payments = dbService.getPayments(client.id)
+            val payments = dbService.getPayments(case.id)
             paymentsList.clear()
             paymentsList.addAll(payments)
             activity?.runOnUiThread {

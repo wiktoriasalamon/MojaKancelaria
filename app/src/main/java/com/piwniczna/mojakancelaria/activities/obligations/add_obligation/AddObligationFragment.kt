@@ -61,6 +61,7 @@ class AddObligationFragment(var client: ClientEntity, val case: CaseEntity) : Fr
         for(i in ObligationType.values()){
             types.add(ObligationHelper.getTypeString(i,this.context!!))
         }
+        types.remove("-")
 
         val aa = ArrayAdapter(this.context!!, android.R.layout.simple_spinner_item, types)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
