@@ -115,7 +115,6 @@ class ClientsFragment: Fragment() {
                     builder.setMessage(message)
 
                     builder.setPositiveButton("Usuń") { dialog, which ->
-                        Log.e("xd","xdd")
                         deleteClient(client)
 
                     }
