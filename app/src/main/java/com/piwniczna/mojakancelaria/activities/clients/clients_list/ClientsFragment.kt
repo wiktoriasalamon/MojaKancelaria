@@ -154,13 +154,17 @@ class ClientsFragment: Fragment() {
     fun onBackPressed() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(R.string.warning)
-        builder.setMessage("Czy chcesz wrócić do ekranu logowania?")
+        builder.setMessage("Czy chcesz wyjść z aplikacji?")
 
-        builder.setPositiveButton("Tak") { dialog, which -> this.activity?.finish() }
+        builder.setPositiveButton("Tak") { dialog, which -> exit() }
 
         builder.setNegativeButton(R.string.cancel) { dialog, which -> }
 
         builder.show()
 
+    }
+
+    fun exit() {
+        this.activity?.finishAffinity()
     }
 }

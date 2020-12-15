@@ -22,15 +22,7 @@ interface DAO {
     fun addRelation(relation: RelationEntity)
 
 
-    //login
-    @Insert
-    fun addHash(password: PasswordEntity)
 
-    @Query("DELETE FROM passwords")
-    fun delHash()
-
-    @Query("SELECT * FROM passwords LIMIT 1")
-    fun getHash(): PasswordEntity
 
 
     //clear all
