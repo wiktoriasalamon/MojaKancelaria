@@ -44,10 +44,6 @@ class ArchivalPaymentsFragment(var client: ClientEntity, val case: CaseEntity)  
 
         infoText = view.findViewById<TextView>(R.id.payments_info)
 
-
-        val clientNameTextView = view.findViewById<TextView>(R.id.payments_client_name)
-        clientNameTextView.text = client.name
-
         getPaymentsFromDB()
 
         return view

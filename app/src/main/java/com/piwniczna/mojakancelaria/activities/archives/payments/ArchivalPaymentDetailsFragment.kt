@@ -47,10 +47,6 @@ class ArchivalPaymentDetailsFragment(var client: ClientEntity, val case: CaseEnt
         amountTextView.text = getString(R.string.amount_with_currency, payment.amount.setScale(2).toString())
         paymentDateTextView.text = payment.convertDate()
 
-
-        val clientNameTextView = view.findViewById<TextView>(R.id.payment_client_name)
-        clientNameTextView.text = client.name
-
         return view
     }
 

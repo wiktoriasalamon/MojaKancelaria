@@ -73,16 +73,15 @@ class ClientsFragment: Fragment() {
 
         getClientsFromDB()
 
-        val bar = getActionbar()
-        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.dark_blue)))
-        bar!!.setTitle("Moja Kancelaria")
+        setActionbar()
 
         return view
     }
 
-    fun getActionbar() : ActionBar?
-    {
-        return (activity as AppCompatActivity).supportActionBar
+    private fun setActionbar() {
+        val bar = (activity as AppCompatActivity).supportActionBar
+        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.dark_blue)))
+        bar.title = getString(R.string.app_name)
     }
 
     private fun getClientsFromDB() {

@@ -44,9 +44,6 @@ class PaymentsFragment(var client: ClientEntity, val case: CaseEntity)  : Fragme
         val addButton = view.findViewById<Button>(R.id.add_payment_button)
         addButton.setOnClickListener { handleAddPayment(it) }
 
-        val clientNameTextView = view.findViewById<TextView>(R.id.payments_client_name)
-        clientNameTextView.text = client.name
-
         getPaymentsFromDB()
 
         return view

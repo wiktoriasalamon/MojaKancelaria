@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.archives.cases
 
 import android.app.AlertDialog
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
@@ -27,11 +29,6 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
         val view = inflater.inflate(R.layout.fragment_archival_cases, container, false)
         dbService = DataService(this.context!!)
 
-
-
-        val clientTextView = view.findViewById<TextView>(R.id.client_cases_title)
-        clientTextView.text = client.name
-
         casesListView = view.findViewById(R.id.clients_cases_list_view) as ListView
         casesList = arrayListOf()
         archivalCasesListAdapter = ArchivalCasesListAdapter(this.context!!, casesList, activity!!)
@@ -48,7 +45,14 @@ class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
 
         getCasesFromDB()
 
+        setActionbar()
+
         return view
+    }
+
+    private fun setActionbar() {
+        val bar = (activity as AppCompatActivity).supportActionBar
+        bar!!.title = getString(R.string.client_archives, client.name)
     }
 
     fun onBackPressed() {

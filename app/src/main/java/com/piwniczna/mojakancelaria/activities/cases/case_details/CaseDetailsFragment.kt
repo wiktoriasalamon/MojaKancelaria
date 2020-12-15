@@ -37,9 +37,6 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
         val view = inflater.inflate(R.layout.fragment_case_details, container, false)
         dbService = DataService(this.context!!)
 
-        clientTextView = view.findViewById(R.id.client_name_title)
-        clientTextView.text = client.name
-
         caseTextView = view.findViewById(R.id.case_name_title)
         caseTextView.text = case.name
 
