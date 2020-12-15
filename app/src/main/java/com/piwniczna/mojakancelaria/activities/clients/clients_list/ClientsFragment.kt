@@ -1,6 +1,8 @@
 package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.app.AlertDialog
+import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +14,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
@@ -69,11 +73,16 @@ class ClientsFragment: Fragment() {
 
         getClientsFromDB()
 
+        val bar = getActionbar()
+        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.dark_blue)))
+        bar!!.setTitle("Moja Kancelaria")
+
         return view
     }
 
-    fun onBackPressed() {
-        this.activity?.finish()
+    fun getActionbar() : ActionBar?
+    {
+        return (activity as AppCompatActivity).supportActionBar
     }
 
     private fun getClientsFromDB() {
@@ -91,17 +100,17 @@ class ClientsFragment: Fragment() {
         val builder = AlertDialog.Builder(this.context)
 
         val clientName = clientsListAdapter.data[position].name
-        val message = SpannedText.getSpannedText(getString(R.string.delete_client, clientName))
+        val message = SpannedText.getSpannedText(getString(R.string.archive_client, clientName))
 
         builder.setTitle(R.string.warning)
         builder.setMessage(message)
 
-        builder.setPositiveButton(R.string.delete) { dialog, which ->
+        builder.setPositiveButton("Przenieś") { dialog, which ->
 
-            builder.setTitle(R.string.deleting_client)
+            builder.setTitle("Przenoszenie klienta do archiwum")
             builder.setMessage(R.string.are_you_sure)
 
-            builder.setPositiveButton(R.string.yes) { dialog, which -> deleteClientFromDB(position) }
+            builder.setPositiveButton(R.string.yes) { dialog, which -> moveClientToArchive(position) }
 
             builder.setNegativeButton(R.string.no) { dialog, which -> }
 
@@ -114,12 +123,11 @@ class ClientsFragment: Fragment() {
         builder.show()
     }
 
-    private fun deleteClientFromDB(position: Int) {
+    private fun moveClientToArchive(position: Int) {
         AsyncTask.execute {
             dbService.deleteClient(clientsList[position])
             getClientsFromDB()
         }
-
     }
 
     private fun handleAddClient(view: View) {
@@ -141,5 +149,18 @@ class ClientsFragment: Fragment() {
                 R.id.fragment_container,
                 CasesFragment(clientsList[clientPosition])
         )?.commit()
+    }
+
+    fun onBackPressed() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(R.string.warning)
+        builder.setMessage("Czy chcesz wrócić do ekranu logowania?")
+
+        builder.setPositiveButton("Tak") { dialog, which -> this.activity?.finish() }
+
+        builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+        builder.show()
+
     }
 }

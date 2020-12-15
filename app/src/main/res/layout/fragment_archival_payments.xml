@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:elevation="10dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+
+    >
+    <TextView
+        style="@style/title_style"
+        android:id="@+id/payments_client_name"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="10dp"
+        android:textAlignment="textStart"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:text="Client Name">
+    </TextView>
+
+
+    <ListView
+        android:layout_marginTop="20dp"
+        android:id="@+id/payments_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <TextView
+        style="@style/title_style"
+        android:id="@+id/payments_info"
+        android:textAlignment="textStart"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:text="Brak zarchiwizowanych wpłat">
+    </TextView>
+
+</LinearLayout>

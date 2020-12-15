@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/client_name_title"
+            style="@style/double_title_style"
+            android:drawableLeft="@drawable/user"
+            android:text="Jan Kowalski"/>
+        `
+        <TextView
+            android:id="@+id/case_name_title"
+            style="@style/double_title_style"
+            android:drawableLeft="@drawable/file"
+            android:text="Case Name"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:id="@+id/obligation_name_label"
+            style="@style/details_label_style"
+            android:text="@string/name">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_type_label"
+            style="@style/details_label_style"
+            android:text="@string/type"
+            android:layout_below="@+id/obligation_name_label"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_amount_label"
+            style="@style/details_label_style"
+            android:text="@string/amount"
+            android:layout_below="@+id/obligation_type_label">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_payed_amount_label"
+            style="@style/details_label_style"
+            android:text="@string/payed_amount"
+            android:layout_below="@+id/obligation_amount_label">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_creation_date_label"
+            style="@style/details_label_style"
+            android:text="@string/creation_date"
+            android:layout_below="@+id/obligation_payed_amount_label">
+        </TextView>
+        <TextView
+            android:id="@+id/oligation_payment_date_label"
+            style="@style/details_label_style"
+            android:text="@string/payment_deadline"
+            android:layout_below="@+id/obligation_creation_date_label">
+        </TextView>
+
+        <TextView
+            android:id="@+id/obligation_name_value"
+            style="@style/details_value_style"
+            android:text="@string/name"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_type_value"
+            style="@style/details_value_style"
+            android:text="@string/type"
+            android:layout_below="@+id/obligation_name_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_amount_value"
+            style="@style/details_value_style"
+            android:text="@string/amount"
+            android:layout_below="@+id/obligation_type_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_payed_amount_value"
+            style="@style/details_value_style"
+            android:text="@string/payed_amount"
+            android:layout_below="@+id/obligation_amount_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/obligation_creation_date_value"
+            style="@style/details_value_style"
+            android:text="@string/creation_date"
+            android:layout_below="@+id/obligation_payed_amount_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/oligation_payment_date_value"
+            style="@style/details_value_style"
+            android:text="@string/payment_deadline"
+            android:layout_below="@+id/obligation_creation_date_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+    </RelativeLayout>
+
+</LinearLayout>

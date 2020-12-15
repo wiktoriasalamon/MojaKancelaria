@@ -36,8 +36,8 @@ class ObligationDetailsFragment(var client: ClientEntity, val case: CaseEntity, 
 
         nameTextView.text = obligation.name
         typeTextView.text = ObligationHelper.getTypeString(obligation.type, this.context!!)
-        amountTextView.text = this.context!!.resources.getString(R.string.amount_with_currency, obligation.amount.setScale(2).toString())
-        payedAmountTextView.text =  this.context!!.resources.getString(R.string.amount_with_currency, obligation.payed.setScale(2).toString())
+        amountTextView.text = getString(R.string.amount_with_currency, obligation.amount.setScale(2).toString())
+        payedAmountTextView.text =  getString(R.string.amount_with_currency, obligation.payed.setScale(2).toString())
         creationDateTextView.text = obligation.convertDate()
         paymentDateTextView.text = obligation.convertPaymentDate()
 

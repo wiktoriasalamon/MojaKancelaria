@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.archives.clients
 
 import android.app.AlertDialog
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Editable
@@ -10,14 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
-import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsListAdapter
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
 class ArchivalClientsFragment(): Fragment() {
@@ -62,7 +64,16 @@ class ArchivalClientsFragment(): Fragment() {
 
         getClientsFromDB()
 
+        val bar = getActionbar()
+        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.archive_intence)))
+        bar!!.setTitle("Moja Kancelaria - archiwum")
+
         return view
+    }
+
+    fun getActionbar() : ActionBar?
+    {
+        return (activity as AppCompatActivity).supportActionBar
     }
 
     fun onBackPressed() {
@@ -112,10 +123,13 @@ class ArchivalClientsFragment(): Fragment() {
 
     private fun deleteClientFromDB(position: Int) {
         AsyncTask.execute {
-            /* TODO check what this function return
-               check if deleting is posible */
-            dbService.deleteArchivalClient(clientsList[position])
+            val ret = dbService.deleteArchivalClient(clientsList[position])
             getClientsFromDB()
+            if (!ret){
+                activity!!.runOnUiThread {
+                    toastMessage("Nie można usunąć klienta z Archiwum, gdy nie został on całkowicie zarchiwizowany!")
+                }
+            }
         }
 
     }
@@ -125,5 +139,11 @@ class ArchivalClientsFragment(): Fragment() {
             R.id.fragment_container,
             ArchivalCasesFragment(clientsList[clientPosition])
         )?.commit()
+    }
+
+    private fun toastMessage(message: String) {
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(activity?.applicationContext, message, duration)
+        toast.show()
     }
 }

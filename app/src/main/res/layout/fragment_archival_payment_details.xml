@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp">
+        <TextView
+            style="@style/obligations_title_style"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="10dp"
+            android:textAlignment="textStart"
+            android:textSize="20dp"
+            android:id="@+id/payment_client_name"
+            android:text="Client Name"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        >
+        <TextView
+            android:id="@+id/payment_name_label"
+            style="@style/details_label_style"
+            android:text="@string/name">
+        </TextView>
+        <TextView
+            android:id="@+id/payment_amount_label"
+            style="@style/details_label_style"
+            android:text="@string/payment_amount"
+            android:layout_below="@+id/payment_name_label">
+        </TextView>
+        <TextView
+            android:id="@+id/payment_date_label"
+            style="@style/details_label_style"
+            android:text="@string/payment_date"
+            android:layout_below="@+id/payment_amount_label">
+        </TextView>
+        <TextView
+            android:id="@+id/payment_name_value"
+            style="@style/details_value_style"
+            android:text="@string/name"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/payment_amount_value"
+            style="@style/details_value_style"
+            android:text="@string/payment_amount"
+            android:layout_below="@+id/payment_name_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+        <TextView
+            android:id="@+id/payment_date_value"
+            style="@style/details_value_style"
+            android:text="@string/payment_date"
+            android:layout_below="@+id/payment_amount_value"
+            android:layout_alignParentEnd="true">
+        </TextView>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            style="@style/obligations_title_style"
+            android:text="@string/payed_obligations"
+            android:textSize="18dp">
+        </TextView>
+
+        <ListView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:id="@+id/obligations_of_payment_list_view_in_payment_details"
+            >
+
+        </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+</LinearLayout>
