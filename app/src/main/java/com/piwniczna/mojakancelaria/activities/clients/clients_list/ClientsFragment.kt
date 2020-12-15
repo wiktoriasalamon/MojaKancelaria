@@ -98,7 +98,11 @@ class ClientsFragment: Fragment() {
 
     private fun archiveClient(position: Int, id: Long) {
         AsyncTask.execute {
-            val casesList = dbService.getCases(clientsListAdapter.data[position])
+            var client = clientsListAdapter.data[position]
+            val casesList = dbService.getCases(client)
+            client.id += 1
+            casesList.addAll(dbService.getCases(client))
+            client.id -=1
 
             if (casesList.size == 0){
                 activity?.runOnUiThread {
@@ -111,7 +115,8 @@ class ClientsFragment: Fragment() {
                     builder.setMessage(message)
 
                     builder.setPositiveButton("Usuń") { dialog, which ->
-                        deleteClient(clientsListAdapter.data[position])
+                        Log.e("xd","xdd")
+                        deleteClient(client)
 
                     }
 
@@ -136,10 +141,7 @@ class ClientsFragment: Fragment() {
                         builder.setTitle("Przenoszenie klienta do archiwum")
                         builder.setMessage(R.string.are_you_sure)
 
-                        builder.setPositiveButton(R.string.yes) { dialog, which ->
-                            moveClientToArchive(
-                                position
-                            )
+                        builder.setPositiveButton(R.string.yes) { dialog, which -> moveClientToArchive(position)
                         }
 
                         builder.setNegativeButton(R.string.no) { dialog, which -> }
