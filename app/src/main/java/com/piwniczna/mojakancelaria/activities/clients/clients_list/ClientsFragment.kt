@@ -23,6 +23,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
 class ClientsFragment: Fragment() {
@@ -48,7 +49,7 @@ class ClientsFragment: Fragment() {
         clientsListView.adapter = clientsListAdapter
 
         clientsListView.setOnItemClickListener { _, _, position, _ ->
-            openClientCasesFragment(position)
+            openClientDetailsFragment(position)
         }
 
         clientsListView.setOnItemLongClickListener { _, _, position, id ->
@@ -187,10 +188,10 @@ class ClientsFragment: Fragment() {
         )?.commit()
     }
 
-    private fun openClientCasesFragment(clientPosition: Int) {
+    private fun openClientDetailsFragment(clientPosition: Int) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                CasesFragment(clientsList[clientPosition])
+                ClientDetailsFragment(clientsList[clientPosition])
         )?.commit()
     }
 

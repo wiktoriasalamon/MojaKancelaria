@@ -50,14 +50,8 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
         }
 
         getCasesFromDB()
-        setActionbar()
 
         return view
-    }
-
-    private fun setActionbar() {
-        val bar = (activity as AppCompatActivity).supportActionBar
-        bar!!.title = client.name
     }
 
     fun onBackPressed() {
