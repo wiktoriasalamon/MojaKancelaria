@@ -39,9 +39,8 @@ class LoginActivity : AppCompatActivity() {
             try {
                 dbService.initDB()
             }
-            catch (e: Exception) {
+            catch (e: android.database.sqlite.SQLiteConstraintException) {
                 Log.e("InitDB", "Root user, case and obligation already in DB")
-                e.printStackTrace()
             }
 
             runOnUiThread{
@@ -56,14 +55,5 @@ class LoginActivity : AppCompatActivity() {
         val myIntent = Intent(this, MainActivity::class.java)
         startActivityForResult(myIntent, 123)
     }
-
-
-    fun initDB() {
-
-
-
-
-    }
-
 
 }

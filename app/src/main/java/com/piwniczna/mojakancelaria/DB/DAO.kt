@@ -66,7 +66,7 @@ interface DAO {
     @Query("SELECT * FROM clients WHERE (id % 2) = 0")
     fun getClients(): List<ClientEntity>
 
-    @Query("SELECT * FROM clients WHERE (id % 2) = 1")
+    @Query("SELECT * FROM clients WHERE (id % 2) = 1 AND id IN (SELECT DISTINCT clientId from CASES )")
     fun getArchivalClients(): List<ClientEntity>
 
     @Query("SELECT * FROM cases WHERE id = :id LIMIT 1")
