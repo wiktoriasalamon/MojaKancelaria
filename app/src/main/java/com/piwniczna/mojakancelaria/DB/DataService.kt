@@ -115,6 +115,13 @@ class DataService(context: Context) {
         return db.getClient(clientId)
     }
 
+    fun ifClientExists(clientName: String): Boolean {
+        if(db.getClient(clientName) != null) {
+            return true
+        }
+        return false
+    }
+
 
     //obligations
     fun addObligation(obligation: ObligationEntity){

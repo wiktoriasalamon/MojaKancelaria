@@ -21,7 +21,7 @@ class EmailSender {
             emailIntent.type = "text/plain"
             emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
             emailIntent.putExtra(Intent.EXTRA_CC, CC)
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test mail")
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Raport z aplikacji Moja Kancelaria")
             emailIntent.putExtra(Intent.EXTRA_TEXT, message)
             emailIntent.putExtra(Intent.EXTRA_STREAM, uri)
             try {

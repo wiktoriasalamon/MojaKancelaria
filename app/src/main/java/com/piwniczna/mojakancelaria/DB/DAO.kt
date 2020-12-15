@@ -63,6 +63,9 @@ interface DAO {
     @Query("SELECT * FROM clients WHERE id = :id LIMIT 1")
     fun getClient(id: Int): ClientEntity
 
+    @Query("SELECT * FROM clients WHERE Name = :name  AND (id % 2) = 0 LIMIT 1")
+    fun getClient(name: String): ClientEntity?
+
     @Query("SELECT * FROM clients WHERE (id % 2) = 0")
     fun getClients(): List<ClientEntity>
 
