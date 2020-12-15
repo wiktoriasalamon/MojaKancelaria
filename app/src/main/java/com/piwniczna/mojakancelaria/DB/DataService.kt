@@ -55,6 +55,9 @@ class DataService(context: Context) {
             }
             db.updatePayment(payment)
             db.updatePayment(archivalPayment)
+            if(payment.amount.equals(BigDecimal.ZERO)){
+                db.deletePayment(payment)
+            }
         }
 
         val obligationsList = db.getObligations(case.id)
