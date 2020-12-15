@@ -20,7 +20,7 @@ import com.piwniczna.mojakancelaria.utils.Validator
 import java.math.BigDecimal
 import java.time.LocalDate
 
-class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragment() {
+class AddPaymentFragment(var client: ClientEntity): Fragment() {
     lateinit var nameEditText : EditText
     lateinit var amountEditText: EditText
     lateinit var dateButton: Button
@@ -74,7 +74,7 @@ class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragme
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client, case)
+                PaymentsFragment(client)
         )?.commit()
     }
 
@@ -274,7 +274,7 @@ class AddPaymentFragment(var client: ClientEntity, val case: CaseEntity): Fragme
 
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client, case)
+                PaymentsFragment(client)
         )?.commit()
     }
 

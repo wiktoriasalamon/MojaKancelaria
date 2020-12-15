@@ -24,7 +24,6 @@ import com.piwniczna.mojakancelaria.utils.SpannedText
 import java.math.BigDecimal
 
 class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
-    lateinit var clientTextView: TextView
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
     lateinit var paymentsButton: Button
@@ -140,7 +139,7 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
     private fun openPaymentsFragment(view: View) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                PaymentsFragment(client, case)
+                PaymentsFragment(client)
         )?.commit()
     }
 

@@ -16,8 +16,10 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
 import com.piwniczna.mojakancelaria.activities.cases.add_case.AddCaseFragment
 import com.piwniczna.mojakancelaria.activities.cases.case_details.CaseDetailsFragment
+import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 
@@ -41,7 +43,7 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
         casesListView.adapter = casesListAdapter
 
         casesListView.setOnItemClickListener { _, _, position, _ ->
-            openCaseDetailsFragment(position)
+            openObligationsFragment(position)
         }
 
         casesListView.setOnItemLongClickListener { _, _, position, id ->
@@ -57,7 +59,7 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
     fun onBackPressed() {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientsFragment()
+                ClientDetailsFragment(client)
         )?.commit()
     }
 
@@ -113,10 +115,10 @@ class CasesFragment(val client: ClientEntity) : Fragment() {
         )?.commit()
     }
 
-    private fun openCaseDetailsFragment(position: Int) {
+    private fun openObligationsFragment(position: Int) {
         fragmentManager?.beginTransaction()?.replace(
             R.id.fragment_container,
-            CaseDetailsFragment(client, casesList[position])
+            ObligationsFragment(client, casesList[position])
         )?.commit()
     }
 
