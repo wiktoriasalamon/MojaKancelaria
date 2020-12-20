@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Moja Kancelaria</string>
+    <string name="about_app_title">Autorzy</string>
+    <string name="about_app_description"><![CDATA[<b>Wiktoria Salamon</b><br />wiktoriajuliasalamon@gmail.com<br /><br /><b>Maciej Lewandowicz</b><br />maciek.lewandowicz@gmail.com]]></string>
     <!-- Login Activity -->
     <string name="password_code_hint">Pin</string>
     <string name="login_button">Start</string>

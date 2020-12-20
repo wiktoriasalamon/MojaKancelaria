@@ -14,7 +14,7 @@ class DBConnector {
                         context,
                         MyDb::class.java,
                         "kancelaria"
-                ).fallbackToDestructiveMigration().build()
+                ).build()
             } catch (e: Exception) {
             }
 

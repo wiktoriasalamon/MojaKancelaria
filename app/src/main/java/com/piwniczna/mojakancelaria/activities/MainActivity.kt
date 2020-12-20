@@ -1,9 +1,12 @@
 
 package com.piwniczna.mojakancelaria.activities
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
@@ -25,6 +28,7 @@ import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.Upd
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
+import com.piwniczna.mojakancelaria.utils.SpannedText
 
 
 class MainActivity : AppCompatActivity() {
@@ -82,6 +86,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.about, menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_button -> {
+                showAboutDialog()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
+    private fun showAboutDialog() {
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle(R.string.about_app_title)
+        builder.setMessage(SpannedText.getSpannedText(getString(R.string.about_app_description)))
+
+        builder.setPositiveButton("ok") { dialog, which -> }
+
+        builder.show()
+    }
 }
