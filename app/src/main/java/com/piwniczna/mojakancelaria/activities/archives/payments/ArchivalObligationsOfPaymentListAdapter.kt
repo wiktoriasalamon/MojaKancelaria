@@ -55,7 +55,7 @@ class ArchivalObligationsOfPaymentListAdapter(
                 holder.caseAndTypeTextView!!.text = context.resources.getString(
                         R.string.case_and_type,
                         case.name,
-                        ObligationHelper.getTypeString(ob.type, context)
+                        ObligationHelper.getTypeLongString(ob.type, context)
                 )
 
             }

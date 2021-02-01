@@ -17,6 +17,7 @@
     <!-- Add Client Fragment -->
     <string name="new_client_hint">Nazwa nowego klienta</string>
     <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
+    <string name="too_long_client_warning">Za długa nazwa klienta!</string>
     <string name="add_multiplicated_client"><![CDATA[Klient <b>%1$s<</b> już istnieje w aplikacji. Czy na pewno chcesz utworzyć nowego klienta o tej samej nazwie?]]> </string>
 
     <!-- Client Fragment -->
@@ -41,6 +42,7 @@
     <string name="obligations">Zobowiązania</string>
     <string name="contract">Umowa</string>
     <string name="stamps">Znaczki</string>
+    <string name="stamps_long">Znaczki pocztowe</string>
     <string name="hearing">Rozprawa</string>
     <string name="court_short">Op. sąd.</string>
     <string name="court">Opłaty sądowe</string>
@@ -74,6 +76,7 @@
     <string name="add">Dodaj</string>
     <string name="payment_date">Data wpłaty</string>
     <string name="name_not_provided">Podaj nazwę!</string>
+    <string name="name_too_long">Za długa nazwa!</string>
     <string name="adding_obligation_to_payment_label">Wybierz zobowiązanie do opłacenia</string>
     <string name="payed_amount_with_currency">%1$s/%2$s zł</string>
     <string name="left_to_be_spend">Pozostało do wydania %1$s zł</string>

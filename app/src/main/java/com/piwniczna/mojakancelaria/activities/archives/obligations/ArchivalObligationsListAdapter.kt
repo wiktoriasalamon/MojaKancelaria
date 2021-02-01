@@ -48,7 +48,7 @@ class ArchivalObligationsListAdapter(context: Context, var data: ArrayList<Oblig
         holder.titleTextView!!.text=obligations[position].name
         holder.amountTextView!!.text= context.resources.getString(R.string.amount_with_currency, obligations[position].amount.setScale(2).toString())
         holder.dateTextView!!.text=obligations[position].convertPaymentDate()
-        holder.typeTextView!!.text= ObligationHelper.getTypeString(obligations[position].type, context)
+        holder.typeTextView!!.text= ObligationHelper.getTypeLongString(obligations[position].type, context)
         holder.layout!!.backgroundTintList = activity.resources.getColorStateList(R.color.archive_light)
 
         return view

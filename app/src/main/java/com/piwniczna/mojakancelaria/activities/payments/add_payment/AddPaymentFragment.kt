@@ -308,6 +308,9 @@ class AddPaymentFragment(var client: ClientEntity): Fragment() {
         if (nameEditText.text.toString() == ""){
             text = getString(R.string.name_not_provided)
         }
+        else if (nameEditText.text.toString().length > resources.getInteger(R.integer.max_payment_len)){
+            text = getString(R.string.name_too_long)
+        }
         else if (amountEditText.text.toString() == "" || BigDecimal(amountEditText.text.toString()).compareTo(BigDecimal(0))!=1 ){
             text = getString(R.string.wrong_amount)
         }
