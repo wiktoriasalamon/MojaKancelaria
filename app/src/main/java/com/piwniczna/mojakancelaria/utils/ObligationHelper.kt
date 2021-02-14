@@ -21,6 +21,17 @@ class ObligationHelper {
                 else -> return ""
             }
         }
+
+        fun getTypeLongString(type: ObligationType, context: Context) : String {
+            when (type) {
+                ObligationType.HEARING -> return context.resources.getString(R.string.hearing)
+                ObligationType.STAMP -> return context.resources.getString(R.string.stamps_long)
+                ObligationType.CONTRACT -> return context.resources.getString(R.string.contract)
+                ObligationType.COURT -> return context.resources.getString(R.string.court)
+                ObligationType.ROOT -> return "-"
+                else -> return ""
+            }
+        }
         fun getColor(obligation: ObligationEntity, context: Context) : ColorStateList {
 
             if (obligation.payed >= obligation.amount) {

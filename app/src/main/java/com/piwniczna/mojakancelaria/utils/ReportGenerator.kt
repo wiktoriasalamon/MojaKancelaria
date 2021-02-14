@@ -85,7 +85,7 @@ class ReportGenerator {
 
             for(o in obligationsList){
                 toReturn +=
-                        "<h4>Zobowiazanie: ${o.name} (${ObligationHelper.getTypeString(o.type, context)})</h4>" +
+                        "<h4>Zobowiazanie: ${o.name} (${ObligationHelper.getTypeLongString(o.type, context)})</h4>" +
                         "<p>Termin platnosci: ${o.convertPaymentDate()}</br>" +
                         "Kwota: ${o.amount.setScale(2)} zl</br>" +
                         "Oplacono: ${o.payed.setScale(2)} zl"
@@ -126,7 +126,7 @@ class ReportGenerator {
             val obligationsList = dbService.getObligations(case.id)
             var toReturn = "Raport\n${client.name}: ${case.name}\n--------------------------------------------------"
             for(o in obligationsList){
-                toReturn += "\n\n${o.name} (${ObligationHelper.getTypeString(o.type, context)}) - ${o.amount.setScale(2)} zł - ${o.convertDate()}"
+                toReturn += "\n\n${o.name} (${ObligationHelper.getTypeLongString(o.type, context)}) - ${o.amount.setScale(2)} zł - ${o.convertDate()}"
                 val relationsList = dbService.getRelations(o)
                 val paymentsList = dbService.getPayments(relationsList)
                 for(i in relationsList.zip(paymentsList)){

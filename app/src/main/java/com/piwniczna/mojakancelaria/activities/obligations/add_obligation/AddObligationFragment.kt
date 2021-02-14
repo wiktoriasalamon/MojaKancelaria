@@ -59,7 +59,7 @@ class AddObligationFragment(var client: ClientEntity, val case: CaseEntity) : Fr
         val types = arrayListOf<String>()
         types.add(this.context!!.resources.getString(R.string.spinner_prompt))
         for(i in ObligationType.values()){
-            types.add(ObligationHelper.getTypeString(i,this.context!!))
+            types.add(ObligationHelper.getTypeLongString(i,this.context!!))
         }
         types.remove("-")
 
@@ -132,6 +132,9 @@ class AddObligationFragment(var client: ClientEntity, val case: CaseEntity) : Fr
         var text = ""
         if (nameEditText.text.toString() == "" || amountEditText.text.toString() == ""){
             text = this.context!!.resources.getString(R.string.not_provided_data)
+        }
+        else if (nameEditText.text.toString().length > resources.getInteger(R.integer.max_obligation_len)) {
+            text = getString(R.string.name_too_long)
         }
         else if (BigDecimal(amountEditText.text.toString()).compareTo(BigDecimal(0))!=1 ){
             text = this.context!!.resources.getString(R.string.wrong_amount)

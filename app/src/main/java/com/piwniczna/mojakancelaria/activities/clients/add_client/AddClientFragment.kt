@@ -42,8 +42,16 @@ class AddClientFragment: Fragment() {
 
     fun handleSaveClient(view: View) {
         val newClientName = clientEditText.text.toString()
+
         if (newClientName == "") {
             val text = R.string.empty_client_warning
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(activity?.applicationContext, text, duration)
+            toast.show()
+            return
+        }
+        if (newClientName.length > resources.getInteger(R.integer.max_client_len)) {
+            val text = R.string.too_long_client_warning
             val duration = Toast.LENGTH_LONG
             val toast = Toast.makeText(activity?.applicationContext, text, duration)
             toast.show()

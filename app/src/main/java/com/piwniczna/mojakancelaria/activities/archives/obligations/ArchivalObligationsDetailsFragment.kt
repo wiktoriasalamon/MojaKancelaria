@@ -32,7 +32,7 @@ class ArchivalObligationsDetailsFragment(var client: ClientEntity, val case: Cas
 
 
         nameTextView.text = obligation.name
-        typeTextView.text = ObligationHelper.getTypeString(obligation.type, this.context!!)
+        typeTextView.text = ObligationHelper.getTypeLongString(obligation.type, this.context!!)
         amountTextView.text = getString(R.string.amount_with_currency, obligation.amount.setScale(2).toString())
         payedAmountTextView.text = getString(R.string.amount_with_currency, obligation.payed.setScale(2).toString())
         creationDateTextView.text = obligation.convertDate()
