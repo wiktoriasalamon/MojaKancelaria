@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.activities.clients.clients_list
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,10 @@ class ClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>) :
 
     override fun getItemId(p0: Int): Long {
         return clients[p0].id.toLong()
+    }
+
+    override fun getPosition(item: ClientEntity?): Int {
+        return data.indexOf(item)
     }
 
     override fun getFilter(): Filter {

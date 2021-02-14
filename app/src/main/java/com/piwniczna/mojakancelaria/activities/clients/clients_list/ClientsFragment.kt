@@ -48,12 +48,14 @@ class ClientsFragment: Fragment() {
         clientsListAdapter = ClientsListAdapter(this.context!!, clientsList)
         clientsListView.adapter = clientsListAdapter
 
-        clientsListView.setOnItemClickListener { _, _, position, _ ->
-            openClientDetailsFragment(position)
+
+        clientsListView.setOnItemClickListener { _, _, position, id ->
+            Log.e("LISTA", id.toString())
+            openClientDetailsFragment(id)
         }
 
         clientsListView.setOnItemLongClickListener { _, _, position, id ->
-            archiveClient(position, id)
+            archiveClient(id)
             true
         }
 
@@ -96,7 +98,10 @@ class ClientsFragment: Fragment() {
         }
     }
 
-    private fun archiveClient(position: Int, id: Long) {
+    private fun archiveClient(id: Long) {
+        val item = clientsList.filter { it.id == id.toInt() }[0]
+        val position = clientsList.indexOf(item)
+
         AsyncTask.execute {
             var client = clientsListAdapter.data[position]
             val casesList = dbService.getCases(client)
@@ -188,10 +193,10 @@ class ClientsFragment: Fragment() {
         )?.commit()
     }
 
-    private fun openClientDetailsFragment(clientPosition: Int) {
+    private fun openClientDetailsFragment(id: Long) {
         fragmentManager?.beginTransaction()?.replace(
                 R.id.fragment_container,
-                ClientDetailsFragment(clientsList[clientPosition])
+                ClientDetailsFragment(clientsList.filter { it.id == id.toInt()}[0])
         )?.commit()
     }
 
