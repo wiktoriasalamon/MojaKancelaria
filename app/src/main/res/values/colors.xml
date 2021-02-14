@@ -12,6 +12,10 @@
     <color name="blue">#7DCCFF</color>
     <color name="grey_blue">#A7CCDE</color>
 
+    <color name="dark_blue_1">#2798CD</color>
+    <color name="blue_1">#7DCCFF</color>
+    <color name="grey_blue_1">#A7CCDE</color>
+
     <color name="archive_light">#C7C3BD</color>
     <color name="archive_intence">#8E877B</color>
 

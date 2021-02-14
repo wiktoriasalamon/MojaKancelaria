@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Spanned
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -147,6 +148,7 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
     private fun sendReport(view: View) {
         AsyncTask.execute {
             var reports = ReportGenerator.generateReport(case, this.context!!)
+            Log.e("stop","stop")
             var uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
 
             EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")

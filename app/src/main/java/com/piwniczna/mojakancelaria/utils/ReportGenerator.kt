@@ -1,6 +1,7 @@
 package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
+import android.util.Log
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
@@ -26,7 +27,6 @@ class ReportGenerator {
 
             val html = replacePolishSymbols(getHtmlObligations())
             val text = getObligations()
-
             return arrayListOf(html,text)
         }
 
@@ -45,7 +45,7 @@ class ReportGenerator {
             var toReturn =""
             toReturn += "<html>\n" +
                     "    <head>\n" +
-                    "    <meta charset=\"UTF-8\">"
+                    "    <meta charset=\"UTF-8\">" +
                     "    <style>\n" +
                     "    table {\n" +
                     "      font-family: arial, sans-serif;\n" +
