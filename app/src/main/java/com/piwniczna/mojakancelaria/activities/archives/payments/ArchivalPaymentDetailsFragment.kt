@@ -1,14 +1,12 @@
 package com.piwniczna.mojakancelaria.activities.archives.payments
 
 
-import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.DB.DataService
@@ -17,9 +15,6 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.Models.PaymentEntity
 import com.piwniczna.mojakancelaria.Models.RelationEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.payments.add_payment.ObligationsOfPaymentListAdapter
-import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
-import com.piwniczna.mojakancelaria.utils.SpannedText
 
 class ArchivalPaymentDetailsFragment(var client: ClientEntity, val case: CaseEntity, var payment: PaymentEntity) : Fragment() {
     lateinit var dbService: DataService

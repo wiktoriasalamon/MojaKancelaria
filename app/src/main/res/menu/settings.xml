@@ -4,6 +4,6 @@
         android:id="@+id/menu_button"
         android:title=""
         app:showAsAction="always"
-        android:icon="@drawable/info"
+        android:icon="@drawable/settings"
         />
 </menu>

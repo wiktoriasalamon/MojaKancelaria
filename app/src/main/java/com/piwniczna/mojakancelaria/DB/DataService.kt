@@ -1,7 +1,6 @@
 package com.piwniczna.mojakancelaria.DB
 
 import android.content.Context
-import android.util.Log
 import com.piwniczna.mojakancelaria.Models.*
 import java.math.BigDecimal
 import java.time.LocalDate

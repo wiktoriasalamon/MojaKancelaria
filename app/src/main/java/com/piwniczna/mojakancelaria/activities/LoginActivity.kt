@@ -3,22 +3,13 @@ package com.piwniczna.mojakancelaria.activities
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.*
 import com.piwniczna.mojakancelaria.R
-import java.lang.Exception
-import java.lang.NullPointerException
-import java.math.BigDecimal
-import java.nio.charset.StandardCharsets
-import java.time.LocalDate
 
 class LoginActivity : AppCompatActivity() {
     lateinit var passwordEditText : EditText

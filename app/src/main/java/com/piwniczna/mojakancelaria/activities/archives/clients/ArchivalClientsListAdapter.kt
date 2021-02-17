@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.utils.ObligationHelper
 
 class ArchivalClientsListAdapter(context: Context, var data: ArrayList<ClientEntity>, val activity: FragmentActivity) :
     ArrayAdapter<ClientEntity>(context, R.layout.layout_clients_list_item, data), Filterable {
