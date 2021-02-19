@@ -107,4 +107,7 @@
     <!-- Archives -->
     <string name="archives">Archiwum</string>
     <string name="client_archives">Archwiwum - %1$s</string>
+
+    <!-- Backup -->
+    <string name="provide_backup">Podaj nazwę pliku do backupu:</string>
 </resources>
