@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MojaKancelaria">
-        <activity android:name=".activities.LoginActivity">
+        <activity android:name="com.piwniczna.mojakancelaria.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.piwniczna.mojakancelaria.activities.MainActivity"
             android:windowSoftInputMode="adjustPan|adjustResize"
             android:label="@string/app_name"></activity>
 

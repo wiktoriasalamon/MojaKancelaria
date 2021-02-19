@@ -9,7 +9,6 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 
 class CasesListAdapter(context: Context, var data: ArrayList<CaseEntity>) :

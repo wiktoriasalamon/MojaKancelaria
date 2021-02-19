@@ -1,7 +1,6 @@
 package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
-import android.util.Log
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity

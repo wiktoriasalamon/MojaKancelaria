@@ -10,7 +10,6 @@ import android.widget.Filterable
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 
 class ArchivalCasesListAdapter(context: Context, var data: ArrayList<CaseEntity>, val activity: FragmentActivity) :

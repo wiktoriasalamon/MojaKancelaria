@@ -13,9 +13,6 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.obligations.ArchivalObligationsFragment
 import com.piwniczna.mojakancelaria.activities.archives.payments.ArchivalPaymentsFragment
-import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
-import com.piwniczna.mojakancelaria.activities.cases.ObligationsFragment
-import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.utils.EmailSender
 import com.piwniczna.mojakancelaria.utils.PdfGenerator
 import com.piwniczna.mojakancelaria.utils.ReportGenerator

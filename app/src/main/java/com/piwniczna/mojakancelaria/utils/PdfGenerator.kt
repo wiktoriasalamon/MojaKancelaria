@@ -2,7 +2,6 @@ package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import com.itextpdf.html2pdf.ConverterProperties
 import com.itextpdf.html2pdf.HtmlConverter
 import java.io.File

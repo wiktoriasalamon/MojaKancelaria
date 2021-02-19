@@ -2,7 +2,6 @@ package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
