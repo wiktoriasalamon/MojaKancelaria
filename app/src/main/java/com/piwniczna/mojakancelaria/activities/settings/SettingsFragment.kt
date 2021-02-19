@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
+import com.piwniczna.mojakancelaria.DB.MyBackup
 import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.R
 import ir.androidexception.roomdatabasebackupandrestore.Backup
@@ -109,10 +110,11 @@ class SettingsFragment() : Fragment() {
         val restoreSpinner = dialog.findViewById(R.id.restore_spinner) as Spinner
 
         val files = (File(context?.getExternalFilesDir(null).toString()+"/backup/").listFiles())
+        //Log.e("Pliki: ",context?.getExternalFilesDir(null).toString()+"/backup/".toString())
         val names = files!!
             .filter { it.name.endsWith(".db.bkp") }
             .map { it.name.substring(0,it.name.length-7) }
-
+            .reversed()
 
         setSpinner(restoreSpinner, names)
 
@@ -125,7 +127,13 @@ class SettingsFragment() : Fragment() {
             val position = restoreSpinner.selectedItemPosition
             if(position != 0){
                 //toastMessage(names[position-1])
-                restoreDB(names[position-1])
+                if(restoreDB(names[position-1])){
+                    toastMessage("Wczytano baze danych")
+                    dialog.dismiss()
+                }
+                else{
+                    toastMessage("Błąd czytania bazy danych...")
+                }
             }
             else{
                 toastMessage("Wybierz plik!")
@@ -153,16 +161,24 @@ class SettingsFragment() : Fragment() {
     }
 
     private fun restoreDB(name: String): Boolean{
-        """Log.e("","Restore")
+        var toReturn = false
+        val db = Room.databaseBuilder(
+            context!!,
+            MyDb::class.java,
+            "kancelaria"
+        ).build()
+        val location = context?.getExternalFilesDir(null).toString()
+
         Restore.Init()
-            .database(database)
-            .backupFilePath("path-to-backup-file/filename.txt")
-            .secretKey("your-secret-key") // if your backup file is encrypted, this parameter is required
+            .database(db)
+            .backupFilePath("$location/backup/$name.db.bkp")
+            //.secretKey("your-secret-key") // if your backup file is encrypted, this parameter is required
             .onWorkFinishListener { success, message ->
-                // do anything
+                toReturn = success
             }
-            .execute()"""
-        return false
+            .execute()
+
+        return toReturn
     }
 
     private fun backupDB(name: String): Boolean{
@@ -174,10 +190,11 @@ class SettingsFragment() : Fragment() {
         ).build()
         val location = context?.getExternalFilesDir(null).toString()
 
-        Backup.Init()
+        MyBackup.Init()
             .database(db)
-            .path(location + "/backup/")
+            .path("$location/backup/")
             .fileName("$name.db.bkp")
+            //.secretKey("your-secret-key")
             .onWorkFinishListener { success, message ->
                 toReturn = success
             }
