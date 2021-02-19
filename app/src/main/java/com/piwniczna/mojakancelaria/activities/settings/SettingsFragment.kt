@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
@@ -30,6 +31,7 @@ class SettingsFragment() : Fragment() {
     lateinit var restoreButton: Button
     lateinit var infoText: TextView
     lateinit var dbService: DataService
+    lateinit var actionBarTitle: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.settings, container, false)
@@ -44,12 +46,24 @@ class SettingsFragment() : Fragment() {
         infoText = view.findViewById(R.id.info_text)
 
         infoText.text = (Html.fromHtml(getString(R.string.about_app_description)))
+        actionBarTitle = setActionbar()
+
         return view
     }
 
 
     fun onBackPressed() {
+        val bar = (activity as AppCompatActivity).supportActionBar
+        bar?.title = actionBarTitle
+
         fragmentManager?.popBackStack()
+    }
+
+    private fun setActionbar(): String {
+        val bar = (activity as AppCompatActivity).supportActionBar
+        val oldTittle = bar!!.title.toString()
+        bar.title = "Ustawienia"
+        return oldTittle
     }
 
     private fun backupAction(view: View) {
@@ -98,7 +112,7 @@ class SettingsFragment() : Fragment() {
 
         Backup.Init()
             .database(db)
-            .path(location)
+            .path(location + "/backup/")
             .fileName("$name.db.bkp")
             .onWorkFinishListener { success, message ->
                 toReturn = success
@@ -111,8 +125,8 @@ class SettingsFragment() : Fragment() {
 
     private fun restoreAction(view: View) {
         //todo:
-        Log.e(context?.getExternalFilesDir(null).toString()," - Backup")
-        val arr = (File(context?.getExternalFilesDir(null).toString()).listFiles())
+        Log.e(context?.getExternalFilesDir(null).toString()+"/backup/"," - Backup")
+        val arr = (File(context?.getExternalFilesDir(null).toString()+"/backup/").listFiles())
         for(f in arr){
             Log.e(f.name," - plik")
         }
