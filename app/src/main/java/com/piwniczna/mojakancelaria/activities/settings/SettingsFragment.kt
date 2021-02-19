@@ -11,10 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.room.Room
@@ -101,6 +98,73 @@ class SettingsFragment() : Fragment() {
 
     }
 
+
+    private fun restoreAction(view: View) {
+        val dialog = Dialog(this.context!!)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.layout_dialog_restore)
+
+        val confirmButton = dialog.findViewById(R.id.confirm_backup) as Button
+        val restoreSpinner = dialog.findViewById(R.id.restore_spinner) as Spinner
+
+        val files = (File(context?.getExternalFilesDir(null).toString()+"/backup/").listFiles())
+        val names = files!!
+            .filter { it.name.endsWith(".db.bkp") }
+            .map { it.name.substring(0,it.name.length-7) }
+
+
+        setSpinner(restoreSpinner, names)
+
+        confirmButton.setOnClickListener {
+
+
+            val imm = dialog.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+            val position = restoreSpinner.selectedItemPosition
+            if(position != 0){
+                //toastMessage(names[position-1])
+                restoreDB(names[position-1])
+            }
+            else{
+                toastMessage("Wybierz plik!")
+            }
+
+        }
+        dialog.show()
+
+    }
+
+    private fun setSpinner(restoreSpinner: Spinner, names: List<String>){
+        val spinnerList = arrayListOf<String>()
+        spinnerList.add("-")
+        spinnerList.addAll(names)
+
+        val aa = ArrayAdapter(this.context!!, android.R.layout.simple_spinner_item, spinnerList)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        with(restoreSpinner)
+        {
+            adapter = aa
+            setSelection(0, false)
+            gravity = android.view.Gravity.CENTER
+        }
+    }
+
+    private fun restoreDB(name: String): Boolean{
+        """Log.e("","Restore")
+        Restore.Init()
+            .database(database)
+            .backupFilePath("path-to-backup-file/filename.txt")
+            .secretKey("your-secret-key") // if your backup file is encrypted, this parameter is required
+            .onWorkFinishListener { success, message ->
+                // do anything
+            }
+            .execute()"""
+        return false
+    }
+
     private fun backupDB(name: String): Boolean{
         var toReturn = false
         val db = Room.databaseBuilder(
@@ -119,26 +183,6 @@ class SettingsFragment() : Fragment() {
             }
             .execute()
         return toReturn
-    }
-
-
-
-    private fun restoreAction(view: View) {
-        //todo:
-        Log.e(context?.getExternalFilesDir(null).toString()+"/backup/"," - Backup")
-        val arr = (File(context?.getExternalFilesDir(null).toString()+"/backup/").listFiles())
-        for(f in arr){
-            Log.e(f.name," - plik")
-        }
-        """Log.e("","Restore")
-        Restore.Init()
-            .database(database)
-            .backupFilePath("path-to-backup-file/filename.txt")
-            .secretKey("your-secret-key") // if your backup file is encrypted, this parameter is required
-            .onWorkFinishListener { success, message ->
-                // do anything
-            }
-            .execute()"""
     }
 
     private fun toastMessage(message: String) {

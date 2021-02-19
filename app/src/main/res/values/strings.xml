@@ -110,4 +110,5 @@
 
     <!-- Backup -->
     <string name="provide_backup">Podaj nazwę pliku do backupu:</string>
+    <string name="select_backup_file">Wybierz plik zapisanej bazy danych</string>
 </resources>
