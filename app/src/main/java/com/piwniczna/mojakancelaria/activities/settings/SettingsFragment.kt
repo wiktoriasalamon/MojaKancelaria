@@ -1,22 +1,28 @@
 package com.piwniczna.mojakancelaria.activities.settings
 
 
+import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
-import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
-import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
+import ir.androidexception.roomdatabasebackupandrestore.Backup
+import ir.androidexception.roomdatabasebackupandrestore.Restore
+import java.io.File
 
 
 class SettingsFragment() : Fragment() {
@@ -47,14 +53,89 @@ class SettingsFragment() : Fragment() {
     }
 
     private fun backupAction(view: View) {
-        //todo:
-        Log.e("","Backup")
+        val dialog = Dialog(this.context!!)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.layout_dialog_get_backup_name)
+
+        val confirmButton = dialog.findViewById(R.id.confirm_backup) as Button
+        val backupNameEditText = dialog.findViewById(R.id.backup_name_edit_text) as EditText
+
+        confirmButton.setOnClickListener {
+
+
+             val imm = dialog.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+             imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+             val name = backupNameEditText.text.toString()
+             if(validName(name)){
+                 if(backupDB(name)){
+                     toastMessage("Wykonano backup!")
+                     dialog.dismiss()
+                 }
+                 else{
+                     toastMessage("Niepowodzenie...")
+                     dialog.dismiss()
+                 }
+             }
+             else{
+                 toastMessage("Podaj popraną nazwę - tylko litery cyfry i podkreślnik")
+             }
+
+         }
+        dialog.show()
+
     }
+
+    private fun backupDB(name: String): Boolean{
+        var toReturn = false
+        val db = Room.databaseBuilder(
+            context!!,
+            MyDb::class.java,
+            "kancelaria"
+        ).build()
+        val location = context?.getExternalFilesDir(null).toString()
+
+        Backup.Init()
+            .database(db)
+            .path(location)
+            .fileName("$name.db.bkp")
+            .onWorkFinishListener { success, message ->
+                toReturn = success
+            }
+            .execute()
+        return toReturn
+    }
+
+
 
     private fun restoreAction(view: View) {
         //todo:
-        Log.e("","Restore")
+        Log.e(context?.getExternalFilesDir(null).toString()," - Backup")
+        val arr = (File(context?.getExternalFilesDir(null).toString()).listFiles())
+        for(f in arr){
+            Log.e(f.name," - plik")
+        }
+        """Log.e("","Restore")
+        Restore.Init()
+            .database(database)
+            .backupFilePath("path-to-backup-file/filename.txt")
+            .secretKey("your-secret-key") // if your backup file is encrypted, this parameter is required
+            .onWorkFinishListener { success, message ->
+                // do anything
+            }
+            .execute()"""
+    }
 
+    private fun toastMessage(message: String) {
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(activity?.applicationContext, message, duration)
+        toast.show()
+    }
+
+    private fun validName(name: String) : Boolean{
+        val regex = """[a-zA-Z][a-zA-Z0-9_]{3,14}""".toRegex()
+        return regex.matches(name)
     }
 
 }
