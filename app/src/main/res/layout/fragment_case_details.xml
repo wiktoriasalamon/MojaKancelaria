@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/case_name_title"
             style="@style/double_title_style"
-            android:drawableLeft="@drawable/file"
+            android:drawableLeft="@drawable/ic_case"
             android:text="Case Name"/>
 
     </LinearLayout>
@@ -52,14 +52,14 @@
                 android:id="@+id/archive_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-                android:text="Archiwizuj"></Button>
+                android:text="Archiwizuj"/>
 
             <Button
                 android:id="@+id/report_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/report"
-                android:text="Raport"></Button>
+                android:drawableRight="@drawable/ic_report"
+                android:text="Raport"/>
 
         </LinearLayout>
 
