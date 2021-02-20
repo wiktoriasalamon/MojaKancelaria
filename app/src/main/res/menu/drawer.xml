@@ -7,11 +7,11 @@
         <menu>
             <item
                 android:id="@+id/nav_clients"
-                android:icon="@drawable/user"
+                android:icon="@drawable/ic_client"
                 android:title="Klienci" />
             <item
                 android:id="@+id/nav_archives"
-                android:icon="@drawable/archives"
+                android:icon="@drawable/ic_archive"
                 android:title="Archiwum" />
 
         </menu>
@@ -26,12 +26,25 @@
                 android:title="Backup" />
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/settings"
+                android:icon="@drawable/ic_settings"
                 android:title="Ustawienia" />
             <item
                 android:id="@+id/nav_info"
-                android:icon="@drawable/info_black"
+                android:icon="@drawable/ic_info"
                 android:title="Info" />
+        </menu>
+    </item>
+
+    <item android:title="Korespondencja">
+        <menu>
+            <item
+                android:id="@+id/nav_sent"
+                android:icon="@drawable/ic_sent"
+                android:title="Wysłane" />
+            <item
+                android:id="@+id/nav_avizo"
+                android:icon="@drawable/ic_avizo"
+                android:title="Aviza" />
         </menu>
     </item>
 

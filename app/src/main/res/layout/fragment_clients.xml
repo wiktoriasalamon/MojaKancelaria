@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
     android:elevation="10dp"
-    android:orientation="vertical"
 
-    >
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/search_clients_edittext"
@@ -38,9 +37,8 @@
     <ImageButton
         android:id="@+id/add_client_button"
         style="@style/add_client_button_style"
-        android:elevation="2dp"
         android:layout_gravity="end"
-        />
+        android:elevation="2dp" />
 
 
 </LinearLayout>
