@@ -17,13 +17,13 @@
         <TextView
             android:id="@+id/settings_title"
             style="@style/double_title_style"
-            android:drawableLeft="@drawable/info_black"
-            android:text="Autorzy:"/>
+            android:drawableLeft="@drawable/ic_backup"
+            android:text="Backup"/>
 
         <TextView
             android:id="@+id/info_text"
             style="@style/info_style"
-            android:text="Tu będzie opis"/>
+            android:text="Tu będzie opis #todo"/>
 
     </LinearLayout>
 

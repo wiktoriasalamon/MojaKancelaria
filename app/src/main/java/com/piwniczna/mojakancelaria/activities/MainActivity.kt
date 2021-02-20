@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import com.google.android.material.navigation.NavigationView
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
@@ -25,26 +30,54 @@ import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragm
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
+import com.piwniczna.mojakancelaria.activities.other.BackupFragment
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
-import com.piwniczna.mojakancelaria.activities.settings.SettingsFragment
+import com.piwniczna.mojakancelaria.activities.other.SettingsFragment
+import com.piwniczna.mojakancelaria.utils.ReportGenerator.Companion.context
+import com.piwniczna.mojakancelaria.utils.SpannedText
+import ir.androidexception.roomdatabasebackupandrestore.Backup
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+    lateinit var drawer: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val builder = VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
 
         supportFragmentManager.beginTransaction().replace(
-                R.id.fragment_container,
-                ClientsFragment()
+            R.id.fragment_container,
+            ClientsFragment()
         ).commit()
 
+        drawer = findViewById(R.id.drawer_layout)
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
 
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_clients -> openFragment(ClientsFragment())
+            R.id.nav_archives -> openFragment(ArchivalClientsFragment())
+            //TODO:
+            //R.id.nav_settings -> openFragment(SettingsFragment(), stack=true)
+            R.id.nav_info -> showAboutDialog()
+            R.id.nav_exit -> exit()
+            R.id.nav_backup -> openFragment(BackupFragment(), stack=true)
+        }
+        drawer.closeDrawer(GravityCompat.START)
+
+
+        return true
     }
 
     override fun onStop() {
@@ -87,39 +120,53 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.settings, menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_button -> {
-                openSettingsFragment()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
-    /**
-     * Checks if already not in settings, then opens setting and adds fragment to stack
-     */
-    private fun openSettingsFragment() {
-
+    private fun openFragment(classs: Fragment, stack: Boolean =false) {
         val f = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if (f is SettingsFragment) {
-            Log.e("Warning","Already in settings")
+        if (f!!::class == classs::class) {
+            Log.e("Warning", "Already in ${classs::class}")
             return
+        }
+        if(stack) {
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fragment_container,
+                classs
+            ).addToBackStack(null).commit()
         }
         else{
             supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                SettingsFragment()
-        ).addToBackStack(null).commit()
+                classs
+            ).commit()
         }
-
-
-
     }
+
+
+    private fun showAboutDialog() {
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle(R.string.about_app_title)
+        builder.setMessage(SpannedText.getSpannedText(getString(R.string.about_app_description)))
+
+        builder.setPositiveButton("ok") { dialog, which -> }
+
+        builder.show()
+    }
+
+    private fun exit(){
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle(R.string.warning)
+        builder.setMessage("Czy chcesz wyjść z aplikacji?")
+
+        builder.setPositiveButton("Tak") { dialog, which -> this.finishAffinity() }
+
+        builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+        builder.show()
+    }
+
+
+
+
 }

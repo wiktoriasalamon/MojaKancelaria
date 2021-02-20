@@ -1,9 +1,42 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/menu_button"
-        android:title=""
-        app:showAsAction="always"
-        android:icon="@drawable/settings"
-        />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Nawigacja">
+        <menu>
+            <item
+                android:id="@+id/nav_clients"
+                android:icon="@drawable/user"
+                android:title="Klienci" />
+            <item
+                android:id="@+id/nav_archives"
+                android:icon="@drawable/archives"
+                android:title="Archiwum" />
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit"
+                android:title="Wyjście" />
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+
+            <item
+                android:id="@+id/nav_backup"
+                android:icon="@drawable/ic_backup"
+                android:title="Backup" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/settings"
+                android:title="Ustawienia" />
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/info_black"
+                android:title="Info" />
+        </menu>
+    </item>
+
+
 </menu>

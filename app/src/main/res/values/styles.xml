@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name= "AppBaseTheme" parent= "Theme.AppCompat.Light.DarkActionBar" >
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:textViewStyle">@style/QuickSandTextViewStyle</item>
+        <item name="android:buttonStyle">@style/QuickSandButtonStyle</item>
     </style>
-    <style name= "AppTheme" parent= "AppBaseTheme" >
-        <item name= "android:textViewStyle" > @style/QuickSandTextViewStyle </item>
-        <item name= "android:buttonStyle" > @style/QuickSandButtonStyle </item>
+
+    <style name="QuickSandTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
-    <style name= "QuickSandTextViewStyle" parent= "android:Widget.TextView" >
-        <item name= "android:fontFamily" > @font/quicksand_regular </item>
-    </style>
-    <style name= "QuickSandButtonStyle" parent= "android:Widget.Holo.Button" >
-        <item name= "android:fontFamily" > @font/quicksand_regular </item>
+
+    <style name="QuickSandButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
 
     <!-- BUTTON  -->
@@ -97,8 +100,6 @@
         <item name="android:textSize">19dp</item>
         <item name="android:fontFamily">@font/quicksand_semibold</item>
     </style>
-
-
 
 
     <!-- ADD BUTTON  -->
@@ -192,7 +193,6 @@
     </style>
 
 
-
     <!-- CLIENTS LIST ITEM -->
     <style name="clients_list_item_style">
         <item name="android:layout_width">@dimen/clients_list_item_width</item>
@@ -269,8 +269,7 @@
     </style>
 
     <!-- OBLIGATION TYPE -->
-    <style name="obligation_type_style" parent="obligation_textview_style">
-    </style>
+    <style name="obligation_type_style" parent="obligation_textview_style"></style>
 
     <!-- OBLIGATION AMOUNT -->
     <style name="obligation_amount_style" parent="obligation_textview_style">
@@ -279,8 +278,7 @@
     </style>
 
     <!-- OBLIGATION DATE -->
-    <style name="obligation_date_style" parent="obligation_textview_style">
-    </style>
+    <style name="obligation_date_style" parent="obligation_textview_style"></style>
 
     <!-- DETAILS LABEL -->
     <style name="details_label_style">
