@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,8 +18,8 @@
         <TextView
             android:id="@+id/case_name_title"
             style="@style/double_title_style"
-            android:drawableLeft="@drawable/file"
-            android:text="Case Name"/>
+            android:text="Case Name"
+            app:drawableLeftCompat="@drawable/ic_case" />
 
     </LinearLayout>
 
@@ -52,14 +53,14 @@
                 android:id="@+id/archive_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-                android:text="Archiwizuj"></Button>
+                android:text="Archiwizuj"/>
 
             <Button
                 android:id="@+id/report_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/report"
-                android:text="Raport"></Button>
+                android:drawableRight="@drawable/ic_report"
+                android:text="Raport"/>
 
         </LinearLayout>
 
