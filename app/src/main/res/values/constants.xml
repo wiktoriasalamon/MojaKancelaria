@@ -2,7 +2,7 @@
 <resources>
     <!-- Adjust these for specific devices -->
     <integer name="max_client_len">40</integer>
-    <integer name="max_obligation_len">17</integer>
-    <integer name="max_payment_len">17</integer>
+    <integer name="max_obligation_len">22</integer>
+    <integer name="max_payment_len">22</integer>
 
 </resources>

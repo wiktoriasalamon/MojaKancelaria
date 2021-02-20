@@ -37,7 +37,7 @@ class AddObligationFragment(var client: ClientEntity, val case: CaseEntity) : Fr
 
         dbService = DataService(this.context!!)
 
-        addButton = view.findViewById<Button>(R.id.save_obligation_button)
+        addButton = view.findViewById(R.id.save_obligation_button)
         addButton.setOnClickListener {handleSaveObligation(it)}
 
         nameEditText = view.findViewById(R.id.name_edit_text)

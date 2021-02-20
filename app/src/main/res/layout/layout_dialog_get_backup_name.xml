@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    android:id="@+id/adding_obligation_to_payment_dialog"
+    >
+
+    <TextView
+        style="@style/adding_obligation_to_payment_label_style"
+        android:textSize="19dp"
+        android:text="@string/provide_backup"
+        ></TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/backup_name_edit_text"
+        android:layout_weight="2">
+    </EditText>
+
+    <Button
+
+        android:text="@string/ok"
+        android:layout_weight="0"
+        style="@style/small_button_style"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/dark_blue"
+        android:id="@+id/confirm_backup"
+        >
+    </Button>
+
+</LinearLayout>
