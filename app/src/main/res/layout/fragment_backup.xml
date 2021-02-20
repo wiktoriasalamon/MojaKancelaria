@@ -45,22 +45,23 @@
 
             <Button
                 android:id="@+id/backup_button"
-                style="@style/small_menu_card_button_style"
+                style="@style/backup_button_style"
                 android:layout_weight="1"
-                android:layout_width="290dp"
+
                 android:layout_marginVertical="15dp"
                 android:layout_marginHorizontal="30dp"
 
-                android:text="Backup Bazy"></Button>
+                android:text="Backup Bazy"/>
 
             <Button
                 android:id="@+id/restore_button"
-                style="@style/small_menu_card_button_style"
+                style="@style/backup_button_style"
                 android:layout_weight="1"
-                android:layout_width="290dp"
+
                 android:layout_marginVertical="15dp"
                 android:layout_marginHorizontal="30dp"
-                android:text="Przywracanie"></Button>
+
+                android:text="Przywracanie"/>
 
         </LinearLayout>
 

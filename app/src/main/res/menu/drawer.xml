@@ -13,14 +13,11 @@
                 android:id="@+id/nav_archives"
                 android:icon="@drawable/archives"
                 android:title="Archiwum" />
-            <item
-                android:id="@+id/nav_exit"
-                android:icon="@drawable/ic_exit"
-                android:title="Wyjście" />
+
         </menu>
     </item>
 
-    <item android:title="">
+    <item android:title="Narzedzia">
         <menu>
 
             <item
@@ -38,5 +35,11 @@
         </menu>
     </item>
 
+    <item android:title="">
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_exit"
+            android:title="Wyjście" />
+    </item>
 
 </menu>

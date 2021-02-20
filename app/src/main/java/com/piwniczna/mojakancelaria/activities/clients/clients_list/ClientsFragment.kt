@@ -35,11 +35,9 @@ class ClientsFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_clients, container, false)
         dbService = DataService(this.context!!)
 
-        val addButton = view.findViewById<Button>(R.id.add_client_button)
+        val addButton = view.findViewById<ImageButton>(R.id.add_client_button)
         addButton.setOnClickListener { handleAddClient(it) }
 
-        val archivesButton = view.findViewById<ImageButton>(R.id.archives_button)
-        archivesButton.setOnClickListener { handleOpenArchives(it) }
 
         clientsListView = view.findViewById(R.id.clients_list_view) as ListView
         clientsList = arrayListOf()
