@@ -16,7 +16,7 @@ class ArchivalPaymentsListAdapter(context: Context, var data: ArrayList<PaymentE
         var titleTextView: TextView? = null
         var amountTextView: TextView? = null
         var dateTextView: TextView? = null
-        var layout: RelativeLayout? = null
+        var layout: LinearLayout? = null
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

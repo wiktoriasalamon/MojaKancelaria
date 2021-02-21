@@ -8,7 +8,7 @@
 
     <TextView
         style="@style/clients_list_item_style"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:id="@+id/case_name"
         android:text="Sprawa"
         android:drawableLeft="@drawable/ic_case"
