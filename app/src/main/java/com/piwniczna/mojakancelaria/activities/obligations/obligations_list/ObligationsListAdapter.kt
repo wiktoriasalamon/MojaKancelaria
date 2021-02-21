@@ -19,7 +19,7 @@ class ObligationsListAdapter(context: Context, var data: ArrayList<ObligationEnt
         var amountTextView: TextView? = null
         var dateTextView: TextView? = null
         var typeTextView: TextView? = null
-        var layout: RelativeLayout? = null
+        var layout: LinearLayout? = null
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
