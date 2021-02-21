@@ -11,5 +11,12 @@ class Migrations {
             }
 
         }
+        val MIGRATION_13_14 = object : Migration(13,14) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("CREATE TABLE IF NOT EXISTS `constants` (`key` TEXT PRIMARY KEY NOT NULL, `Value` TEXT NOT NULL)")
+            }
+
+        }
+
     }
 }
