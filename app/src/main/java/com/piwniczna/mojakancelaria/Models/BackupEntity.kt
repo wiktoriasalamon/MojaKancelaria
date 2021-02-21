@@ -12,4 +12,6 @@ data class BackupEntity(
     var date: LocalDate,
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
+
+
 )

@@ -8,13 +8,12 @@ class DBConnector {
     companion object {
         fun getDB(context: Context): MyDb {
             lateinit var database: MyDb
-
             try {
                 database = Room.databaseBuilder(
                         context,
                         MyDb::class.java,
                         "kancelaria"
-                ).build()
+                ).addMigrations(Migrations.MIGRATION_12_13).build()
             } catch (e: Exception) {
             }
 
