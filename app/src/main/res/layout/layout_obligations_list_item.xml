@@ -11,7 +11,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
-                android:text="Umowa nr 234 dsfffffffffffffffffffff dsffffffffffffffff fsdddddddddddddd fdssssssssssss fdssssss"
+                android:text="Umowa nr 234"
                 android:id="@+id/obligation_title"
                 style="@style/obligation_title_style"/>
             <TextView
