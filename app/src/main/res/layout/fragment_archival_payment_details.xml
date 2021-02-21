@@ -5,12 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="30dp">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+    <LinearLayout
+        style="@style/payment_details_row_style"
         >
         <TextView
             android:id="@+id/payment_name_label"
@@ -18,38 +14,42 @@
             android:text="@string/name">
         </TextView>
         <TextView
-            android:id="@+id/payment_amount_label"
-            style="@style/details_label_style"
-            android:text="@string/payment_amount"
-            android:layout_below="@+id/payment_name_label">
-        </TextView>
-        <TextView
-            android:id="@+id/payment_date_label"
-            style="@style/details_label_style"
-            android:text="@string/payment_date"
-            android:layout_below="@+id/payment_amount_label">
-        </TextView>
-        <TextView
             android:id="@+id/payment_name_value"
             style="@style/details_value_style"
-            android:text="@string/name"
-            android:layout_alignParentEnd="true">
+            android:text="@string/name">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/payment_details_row_style"
+        >
+        <TextView
+            android:id="@+id/payment_amount_label"
+            style="@style/details_label_style"
+            android:text="@string/payment_amount">
         </TextView>
         <TextView
             android:id="@+id/payment_amount_value"
             style="@style/details_value_style"
-            android:text="@string/payment_amount"
-            android:layout_below="@+id/payment_name_value"
-            android:layout_alignParentEnd="true">
+            android:text="@string/payment_amount">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/payment_details_row_style"
+        >
+        <TextView
+            android:id="@+id/payment_date_label"
+            style="@style/details_label_style"
+            android:text="@string/payment_date">
         </TextView>
         <TextView
             android:id="@+id/payment_date_value"
             style="@style/details_value_style"
-            android:text="@string/payment_date"
-            android:layout_below="@+id/payment_amount_value"
-            android:layout_alignParentEnd="true">
+            android:text="@string/payment_date">
         </TextView>
-    </RelativeLayout>
+    </LinearLayout>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
