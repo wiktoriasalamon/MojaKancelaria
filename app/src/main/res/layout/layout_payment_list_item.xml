@@ -20,7 +20,6 @@
                 android:id="@+id/payment_amount"
                 android:text="69,00zł"
                 style="@style/obligation_amount_style"
-                android:layout_height="0dp"
                 android:layout_weight="1"
                 />
 
