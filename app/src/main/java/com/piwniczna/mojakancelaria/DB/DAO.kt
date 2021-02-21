@@ -21,6 +21,12 @@ interface DAO {
     @Insert
     fun addRelation(relation: RelationEntity)
 
+    @Insert
+    fun addBackup(backup: BackupEntity)
+
+    @Insert
+    fun addConstant(constant: ConstantsEntity)
+
 
 
 
@@ -150,5 +156,13 @@ interface DAO {
 
     @Update
     fun updatePayment(payment: PaymentEntity)
+
+    //backups
+    @Query("SELECT MAX(date) from backups")
+    fun getLastBackupDate()
+
+    //constants
+    @Query("SELECT * FROM constants WHERE `key` = :key")
+    fun getConstant(key: String)
 
 }

@@ -235,12 +235,17 @@ class DataService(context: Context) {
         return ArrayList(db.getRelationsForObligation(obligation.id))
     }
 
+    //backups
+
+    //constants
+
 
     //init
     fun initDB(){
         db.addClient(ClientEntity("-", 1))
         db.addCase(CaseEntity(1, "-", 1))
         db.addObligation(ObligationEntity(1, 1, ObligationType.ROOT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
-
+        //todo: email
+        //todo: frequency
     }
 }
