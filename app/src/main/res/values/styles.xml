@@ -196,7 +196,7 @@
     <!-- CLIENTS LIST ITEM -->
     <style name="clients_list_item_style">
         <item name="android:layout_width">@dimen/clients_list_item_width</item>
-        <item name="android:layout_height">@dimen/clients_list_item_height</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/rounded_list_item</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/black</item>
@@ -205,6 +205,7 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:paddingVertical">10dp</item>
         <item name="android:layout_marginBottom">@dimen/clients_list_item_margin</item>
         <item name="android:layout_marginTop">@dimen/clients_list_item_margin</item>
     </style>
@@ -246,7 +247,7 @@
     <!-- OBLIGATIONS AND PAYMENT LIST ITEM -->
     <style name="list_item_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/rounded_obligatios_list_item</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:backgroundTint">@color/topay</item>
@@ -256,7 +257,7 @@
     <style name="obligation_textview_style">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:padding">7dp</item>
         <item name="android:fontFamily">@font/quicksand_semibold</item>
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/black</item>
@@ -265,6 +266,7 @@
     <!-- OBLIGATION TITLE -->
     <style name="obligation_title_style" parent="obligation_textview_style">
         <item name="android:textSize">19dp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:fontFamily">@font/quicksand_bold</item>
     </style>
 
@@ -275,6 +277,7 @@
     <!-- OBLIGATION AMOUNT -->
     <style name="obligation_amount_style" parent="obligation_textview_style">
         <item name="android:textSize">19dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/quicksand_bold</item>
     </style>
 
@@ -305,7 +308,7 @@
     <!-- PAYED OBLIGATIONS LIST ITEM -->
     <style name="payed_obligations_list_item_style">
         <item name="android:layout_width">350dp</item>
-        <item name="android:layout_height">85dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/rounded_obligatios_list_item</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:backgroundTint">@color/topay</item>

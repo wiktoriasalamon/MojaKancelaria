@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/obligation_item"
         style="@style/payed_obligations_list_item_style">
         <TextView
@@ -22,5 +22,5 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             style="@style/obligation_date_style"/>
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -2,25 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/payment_item"
-        style="@style/list_item_style">
+        style="@style/list_item_style"
+        android:minHeight="80dp">
         <TextView
             android:text="Wpłata nr 234"
             android:id="@+id/payment_title"
-            android:layout_alignParentStart="true"
-            style="@style/obligation_title_style"/>
+            style="@style/obligation_title_style"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/payment_amount"
+                android:text="69,00zł"
+                style="@style/obligation_amount_style"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
 
-        <TextView
-            android:id="@+id/payment_amount"
-            android:text="69,00zł"
-            android:layout_alignParentEnd="true"
-            style="@style/obligation_amount_style"/>
-        <TextView
-            android:id="@+id/payment_date"
-            android:text="31.02.2020"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            style="@style/obligation_date_style"/>
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/payment_date"
+                android:text="31.02.2020"
+                style="@style/obligation_date_style"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
 </LinearLayout>

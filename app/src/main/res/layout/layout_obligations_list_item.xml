@@ -2,30 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/obligation_item"
         style="@style/list_item_style">
-        <TextView
-            android:text="Umowa nr 234"
-            android:id="@+id/obligation_title"
-            android:layout_alignParentStart="true"
-            style="@style/obligation_title_style"/>
-        <TextView
-            android:text="UMOWA"
-            android:id="@+id/obligation_type"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            style="@style/obligation_type_style"/>
-        <TextView
-            android:id="@+id/obligation_amount"
-            android:text="50,00zł"
-            android:layout_alignParentEnd="true"
-            style="@style/obligation_amount_style"/>
-        <TextView
-            android:id="@+id/obligation_date"
-            android:text="24.12.2020"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            style="@style/obligation_date_style"/>
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:text="Umowa nr 234 dsfffffffffffffffffffff dsffffffffffffffff fsdddddddddddddd fdssssssssssss fdssssss"
+                android:id="@+id/obligation_title"
+                style="@style/obligation_title_style"/>
+            <TextView
+                android:text="UMOWA"
+                android:id="@+id/obligation_type"
+                style="@style/obligation_type_style"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="right">
+            <TextView
+                android:id="@+id/obligation_amount"
+                android:text="500000,00zł"
+                style="@style/obligation_amount_style"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/obligation_date"
+                android:text="24.12.2020"
+                style="@style/obligation_date_style"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
 </LinearLayout>

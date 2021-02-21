@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Adjust these for specific devices -->
-    <integer name="max_client_len">40</integer>
-    <integer name="max_obligation_len">22</integer>
-    <integer name="max_payment_len">22</integer>
+    <integer name="max_client_len">200</integer>
+    <integer name="max_obligation_len">200</integer>
+    <integer name="max_payment_len">200</integer>
 
 </resources>
