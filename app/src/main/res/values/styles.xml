@@ -105,9 +105,11 @@
     <style name="backup_button_style">
         <item name="android:layout_width">290dp</item>
         <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginVertical">15dp</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+
         <item name="backgroundTint">@color/dark_blue</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:layout_marginHorizontal">15dp</item>
         <item name="cornerRadius">15dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -214,11 +216,13 @@
     <!-- INFO -->
     <style name="info_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/quicksand_regular</item>
-        <item name="android:layout_margin">0dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginHorizontal">25dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:drawablePadding">10dp</item>
