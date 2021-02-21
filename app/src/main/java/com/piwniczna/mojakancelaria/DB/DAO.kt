@@ -165,4 +165,7 @@ interface DAO {
     @Query("SELECT * FROM constants WHERE `key` = :key")
     fun getConstant(key: String): List<ConstantsEntity>
 
+    @Update
+    fun updateConstant(constant: ConstantsEntity)
+
 }

@@ -240,6 +240,7 @@ class DataService(context: Context) {
         return LocalDate.parse(db.getLastBackupDate())
     }
 
+
     //constants
     fun getConstant(key: String): String {
         val list = db.getConstant(key)
@@ -247,6 +248,24 @@ class DataService(context: Context) {
             return ""
         }
         return db.getConstant(key)[0].value
+    }
+
+    fun updateConstant(key: String, value: String) {
+        insideUpdateConstant(key, value)
+    }
+
+    fun updateConstant(key: String, num_value: Int) {
+        insideUpdateConstant(key, num_value.toString())
+    }
+
+    private fun insideUpdateConstant(key: String, value: String) {
+        val list = db.getConstant(key)
+        if(list.isEmpty()){
+            db.addConstant(ConstantsEntity(key, value))
+        }
+        else{
+            db.updateConstant(ConstantsEntity(key, value))
+        }
     }
 
     //init

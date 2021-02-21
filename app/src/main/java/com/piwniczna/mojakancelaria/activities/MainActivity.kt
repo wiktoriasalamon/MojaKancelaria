@@ -66,11 +66,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId){
             R.id.nav_clients -> openFragment(ClientsFragment())
             R.id.nav_archives -> openFragment(ArchivalClientsFragment())
-            //TODO:
-            //R.id.nav_settings -> openFragment(SettingsFragment(), stack=true)
+            R.id.nav_settings -> openFragment(SettingsFragment(), stack=true)
             R.id.nav_info -> showAboutDialog()
             R.id.nav_exit -> exit()
             R.id.nav_backup -> openFragment(BackupFragment(), stack=true)
+            //todo: pozostałe
         }
         drawer.closeDrawer(GravityCompat.START)
 
