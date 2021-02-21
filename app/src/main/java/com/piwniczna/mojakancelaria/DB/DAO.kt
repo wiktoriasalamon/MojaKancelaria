@@ -158,11 +158,11 @@ interface DAO {
     fun updatePayment(payment: PaymentEntity)
 
     //backups
-    @Query("SELECT MAX(date) from backups")
-    fun getLastBackupDate()
+    @Query("SELECT MAX(date) from backups LIMIT 1")
+    fun getLastBackupDate(): String
 
     //constants
     @Query("SELECT * FROM constants WHERE `key` = :key")
-    fun getConstant(key: String)
+    fun getConstant(key: String): List<ConstantsEntity>
 
 }

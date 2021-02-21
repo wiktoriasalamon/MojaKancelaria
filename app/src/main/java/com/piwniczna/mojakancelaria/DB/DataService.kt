@@ -236,9 +236,18 @@ class DataService(context: Context) {
     }
 
     //backups
+    fun getLastBackupDate(): LocalDate {
+        return LocalDate.parse(db.getLastBackupDate())
+    }
 
     //constants
-
+    fun getConstant(key: String): String {
+        val list = db.getConstant(key)
+        if(list.isEmpty()){
+            return ""
+        }
+        return db.getConstant(key)[0].value
+    }
 
     //init
     fun initDB(){
@@ -247,5 +256,6 @@ class DataService(context: Context) {
         db.addObligation(ObligationEntity(1, 1, ObligationType.ROOT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
         //todo: email
         //todo: frequency
+        //todo: backup
     }
 }
