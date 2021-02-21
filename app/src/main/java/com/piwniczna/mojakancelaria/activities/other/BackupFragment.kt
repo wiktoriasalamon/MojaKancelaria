@@ -4,32 +4,40 @@ package com.piwniczna.mojakancelaria.activities.other;
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.DB.MyBackup
 import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.utils.ToolsFragment
 import ir.androidexception.roomdatabasebackupandrestore.Restore
 import java.io.File
+import java.util.*
 
 
-class BackupFragment() : Fragment() {
+class BackupFragment() : ToolsFragment() {
     lateinit var backupButton: Button
     lateinit var restoreButton: Button
     lateinit var dbService: DataService
-    lateinit var actionBarTitle: String
+    lateinit var oldActionBarTitle: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_backup, container, false)
         dbService = DataService(this.context!!)
 
@@ -40,7 +48,7 @@ class BackupFragment() : Fragment() {
         restoreButton.setOnClickListener { restoreAction(it) }
 
 
-        actionBarTitle = setActionbar()
+        setActionbar()
 
         return view
     }
@@ -48,16 +56,19 @@ class BackupFragment() : Fragment() {
 
     fun onBackPressed() {
         val bar = (activity as AppCompatActivity).supportActionBar
-        bar?.title = actionBarTitle
+        bar?.title = oldActionBarTitle
 
         fragmentManager?.popBackStack()
     }
 
-    private fun setActionbar(): String {
+    private fun setActionbar() {
         val bar = (activity as AppCompatActivity).supportActionBar
-        val oldTittle = bar!!.title.toString()
+        oldActionBarTitle = bar?.title as String
+
         bar.title = "Backup"
-        return oldTittle
+
+
+        return
     }
 
     private fun backupAction(view: View) {

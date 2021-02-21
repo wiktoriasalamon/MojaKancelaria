@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="230dp"
+    android:layout_height="190dp"
     android:background="@color/dark_blue"
     android:gravity="bottom"
     android:paddingBottom="20dp"
@@ -11,14 +11,15 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="64dp"
         android:src="@drawable/icon"
+        android:paddingLeft="6dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Moja Kancelaria"
+        android:text="MOJA KANCELARIA"
         android:textSize="25dp"
         style="@style/details_label_style"
         android:textColor="@color/white"/>

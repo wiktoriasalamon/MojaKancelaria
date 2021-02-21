@@ -18,16 +18,18 @@ import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.DB.MyBackup
 import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.utils.ToolsFragment
 import ir.androidexception.roomdatabasebackupandrestore.Restore
 import java.io.File
 
 //TODO
-class SettingsFragment() : Fragment() {
+class SettingsFragment() : ToolsFragment() {
 
     lateinit var dbService: DataService
     lateinit var actionBarTitle: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
         dbService = DataService(this.context!!)
 
