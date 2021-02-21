@@ -35,9 +35,7 @@ import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFr
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 import com.piwniczna.mojakancelaria.activities.other.SettingsFragment
-import com.piwniczna.mojakancelaria.utils.ReportGenerator.Companion.context
 import com.piwniczna.mojakancelaria.utils.SpannedText
-import ir.androidexception.roomdatabasebackupandrestore.Backup
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -122,22 +120,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-    private fun openFragment(classs: Fragment, stack: Boolean =false) {
+    private fun openFragment(className: Fragment, stack: Boolean =false) {
         val f = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if (f!!::class == classs::class) {
-            Log.e("Warning", "Already in ${classs::class}")
+        if (f!!::class == className::class) {
+            Log.e("Warning", "Already in ${className::class}")
             return
         }
         if(stack) {
             supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                classs
+                className
             ).addToBackStack(null).commit()
         }
         else{
             supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                classs
+                className
             ).commit()
         }
     }

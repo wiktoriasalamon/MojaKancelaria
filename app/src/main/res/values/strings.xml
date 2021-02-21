@@ -106,7 +106,7 @@
 
     <!-- Archives -->
     <string name="archives">Archiwum</string>
-    <string name="client_archives">Archiwum - %1$s</string>
+    <string name="client_archives">Archwiwum - %1$s</string>
 
     <!-- Backup -->
     <string name="provide_backup">Podaj nazwę pliku do backupu:</string>
@@ -115,4 +115,18 @@
     <string name="backup_button">Backup Bazy</string>
     <string name="restore_button">Przywracanie</string>
     <string name="manage_backup">Usuń backup</string>
+    <string name="archive_button">Archiwizuj</string>
+    <string name="report_button">Raport</string>
+    <string name="clients">Klienci</string>
+    <string name="archive">Archiwum</string>
+    <string name="tools">Narzedzia</string>
+    <string name="navigation">Nawigacja</string>
+    <string name="backup">Backup</string>
+    <string name="settings">Ustawienia</string>
+    <string name="post">Korespondencja</string>
+    <string name="sent">Wysłane</string>
+    <string name="avizo">Aviza</string>
+    <string name="new_letter">Nowa przesyłka</string>
+    <string name="info">Info</string>
+    <string name="exit">Wyjście</string>
 </resources>

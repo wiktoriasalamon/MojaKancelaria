@@ -3,61 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="Nawigacja">
+    <item android:title="@string/navigation">
         <menu>
             <item
                 android:id="@+id/nav_clients"
                 android:icon="@drawable/ic_client"
-                android:title="Klienci" />
+                android:title="@string/clients" />
             <item
                 android:id="@+id/nav_archives"
                 android:icon="@drawable/ic_archive"
-                android:title="Archiwum" />
+                android:title="@string/archive" />
 
         </menu>
     </item>
 
-    <item android:title="Narzedzia">
+    <item android:title="@string/tools">
         <menu>
 
             <item
                 android:id="@+id/nav_backup"
                 android:icon="@drawable/ic_backup"
-                android:title="Backup" />
+                android:title="@string/backup" />
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
-                android:title="Ustawienia" />
+                android:title="@string/settings" />
 
         </menu>
     </item>
 
-    <item android:title="Korespondencja">
+    <item android:title="@string/post">
         <menu>
             <item
                 android:id="@+id/nav_sent"
                 android:icon="@drawable/ic_sent"
-                android:title="Wysłane" />
+                android:title="@string/sent" />
             <item
                 android:id="@+id/nav_avizo"
                 android:icon="@drawable/ic_avizo"
-                android:title="Aviza" />
+                android:title="@string/avizo" />
             <item
                 android:id="@+id/nav_new_letter"
                 android:icon="@drawable/ic_new_letter"
-                android:title="Nowa przesyłka" />
+                android:title="@string/new_letter" />
         </menu>
     </item>
 
-    <item android:title="">
-        <item
-            android:id="@+id/nav_info"
-            android:icon="@drawable/ic_info"
-            android:title="Info" />
-        <item
-            android:id="@+id/nav_exit"
-            android:icon="@drawable/ic_exit"
-            android:title="Wyjście" />
-    </item>
+
+    <item
+        android:id="@+id/nav_info"
+        android:icon="@drawable/ic_info"
+        android:title="@string/info" />
+    <item
+        android:id="@+id/nav_exit"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/exit" />
+
 
 </menu>

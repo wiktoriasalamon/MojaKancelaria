@@ -53,14 +53,14 @@
                 android:id="@+id/archive_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
-                android:text="Archiwizuj"/>
+                android:text="@string/archive_button"/>
 
             <Button
                 android:id="@+id/report_button"
                 style="@style/small_menu_card_button_style"
                 android:layout_weight="1"
                 android:drawableRight="@drawable/ic_report"
-                android:text="Raport"/>
+                android:text="@string/report_button"/>
 
         </LinearLayout>
 

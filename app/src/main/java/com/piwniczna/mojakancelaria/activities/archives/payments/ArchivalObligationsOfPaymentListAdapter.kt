@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
@@ -25,7 +26,7 @@ class ArchivalObligationsOfPaymentListAdapter(
         var titleTextView: TextView? = null
         var amountTextView: TextView? = null
         var caseAndTypeTextView: TextView? = null
-        var layout: RelativeLayout? = null
+        var layout: LinearLayout? = null
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
