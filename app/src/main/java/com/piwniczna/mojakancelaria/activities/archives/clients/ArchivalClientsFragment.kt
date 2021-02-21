@@ -19,9 +19,10 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.utils.ArchivalFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
-class ArchivalClientsFragment(): Fragment() {
+class ArchivalClientsFragment : ArchivalFragment() {
     lateinit var clientsListAdapter: ArchivalClientsListAdapter
     lateinit var clientsListView : ListView
     lateinit var clientsList: ArrayList<ClientEntity>
@@ -29,6 +30,7 @@ class ArchivalClientsFragment(): Fragment() {
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_archival_clients, container, false)
         dbService = DataService(this.context!!)
 
@@ -70,8 +72,7 @@ class ArchivalClientsFragment(): Fragment() {
 
     private fun setActionbar() {
         val bar = (activity as AppCompatActivity).supportActionBar
-        bar!!.setBackgroundDrawable(ColorDrawable(this.context!!.resources.getColor(R.color.archive_intence)))
-        bar.title = getString(R.string.archives)
+        bar?.title = getString(R.string.archives)
     }
 
     fun onBackPressed() {

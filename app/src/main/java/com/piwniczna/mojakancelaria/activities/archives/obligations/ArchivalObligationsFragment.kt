@@ -16,8 +16,9 @@ import com.piwniczna.mojakancelaria.Models.ObligationEntity
 import com.piwniczna.mojakancelaria.Models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
+import com.piwniczna.mojakancelaria.utils.ArchivalFragment
 
-class ArchivalObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fragment() {
+class ArchivalObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : ArchivalFragment() {
     lateinit var obligationsListView: ListView
     lateinit var obligationsList: ArrayList<ObligationEntity>
     lateinit var obligationsListAdapter: ArchivalObligationsListAdapter
@@ -26,6 +27,7 @@ class ArchivalObligationsFragment(var client: ClientEntity, var case: CaseEntity
     lateinit var sumOfAmountsToPayTextView: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_archival_obligations, container, false)
         dbService = DataService(this.context!!)
 

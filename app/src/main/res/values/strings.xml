@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Moja Kancelaria</string>
     <string name="about_app_title">Autorzy</string>
-    <string name="about_app_description"><![CDATA[<b>Wiktoria Salamon</b><br />wiktoriajuliasalamon@gmail.com<br /><br /><b>Maciej Lewandowicz</b><br />maciek.lewandowicz@gmail.com]]></string>
+    <string name="about_app_description"><![CDATA[<b>Wiktoria Salamon</b><br />wiktoria.julia.salamon@gmail.com<br /><br /><b>Maciej Lewandowicz</b><br />maciek.lewandowicz@gmail.com]]></string>
     <!-- Login Activity -->
     <string name="password_code_hint">Pin</string>
     <string name="login_button">Start</string>
@@ -111,4 +111,22 @@
     <!-- Backup -->
     <string name="provide_backup">Podaj nazwę pliku do backupu:</string>
     <string name="select_backup_file">Wybierz plik zapisanej bazy danych</string>
+    <string name="backup_info">Backup bazy danych umożliwia zapisanie aktualnego stanu bazy danych. Pozwala to przykładowo przywrócić usunięte dane, bądź przenieśc je na inne urządzenie.</string>
+    <string name="backup_button">Backup Bazy</string>
+    <string name="restore_button">Przywracanie</string>
+    <string name="manage_backup">Usuń backup</string>
+    <string name="archive_button">Archiwizuj</string>
+    <string name="report_button">Raport</string>
+    <string name="clients">Klienci</string>
+    <string name="archive">Archiwum</string>
+    <string name="tools">Narzedzia</string>
+    <string name="navigation">Nawigacja</string>
+    <string name="backup">Backup</string>
+    <string name="settings">Ustawienia</string>
+    <string name="post">Korespondencja</string>
+    <string name="sent">Wysłane</string>
+    <string name="avizo">Aviza</string>
+    <string name="new_letter">Nowa przesyłka</string>
+    <string name="info">Info</string>
+    <string name="exit">Wyjście</string>
 </resources>

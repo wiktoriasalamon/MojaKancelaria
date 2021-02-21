@@ -1,64 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:elevation="10dp"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
+    android:elevation="10dp"
 
-    >
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/search_clients_edittext"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         style="@style/search_input_style"
-        >
-    </EditText>
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:text = "Klienci:"
-        android:textSize="20sp"
         android:layout_marginLeft="20dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/quicksand_semibold"
-        />
+        android:text="Klienci:"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <ListView
-        android:layout_marginTop="10dp"
         android:id="@+id/clients_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
         android:divider="@null"
-        android:dividerHeight="0dp"
-        android:layout_weight="1">
+        android:dividerHeight="0dp">
 
     </ListView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:id="@+id/archives_button"
-            style="@style/archives_button_style" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/add_client_button"
-            style="@style/add_button_style" />
-    </LinearLayout>
-
-
-
+    <ImageButton
+        android:id="@+id/add_client_button"
+        style="@style/add_client_button_style"
+        android:layout_gravity="end"
+        android:elevation="2dp" />
 
 
 </LinearLayout>

@@ -13,17 +13,19 @@ import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.obligations.ArchivalObligationsFragment
 import com.piwniczna.mojakancelaria.activities.archives.payments.ArchivalPaymentsFragment
+import com.piwniczna.mojakancelaria.utils.ArchivalFragment
 import com.piwniczna.mojakancelaria.utils.EmailSender
 import com.piwniczna.mojakancelaria.utils.PdfGenerator
 import com.piwniczna.mojakancelaria.utils.ReportGenerator
 
-class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
+class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : ArchivalFragment() {
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
     lateinit var paymentsButton: Button
     lateinit var reportButton: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_archival_case_details, container, false)
 
         caseTextView = view.findViewById(R.id.case_name_title)

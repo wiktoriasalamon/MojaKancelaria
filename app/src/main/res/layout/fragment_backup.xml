@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+
+    <TextView
+        android:id="@+id/info_text"
+        style="@style/info_style"
+        android:gravity="top"
+        android:text="@string/backup_info"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            >
+
+            <Button
+                android:id="@+id/backup_button"
+                style="@style/backup_button_style"
+                android:layout_weight="1"
+
+                android:text="@string/backup_button"/>
+
+            <Button
+                android:id="@+id/restore_button"
+                style="@style/backup_button_style"
+                android:layout_weight="1"
+
+
+                android:text="@string/restore_button"/>
+
+            <Button
+                android:id="@+id/manage_backups_button"
+                style="@style/backup_button_style"
+                android:layout_weight="1"
+
+                android:text="@string/manage_backup"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

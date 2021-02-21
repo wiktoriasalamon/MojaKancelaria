@@ -35,7 +35,7 @@
         android:id="@+id/add_case_button"
         android:layout_gravity="right"
         style="@style/add_button_style"
-        ></Button>
+        />
 
 
 

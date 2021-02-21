@@ -1,0 +1,63 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/navigation">
+        <menu>
+            <item
+                android:id="@+id/nav_clients"
+                android:icon="@drawable/ic_client"
+                android:title="@string/clients" />
+            <item
+                android:id="@+id/nav_archives"
+                android:icon="@drawable/ic_archive"
+                android:title="@string/archive" />
+
+        </menu>
+    </item>
+
+    <item android:title="@string/tools">
+        <menu>
+
+            <item
+                android:id="@+id/nav_backup"
+                android:icon="@drawable/ic_backup"
+                android:title="@string/backup" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/settings" />
+
+        </menu>
+    </item>
+
+    <item android:title="@string/post">
+        <menu>
+            <item
+                android:id="@+id/nav_sent"
+                android:icon="@drawable/ic_sent"
+                android:title="@string/sent" />
+            <item
+                android:id="@+id/nav_avizo"
+                android:icon="@drawable/ic_avizo"
+                android:title="@string/avizo" />
+            <item
+                android:id="@+id/nav_new_letter"
+                android:icon="@drawable/ic_new_letter"
+                android:title="@string/new_letter" />
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/nav_info"
+        android:icon="@drawable/ic_info"
+        android:title="@string/info" />
+    <item
+        android:id="@+id/nav_exit"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/exit" />
+
+
+</menu>

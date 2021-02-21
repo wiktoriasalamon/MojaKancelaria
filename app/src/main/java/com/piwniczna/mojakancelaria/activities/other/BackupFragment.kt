@@ -1,8 +1,11 @@
-package com.piwniczna.mojakancelaria.activities.settings
+package com.piwniczna.mojakancelaria.activities.other;
+
 
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -12,27 +15,30 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.DB.MyBackup
 import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.R
-import ir.androidexception.roomdatabasebackupandrestore.Backup
+import com.piwniczna.mojakancelaria.utils.ToolsFragment
 import ir.androidexception.roomdatabasebackupandrestore.Restore
 import java.io.File
+import java.util.*
 
 
-class SettingsFragment() : Fragment() {
+class BackupFragment() : ToolsFragment() {
     lateinit var backupButton: Button
     lateinit var restoreButton: Button
-    lateinit var infoText: TextView
     lateinit var dbService: DataService
-    lateinit var actionBarTitle: String
+    lateinit var oldActionBarTitle: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.settings, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+        val view = inflater.inflate(R.layout.fragment_backup, container, false)
         dbService = DataService(this.context!!)
 
         backupButton = view.findViewById(R.id.backup_button)
@@ -41,10 +47,8 @@ class SettingsFragment() : Fragment() {
         restoreButton = view.findViewById(R.id.restore_button)
         restoreButton.setOnClickListener { restoreAction(it) }
 
-        infoText = view.findViewById(R.id.info_text)
 
-        infoText.text = (Html.fromHtml(getString(R.string.about_app_description)))
-        actionBarTitle = setActionbar()
+        setActionbar()
 
         return view
     }
@@ -52,16 +56,19 @@ class SettingsFragment() : Fragment() {
 
     fun onBackPressed() {
         val bar = (activity as AppCompatActivity).supportActionBar
-        bar?.title = actionBarTitle
+        bar?.title = oldActionBarTitle
 
         fragmentManager?.popBackStack()
     }
 
-    private fun setActionbar(): String {
+    private fun setActionbar() {
         val bar = (activity as AppCompatActivity).supportActionBar
-        val oldTittle = bar!!.title.toString()
-        bar.title = "Ustawienia"
-        return oldTittle
+        oldActionBarTitle = bar?.title as String
+
+        bar.title = "Backup"
+
+
+        return
     }
 
     private fun backupAction(view: View) {
@@ -76,25 +83,25 @@ class SettingsFragment() : Fragment() {
         confirmButton.setOnClickListener {
 
 
-             val imm = dialog.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-             imm.hideSoftInputFromWindow(view.windowToken, 0)
+            val imm = dialog.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
 
-             val name = backupNameEditText.text.toString()
-             if(validName(name)){
-                 if(backupDB(name)){
-                     toastMessage("Wykonano backup!")
-                     dialog.dismiss()
-                 }
-                 else{
-                     toastMessage("Niepowodzenie...")
-                     dialog.dismiss()
-                 }
-             }
-             else{
-                 toastMessage("Podaj popraną nazwę - tylko litery cyfry i podkreślnik")
-             }
+            val name = backupNameEditText.text.toString()
+            if(validName(name)){
+                if(backupDB(name)){
+                    toastMessage("Wykonano backup!")
+                    dialog.dismiss()
+                }
+                else{
+                    toastMessage("Niepowodzenie...")
+                    dialog.dismiss()
+                }
+            }
+            else{
+                toastMessage("Podaj popraną nazwę - tylko litery cyfry i podkreślnik")
+            }
 
-         }
+        }
         dialog.show()
 
     }
@@ -110,7 +117,6 @@ class SettingsFragment() : Fragment() {
         val restoreSpinner = dialog.findViewById(R.id.restore_spinner) as Spinner
 
         val files = (File(context?.getExternalFilesDir(null).toString()+"/backup/").listFiles())
-        //Log.e("Pliki: ",context?.getExternalFilesDir(null).toString()+"/backup/".toString())
         val names = files!!
             .filter { it.name.endsWith(".db.bkp") }
             .map { it.name.substring(0,it.name.length-7) }

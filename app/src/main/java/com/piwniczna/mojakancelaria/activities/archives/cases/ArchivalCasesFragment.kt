@@ -14,16 +14,18 @@ import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
+import com.piwniczna.mojakancelaria.utils.ArchivalFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
 
-class ArchivalCasesFragment(val client: ClientEntity) : Fragment() {
+class ArchivalCasesFragment(val client: ClientEntity) : ArchivalFragment() {
     lateinit var archivalCasesListAdapter: ArchivalCasesListAdapter
     lateinit var casesListView : ListView
     lateinit var casesList: ArrayList<CaseEntity>
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_archival_cases, container, false)
         dbService = DataService(this.context!!)
 

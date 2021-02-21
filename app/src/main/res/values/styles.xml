@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name= "AppBaseTheme" parent= "Theme.AppCompat.Light.DarkActionBar" >
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:textViewStyle">@style/QuickSandTextViewStyle</item>
+        <item name="android:buttonStyle">@style/QuickSandButtonStyle</item>
     </style>
-    <style name= "AppTheme" parent= "AppBaseTheme" >
-        <item name= "android:textViewStyle" > @style/QuickSandTextViewStyle </item>
-        <item name= "android:buttonStyle" > @style/QuickSandButtonStyle </item>
+
+    <style name="QuickSandTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
-    <style name= "QuickSandTextViewStyle" parent= "android:Widget.TextView" >
-        <item name= "android:fontFamily" > @font/quicksand_regular </item>
-    </style>
-    <style name= "QuickSandButtonStyle" parent= "android:Widget.Holo.Button" >
-        <item name= "android:fontFamily" > @font/quicksand_regular </item>
+
+    <style name="QuickSandButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
 
     <!-- BUTTON  -->
@@ -98,14 +101,29 @@
         <item name="android:fontFamily">@font/quicksand_semibold</item>
     </style>
 
+    <!-- BACKUP BUTTON  -->
+    <style name="backup_button_style">
+        <item name="android:layout_width">290dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginVertical">15dp</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
 
+        <item name="backgroundTint">@color/dark_blue</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="cornerRadius">15dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/quicksand_semibold</item>
+    </style>
 
 
     <!-- ADD BUTTON  -->
     <style name="add_button_style">
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">70dp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">48dp</item>
         <item name="android:text">+</item>
         <item name="android:layout_margin">5dp</item>
@@ -125,6 +143,23 @@
         <item name="android:layout_margin">5dp</item>
         <item name="android:background">@drawable/rounded_archives_button</item>
         <item name="android:src">@drawable/archives</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+
+
+    <!-- ADD CLIENT BUTTON -->
+    <style name="add_client_button_style">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">48dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/rounded_add_client_button</item>
+        <item name="android:src">@drawable/ic_client_add</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingTop">1dp</item>
@@ -181,16 +216,17 @@
     <!-- INFO -->
     <style name="info_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/quicksand_regular</item>
-        <item name="android:layout_margin">0dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginHorizontal">25dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:drawablePadding">10dp</item>
     </style>
-
 
 
     <!-- CLIENTS LIST ITEM -->
@@ -272,8 +308,7 @@
     </style>
 
     <!-- OBLIGATION TYPE -->
-    <style name="obligation_type_style" parent="obligation_textview_style">
-    </style>
+    <style name="obligation_type_style" parent="obligation_textview_style"></style>
 
     <!-- OBLIGATION AMOUNT -->
     <style name="obligation_amount_style" parent="obligation_textview_style">
@@ -292,8 +327,7 @@
     </style>
 
     <!-- OBLIGATION DATE -->
-    <style name="obligation_date_style" parent="obligation_textview_style">
-    </style>
+    <style name="obligation_date_style" parent="obligation_textview_style"></style>
 
     <!-- DETAILS LABEL -->
     <style name="details_label_style">

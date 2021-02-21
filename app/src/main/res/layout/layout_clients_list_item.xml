@@ -9,7 +9,7 @@
     <TextView
         style="@style/clients_list_item_style"
         android:id="@+id/clientName"
-        android:drawableLeft="@drawable/user"
+        android:drawableLeft="@drawable/ic_client"
         android:drawablePadding="10dp"
         android:text="Jan Kowalski"
         >
