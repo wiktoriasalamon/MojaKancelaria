@@ -129,4 +129,7 @@
     <string name="new_letter">Nowa przesyłka</string>
     <string name="info">Info</string>
     <string name="exit">Wyjście</string>
+    <string name="email_for_reports">Email do wysyłania raportów:</string>
+    <string name="auto_backup">Automatyczny backup po dniach:</string>
+    <string name="delete_backups">Usuwanie auto-backupów starszych niż dni:</string>
 </resources>

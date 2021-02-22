@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/double_title_style"
-            android:text="Email do wysyłania raportów:"/>
+            android:text="@string/email_for_reports"/>
 
         <EditText
             android:id="@+id/email_editText"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/double_title_style"
-            android:text="Automatyczny backup po dniach:"/>
+            android:text="@string/auto_backup"/>
 
         <EditText
             android:id="@+id/auto_backups_editText"
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/double_title_style"
-            android:text="Usuwanie auto-backupów starszych niż dni:"/>
+            android:text="@string/delete_backups"/>
 
         <EditText
             android:id="@+id/delete_backups_editText"
