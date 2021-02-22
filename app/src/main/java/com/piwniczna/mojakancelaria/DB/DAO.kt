@@ -22,9 +22,6 @@ interface DAO {
     fun addRelation(relation: RelationEntity)
 
     @Insert
-    fun addBackup(backup: BackupEntity)
-
-    @Insert
     fun addConstant(constant: ConstantsEntity)
 
 

@@ -147,11 +147,11 @@ class ObligationsFragment(var client: ClientEntity, var case: CaseEntity)  : Fra
     }
     private fun sendReport(view: View) {
         AsyncTask.execute {
-            var reports = ReportGenerator.generateReport(case, this.context!!)
-            Log.e("stop","stop")
-            var uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
+            val reports = ReportGenerator.generateReport(case, this.context!!)
+            val uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
 
-            EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")
+            val email = dbService.getConstant("default_email")
+            EmailSender.sendEmail(this.context!!, uri, reports[1], email)
 
         }
     }
