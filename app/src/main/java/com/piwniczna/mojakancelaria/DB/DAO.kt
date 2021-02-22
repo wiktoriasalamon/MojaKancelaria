@@ -173,4 +173,14 @@ interface DAO {
     @Update
     fun updateConstant(constant: ConstantsEntity)
 
+    //Letter
+    @Insert
+    fun addLetter(letter: LetterEntity)
+
+    @Delete
+    fun deleteLetter(letter: LetterEntity)
+
+    @Query("SELECT * FROM letters")
+    fun getLetters() : List<LetterEntity>
+
 }

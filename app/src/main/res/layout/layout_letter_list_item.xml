@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/obligation_item"
+        style="@style/payed_obligations_list_item_style"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/letter_number"
+                style="@style/obligation_to_pay_amount_style"
+                android:text="23005234125002874"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/days_left"
+                android:text="Pozostało dni"
+                style="@style/obligation_title_style"
+                android:layout_weight="0"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/letter_status"
+            android:text="Status przesylki"
+            style="@style/obligation_date_style"/>
+    </LinearLayout>
+</LinearLayout>

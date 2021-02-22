@@ -286,7 +286,10 @@ class DataService(context: Context) {
     }
     //
 
-
+    //letters
+    fun addLetter(num: String, outgoing: Boolean){
+        db.addLetter(LetterEntity(num,outgoing))
+    }
 
 
 

@@ -2,6 +2,7 @@
 package com.piwniczna.mojakancelaria.activities
 
 import android.app.Dialog
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
@@ -17,6 +18,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCaseDetailsFragment
 import com.piwniczna.mojakancelaria.activities.archives.cases.ArchivalCasesFragment
@@ -44,10 +46,12 @@ import com.piwniczna.mojakancelaria.utils.SpannedText
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
     lateinit var drawer: DrawerLayout
+    lateinit var dbService: DataService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        dbService = DataService(this)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -157,17 +161,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val confirmButton = dialog.findViewById<Button>(R.id.confirm_new_letter)
 
         barcodeButton.setOnClickListener { toastMessage("W planach...")}
-        confirmButton.setOnClickListener { handleAddLetter(number = editText.text.toString(), outgoing = outgoingSwitch.isChecked)}
+        confirmButton.setOnClickListener {
+            val number = editText.text.toString()
+            val outgoing = outgoingSwitch.isChecked
+            if(number==""){
+                toastMessage("Pusty number przesyłki!")
+            }
+            else {
+                AsyncTask.execute {
+                    dbService.addLetter(number, outgoing)
+                    this.runOnUiThread {
+                        toastMessage("Dodano przesyłkę!")
+                        dialog.dismiss()
+                    }
+                }
+
+            }
+        }
 
 
         dialog.show()
     }
 
     private fun handleAddLetter(number: String, outgoing: Boolean) {
-        if(number==""){
-            toastMessage("Pusty number przesyłki!")
-            return
-        }
+
         //TODO() add to db
     }
 
