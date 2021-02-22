@@ -12,8 +12,10 @@ class DBConnector {
                 database = Room.databaseBuilder(
                         context,
                         MyDb::class.java,
-                        "kancelaria"
-                ).addMigrations(Migrations.MIGRATION_12_13).build()
+                        "kancelaria")
+                    .addMigrations(Migrations.MIGRATION_12_13)
+                    .addMigrations(Migrations.MIGRATION_13_14)
+                    .build()
             } catch (e: Exception) {
             }
 

@@ -5,13 +5,61 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:layout_marginVertical="50dp"
+    android:layout_marginHorizontal="40dp"
     >
 
-    <TextView
-        style="@style/double_title_style"
-        android:text="Todo"
-        android:paddingLeft="150dp"/>
 
+    <LinearLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="start|bottom"
+         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/double_title_style"
+            android:text="@string/email_for_reports"/>
+
+        <EditText
+            android:id="@+id/email_editText"
+            style="@style/input_style"
+            android:layout_width="match_parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/double_title_style"
+            android:text="@string/auto_backup"/>
+
+        <EditText
+            android:id="@+id/auto_backups_editText"
+            style="@style/input_style"
+            android:layout_width="match_parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/double_title_style"
+            android:text="@string/delete_backups"/>
+
+        <EditText
+            android:id="@+id/delete_backups_editText"
+            style="@style/settings_input_style"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_settings_button"
+        android:text="@string/save"
+        style="@style/button_style">
+    </Button>
 
 </LinearLayout>

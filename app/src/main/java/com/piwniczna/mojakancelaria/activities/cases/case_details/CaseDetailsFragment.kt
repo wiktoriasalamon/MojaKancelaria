@@ -23,6 +23,8 @@ import com.piwniczna.mojakancelaria.utils.ReportGenerator
 import com.piwniczna.mojakancelaria.utils.SpannedText
 import java.math.BigDecimal
 
+//todo
+//DELETE - NOT USED
 class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Fragment() {
     lateinit var caseTextView: TextView
     lateinit var obligationsButton: Button
@@ -58,10 +60,11 @@ class CaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : Frag
 
     private fun sendReport(view: View) {
         AsyncTask.execute {
-            var reports = ReportGenerator.generateReport(case, this.context!!)
-            var uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
+            val reports = ReportGenerator.generateReport(case, this.context!!)
+            val uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
 
-            EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")
+            val email = dbService.getConstant("default_email")
+            EmailSender.sendEmail(this.context!!, uri, reports[1], email)
 
         }
     }

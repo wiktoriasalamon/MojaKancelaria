@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.Models.CaseEntity
 import com.piwniczna.mojakancelaria.Models.ClientEntity
 import com.piwniczna.mojakancelaria.R
@@ -20,6 +21,7 @@ import com.piwniczna.mojakancelaria.utils.ReportGenerator
 
 class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity) : ArchivalFragment() {
     lateinit var caseTextView: TextView
+    lateinit var dbService: DataService
     lateinit var obligationsButton: Button
     lateinit var paymentsButton: Button
     lateinit var reportButton: Button
@@ -27,6 +29,7 @@ class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_archival_case_details, container, false)
+        dbService = DataService(this.context!!)
 
         caseTextView = view.findViewById(R.id.case_name_title)
         caseTextView.text = case.name
@@ -48,7 +51,8 @@ class ArchivalCaseDetailsFragment(var client: ClientEntity, var case: CaseEntity
             var reports = ReportGenerator.generateReport(case, this.context!!)
             var uri = PdfGenerator.generatePdfFromHTML(this.context!!,reports[0])
 
-            EmailSender.sendEmail(this.context!!, uri, reports[1], "elzbieta.lewandowicz@gmail.com")
+            val email = dbService.getConstant("default_email")
+            EmailSender.sendEmail(this.context!!, uri, reports[1], email)
 
         }
     }

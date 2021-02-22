@@ -236,11 +236,39 @@ class DataService(context: Context) {
     }
 
 
+
+
+    //constants
+    fun getConstant(key: String): String {
+        val list = db.getConstant(key)
+        if(list.isEmpty()){
+            return ""
+        }
+        return db.getConstant(key)[0].value
+    }
+
+    fun updateConstant(key: String, value: String) {
+        insideUpdateConstant(key, value)
+    }
+
+    fun updateConstant(key: String, num_value: Int) {
+        insideUpdateConstant(key, num_value.toString())
+    }
+
+    private fun insideUpdateConstant(key: String, value: String) {
+        val list = db.getConstant(key)
+        if(list.isEmpty()){
+            db.addConstant(ConstantsEntity(key, value))
+        }
+        else{
+            db.updateConstant(ConstantsEntity(key, value))
+        }
+    }
+
     //init
     fun initDB(){
         db.addClient(ClientEntity("-", 1))
         db.addCase(CaseEntity(1, "-", 1))
         db.addObligation(ObligationEntity(1, 1, ObligationType.ROOT, "Usunięte zobowiązanie", BigDecimal.ZERO, BigDecimal.ZERO, LocalDate.now(), LocalDate.now(), 1))
-
     }
 }
