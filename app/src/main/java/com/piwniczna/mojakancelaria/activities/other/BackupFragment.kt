@@ -4,30 +4,22 @@ package com.piwniczna.mojakancelaria.activities.other;
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.text.Html
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.DB.MyBackup
+import com.piwniczna.mojakancelaria.backup.MyBackup
 import com.piwniczna.mojakancelaria.DB.MyDb
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.ToolsFragment
 import ir.androidexception.roomdatabasebackupandrestore.Restore
 import java.io.File
-import java.util.*
 
 
 class BackupFragment() : ToolsFragment() {

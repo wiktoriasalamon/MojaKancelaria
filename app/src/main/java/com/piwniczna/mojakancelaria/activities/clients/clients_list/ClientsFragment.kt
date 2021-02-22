@@ -10,16 +10,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
 import com.piwniczna.mojakancelaria.R
-import com.piwniczna.mojakancelaria.activities.archives.clients.ArchivalClientsFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
@@ -182,12 +180,6 @@ class ClientsFragment: Fragment() {
         )?.commit()
     }
 
-    private fun handleOpenArchives(view: View) {
-        fragmentManager?.beginTransaction()?.replace(
-            R.id.fragment_container,
-            ArchivalClientsFragment()
-        )?.commit()
-    }
 
     private fun openClientDetailsFragment(id: Long) {
         fragmentManager?.beginTransaction()?.replace(

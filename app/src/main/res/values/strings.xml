@@ -132,4 +132,6 @@
     <string name="email_for_reports">Email do wysyłania raportów:</string>
     <string name="auto_backup">Automatyczny backup po dniach:</string>
     <string name="delete_backups">Usuwanie auto-backupów starszych niż dni:</string>
+    <string name="letter_number">Podaj numer przesyłki</string>
+    <string name="outgoing_letter">Przesyłka wychodząca</string>
 </resources>

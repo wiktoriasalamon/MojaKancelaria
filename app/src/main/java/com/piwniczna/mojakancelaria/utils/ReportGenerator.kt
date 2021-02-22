@@ -2,8 +2,8 @@ package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ClientEntity
+import com.piwniczna.mojakancelaria.models.CaseEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

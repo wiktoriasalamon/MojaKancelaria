@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Spanned
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +13,10 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
-import com.piwniczna.mojakancelaria.Models.ObligationType
+import com.piwniczna.mojakancelaria.models.CaseEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
+import com.piwniczna.mojakancelaria.models.ObligationEntity
+import com.piwniczna.mojakancelaria.models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment

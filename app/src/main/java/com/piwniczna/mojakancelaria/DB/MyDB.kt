@@ -3,7 +3,7 @@ package com.piwniczna.mojakancelaria.DB
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.piwniczna.mojakancelaria.Models.*
+import com.piwniczna.mojakancelaria.models.*
 
 @Database (
         entities =

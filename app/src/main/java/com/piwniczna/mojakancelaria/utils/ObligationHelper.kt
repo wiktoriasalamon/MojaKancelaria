@@ -2,8 +2,8 @@ package com.piwniczna.mojakancelaria.utils
 
 import android.content.Context
 import android.content.res.ColorStateList
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
-import com.piwniczna.mojakancelaria.Models.ObligationType
+import com.piwniczna.mojakancelaria.models.ObligationEntity
+import com.piwniczna.mojakancelaria.models.ObligationType
 import com.piwniczna.mojakancelaria.R
 import java.math.BigDecimal
 import java.time.LocalDate

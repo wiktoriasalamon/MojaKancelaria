@@ -82,19 +82,23 @@ class SettingsFragment() : ToolsFragment() {
             toastMessage("Błędny email...")
             return false
         }
-        if(autoBackupsEditText.text.toString()==""){ autoBackupsEditText.setText("0") }
-        if(deleteBackupsEditText.text.toString()==""){ deleteBackupsEditText.setText("0") }
+        if(autoBackupsEditText.text.toString()==""){ autoBackupsEditText.setText("1") }
+        if(deleteBackupsEditText.text.toString()==""){ deleteBackupsEditText.setText("7") }
         try{
-            autoBackupsEditText.text.toString().toInt()
-            deleteBackupsEditText.text.toString().toInt()
+            val t1 = autoBackupsEditText.text.toString().toInt()
+            val t2 = deleteBackupsEditText.text.toString().toInt()
+            if(t1<1 || t2<7){
+                throw NumberFormatException()
+            }
         }
         catch (e: NumberFormatException){
-            toastMessage("Błędne dane liczbowe")
+            toastMessage("Błędne dane liczbowe.\nMinimalne wartości to 1 oraz 7")
             return false
         }
 
         return true
     }
+  
 
     fun onBackPressed() {
         val bar = (activity as AppCompatActivity).supportActionBar

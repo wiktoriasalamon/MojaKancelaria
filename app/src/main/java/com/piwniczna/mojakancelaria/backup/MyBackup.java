@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.DB;
+package com.piwniczna.mojakancelaria.backup;
 
 import android.database.Cursor;
 
