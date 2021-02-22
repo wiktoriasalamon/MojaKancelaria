@@ -12,9 +12,9 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.PaymentEntity
-import com.piwniczna.mojakancelaria.Models.RelationEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
+import com.piwniczna.mojakancelaria.models.PaymentEntity
+import com.piwniczna.mojakancelaria.models.RelationEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.ObligationsOfPaymentListAdapter
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment

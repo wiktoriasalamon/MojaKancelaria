@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.FragmentActivity
-import com.piwniczna.mojakancelaria.Models.PaymentEntity
+import com.piwniczna.mojakancelaria.models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 
 class ArchivalPaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>, val activity: FragmentActivity) :

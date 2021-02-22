@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.piwniczna.mojakancelaria.Models.PaymentEntity
+import com.piwniczna.mojakancelaria.models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 
 class PaymentsListAdapter(context: Context, var data: ArrayList<PaymentEntity>) :

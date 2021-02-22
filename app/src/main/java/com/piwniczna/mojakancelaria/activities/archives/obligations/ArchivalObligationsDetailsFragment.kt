@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.ObligationEntity
+import com.piwniczna.mojakancelaria.models.CaseEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
+import com.piwniczna.mojakancelaria.models.ObligationEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.ArchivalFragment
 import com.piwniczna.mojakancelaria.utils.ObligationHelper

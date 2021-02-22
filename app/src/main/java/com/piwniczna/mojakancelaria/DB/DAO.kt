@@ -1,7 +1,8 @@
 package com.piwniczna.mojakancelaria.DB
 
 import androidx.room.*
-import com.piwniczna.mojakancelaria.Models.*
+import com.piwniczna.mojakancelaria.models.*
+import ir.androidexception.roomdatabasebackupandrestore.Backup
 
 @Dao
 interface DAO {
@@ -24,7 +25,8 @@ interface DAO {
     @Insert
     fun addConstant(constant: ConstantsEntity)
 
-
+    @Insert
+    fun addBackup(backup: BackupEntity)
 
 
 
@@ -155,8 +157,8 @@ interface DAO {
     fun updatePayment(payment: PaymentEntity)
 
     //backups
-    @Query("SELECT MAX(date) from backups LIMIT 1")
-    fun getLastBackupDate(): String
+    @Query("SELECT * from backups WHERE date = (SELECT MAX(date) from backups) LIMIT 1")
+    fun getLastBackup(): BackupEntity
 
     //constants
     @Query("SELECT * FROM constants WHERE `key` = :key")

@@ -3,17 +3,16 @@ package com.piwniczna.mojakancelaria.activities.archives.payments
 
 import android.os.AsyncTask
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.CaseEntity
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.PaymentEntity
-import com.piwniczna.mojakancelaria.Models.RelationEntity
+import com.piwniczna.mojakancelaria.models.CaseEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
+import com.piwniczna.mojakancelaria.models.PaymentEntity
+import com.piwniczna.mojakancelaria.models.RelationEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.ArchivalFragment
 

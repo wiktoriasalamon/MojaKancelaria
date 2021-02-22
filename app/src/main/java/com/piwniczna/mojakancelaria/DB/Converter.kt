@@ -1,7 +1,7 @@
 package com.piwniczna.mojakancelaria.DB
 
 import androidx.room.TypeConverter
-import com.piwniczna.mojakancelaria.Models.ObligationType
+import com.piwniczna.mojakancelaria.models.ObligationType
 import java.math.BigDecimal
 import java.time.LocalDate
 

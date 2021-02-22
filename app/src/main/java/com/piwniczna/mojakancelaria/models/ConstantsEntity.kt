@@ -1,10 +1,9 @@
 
-package com.piwniczna.mojakancelaria.Models
+package com.piwniczna.mojakancelaria.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDate
 
 @Entity(tableName = "constants")
 

@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.Models
+package com.piwniczna.mojakancelaria.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

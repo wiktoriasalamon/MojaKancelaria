@@ -9,8 +9,8 @@ import android.widget.Button
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
-import com.piwniczna.mojakancelaria.Models.ClientEntity
-import com.piwniczna.mojakancelaria.Models.PaymentEntity
+import com.piwniczna.mojakancelaria.models.ClientEntity
+import com.piwniczna.mojakancelaria.models.PaymentEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment

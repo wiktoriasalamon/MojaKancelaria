@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.piwniczna.mojakancelaria.backup.AutoBackup
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.R
 
@@ -28,14 +29,19 @@ class LoginActivity : AppCompatActivity() {
     fun handleLogin(view: View) {
         AsyncTask.execute {
             try {
+                dbService.initConstants()
                 dbService.initDB()
             }
             catch (e: android.database.sqlite.SQLiteConstraintException) {
                 Log.e("InitDB", "Root user, case and obligation already in DB")
             }
 
+            AutoBackup.autoBackupDB(dbService, applicationContext)
+
+
             runOnUiThread{
                 Log.e("Welcome",":)")
+
                 openMainActivity()
             }
 
