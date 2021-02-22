@@ -28,6 +28,18 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+
+    <!-- SMALL DIALOG BUTTON -->
+    <style name="small_dialog_button_style" parent="base_button_style">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="backgroundTint">@color/grey</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
     <!-- DIALOG BUTTON  -->
     <style name="dialog_button_style" parent="base_button_style">
         <item name="android:layout_width">100dp</item>

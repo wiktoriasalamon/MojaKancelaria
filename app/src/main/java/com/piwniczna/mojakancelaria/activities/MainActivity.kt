@@ -12,7 +12,6 @@ import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -36,11 +35,11 @@ import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragm
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
-import com.piwniczna.mojakancelaria.activities.other.BackupFragment
+import com.piwniczna.mojakancelaria.activities.other.backup.BackupFragment
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
-import com.piwniczna.mojakancelaria.activities.other.SettingsFragment
+import com.piwniczna.mojakancelaria.activities.other.settings.SettingsFragment
 import com.piwniczna.mojakancelaria.utils.SpannedText
 
 
