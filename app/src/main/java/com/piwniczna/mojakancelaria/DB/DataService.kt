@@ -241,10 +241,12 @@ class DataService(context: Context) {
     }
 
 
+
+
     //constants
     fun getConstant(key: String): String {
         val list = db.getConstant(key)
-        if (list.isEmpty()) {
+        if(list.isEmpty()){
             return ""
         }
         return db.getConstant(key)[0].value
@@ -267,6 +269,7 @@ class DataService(context: Context) {
         }
     }
 
+
     //backup
     fun addBackup(date: LocalDate) {
         db.addBackup(BackupEntity(date))
@@ -284,13 +287,7 @@ class DataService(context: Context) {
     fun deleteBackup(backup: BackupEntity){
         db.deleteBackup(backup)
     }
-    //
-
-
-
-
-
-
+    
     //init
     fun initDB() {
         db.addClient(ClientEntity("-", 1))

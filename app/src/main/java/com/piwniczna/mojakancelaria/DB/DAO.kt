@@ -157,6 +157,7 @@ interface DAO {
     fun updatePayment(payment: PaymentEntity)
 
     //backups
+
     @Query("SELECT * from backups WHERE date = (SELECT MAX(date) from backups) LIMIT 1")
     fun getLastBackup(): BackupEntity
 
@@ -165,6 +166,8 @@ interface DAO {
 
     @Delete
     fun deleteBackup(backup: BackupEntity)
+
+  
 
     //constants
     @Query("SELECT * FROM constants WHERE `key` = :key")

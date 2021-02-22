@@ -98,6 +98,7 @@ class SettingsFragment() : ToolsFragment() {
 
         return true
     }
+  
 
     fun onBackPressed() {
         val bar = (activity as AppCompatActivity).supportActionBar

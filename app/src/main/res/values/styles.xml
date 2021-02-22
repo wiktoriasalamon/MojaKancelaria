@@ -16,157 +16,6 @@
         <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
 
-    <!-- BUTTON  -->
-    <style name="button_style">
-        <item name="android:layout_width">250dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="backgroundTint">@color/dark_blue</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="cornerRadius">50dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-    </style>
-
-    <!-- SMALL BUTTON -->
-    <style name="small_button_style">
-        <item name="android:layout_width">150dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="backgroundTint">@color/grey</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="cornerRadius">50dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">15dp</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-        <item name="android:layout_margin">20dp</item>
-    </style>
-
-    <!-- DIALOG BUTTON  -->
-    <style name="dialog_button_style">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="backgroundTint">@color/dark_blue</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="cornerRadius">50dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">13dp</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-    </style>
-
-    <!-- CALENDAR BUTTON -->
-    <style name="calendar_button_style">
-        <item name="android:layout_width">250dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="backgroundTint">@color/white</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="cornerRadius">50dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">15dp</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-        <item name="android:layout_margin">20dp</item>
-
-    </style>
-
-    <!-- MENU CARD BUTTON  -->
-    <style name="menu_card_button_style">
-        <item name="android:layout_width">350dp</item>
-        <item name="android:layout_height">190dp</item>
-        <item name="backgroundTint">@color/blue</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:layout_margin">20dp</item>
-        <item name="cornerRadius">30dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">35dp</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-    </style>
-
-    <!-- SMALL MENU CARD BUTTON  -->
-    <style name="small_menu_card_button_style">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="backgroundTint">@color/dark_blue</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:layout_marginHorizontal">15dp</item>
-        <item name="cornerRadius">15dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">19dp</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-    </style>
-
-    <!-- BACKUP BUTTON  -->
-    <style name="backup_button_style">
-        <item name="android:layout_width">290dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_marginVertical">15dp</item>
-        <item name="android:layout_marginHorizontal">15dp</item>
-
-        <item name="backgroundTint">@color/dark_blue</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="cornerRadius">15dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:textSize">22dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-    </style>
-
-
-    <!-- ADD BUTTON  -->
-    <style name="add_button_style">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">48dp</item>
-        <item name="android:text">+</item>
-        <item name="android:layout_margin">5dp</item>
-        <item name="android:background">@drawable/rounded_add_button</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:paddingTop">1dp</item>
-        <item name="android:gravity">center_vertical|center_horizontal</item>
-    </style>
-
-    <!-- ARCHIVES BUTTON  -->
-    <style name="archives_button_style">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">48dp</item>
-        <item name="android:layout_margin">5dp</item>
-        <item name="android:background">@drawable/rounded_archives_button</item>
-        <item name="android:src">@drawable/archives</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:paddingTop">1dp</item>
-        <item name="android:gravity">center_vertical|center_horizontal</item>
-    </style>
-
-
-
-    <!-- ADD CLIENT BUTTON -->
-    <style name="add_client_button_style">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">48dp</item>
-        <item name="android:layout_margin">5dp</item>
-        <item name="android:background">@drawable/rounded_add_client_button</item>
-        <item name="android:src">@drawable/ic_client_add</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:paddingTop">1dp</item>
-        <item name="android:gravity">center_vertical|center_horizontal</item>
-    </style>
-
-
     <!-- INPUT  -->
     <style name="input_style">
         <item name="android:layout_width">250dp</item>
@@ -183,6 +32,15 @@
         <item name="android:textColorHint">@color/dark_grey</item>
         <item name="android:textSize">20dp</item>
     </style>
+
+    <style name="settings_input_style">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:textColorHint">@color/dark_grey</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
 
 
     <!-- SEARCH INPUT  -->
@@ -275,18 +133,6 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:textSize">17dp</item>
-    </style>
-
-    <!-- OBLIGATIONS TYPE BUTTON -->
-    <style name="obligations_type_button_style">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_margin">5dp</item>
-        <item name="android:backgroundTint">@color/dark_blue</item>
-        <item name="android:background">@drawable/rounded_obligations_type</item>
-        <item name="android:fontFamily">@font/quicksand_semibold</item>
-        <item name="android:checked">true</item>
     </style>
 
     <!-- OBLIGATIONS AND PAYMENT LIST ITEM -->
@@ -395,7 +241,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginHorizontal">20dp</item>
-
     </style>
 
 </resources>
