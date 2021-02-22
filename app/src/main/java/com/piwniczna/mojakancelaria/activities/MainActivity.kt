@@ -1,13 +1,17 @@
 
 package com.piwniczna.mojakancelaria.activities
 
+import android.app.Dialog
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import android.util.Log
 import android.view.MenuItem
+import android.view.Window
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -70,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_info -> showAboutDialog()
             R.id.nav_exit -> exit()
             R.id.nav_backup -> openFragment(BackupFragment(), stack=true)
+            R.id.nav_new_letter -> showLetterDialog()
             //todo: pozostałe
         }
         drawer.closeDrawer(GravityCompat.START)
@@ -140,6 +145,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    private fun showLetterDialog() {
+        var dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.layout_dialog_new_avizo)
+
+        val editText = dialog.findViewById<EditText>(R.id.letter_number_editText)
+        val outgoingSwitch = dialog.findViewById<Switch>(R.id.outgoing_switch)
+        val barcodeButton = dialog.findViewById<ImageButton>(R.id.scan_barcode_button)
+        val confirmButton = dialog.findViewById<Button>(R.id.confirm_new_letter)
+
+        barcodeButton.setOnClickListener { toastMessage("W planach...")}
+        confirmButton.setOnClickListener { handleAddLetter(number = editText.text.toString(), outgoing = outgoingSwitch.isChecked)}
+
+
+        dialog.show()
+    }
+
+    private fun handleAddLetter(number: String, outgoing: Boolean) {
+        if(number==""){
+            toastMessage("Pusty number przesyłki!")
+            return
+        }
+        //TODO() add to db
+    }
 
     private fun showAboutDialog() {
         val builder = AlertDialog.Builder(this)
@@ -162,6 +192,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         builder.setNegativeButton(R.string.cancel) { dialog, which -> }
 
         builder.show()
+    }
+
+    private fun toastMessage(message: String) {
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(this, message, duration)
+        toast.show()
     }
 
 
