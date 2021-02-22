@@ -160,6 +160,12 @@ interface DAO {
     @Query("SELECT * from backups WHERE date = (SELECT MAX(date) from backups) LIMIT 1")
     fun getLastBackup(): BackupEntity
 
+    @Query("SELECT * FROM backups")
+    fun getAllBackups(): List<BackupEntity>
+
+    @Delete
+    fun deleteBackup(backup: BackupEntity)
+
     //constants
     @Query("SELECT * FROM constants WHERE `key` = :key")
     fun getConstant(key: String): List<ConstantsEntity>

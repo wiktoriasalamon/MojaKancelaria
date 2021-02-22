@@ -5,7 +5,10 @@ import android.util.Log
 import androidx.room.Room
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.DB.MyDb
+import java.io.File
 import java.lang.Exception
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -20,7 +23,7 @@ class AutoBackup {
                     backupDB(context)
                 }
                 else{
-                    Log.e("Auyto backup","Not required")
+                    Log.e("Auto backup","Not required")
                     return
                 }
                 Log.e("Auto backup","Done!")
@@ -32,7 +35,17 @@ class AutoBackup {
         }
 
         fun removeBackups(dbService: DataService, context: Context){
-            TODO()
+            val temp = dbService.getBackupsToDelete(dbService.getConstant("delete_backup").toInt())
+            val backups = temp.distinctBy {it.date}
+
+            Log.e("Backups to delete ", backups.size.toString())
+            for(b in backups){
+                dbService.deleteBackup(b)
+                val location = context.getExternalFilesDir(null).toString()
+                val fname = "$location/backup/${b.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))}.!auto.db.bkp"
+                Log.e("file: ","$location/backup/${b.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))}.!auto.db.bkp")
+                Files.deleteIfExists(Paths.get(fname))
+            }
         }
 
         private fun backupRequired(): Boolean{

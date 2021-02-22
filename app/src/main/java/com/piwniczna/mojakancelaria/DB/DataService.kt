@@ -275,6 +275,15 @@ class DataService(context: Context) {
     fun getLastBackup() :BackupEntity{
         return db.getLastBackup()
     }
+
+    fun getBackupsToDelete(olderThenDays: Int): ArrayList<BackupEntity>{
+        val backups = (db.getAllBackups())
+        return ArrayList(backups.filter {it.date.plusDays(olderThenDays.toLong()).isBefore(LocalDate.now())})
+    }
+
+    fun deleteBackup(backup: BackupEntity){
+        db.deleteBackup(backup)
+    }
     //
 
 

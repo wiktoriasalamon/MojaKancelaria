@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             AutoBackup.autoBackupDB(dbService, applicationContext)
+            AutoBackup.removeBackups(dbService, applicationContext)
 
 
             runOnUiThread{
