@@ -16,6 +16,7 @@
                 android:text="23005234125002874"
                 android:textSize="18dp"
                 android:layout_weight="1"
+                android:textAlignment="textStart"
                 />
             <TextView
                 android:id="@+id/days_left"

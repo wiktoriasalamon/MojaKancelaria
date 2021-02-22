@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/case_name_title"
             style="@style/double_title_style"
-            android:drawableLeft="@drawable/file"
+            android:drawableLeft="@drawable/ic_case"
             android:text="Case Name"/>
 
     </LinearLayout>
