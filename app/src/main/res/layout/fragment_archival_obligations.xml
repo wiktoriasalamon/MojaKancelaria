@@ -40,30 +40,30 @@
             android:id="@+id/contract_type_button"
             android:textOn="@string/contract"
             android:textOff="@string/contract"
-            android:backgroundTint="@color/archive_intence"
-            style="@style/obligations_type_button_style">
+            style="@style/obligations_type_button_style"
+            android:backgroundTint="@color/archive_intence">
 
         </ToggleButton>
         <ToggleButton
             android:id="@+id/hearing_type_button"
             android:textOn="@string/hearing"
             android:textOff="@string/hearing"
-            android:backgroundTint="@color/archive_intence"
-            style="@style/obligations_type_button_style">
+            style="@style/obligations_type_button_style"
+            android:backgroundTint="@color/archive_intence">
         </ToggleButton>
         <ToggleButton
             android:id="@+id/stamp_type_button"
             android:textOn="@string/stamps"
             android:textOff="@string/stamps"
-            android:backgroundTint="@color/archive_intence"
-            style="@style/obligations_type_button_style">
+            style="@style/obligations_type_button_style"
+            android:backgroundTint="@color/archive_intence">
         </ToggleButton>
         <ToggleButton
             android:id="@+id/court_type_button"
             android:textOn="@string/court_short"
             android:textOff="@string/court_short"
-            android:backgroundTint="@color/archive_intence"
-            style="@style/obligations_type_button_style">
+            style="@style/obligations_type_button_style"
+            android:backgroundTint="@color/archive_intence">
         </ToggleButton>
     </LinearLayout>
 

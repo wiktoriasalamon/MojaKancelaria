@@ -13,6 +13,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.ToolsFragment
 import java.lang.Exception
 
+//TODO
 class SettingsFragment() : ToolsFragment() {
 
     lateinit var dbService: DataService
