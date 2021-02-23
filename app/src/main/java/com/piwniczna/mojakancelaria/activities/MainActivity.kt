@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_exit -> exit()
             R.id.nav_backup -> openFragment(BackupFragment(), stack=true)
             R.id.nav_new_letter -> showLetterDialog()
-            R.id.nav_avizo -> openFragment(LettersFragment(false), stack=true)
-            R.id.nav_sent -> openFragment(LettersFragment(true), stack=true)
+            R.id.nav_avizo -> openFragment(LettersFragment(false))
+            R.id.nav_sent -> openFragment(LettersFragment(true))
 
             //todo: pozostałe
         }
@@ -125,6 +125,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 is ArchivalPaymentDetailsFragment -> f.onBackPressed()
                 is ClientDetailsFragment -> f.onBackPressed()
                 is SettingsFragment -> f.onBackPressed()
+                is LettersFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }
@@ -134,7 +135,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun openFragment(fragment: Fragment, stack: Boolean =false) {
         val f = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if (f!!::class == fragment::class) {
+        if (f!!::class == fragment::class && fragment::class != LettersFragment::class) {
             Log.e("Warning", "Already in ${fragment::class}")
             return
         }

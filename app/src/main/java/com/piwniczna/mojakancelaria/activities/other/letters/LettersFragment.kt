@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.models.*
 import com.piwniczna.mojakancelaria.trackingmore.APIService
+import java.net.ConnectException
 import kotlin.collections.ArrayList
 //TODO()
 
@@ -50,14 +53,23 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
             title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_awizo, 0, 0, 0)
         }
 
-
+        toastMessage("Ładowanie danych z serwera...")
         getLettersFromDB()
 
         return view
     }
 
+    private fun toastMessage(message: String) {
+        val duration = Toast.LENGTH_LONG
+        val toast = Toast.makeText(context, message, duration)
+        toast.show()
+    }
+
     fun onBackPressed() {
-        //TODO()
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.fragment_container,
+            ClientsFragment()
+        )?.commit()
     }
 
     fun getLettersFromDB() {
@@ -65,15 +77,24 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
             val rawLetters = dbService.getLetters().filter { it.outgoing == outgoing }
             //todo limit to max 100
             val numbers = rawLetters.map { it -> it.number }
-            val letters = APIService.getLetters(numbers)
+            try {
+                val letters = APIService.getLetters(numbers)
 
-            lettersList.clear()
-            lettersList.addAll(letters)
-            activity?.runOnUiThread {
-                Log.e("Notify in letters fragment","")
-
-                lettersListAdapter.notifyDataSetChanged()
-                Log.e("End in letters fragment","")
+                lettersList.clear()
+                lettersList.addAll(letters)
+                activity?.runOnUiThread {
+                    lettersListAdapter.notifyDataSetChanged()
+                }
+                Thread.sleep(600)
+                activity?.runOnUiThread {
+                    toastMessage("Załadowano dane!")
+                }
+            }
+            catch (e: ConnectException){
+                Thread.sleep(500)
+                activity?.runOnUiThread {
+                    toastMessage("Błąd łączenia z serwerem\nSprawdź połączenie internetowe...")
+                }
             }
         }
     }
