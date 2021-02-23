@@ -15,6 +15,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.models.*
 import com.piwniczna.mojakancelaria.trackingmore.APIService
+import java.lang.Exception
 import java.net.ConnectException
 import kotlin.collections.ArrayList
 //TODO()
@@ -91,9 +92,17 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
                 }
             }
             catch (e: ConnectException){
+                e.printStackTrace()
                 Thread.sleep(500)
                 activity?.runOnUiThread {
                     toastMessage("Błąd łączenia z serwerem\nSprawdź połączenie internetowe...")
+                }
+            }
+            catch (e: Exception){
+                e.printStackTrace()
+                Thread.sleep(500)
+                activity?.runOnUiThread {
+                    toastMessage("Błąd podczas pobierania danych...")
                 }
             }
         }
