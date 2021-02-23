@@ -57,13 +57,13 @@ class APIService {
                                 Letter(
                                     j.asJsonObject["tracking_number"].asString,
                                     TrackingStatus.UNKNOWN_CARRIER,
-                                    "-")
+                                    "??")
                             )
                             continue
                             //todo Check for single letter
                         }
                         when (j.asJsonObject["status"].asString) {
-                            //TODO()
+                            //TODO() - wyliczyć dni dla aviza!
                             "delivered" -> {
                                 letters.add(
                                     Letter(
@@ -113,7 +113,7 @@ class APIService {
                                 )
                             }
                         }
-                        //TODO()
+
                     }
                     //TODO() Check empty letters and append as broken
                     Log.e("Pobrano dane","----")

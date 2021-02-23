@@ -65,6 +65,9 @@ class LettersListAdapter(context: Context, var data: ArrayList<Letter>) :
         if (letter.days == "-") {
             return context.resources.getColorStateList(R.color.payed)
         }
+        if (letter.days == "??") {
+            return context.resources.getColorStateList(R.color.grey)
+        }
         val days = letter.days.toInt()
         if (days < 3) {
             return context.resources.getColorStateList(R.color.overdue)
