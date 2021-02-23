@@ -291,6 +291,10 @@ class DataService(context: Context) {
         db.addLetter(LetterEntity(num,outgoing))
     }
 
+    fun getLetters(): ArrayList<LetterEntity>{
+        return ArrayList(db.getLetters())
+    }
+
 
 
 

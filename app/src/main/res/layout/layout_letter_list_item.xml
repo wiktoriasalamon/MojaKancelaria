@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
-        android:id="@+id/obligation_item"
+        android:id="@+id/letter_item"
         style="@style/payed_obligations_list_item_style"
         android:orientation="vertical">
         <LinearLayout
@@ -19,7 +19,7 @@
                 android:textAlignment="textStart"
                 />
             <TextView
-                android:id="@+id/days_left"
+                android:id="@+id/letter_days_left"
                 android:text="Pozostało dni"
                 style="@style/obligation_title_style"
                 android:layout_weight="0"

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:elevation="10dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/letters_title"
+            style="@style/double_title_style"
+            android:drawableStart="@drawable/ic_new_letter"
+            android:text="Awiza/Wysłane"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:text = "Przesyłki:"
+        android:textSize="19sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="0dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/quicksand_semibold"
+        />
+
+    <ListView
+        android:layout_marginTop="5dp"
+        android:id="@+id/letters_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+
+</LinearLayout>
