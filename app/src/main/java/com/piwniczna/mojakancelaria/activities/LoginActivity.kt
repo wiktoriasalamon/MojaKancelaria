@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.piwniczna.mojakancelaria.backup.AutoBackup
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.trackingmore.APIService
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var passwordEditText : EditText
     lateinit var loginButton: Button
     lateinit var dbService: DataService
 
@@ -23,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton = findViewById(R.id.loginButton)
         dbService = DataService(this)
+
+        //test()
     }
 
 
@@ -52,6 +54,16 @@ class LoginActivity : AppCompatActivity() {
     fun openMainActivity() {
         val myIntent = Intent(this, MainActivity::class.java)
         startActivityForResult(myIntent, 123)
+    }
+
+    fun test(){
+        AsyncTask.execute{
+            val letters = APIService.getLetters(arrayListOf("20901030158427","RU123456789CN"))
+            for(l in letters){
+                Log.e("Letter:","${l.number}; ${l.status};")
+                Thread.sleep(1000)
+            }
+        }
     }
 
 }

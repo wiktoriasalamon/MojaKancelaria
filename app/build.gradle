@@ -31,7 +31,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 android {
@@ -54,15 +53,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
     }
 }
 
@@ -91,8 +90,7 @@ dependencies {
     implementation "com.itextpdf.tool:xmlworker:5.5.10"
     implementation "com.itextpdf:html2pdf:2.1.6"
 
-    implementation "com.mashape.unirest:unirest-java:1.4.9"
-    implementation "com.googlecode.json-simple:json-simple:1.1.1"
+    implementation "com.mashape.unirest:unirest-java:1.4.1"
 
 
 

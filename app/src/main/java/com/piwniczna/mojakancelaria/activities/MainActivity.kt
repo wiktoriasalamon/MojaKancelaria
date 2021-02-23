@@ -36,6 +36,7 @@ import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObl
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
 import com.piwniczna.mojakancelaria.activities.other.backup.BackupFragment
+import com.piwniczna.mojakancelaria.activities.other.letters.LettersFragment
 import com.piwniczna.mojakancelaria.activities.payments.add_payment.AddPaymentFragment
 import com.piwniczna.mojakancelaria.activities.payments.payment_details.PaymentDetailsFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
@@ -78,6 +79,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_exit -> exit()
             R.id.nav_backup -> openFragment(BackupFragment(), stack=true)
             R.id.nav_new_letter -> showLetterDialog()
+            R.id.nav_avizo -> openFragment(LettersFragment(false), stack=true)
+            R.id.nav_sent -> openFragment(LettersFragment(true), stack=true)
+
             //todo: pozostałe
         }
         drawer.closeDrawer(GravityCompat.START)
@@ -128,22 +132,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-    private fun openFragment(className: Fragment, stack: Boolean =false) {
+    private fun openFragment(fragment: Fragment, stack: Boolean =false) {
         val f = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if (f!!::class == className::class) {
-            Log.e("Warning", "Already in ${className::class}")
+        if (f!!::class == fragment::class) {
+            Log.e("Warning", "Already in ${fragment::class}")
             return
         }
         if(stack) {
             supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                className
+                fragment
             ).addToBackStack(null).commit()
         }
         else{
             supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                className
+                fragment
             ).commit()
         }
     }
@@ -182,10 +186,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         dialog.show()
     }
 
-    private fun handleAddLetter(number: String, outgoing: Boolean) {
-
-        //TODO() add to db
-    }
 
     private fun showAboutDialog() {
         val builder = AlertDialog.Builder(this)

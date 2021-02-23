@@ -2,6 +2,7 @@ package com.piwniczna.mojakancelaria.activities.other.letters
 
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,12 @@ import androidx.fragment.app.Fragment
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.models.*
+import com.piwniczna.mojakancelaria.trackingmore.APIService
 import kotlin.collections.ArrayList
 //TODO()
 
 
-class LettersFragment(var client: ClientEntity, var case: CaseEntity, var outgoing: Boolean)  : Fragment() {
+class LettersFragment(var outgoing: Boolean)  : Fragment() {
     lateinit var lettersListView: ListView
     lateinit var title: TextView
     lateinit var lettersList: ArrayList<Letter>
@@ -24,7 +26,7 @@ class LettersFragment(var client: ClientEntity, var case: CaseEntity, var outgoi
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_obligations, container, false)
+        val view = inflater.inflate(R.layout.fragment_letters, container, false)
         dbService = DataService(this.context!!)
 
         lettersListView = view.findViewById(R.id.letters_list_view) as ListView
@@ -63,18 +65,16 @@ class LettersFragment(var client: ClientEntity, var case: CaseEntity, var outgoi
             val rawLetters = dbService.getLetters().filter { it.outgoing == outgoing }
             //todo limit to max 100
             val numbers = rawLetters.map { it -> it.number }
-            //todo get data from api
-            //read data from api
+            val letters = APIService.getLetters(numbers)
 
-
-            TODO()
-            /*
-            val letters = ""
             lettersList.clear()
-            lettersList.addAll()
+            lettersList.addAll(letters)
             activity?.runOnUiThread {
-                obligationsListAdapter.notifyDataSetChanged()
-            }*/
+                Log.e("Notify in letters fragment","")
+
+                lettersListAdapter.notifyDataSetChanged()
+                Log.e("End in letters fragment","")
+            }
         }
     }
 

@@ -53,6 +53,10 @@ class LettersListAdapter(context: Context, var data: ArrayList<Letter>) :
         return letters[p0]
     }
 
+    override fun getItemId(p0: Int): Long {
+        return p0.toLong()
+    }
+
     fun getItemNumber(p0: Int): String {
         return letters[p0].number
     }
