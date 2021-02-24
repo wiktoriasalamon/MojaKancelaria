@@ -57,13 +57,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun test(){
-        AsyncTask.execute{
+        /*AsyncTask.execute{
             val letters = APIService.getLetters(arrayListOf("20901030158427","RU123456789CN"))
             for(l in letters){
                 Log.e("Letter:","${l.number}; ${l.status};")
                 Thread.sleep(1000)
             }
-        }
+        }*/
     }
 
 }

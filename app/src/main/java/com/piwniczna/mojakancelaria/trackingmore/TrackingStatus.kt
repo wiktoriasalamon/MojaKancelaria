@@ -5,8 +5,8 @@ class TrackingStatus {
         val DELIVERED = "Dostarczono"
         val PICKUP = "???"
         val TRANSIT = "W drodze"
-        val EXPIRED = "Przedawnione"
-        val UNDELIVERED = "Niedostarczono"
-        val UNKNOWN_CARRIER = "Nieznany dostawca"
+        val RETURNED = "Przesyłka zwrócona"
+        val UNKNOWN_CARRIER = "Status nieznany"
+        val UNKNOWN_DAYS = "??"
     }
 }

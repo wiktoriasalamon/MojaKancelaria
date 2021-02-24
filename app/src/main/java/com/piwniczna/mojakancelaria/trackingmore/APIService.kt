@@ -17,117 +17,81 @@ import java.net.URI
 
 class APIService {
     companion object{
-        fun getLetters(num: List<String>): ArrayList<Letter>{
-            var letters = arrayListOf<Letter>()
-            var numbers = ArrayList(num.distinct())
-            if(numbers.isEmpty()){
-                return letters
-            }
+        fun getLetter(num: String): Letter{
 
-            var numbersString = ""
-            for(n in numbers){
-                numbersString += "$n,"
-            }
+            try {
 
-            for(i in 1..10) {
-                letters.clear()
+                val url = "https://www.tracktry.com/tracking.php?tracknumber=$num&express=poczta-polska&validate=dxx"
+                val response =
+                    Unirest
+                        .get(url)
+                        .header("Content-Type", "application/json")
+                        .asString()
+
+                var gsonObj = JsonParser().parse(response.body).asJsonObject
+
+                val data = gsonObj
+                var status = ""
                 try {
-                    val response =
-                        Unirest.get("https://api.trackingmore.com/v2/trackings/get?numbers=$numbersString")
-                            .header("Content-Type", "application/json")
-                            .header("Trackingmore-Api-Key", ApiKeys.getApiKey()).asString()
-                    //var json = JSONParser().parse(response.body) as JSONObject
-
-                    var gsonObj = JsonParser().parse(response.body).asJsonObject
-
-
-                    val meta = gsonObj["meta"].asJsonObject
-                    if(meta["code"].asInt != 200 ){
-                        Thread.sleep(300)
-                        continue
+                    status = data["status"].asString
+                    if(status=="notfound"){
+                        return Letter(
+                            num,
+                            TrackingStatus.UNKNOWN_CARRIER,
+                            TrackingStatus.UNKNOWN_DAYS)
                     }
+                }
+                catch (e: Exception){}
 
-                    val arr = gsonObj["data"].asJsonObject["items"].asJsonArray
+                //get all track infos
+                //if any contains 'returned to sender' -> returned
+                //if firs contains 'Collected' or 'delivered'   -> delivered
+                //if any contains 'Postal notice' -> pickup, get this records date and count 14 days
+                // -> if returned? 20901030157245
+                //else transit
 
-                    // j - single package
-                    Log.e("len ",arr.size().toString())
-                    for(j in arr){
-                        if(j.asJsonObject["carrier_code"].asString != "poczta-polska"){
-                            letters.add(
-                                Letter(
-                                    j.asJsonObject["tracking_number"].asString,
-                                    TrackingStatus.UNKNOWN_CARRIER,
-                                    "??")
-                            )
-                            continue
-                            //todo Check for single letter
-                        }
-                        when (j.asJsonObject["status"].asString) {
-                            //TODO() - wyliczyć dni dla aviza!
-                            "delivered" -> {
-                                letters.add(
-                                    Letter(
-                                        j.asJsonObject["tracking_number"].asString,
-                                        TrackingStatus.DELIVERED,
-                                        "-")
-                                )
-                            }
-                            "pickup" -> {
-                                letters.add(
-                                    Letter(
-                                        j.asJsonObject["tracking_number"].asString,
-                                        TrackingStatus.PICKUP,
-                                        "-")
-                                )
-                            }
-                            "transit" -> {
-                                letters.add(
-                                    Letter(
-                                        j.asJsonObject["tracking_number"].asString,
-                                        TrackingStatus.TRANSIT,
-                                        "-")
-                                )
-                            }
-                            "expired" -> {
-                                letters.add(
-                                    Letter(
-                                        j.asJsonObject["tracking_number"].asString,
-                                        TrackingStatus.EXPIRED,
-                                        "-")
-                                )
-                            }
-                            "undelivered" -> {
-                                letters.add(
-                                    Letter(
-                                        j.asJsonObject["tracking_number"].asString,
-                                        TrackingStatus.UNDELIVERED,
-                                        "-")
-                                )
-                            }
-                            else -> {
-                                letters.add(
-                                    Letter(
-                                        j.asJsonObject["tracking_number"].asString,
-                                        j.asJsonObject["status"].asString+" else",
-                                        "-")
-                                )
-                            }
-                        }
+
+
+                when (status) {
+                    //TODO() - wyliczyć dni dla aviza!
+                    "delivered" -> {
+                        return Letter(
+                                num,
+                                TrackingStatus.DELIVERED,
+                                "-")
 
                     }
-                    //TODO() Check empty letters and append as broken
-                    Log.e("Pobrano dane","----")
-                    return letters
+                    "pickup" -> {
+                        return Letter(
+                                num,
+                                TrackingStatus.PICKUP,
+                                "-")
+
+                    }
+                    "transit" -> {
+                        return Letter(
+                                num,
+                                TrackingStatus.TRANSIT,
+                                "-")
+
+                    }
+
+
+                    else -> {
+                        return Letter(
+                                num,
+                                status,
+                                TrackingStatus.UNKNOWN_DAYS)
+
+                    }
                 }
 
-                catch (e: Exception) {
-                    Thread.sleep(500)
-                    Log.e("Attempt",i.toString())
-                    continue
-                }
+            }
+            catch (e: Exception) {
+                e.printStackTrace()
             }
 
-            throw ConnectException("Cannot connect ")
+            throw ConnectException("Cannot connect")
 
         }
 

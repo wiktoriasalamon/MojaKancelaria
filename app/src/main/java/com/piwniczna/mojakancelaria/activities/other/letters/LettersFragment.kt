@@ -76,16 +76,24 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
     fun getLettersFromDB() {
         AsyncTask.execute {
             val rawLetters = dbService.getLetters().filter { it.outgoing == outgoing }
-            //todo limit to max 100
             val numbers = rawLetters.map { it -> it.number }
             try {
-                val letters = APIService.getLetters(numbers)
-
                 lettersList.clear()
-                lettersList.addAll(letters)
-                activity?.runOnUiThread {
-                    lettersListAdapter.notifyDataSetChanged()
+
+                for (n in numbers){
+                    Log.e("Loading ","-$n")
+                    val letter = APIService.getLetter(n)
+                    lettersList.add(letter)
+                    activity?.runOnUiThread {
+                        lettersListAdapter.notifyDataSetChanged()
+                    }
                 }
+
+
+
+
+
+
                 Thread.sleep(600)
                 activity?.runOnUiThread {
                     toastMessage("Załadowano dane!")
