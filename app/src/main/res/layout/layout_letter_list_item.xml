@@ -14,7 +14,8 @@
                 android:id="@+id/letter_number"
                 style="@style/obligation_to_pay_amount_style"
                 android:text="23005234125002874"
-                android:textSize="18dp"
+                android:textSize="19dp"
+                android:textStyle="bold|italic"
                 android:layout_weight="1"
                 android:textAlignment="textStart"
                 />
@@ -28,6 +29,7 @@
         <TextView
             android:id="@+id/letter_status"
             android:text="Status przesylki"
-            style="@style/obligation_date_style"/>
+            style="@style/obligation_date_style"
+            android:textSize="15dp"/>
     </LinearLayout>
 </LinearLayout>

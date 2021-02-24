@@ -80,7 +80,7 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
             try {
                 lettersList.clear()
 
-                for (n in numbers){
+                for (n in numbers.reversed()){
                     Log.e("Loading ","-$n")
                     val letter = APIService.getLetter(n)
                     lettersList.add(letter)
@@ -88,11 +88,6 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
                         lettersListAdapter.notifyDataSetChanged()
                     }
                 }
-
-
-
-
-
 
                 Thread.sleep(600)
                 activity?.runOnUiThread {

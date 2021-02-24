@@ -69,10 +69,13 @@ class LettersListAdapter(context: Context, var data: ArrayList<Letter>) :
             return context.resources.getColorStateList(R.color.grey)
         }
         val days = letter.days.toInt()
-        if (days < 3) {
+        if (days < 2) {
             return context.resources.getColorStateList(R.color.overdue)
         }
-        if (days < 7) {
+        if (days < 4) {
+            return context.resources.getColorStateList(R.color.little_overdue)
+        }
+        if (days < 8) {
             return context.resources.getColorStateList(R.color.inprogress)
         }
         return context.resources.getColorStateList(R.color.topay)
