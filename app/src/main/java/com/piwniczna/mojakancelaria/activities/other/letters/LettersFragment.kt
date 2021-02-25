@@ -18,7 +18,6 @@ import com.piwniczna.mojakancelaria.trackingmore.APIService
 import java.lang.Exception
 import java.net.ConnectException
 import kotlin.collections.ArrayList
-//TODO()
 
 
 class LettersFragment(var outgoing: Boolean)  : Fragment() {
@@ -27,6 +26,7 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
     lateinit var lettersList: ArrayList<Letter>
     lateinit var lettersListAdapter: LettersListAdapter
     lateinit var dbService: DataService
+    lateinit var letterEntityList: ArrayList<LetterEntity>
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,7 +40,9 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
         lettersListView.adapter = lettersListAdapter
 
         lettersListView.setOnItemLongClickListener { _, _, position, _ ->
-            //todo: delete by position
+            Log.e(letterEntityList[position].number," - delete")
+            //todo: dialog
+            deleteLetterFromDB(letterEntityList[position])
             true
         }
 
@@ -73,9 +75,22 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
         )?.commit()
     }
 
+    fun deleteLetterFromDB(letter: LetterEntity){
+        AsyncTask.execute {
+            dbService.deleteLetter(letter)
+            Thread.sleep(2000)
+            activity!!.runOnUiThread{
+                lettersList.clear()
+                lettersListAdapter.notifyDataSetChanged()
+                getLettersFromDB()
+            }
+        }
+    }
+
     fun getLettersFromDB() {
         AsyncTask.execute {
             val rawLetters = dbService.getLetters().filter { it.outgoing == outgoing }
+            letterEntityList = ArrayList(rawLetters.reversed())
             val numbers = rawLetters.map { it -> it.number }
             try {
                 lettersList.clear()

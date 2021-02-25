@@ -295,6 +295,10 @@ class DataService(context: Context) {
         return ArrayList(db.getLetters())
     }
 
+    fun deleteLetter(letter: LetterEntity) {
+        db.deleteLetter(letter)
+    }
+
 
 
 
