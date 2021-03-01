@@ -43,7 +43,6 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
 
         lettersListView.setOnItemLongClickListener { _, _, position, _ ->
             Log.e(letterEntityList[position].number," - delete")
-            //todo: dialog
 
             val builder = AlertDialog.Builder(this.context)
             val letterNum = letterEntityList[position].number

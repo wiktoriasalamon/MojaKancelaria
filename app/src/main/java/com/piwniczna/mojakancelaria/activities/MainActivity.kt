@@ -68,6 +68,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
+        setupActionBar()
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -82,12 +84,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_avizo -> openFragment(LettersFragment(false))
             R.id.nav_sent -> openFragment(LettersFragment(true))
 
-            //todo: pozostałe
         }
         drawer.closeDrawer(GravityCompat.START)
 
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            // Home button id - dunno why R.id.home wont work...
+            16908332 -> {
+                drawer.openDrawer(GravityCompat.START)
+                return true
+            }
+        }
+        return false
     }
 
     override fun onStop() {
@@ -131,7 +143,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    private fun setupActionBar() {
+        val bar = (this as AppCompatActivity).supportActionBar
+        bar!!.setDisplayHomeAsUpEnabled(true)
+        bar.setHomeButtonEnabled(true)
+        bar.setHomeAsUpIndicator(R.drawable.ic_home)
 
+
+    }
 
     private fun openFragment(fragment: Fragment, stack: Boolean =false) {
         val f = supportFragmentManager.findFragmentById(R.id.fragment_container)
