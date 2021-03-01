@@ -1,5 +1,6 @@
 package com.piwniczna.mojakancelaria.activities.other.letters
 
+import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
 import com.piwniczna.mojakancelaria.models.*
 import com.piwniczna.mojakancelaria.trackingmore.APIService
+import com.piwniczna.mojakancelaria.utils.SpannedText
 import java.lang.Exception
 import java.net.ConnectException
 import kotlin.collections.ArrayList
@@ -42,7 +44,24 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
         lettersListView.setOnItemLongClickListener { _, _, position, _ ->
             Log.e(letterEntityList[position].number," - delete")
             //todo: dialog
-            deleteLetterFromDB(letterEntityList[position])
+
+            val builder = AlertDialog.Builder(this.context)
+            val letterNum = letterEntityList[position].number
+            val message =
+                SpannedText.getSpannedText(getString(R.string.delete_letter, letterNum))
+
+            builder.setTitle(R.string.warning)
+            builder.setMessage(message)
+
+            builder.setPositiveButton("Usuń") { dialog, which ->
+                deleteLetterFromDB(letterEntityList[position])
+
+            }
+
+            builder.setNegativeButton(R.string.cancel) { dialog, which -> }
+
+            builder.show()
+
             true
         }
 
