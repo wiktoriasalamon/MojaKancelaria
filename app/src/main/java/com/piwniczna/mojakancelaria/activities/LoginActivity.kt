@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.piwniczna.mojakancelaria.backup.AutoBackup
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.R
+import com.piwniczna.mojakancelaria.trackingmore.APIService
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var passwordEditText : EditText
     lateinit var loginButton: Button
     lateinit var dbService: DataService
 
@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton = findViewById(R.id.loginButton)
         dbService = DataService(this)
+
     }
 
 
@@ -53,5 +54,6 @@ class LoginActivity : AppCompatActivity() {
         val myIntent = Intent(this, MainActivity::class.java)
         startActivityForResult(myIntent, 123)
     }
+
 
 }

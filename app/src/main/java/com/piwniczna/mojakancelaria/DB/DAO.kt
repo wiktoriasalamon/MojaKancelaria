@@ -157,7 +157,6 @@ interface DAO {
     fun updatePayment(payment: PaymentEntity)
 
     //backups
-
     @Query("SELECT * from backups WHERE date = (SELECT MAX(date) from backups) LIMIT 1")
     fun getLastBackup(): BackupEntity
 
@@ -167,13 +166,21 @@ interface DAO {
     @Delete
     fun deleteBackup(backup: BackupEntity)
 
-  
-
     //constants
     @Query("SELECT * FROM constants WHERE `key` = :key")
     fun getConstant(key: String): List<ConstantsEntity>
 
     @Update
     fun updateConstant(constant: ConstantsEntity)
+
+    //Letter
+    @Insert
+    fun addLetter(letter: LetterEntity)
+
+    @Delete
+    fun deleteLetter(letter: LetterEntity)
+
+    @Query("SELECT * FROM letters")
+    fun getLetters() : List<LetterEntity>
 
 }

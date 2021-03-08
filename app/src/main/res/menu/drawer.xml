@@ -40,8 +40,8 @@
                 android:title="@string/sent" />
             <item
                 android:id="@+id/nav_avizo"
-                android:icon="@drawable/ic_avizo"
-                android:title="@string/avizo" />
+                android:icon="@drawable/ic_awizo"
+                android:title="@string/awizo" />
             <item
                 android:id="@+id/nav_new_letter"
                 android:icon="@drawable/ic_new_letter"

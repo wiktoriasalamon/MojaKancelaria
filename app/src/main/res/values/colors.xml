@@ -23,4 +23,5 @@
     <color name="overdue">#D06666</color>
     <color name="inprogress">#F4CE6A</color>
     <color name="topay">#A7CCDE</color>
+    <color name="little_overdue">#EAA495</color>
 </resources>

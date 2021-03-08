@@ -1,4 +1,4 @@
-package com.piwniczna.mojakancelaria.activities.other
+package com.piwniczna.mojakancelaria.activities.other.settings
 
 
 import android.os.AsyncTask
@@ -13,6 +13,7 @@ import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.utils.ToolsFragment
 import java.lang.Exception
 
+//TODO
 class SettingsFragment() : ToolsFragment() {
 
     lateinit var dbService: DataService
@@ -98,7 +99,6 @@ class SettingsFragment() : ToolsFragment() {
 
         return true
     }
-  
 
     fun onBackPressed() {
         val bar = (activity as AppCompatActivity).supportActionBar
