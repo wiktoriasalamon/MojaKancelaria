@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            // Home button id - dunno why R.id.home wont work...
+            //TODO Home button id - dunno why R.id.home wont work...
             16908332 -> {
                 drawer.openDrawer(GravityCompat.START)
                 return true
@@ -183,18 +183,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val barcodeButton = dialog.findViewById<ImageButton>(R.id.scan_barcode_button)
         val confirmButton = dialog.findViewById<Button>(R.id.confirm_new_letter)
 
-        barcodeButton.setOnClickListener { toastMessage("W planach...")}
+        barcodeButton.setOnClickListener { toastMessage(getString(R.string.todo))}
         confirmButton.setOnClickListener {
             val number = editText.text.toString()
             val outgoing = outgoingSwitch.isChecked
             if(number==""){
-                toastMessage("Pusty number przesyłki!")
+                toastMessage(getString(R.string.empty_letter_num))
             }
             else {
                 AsyncTask.execute {
                     dbService.addLetter(number, outgoing)
                     this.runOnUiThread {
-                        toastMessage("Dodano przesyłkę!")
+                        toastMessage(getString(R.string.added_letter))
                         dialog.dismiss()
                     }
                 }

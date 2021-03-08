@@ -52,7 +52,7 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
             builder.setTitle(R.string.warning)
             builder.setMessage(message)
 
-            builder.setPositiveButton("Usuń") { dialog, which ->
+            builder.setPositiveButton(getString(R.string.delete)) { dialog, which ->
                 deleteLetterFromDB(letterEntityList[position])
 
             }
@@ -66,15 +66,15 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
 
         val title = view.findViewById<TextView>(R.id.letters_title)
         if(outgoing){
-            title.text="Wysłane"
+            title.text=getString(R.string.sent)
             title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_sent, 0, 0, 0)
         }
         else{
-            title.text="Awiza"
+            title.text=getString(R.string.awizo)
             title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_awizo, 0, 0, 0)
         }
 
-        toastMessage("Ładowanie danych z serwera...")
+        toastMessage(getString(R.string.loading_data))
         getLettersFromDB()
 
         return view
@@ -124,21 +124,21 @@ class LettersFragment(var outgoing: Boolean)  : Fragment() {
 
                 Thread.sleep(600)
                 activity?.runOnUiThread {
-                    toastMessage("Załadowano dane!")
+                    toastMessage(getString(R.string.loaded))
                 }
             }
             catch (e: ConnectException){
                 e.printStackTrace()
                 Thread.sleep(500)
                 activity?.runOnUiThread {
-                    toastMessage("Błąd łączenia z serwerem\nSprawdź połączenie internetowe...")
+                    toastMessage(getString(R.string.connection_error))
                 }
             }
             catch (e: Exception){
                 e.printStackTrace()
                 Thread.sleep(500)
                 activity?.runOnUiThread {
-                    toastMessage("Błąd podczas pobierania danych...")
+                    toastMessage(getString(R.string.download_error))
                 }
             }
         }

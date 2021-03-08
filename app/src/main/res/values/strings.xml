@@ -130,13 +130,26 @@
     <string name="settings">Ustawienia</string>
     <string name="post">Korespondencja</string>
     <string name="sent">Wysłane</string>
-    <string name="avizo">Aviza</string>
+    <string name="awizo">Awiza</string>
     <string name="new_letter">Nowa przesyłka</string>
     <string name="info">Info</string>
     <string name="exit">Wyjście</string>
     <string name="email_for_reports">Email do wysyłania raportów:</string>
     <string name="auto_backup">Automatyczny backup po dniach:</string>
     <string name="delete_backups">Usuwanie auto-backupów starszych niż dni:</string>
+
+
+    <!-- Letters -->
     <string name="letter_number">Podaj numer przesyłki</string>
     <string name="outgoing_letter">Przesyłka wychodząca</string>
+    <string name="empty_letter_num">Pusty number przesyłki!</string>
+    <string name="added_letter">Dodano przesyłkę!</string>
+    <string name="loading_data">Ładowanie danych z serwera...</string>
+    <string name="connection_error">Błąd łączenia z serwerem\nSprawdź połączenie internetowe...</string>
+    <string name="download_error">Błąd podczas pobierania danych...</string>
+    <string name="loaded">Załadowano dane!</string>
+
+
+    <!-- TODO -->
+    <string name="todo">W planach...</string>
 </resources>
