@@ -93,7 +93,9 @@
             android:id="@+id/sum_of_amounts_to_pay"
             style="@style/sum_of_amounts_to_pay_style"
             android:layout_weight="1"
-            android:text="@string/sum_of_amounts_to_pay_label">
+            android:text="@string/sum_of_amounts_to_pay_label"
+            android:textStyle="bold"
+            >
         </TextView>
 
         <Button

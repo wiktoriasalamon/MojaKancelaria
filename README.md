@@ -1,4 +1,4 @@
-# MojaKancelaria
+# Moja Kancelaria
 
 ## Spis treści
 * [Technologie](#technologie)
@@ -29,6 +29,12 @@ różnych typów zobowiązań, wpłat, oraz innych istotnych rzeczy, jak awiza i
 
 Aplikacja umożliwia dodawanie klientów, dla każdego z nich różnych spraw oraz opłat. 
 
+* [Nawigacja](#nawigacja-po-aplikacji)
+* [Klienci sprawy i zobowiązania](#klienci-sprawy-i-zobowiązania)
+* [Raport](#raport)
+* [Archiwum](#archiwum)
+* [Korespondencja](#korespondencja)
+* [Backup, autobackup oraz ustawienia](#backup,-autobackup-oraz-ustawienia)
 
 ### Nawigacja po aplikacji
 
@@ -79,9 +85,11 @@ Istnieje możliwość filtrowania zobowiąząń po ich typie:
 Dodatkową funkcjonalnością jest możliwosć wygenerowania raportu dla danej sprawy do pliku pdf oraz wysłanie 
 jako załącznika w wiadomości email:
 
-### Archiwum
 
 ![](Images/13.png)
+
+### Archiwum
+
 
 W przypadku zakończenia danej sprawy istnieje możliwosć jej archiwizacji. 
 
@@ -99,7 +107,7 @@ Następnie aktualny status każdej z przesyłek pobierany jest z api poczty.
 
 ![](Images/16.png)
 
-# Backup, autobackup oraz ustawienia
+### Backup, autobackup oraz ustawienia
 
 Zaimplementowana została możliwosć backupu oraz przywracana bazy danych do pliku. 
 
