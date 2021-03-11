@@ -34,7 +34,7 @@ Aplikacja umożliwia dodawanie klientów, dla każdego z nich różnych spraw or
 * [Raport](#raport)
 * [Archiwum](#archiwum)
 * [Korespondencja](#korespondencja)
-* [Backup, autobackup oraz ustawienia](#backup,-autobackup-oraz-ustawienia)
+* [Backup, autobackup oraz ustawienia](#backup-autobackup-oraz-ustawienia)
 
 ### Nawigacja po aplikacji
 
