@@ -14,7 +14,9 @@
     <!-- Alert Dialog -->
     <string name="warning">Uwaga!</string>
     <string name="are_you_sure">Na pewno?</string>
-    <!-- Add Client Fragment -->
+    <!-- Add/Update Client Fragment -->
+    <string name="update_client_title">Edycja nazwy klienta</string>
+    <string name="update_client_hint">Edytuj nazwę klienta $s</string>
     <string name="new_client_hint">Nazwa nowego klienta</string>
     <string name="empty_client_warning">Nazwa klienta nie może być pusta!</string>
     <string name="too_long_client_warning">Za długa nazwa klienta!</string>

@@ -5,16 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:elevation="10dp"
     >
 
 
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="120dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <Button
             android:id="@+id/cases_button"
             android:text="@string/cases"
@@ -26,6 +26,20 @@
             android:text="@string/payments"
             style="@style/menu_card_button_style">
         </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:gravity="center|bottom">
+
+        <ImageButton
+            android:id="@+id/open_update_client_button"
+            style="@style/update_client_button_style"
+            android:layout_gravity="end"
+            android:paddingTop="8dp"/>
     </LinearLayout>
 
 

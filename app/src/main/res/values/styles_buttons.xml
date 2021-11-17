@@ -134,5 +134,11 @@
         <item name="android:src">@drawable/ic_client_add</item>
     </style>
 
+    <!-- UPDATE CLIENT BUTTON -->
+    <style name="update_client_button_style" parent="base_circle_button_style">
+        <item name="android:background">@drawable/rounded_add_client_button</item>
+        <item name="android:src">@drawable/ic_settings_white</item>
+    </style>
+
 
 </resources>
