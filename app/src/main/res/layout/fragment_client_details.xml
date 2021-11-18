@@ -12,9 +12,9 @@
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="160dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <Button
             android:id="@+id/cases_button"
             android:text="@string/cases"
@@ -29,11 +29,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="160dp"
+        android:paddingBottom="80dp"
         android:orientation="vertical"
-        android:gravity="center|bottom">
+        android:gravity="center|top">
 
         <ImageButton
             android:id="@+id/open_update_client_button"
@@ -41,6 +41,7 @@
             android:layout_gravity="end"
             android:paddingTop="8dp"/>
     </LinearLayout>
+
 
 
 </LinearLayout>

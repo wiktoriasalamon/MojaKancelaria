@@ -77,6 +77,14 @@ class DataService(context: Context) {
         db.addClient(client) //to make archival version of client
     }
 
+    fun updateClient(client: ClientEntity) {
+        val archivalClient = getClient(client.id+1)
+        archivalClient.name = client.name
+
+        db.updateClient(client)
+        db.updateClient(archivalClient)
+    }
+
     fun deleteClient(client: ClientEntity): Boolean {
         if (client.id % 2 == 1) {
             return false //activeClient has even id

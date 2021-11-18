@@ -15,9 +15,11 @@
         <entry key="app/src/main/res/layout/fragment_archival_case_details.xml" value="0.192481884057971" />
         <entry key="app/src/main/res/layout/fragment_case_details.xml" value="0.192481884057971" />
         <entry key="app/src/main/res/layout/fragment_cases.xml" value="0.192481884057971" />
-        <entry key="app/src/main/res/layout/fragment_client_details.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_client_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_clients.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_update_client.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_payment_details.xml" value="0.5572916666666666" />
+        <entry key="app/src/main/res/layout/fragment_payments.xml" value="0.5572916666666666" />
+        <entry key="app/src/main/res/layout/fragment_update_client.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -5,19 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.room.Update
 import com.piwniczna.mojakancelaria.DB.DataService
 import com.piwniczna.mojakancelaria.models.ClientEntity
 import com.piwniczna.mojakancelaria.R
 import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.update_client.UpdateClientFragment
 import com.piwniczna.mojakancelaria.activities.payments.payments_list.PaymentsFragment
 
 
 class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
     lateinit var casesButton: Button
     lateinit var paymentsButton: Button
+    lateinit var updateNameButton: ImageButton
     lateinit var dbService: DataService
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,6 +34,8 @@ class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
         paymentsButton = view.findViewById(R.id.payments_button)
         paymentsButton.setOnClickListener { openPaymentsFragment(it) }
 
+        updateNameButton = view.findViewById(R.id.open_update_client_button)
+        updateNameButton.setOnClickListener { openUpdateClientName(it) }
         setActionbar()
 
         return view
@@ -60,5 +66,13 @@ class ClientDetailsFragment(var client: ClientEntity) : Fragment() {
                 PaymentsFragment(client)
         )?.commit()
     }
+
+    private fun openUpdateClientName(view: View) {
+        fragmentManager?.beginTransaction()?.replace(
+                R.id.fragment_container,
+                UpdateClientFragment(client)
+        )?.commit()
+    }
+
 
 }

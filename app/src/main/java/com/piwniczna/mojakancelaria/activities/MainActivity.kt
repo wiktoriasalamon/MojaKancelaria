@@ -32,6 +32,7 @@ import com.piwniczna.mojakancelaria.activities.cases.cases_list.CasesFragment
 import com.piwniczna.mojakancelaria.activities.clients.add_client.AddClientFragment
 import com.piwniczna.mojakancelaria.activities.clients.client_details.ClientDetailsFragment
 import com.piwniczna.mojakancelaria.activities.clients.clients_list.ClientsFragment
+import com.piwniczna.mojakancelaria.activities.clients.update_client.UpdateClientFragment
 import com.piwniczna.mojakancelaria.activities.obligations.add_obligation.AddObligationFragment
 import com.piwniczna.mojakancelaria.activities.obligations.obligation_details.ObligationDetailsFragment
 import com.piwniczna.mojakancelaria.activities.obligations.update_obligation.UpdateObligationFragment
@@ -138,6 +139,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 is ClientDetailsFragment -> f.onBackPressed()
                 is SettingsFragment -> f.onBackPressed()
                 is LettersFragment -> f.onBackPressed()
+                is UpdateClientFragment -> f.onBackPressed()
                 else -> super.onBackPressed()
             }
         }
